@@ -8,8 +8,11 @@ Uncover recipes from ingredients in your cabinet
 4. Install vue-cli-service type "npm i -g @vue/cli"
 5. Install vue add unit-mocha 
 6. Install chai; type npm install chai
-7. Mocha & Chai Unit Testing Frameworks ; Cypress for E2E testing
-8. ESLinter = Prettier
+7. Install mocha dev; npm install mocha chai --save-dev
+8. Install init,click enter on everything; npm init
+9. From tests/mochaTests Run test; npm run test
+9. Mocha & Chai Unit Testing Frameworks ; Cypress for E2E testing
+10. ESLinter = Prettier
 
 ## Running
 1. `cd pantry-chef`
