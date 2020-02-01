@@ -1,3 +1,5 @@
+import api from '../../api'
+
 const state = {
 	profiles: []
 }
@@ -10,7 +12,9 @@ const getters = {
 
 const actions = {
 	createProfile({ commit }, payload) {
-		commit('ADD_PROFILE', payload)
+		api.users.createProfile(payload).then(() => {
+			commit('ADD_PROFILE', payload)
+		})
 	}
 }
 

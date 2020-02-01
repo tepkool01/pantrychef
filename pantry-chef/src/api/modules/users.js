@@ -4,5 +4,8 @@ export default {
 		return [{ name: 'TestProfile 1' }, { name: 'TestProfile 1' }]
 	},
 
-	createProfile() {}
+	createProfile(profile) {
+		console.log("I'ved been called!" + profile)
+		return Promise.resolve()
+	}
 }
