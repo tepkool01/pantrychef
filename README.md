@@ -14,6 +14,19 @@ Uncover recipes from ingredients in your cabinet
 9. Mocha & Chai Unit Testing Frameworks ; Cypress for E2E testing
 10. ESLinter = Prettier
 
+## Linting
+1. Prettier rules are located in .prettierrc.js
+2. eslint configuration is in .eslintrc.js (which uses prettier)
+3. To run eslint natively on the command line, one way is to install all the packages globally, i.e.:
+- `npm install @vue/eslint-config-prettier -g`
+- `npm install eslint-plugin-prettier -g`
+- `npm install eslint-plugin-vue -g`
+- `npm install prettier -g`
+- `npm install eslint -g`
+4. Then run `eslint YOUR_FILE`
+or autofix using
+5. `eslint --fix YOUR_FILE`
+
 ## Running
 1. `cd pantry-chef`
 2. `npm run serve`

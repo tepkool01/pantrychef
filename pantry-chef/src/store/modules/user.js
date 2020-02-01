@@ -1,29 +1,29 @@
 const state = {
-   profiles: []
+  profiles: []
 };
 
 const getters = {
-    profiles(state) {
-        return state.profiles
-    }
+  profiles(state) {
+    return state.profiles;
+	}
 };
 
 const actions = {
-    createProfile({ commit }, payload) {
-        // do api call here
-        commit('ADD_PROFILE', payload);
-    }
+  createProfile({ commit }, payload) {
+		// do api call here
+    commit("ADD_PROFILE", payload);
+	}
 };
 
 const mutations = {
-    ADD_PROFILE (state, profile) {
-        state.profiles.push(profile);
-    }
+  ADD_PROFILE(state, profile) {
+		state.profiles.push(profile);
+	}
 };
 
 export default {
-    state,
-    actions,
-    mutations,
-    getters
+  state,
+	actions,
+	mutations,
+	getters
 };

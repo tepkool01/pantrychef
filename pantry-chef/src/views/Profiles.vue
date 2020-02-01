@@ -15,12 +15,12 @@
 // @ is an alias to /src
 import Profile from "@/components/Profile.vue";
 import ProfileCreate from "../components/ProfileCreate";
-import {mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Profiles",
   computed: {
-    ...mapGetters(['profiles'])
+    ...mapGetters(["profiles"])
   },
   components: {
     Profile,
