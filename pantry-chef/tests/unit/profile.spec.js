@@ -47,4 +47,20 @@ describe('ProfileCreate.vue', () => {
 		button.trigger('click')
 		expect(user.state.profiles).to.have.lengthOf(1)
 	})
+
+	it('returns a mutated profile after being added', () => {
+		let state = {
+			profiles: []
+		}
+		user.mutations.ADD_PROFILE(state, {name: "test"})
+		expect(state.profiles).to.have.lengthOf(1)
+	})
+
+	it('returns the existing profiles in the state', () => {
+		let state = {
+			profiles: []
+		}
+		user.mutations.ADD_PROFILE(state, {name: "test"})
+		expect(user.getters.profiles(state)).to.have.lengthOf(1)
+	})
 })
