@@ -36,7 +36,7 @@ or autofix using
 2. `npm run build`
 
 ## Testing
-- Using Cypress for
+- Highly recommend install the chai, mocha, sinon, and etc libraries for easier autocompletion (jetbrains settings)
 
 ## Fun Tips
 1. Using `vue ui` you can get to the UI manager for this application. You'll need to import the `pantry-chef` folder as a project first.

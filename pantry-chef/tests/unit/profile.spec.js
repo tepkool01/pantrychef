@@ -1,43 +1,50 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
-import Vuex from "vuex";
-import ProfileCreate from "../../src/components/ProfileCreate";
-import user from "../../src/store/modules/user";
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import Vuex from 'vuex'
+import chai from 'chai'
+import chaiAsPromised from 'chai-as-promised'
+import { expect } from 'chai'
+import sinon from 'sinon'
+import sinonChai from 'sinon-chai'
+chai.use(sinonChai)
+chai.use(chaiAsPromised)
 
-const localVue = createLocalVue();
+import ProfileCreate from '../../src/components/ProfileCreate'
+import user from '../../src/store/modules/user'
+import api from '../../src/api'
 
-localVue.use(Vuex);
+const localVue = createLocalVue()
 
-describe("ProfileCreate.vue", () => {
-	let actions;
-  let state;
-	let store;
+localVue.use(Vuex)
 
-  beforeEach(() => {
-		state = {
-			profiles: []
-    };
+describe('ProfileCreate.vue', () => {
 
-		actions = {
-			createProfile: jest.fn()
-    };
+	let store
 
+	beforeEach(() => {
 		store = new Vuex.Store({
-      modules: {
+			modules: {
 				user
 			}
-		});
-	});
+		})
+	})
 
 	it('calls store action "createProfile" when button is clicked', () => {
-    const wrapper = shallowMount(ProfileCreate, { store, localVue });
-    const button = wrapper.find("button");
-    button.trigger("click");
-		expect(actions.createProfile).toHaveBeenCalled();
-  });
+		let stub = sinon.stub(api.users, 'createProfile')
+		stub.resolves({id: 1, name: 'test'})
 
-	// it('renders "state.clicks" in first p tag', () => {
-	//     const wrapper = shallowMount(MyComponent, { store, localVue });
-	//     const p = wrapper.find('p');
-	//     expect(p.text()).toBe(state.clicks.toString());
-  // })
-});
+		const wrapper = shallowMount(ProfileCreate, { store, localVue })
+		const button = wrapper.find('button')
+		button.trigger('click')
+		expect(api.users.createProfile).calledOnce
+	})
+
+	it('increments the profile count by 1', () => {
+		const wrapper = shallowMount(ProfileCreate, { store, localVue })
+		const textInput = wrapper.find('input[type="text"]')
+		const button = wrapper.find('button')
+
+		textInput.setValue('asdf')
+		button.trigger('click')
+		expect(user.state.profiles).to.have.lengthOf(1)
+	})
+})
