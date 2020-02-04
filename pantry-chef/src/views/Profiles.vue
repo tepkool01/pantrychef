@@ -6,9 +6,9 @@
 
 		<h2>Select an existing profile</h2>
 		<div v-for="p in profiles" v-bind:key="p.name">
-			<profile :profile="p"></profile>
 		</div>
 	</div>
+	<profile :profile="p"></profile>
 </template>
 
 <script>
