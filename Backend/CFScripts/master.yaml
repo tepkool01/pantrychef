@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  CidrRange:
+    Description: '1.1.1.0/16'
+    Type: String
+    Default: 73.73.0.0/24
+
+Resources:
+  # Create VPC 
+  VPC:
+    Type: 'AWS::EC2::VPC'
+    Properties:
+      CidrBlock : !Ref CidrRange
+      EnableDnsHostnames : false
+      EnableDnsSupport : false
+      InstanceTenancy : 'default'
+  Aurora:
+    Type: 'AWS::RDS::DBCluster'
+    Properties:
+      DatabaseName: 'pantryDB'
+      DBClusterIdentifier: 'pantryChef'
+      MasterUsername: 'testusername'
+      MasterUserPassword: 'testpassword'
+      Engine: aurora
+      EngineMode: serverless
+      Port: 3306
+      StorageEncrypted: True
