@@ -9,6 +9,10 @@
             <input type="password" name="password"/>
         </label>
         <label>
+            Re-Password
+            <input type="re-password" name="re-password"/>
+        </label>
+        <label>
             Email
             <input type="email" name="email"/>
         </label>
