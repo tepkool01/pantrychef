@@ -26,3 +26,32 @@ Resources:
       EngineMode: serverless
       Port: 3306
       StorageEncrypted: True
+
+  # This is where all the front-end VueJS content will go
+  StaticContent:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      BucketName: lepantrychef.com
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+    DeletionPolicy: Retain
+
+  # Allows all objects in the front-end bucket to have public read access (it is the WWW after all)
+  StaticContentPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref StaticContent
+      PolicyDocument:
+        Statement:
+          - Action:
+              - "s3:GetObject"
+            Effect: "Allow"
+            Resource:
+              Fn::Join:
+                - ""
+                - - "arn:aws:s3:::"
+                  - !Ref StaticContent
+                  - "/*"
+            Principal: "*"
