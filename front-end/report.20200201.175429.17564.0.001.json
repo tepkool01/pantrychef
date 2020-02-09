@@ -1,0 +1,522 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200201.175429.17564.0.001.json",
+    "dumpEventTime": "2020-02-01T17:54:29Z",
+    "dumpEventTimeStamp": "1580608469942",
+    "processId": 17564,
+    "cwd": "C:\\Users\\DotSlash\\WebstormProjects\\pantrychef\\pantry-chef",
+    "commandLine": [
+      "node",
+      "C:\\Users\\DotSlash\\AppData\\Roaming\\npm\\node_modules\\@vue\\cli-plugin-unit-mocha\\node_modules\\mochapack\\bin\\mochapack",
+      "--recursive",
+      "--require",
+      "C:\\Users\\DotSlash\\AppData\\Roaming\\npm\\node_modules\\@vue\\cli-plugin-unit-mocha\\setup.js",
+      "--webpack-config",
+      "C:\\Users\\DotSlash\\AppData\\Roaming\\npm\\node_modules\\@vue\\cli-service\\webpack.config.js",
+      "tests/unit/**/*.spec.js"
+    ],
+    "nodejsVersion": "v12.14.1",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.14.1",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.14.1/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18363",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz",
+        "speed": 4008,
+        "user": 42908921,
+        "nice": 0,
+        "sys": 50178421,
+        "idle": 689119296,
+        "irq": 6276625
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz",
+        "speed": 4008,
+        "user": 22832015,
+        "nice": 0,
+        "sys": 18836046,
+        "idle": 740538578,
+        "irq": 304109
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz",
+        "speed": 4008,
+        "user": 99928984,
+        "nice": 0,
+        "sys": 62664859,
+        "idle": 619612593,
+        "irq": 1266843
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz",
+        "speed": 4008,
+        "user": 31607359,
+        "nice": 0,
+        "sys": 27691781,
+        "idle": 722907296,
+        "irq": 519187
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz",
+        "speed": 4008,
+        "user": 62756109,
+        "nice": 0,
+        "sys": 48567640,
+        "idle": 670882687,
+        "irq": 978546
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz",
+        "speed": 4008,
+        "user": 40071656,
+        "nice": 0,
+        "sys": 19891093,
+        "idle": 722243687,
+        "irq": 359875
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz",
+        "speed": 4008,
+        "user": 43679546,
+        "nice": 0,
+        "sys": 43545718,
+        "idle": 694981156,
+        "irq": 474906
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6700K CPU @ 4.00GHz",
+        "speed": 4008,
+        "user": 35545171,
+        "nice": 0,
+        "sys": 26171906,
+        "idle": 720489343,
+        "irq": 293031
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "vEthernet (Default Switch) 22",
+        "internal": false,
+        "mac": "12:15:4c:d6:46:a5",
+        "address": "fe80::397e:cae9:4381:33c6",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 32
+      },
+      {
+        "name": "vEthernet (Default Switch) 22",
+        "internal": false,
+        "mac": "12:15:4c:d6:46:a5",
+        "address": "172.17.36.225",
+        "netmask": "255.255.255.240",
+        "family": "IPv4"
+      },
+      {
+        "name": "Ethernet",
+        "internal": false,
+        "mac": "38:d5:47:ad:ee:10",
+        "address": "2601:600:c700:4df0::e4b5",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Ethernet",
+        "internal": false,
+        "mac": "38:d5:47:ad:ee:10",
+        "address": "2601:600:c700:4df0:456f:e9d1:c362:7b2f",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Ethernet",
+        "internal": false,
+        "mac": "38:d5:47:ad:ee:10",
+        "address": "2601:600:c700:4df0:15cf:4fb8:e5:c6a4",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Ethernet",
+        "internal": false,
+        "mac": "38:d5:47:ad:ee:10",
+        "address": "2601:600:c700:4df0:7cef:a1ae:fd5a:1a89",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Ethernet",
+        "internal": false,
+        "mac": "38:d5:47:ad:ee:10",
+        "address": "fe80::456f:e9d1:c362:7b2f",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 36
+      },
+      {
+        "name": "Ethernet",
+        "internal": false,
+        "mac": "38:d5:47:ad:ee:10",
+        "address": "10.0.0.151",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:09",
+        "address": "fe80::616a:c500:706a:f5a2",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 9
+      },
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:09",
+        "address": "192.168.56.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VirtualBox Host-Only Network #2",
+        "internal": false,
+        "mac": "0a:00:27:00:00:21",
+        "address": "fe80::d184:ee65:f081:ca0e",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 33
+      },
+      {
+        "name": "VirtualBox Host-Only Network #2",
+        "internal": false,
+        "mac": "0a:00:27:00:00:21",
+        "address": "192.168.33.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "DESKTOP-MOQ9J4D"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff775321759",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10873"
+    },
+    {
+      "pc": "0x00007ff775325b7c",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+28316"
+    },
+    {
+      "pc": "0x00007ff775324b38",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+24152"
+    },
+    {
+      "pc": "0x00007ff77541433b",
+      "symbol": "v8::base::CPU::has_sse+37723"
+    },
+    {
+      "pc": "0x00007ff775c18c5e",
+      "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
+    },
+    {
+      "pc": "0x00007ff775c00ca1",
+      "symbol": "v8::SharedArrayBuffer::Externalize+833"
+    },
+    {
+      "pc": "0x00007ff775ace56c",
+      "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
+    },
+    {
+      "pc": "0x00007ff775ad9910",
+      "symbol": "v8::internal::Heap::ProtectUnprotectedMemoryChunks+1312"
+    },
+    {
+      "pc": "0x00007ff775ad6444",
+      "symbol": "v8::internal::Heap::PageFlagsAreConsistent+3204"
+    },
+    {
+      "pc": "0x00007ff775acbcd3",
+      "symbol": "v8::internal::Heap::CollectGarbage+1283"
+    },
+    {
+      "pc": "0x00007ff775aca4a4",
+      "symbol": "v8::internal::Heap::AddRetainedMap+2356"
+    },
+    {
+      "pc": "0x00007ff775aeb775",
+      "symbol": "v8::internal::Factory::NewFillerObject+53"
+    },
+    {
+      "pc": "0x00007ff775857a49",
+      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+4057"
+    },
+    {
+      "pc": "0x00007ff77604463d",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+567949"
+    },
+    {
+      "pc": "0x000002c8124c9383",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2152427520,
+    "totalCommittedMemory": 2152427520,
+    "usedMemory": 2127394824,
+    "availableMemory": 47544872,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 2097152,
+        "committedMemory": 2097152,
+        "capacity": 1047488,
+        "used": 212272,
+        "available": 835216
+      },
+      "old_space": {
+        "memorySize": 1912188928,
+        "committedMemory": 1912188928,
+        "capacity": 1892286328,
+        "used": 1892241512,
+        "available": 44816
+      },
+      "code_space": {
+        "memorySize": 1998848,
+        "committedMemory": 1998848,
+        "capacity": 1832640,
+        "used": 1832640,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 4460544,
+        "committedMemory": 4460544,
+        "capacity": 3119920,
+        "used": 3119920,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 229744640,
+        "committedMemory": 229744640,
+        "capacity": 228411384,
+        "used": 228411384,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 1675264,
+        "committedMemory": 1675264,
+        "capacity": 1544800,
+        "used": 1544800,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047488,
+        "used": 0,
+        "available": 1047488
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 134.781,
+    "kernelCpuSeconds": 5.031,
+    "cpuConsumptionPercent": 194.183,
+    "maxRss": 2283716608,
+    "pageFaults": {
+      "IORequired": 1220090,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 8922,
+      "writes": 25
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\DotSlash\\AppData\\Roaming",
+    "BABEL_DISABLE_CACHE": "1",
+    "BABEL_ENV": "test",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132244475163024637",
+    "CLASSPATH": "C:\\Program Files (x86)\\Groovy\\Groovy-2.5.7\\lib\\extras-jaxb\\*",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "DESKTOP-MOQ9J4D",
+    "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "dp0": "C:\\Users\\DotSlash\\AppData\\Roaming\\npm\\",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "GOPATH": "C:\\Users\\DotSlash\\go;C:\\Users\\DotSlash\\go\\bin;",
+    "GROOVY_HOME": "C:\\Program Files (x86)\\Groovy\\Groovy-2.5.7",
+    "GTK_BASEPATH": "C:\\Program Files (x86)\\GtkSharp\\2.12\\",
+    "GYP_MSVS_VERSION": "2015",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\DotSlash",
+    "IDEA_INITIAL_DIRECTORY": "C:\\Program Files\\JetBrains\\WebStorm 2018.3.5\\bin",
+    "JAVA_HOME": "C:\\Program Files (x86)\\Java\\jre1.8.0_171",
+    "LOCALAPPDATA": "C:\\Users\\DotSlash\\AppData\\Local",
+    "LOGONSERVER": "\\\\DESKTOP-MOQ9J4D",
+    "NODE_ENV": "test",
+    "NODE_OPTIONS": " --require node-preload.js",
+    "NODE_PATH": "C:\\Users\\DotSlash\\AppData\\Roaming\\npm\\node_modules\\nyc\\node_modules\\node-preload\\preload-path",
+    "NODE_PRELOAD_79903324e7e3a5cfeffe7d3d08209751723e80bf": "C:\\Users\\DotSlash\\AppData\\Roaming\\npm\\node_modules\\nyc\\lib\\register-env.js;C:\\Users\\DotSlash\\AppData\\Roaming\\npm\\node_modules\\nyc\\lib\\wrap.js",
+    "NUMBER_OF_PROCESSORS": "8",
+    "NYC_CONFIG": "{\"_\":[\"vue-cli-service\"],\"cwd\":\"C:\\\\Users\\\\DotSlash\\\\WebstormProjects\\\\pantrychef\\\\pantry-chef\",\"temp-dir\":\"./.nyc_output\",\"t\":\"./.nyc_output\",\"tempDir\":\"./.nyc_output\",\"exclude\":[\"coverage/**\",\"packages/*/test{,s}/**\",\"**/*.d.ts\",\"test{,s}/**\",\"test{,-*}.{js,cjs,mjs,ts}\",\"**/*{.,-}test.{js,cjs,mjs,ts}\",\"**/__tests__/**\",\"**/{ava,nyc}.config.{js,cjs,mjs}\",\"**/jest.config.{js,cjs,mjs,ts}\",\"**/{karma,rollup,webpack}.config.js\",\"**/{babel.config,.eslintrc,.mocharc}.{js,cjs}\"],\"x\":[\"coverage/**\",\"packages/*/test{,s}/**\",\"**/*.d.ts\",\"test{,s}/**\",\"test{,-*}.{js,cjs,mjs,ts}\",\"**/*{.,-}test.{js,cjs,mjs,ts}\",\"**/__tests__/**\",\"**/{ava,nyc}.config.{js,cjs,mjs}\",\"**/jest.config.{js,cjs,mjs,ts}\",\"**/{karma,rollup,webpack}.config.js\",\"**/{babel.config,.eslintrc,.mocharc}.{js,cjs}\"],\"exclude-node-modules\":true,\"excludeNodeModules\":true,\"include\":[],\"n\":[],\"extension\":[\".js\",\".cjs\",\".mjs\",\".ts\",\".tsx\",\".jsx\"],\"e\":[\".js\",\".cjs\",\".mjs\",\".ts\",\".tsx\",\".jsx\"],\"ignore-class-methods\":[],\"ignoreClassMethods\":[],\"auto-wrap\":true,\"autoWrap\":true,\"es-modules\":true,\"esModules\":true,\"parser-plugins\":[\"asyncGenerators\",\"bigInt\",\"classProperties\",\"classPrivateProperties\",\"dynamicImport\",\"importMeta\",\"objectRestSpread\",\"optionalCatchBinding\"],\"parserPlugins\":[\"asyncGenerators\",\"bigInt\",\"classProperties\",\"classPrivateProperties\",\"dynamicImport\",\"importMeta\",\"objectRestSpread\",\"optionalCatchBinding\"],\"compact\":true,\"preserve-comments\":true,\"preserveComments\":true,\"produce-source-map\":true,\"produceSourceMap\":true,\"source-map\":true,\"sourceMap\":true,\"require\":[],\"i\":[],\"instrument\":true,\"exclude-after-remap\":true,\"excludeAfterRemap\":true,\"branches\":0,\"functions\":0,\"lines\":90,\"statements\":0,\"per-file\":false,\"perFile\":false,\"check-coverage\":false,\"checkCoverage\":false,\"reporter\":[\"text\"],\"r\":[\"text\"],\"report-dir\":\"coverage\",\"reportDir\":\"coverage\",\"show-process-tree\":false,\"showProcessTree\":false,\"skip-empty\":false,\"skipEmpty\":false,\"skip-full\":false,\"skipFull\":false,\"silent\":false,\"s\":false,\"all\":false,\"a\":false,\"eager\":false,\"cache\":true,\"c\":true,\"babel-cache\":false,\"babelCache\":false,\"use-spawn-wrap\":false,\"useSpawnWrap\":false,\"hook-require\":true,\"hookRequire\":true,\"hook-run-in-context\":false,\"hookRunInContext\":false,\"hook-run-in-this-context\":false,\"hookRunInThisContext\":false,\"clean\":true,\"in-place\":false,\"inPlace\":false,\"exit-on-error\":false,\"exitOnError\":false,\"delete\":false,\"complete-copy\":false,\"completeCopy\":false,\"$0\":\"..\\\\..\\\\..\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\nyc\\\\bin\\\\nyc.js\",\"instrumenter\":\"./lib/instrumenters/istanbul\"}",
+    "NYC_CWD": "C:\\Users\\DotSlash\\WebstormProjects\\pantrychef\\pantry-chef",
+    "NYC_PROCESS_ID": "4d0513cc-a054-4d35-a313-b4c4c9b9777c",
+    "OneDrive": "C:\\Users\\DotSlash\\OneDrive",
+    "OneDriveConsumer": "C:\\Users\\DotSlash\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "C:\\Users\\DotSlash\\WebstormProjects\\pantrychef\\pantry-chef\\node_modules\\.bin;C:\\Users\\DotSlash\\WebstormProjects\\pantrychef\\node_modules\\.bin;C:\\Users\\DotSlash\\WebstormProjects\\node_modules\\.bin;C:\\Users\\DotSlash\\node_modules\\.bin;C:\\Users\\node_modules\\.bin;C:\\node_modules\\.bin;C:\\Program Files\\nodejs;C:\\Python27\\;C:\\Python27\\Scripts;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Razer Chroma SDK\\bin;C:\\Program Files\\Razer Chroma SDK\\bin;C:\\PROGRAMDATA\\ORACLE\\JAVA\\JAVAPATH;C:\\PROGRAM FILES (X86)\\RAZER CHROMA SDK\\BIN;C:\\PROGRAM FILES\\RAZER CHROMA SDK\\BIN;C:\\WINDOWS\\SYSTEM32;C:\\WINDOWS;C:\\WINDOWS\\SYSTEM32\\WBEM;C:\\WINDOWS\\SYSTEM32\\WINDOWSPOWERSHELL\\V1.0\\;C:\\WINDOWS\\SYSTEM32\\CONFIG\\SYSTEMPROFILE\\APPDATA\\LOCAL\\MICROSOFT\\WINDOWSAPPS;C:\\HASHICORP\\VAGRANT\\BIN;C:\\PROGRAM FILES (X86)\\PUTTY\\;C:\\PROGRAM FILES\\GIT\\CMD;C:\\PROGRAM FILES (X86)\\NVIDIA CORPORATION\\PHYSX\\COMMON;C:\\PROGRAM FILES (X86)\\GTKSHARP\\2.12\\BIN;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\WINDOWS\\system32;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Amazon\\AWSCLI\\;C:\\Users\\DotSlash\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\DotSlash\\AppData\\Roaming\\npm;C:\\Program Files\\Git\\cmd;C:\\Program Files\\MySQL\\MySQL Utilities 1.6\\;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\TortoiseSVN\\bin;C:\\Program Files (x86)\\Groovy\\Groovy-2.5.7\\bin;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Go\\bin;C:\\Program Files\\nodejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\Users\\DotSlash\\AppData\\Local\\Programs\\Python\\Python37\\Scripts\\;C:\\Users\\DotSlash\\AppData\\Local\\Programs\\Python\\Python37\\;C:\\Users\\DotSlash\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\DotSlash\\AppData\\Local\\Yarn\\bin;C:\\Program Files\\JetBrains\\PyCharm 2018.3.5\\bin;C:\\Users\\DotSlash\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\DotSlash\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\DotSlash\\go\\bin;C:\\Users\\DotSlash\\AppData\\Roaming\\npm",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC;.groovy;.gy",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 94 Stepping 3, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "5e03",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files\\Intel\\",
+    "PUBLIC": "C:\\Users\\Public",
+    "PyCharm": "C:\\Program Files\\JetBrains\\PyCharm 2018.3.5\\bin;",
+    "PYTHONPATH": "C:\\Users\\DotSlash\\AppData\\Local\\Programs\\Python\\Python37\\;C:\\Users\\DotSlash\\PycharmProjects\\pylibtest2",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\DotSlash\\AppData\\Local\\Temp",
+    "TERMINAL_EMULATOR": "JetBrains-JediTerm",
+    "TMP": "C:\\Users\\DotSlash\\AppData\\Local\\Temp",
+    "USERDOMAIN": "DESKTOP-MOQ9J4D",
+    "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-MOQ9J4D",
+    "USERNAME": "DotSlash",
+    "USERPROFILE": "C:\\Users\\DotSlash",
+    "VBOX_MSI_INSTALL_PATH": "C:\\Program Files\\Oracle\\VirtualBox\\",
+    "VS140COMNTOOLS": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\Tools\\",
+    "VUE_CLI_BABEL_TARGET_NODE": "true",
+    "VUE_CLI_BABEL_TRANSPILE_MODULES": "true",
+    "VUE_CLI_ENTRY_FILES": "[\"C:\\\\Users\\\\DotSlash\\\\WebstormProjects\\\\pantrychef\\\\pantry-chef\\\\src\\\\main.js\"]",
+    "VUE_CLI_TRANSPILE_BABEL_RUNTIME": "true",
+    "windir": "C:\\WINDOWS",
+    "_prog": "node",
+    "__COMPAT_LAYER": "DetectorsMessageBoxErrors",
+    "__INTELLIJ_COMMAND_HISTFILE__": "C:\\Users\\DotSlash\\.WebStorm2019.3\\config\\terminal\\history\\history-56"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\SYSTEM32\\apphelp.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\MSASN1.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\System32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\SYSTEM32\\winmmbase.dll",
+    "C:\\WINDOWS\\System32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\System32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\UMPDC.dll",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\System32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL"
+  ]
+}
