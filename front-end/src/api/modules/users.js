@@ -5,7 +5,6 @@ export default {
 	},
 
 	createProfile(profile) {
-		console.log("I'ved been called!" + profile)
 		return Promise.resolve()
 	}
 }

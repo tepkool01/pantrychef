@@ -20,7 +20,6 @@ export default {
 	},
 	methods: {
 		onSubmit() {
-			console.log('Profile: ' + this.profile.name + ' created!')
 			this.$store.dispatch('createProfile', this.profile)
 			this.profile = {
 				name: '',
