@@ -5,7 +5,14 @@ Parameters:
     Description: '1.1.1.0/16'
     Type: String
     Default: 73.73.0.0/24
-
+  CertificateARN:
+    Description: The ARN of the domain certificate
+    Type: String
+    Default: "arn:aws:acm:us-east-1:878527066650:certificate/1d439dcd-b25b-4ea0-8cbb-eb315c773383"
+  APIDomainName:
+    Description: The Base URL for the API
+    Type: String
+    Default: "api.lepantrychef.com"
 Resources:
   # Create VPC 
   VPC:
@@ -222,6 +229,19 @@ Resources:
     Properties:
       DeploymentId: !Ref APIDeploy
       RestApiId: !Ref API
+
+  DomainName:
+    Type: 'AWS::ApiGateway::DomainName'
+    Properties:
+      CertificateArn: !Ref CertificateARN
+      DomainName: !Ref APIDomainName
+
+  Mapping:
+    Type: 'AWS::ApiGateway::BasePathMapping'
+    Properties:
+      DomainName: !Ref DomainName
+      RestApiId: !Ref API
+      Stage: !Ref APIStage
 
   # Basic lambda template for testing (won't actually use this)
   DummyLambda:
