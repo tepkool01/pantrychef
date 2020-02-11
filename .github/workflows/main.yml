@@ -20,4 +20,4 @@ jobs:
         run: cd front-end/ && npm install && npm run build
 
       - name: Deploy static site to S3 bucket
-        run: aws s3 sync ./dist/ s3://lepantrychef.com --delete
+        run: cd front-end/ && aws s3 sync ./dist/ s3://lepantrychef.com --delete
