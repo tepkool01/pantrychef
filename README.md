@@ -28,12 +28,14 @@ or autofix using
 5. `eslint --fix YOUR_FILE`
 
 ## Running
-1. `cd pantry-chef`
+1. `cd front-end`
 2. `npm run serve`
+3. Note: if an error occurs then run, `npm install`
 
 ## Building
-1. `cd pantry-chef`
+1. `cd front-end`
 2. `npm run build`
+3. Note: if an error occurs then run, `npm install`
 
 ## Testing
 - Highly recommend install the chai, mocha, sinon, and etc libraries for easier autocompletion (jetbrains settings)
