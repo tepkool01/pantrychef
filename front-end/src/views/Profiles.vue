@@ -15,7 +15,7 @@
 // @ is an alias to /src
 import Profile from '@/components/Profile.vue'
 import ProfileCreate from '../components/ProfileCreate'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'Profiles',
@@ -25,6 +25,12 @@ export default {
 	components: {
 		Profile,
 		ProfileCreate
+	},
+	methods: {
+		...mapActions(['getProfiles'])
+	},
+	created() {
+		this.getProfiles()
 	}
 }
 </script>
