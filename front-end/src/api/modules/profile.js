@@ -1,7 +1,8 @@
+import axios from 'axios'
+
 export default {
 	getProfiles() {
-		// Todo: make API call to users
-		return [{ name: 'TestProfile 1' }, { name: 'TestProfile 1' }]
+		return axios.get('/profiles')
 	},
 	// eslint-disable-next-line no-unused-vars
 	createProfile(profile) {
