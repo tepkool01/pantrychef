@@ -844,17 +844,8 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       Code:
-        ZipFile: >
-          import json
-
-          def lambda_handler(event, context):
-
-            print("Hello world")
-
-            return {
-                'statusCode': 200,
-                'body': json.dumps('Cool')
-            }
+        S3Bucket: "lepantrychefartifacts"
+        S3Key: "profiles.zip"
       Handler: index.lambda_handler
       Runtime: python3.6
       Role: !GetAtt DummyLambdaRole.Arn
