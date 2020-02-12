@@ -22,4 +22,4 @@ jobs:
 
       # Update CloudFormation Template
       - name: Upload Cloudformation Template
-        run: cd infrastructure/cloudformation && aws cloudformation update-stack --stack-name NFAurora --template-url https://s3.amazonaws.com/lepantrychefartifacts/master.yaml
+        run: cd infrastructure/cloudformation && aws cloudformation update-stack --stack-name NFAurora --template-url https://s3.amazonaws.com/lepantrychefartifacts/master.yaml --capabilities CAPABILITY_NAMED_IAM
