@@ -33,6 +33,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.2.3",
+    "mocha": "^7.0.1",
     "nyc": "^15.0.0",
     "prettier": "^1.19.1",
     "sinon": "^8.1.1",
@@ -65,5 +66,12 @@
     ],
     "cache": true,
     "all": true
-  }
+  },
+  "description": "```\r npm install\r ```",
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "tests"
+  },
+  "author": "",
+  "license": "ISC"
 }

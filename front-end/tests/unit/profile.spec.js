@@ -9,7 +9,7 @@ chai.use(sinonChai)
 chai.use(chaiAsPromised)
 
 import ProfileCreate from '../../src/components/ProfileCreate'
-import user from '../../src/store/modules/user'
+import profile from '../../src/store/modules/profile'
 import api from '../../src/api'
 
 const localVue = createLocalVue()
@@ -23,7 +23,7 @@ describe('ProfileCreate.vue', () => {
 	beforeEach(() => {
 		store = new Vuex.Store({
 			modules: {
-				user
+				user: profile
 			}
 		})
 	})
@@ -45,14 +45,14 @@ describe('ProfileCreate.vue', () => {
 
 		textInput.setValue('asdf')
 		button.trigger('click')
-		expect(user.state.profiles).to.have.lengthOf(1)
+		expect(profile.state.profiles).to.have.lengthOf(1)
 	})
 
 	it('returns a mutated profile after being added', () => {
 		let state = {
 			profiles: []
 		}
-		user.mutations.ADD_PROFILE(state, {name: "test"})
+		profile.mutations.ADD_PROFILE(state, {name: "test"})
 		expect(state.profiles).to.have.lengthOf(1)
 	})
 
