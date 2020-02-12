@@ -11,6 +11,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "amazon-cognito-identity-js": "^3.2.4",
+    "aws-sdk": "^2.616.0",
     "core-js": "^3.4.4",
     "vue": "^2.6.11",
     "vue-router": "^3.1.3",

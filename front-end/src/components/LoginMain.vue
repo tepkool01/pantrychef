@@ -25,7 +25,6 @@ export default {
 	},
 	methods: {
 		loginUser() {
-			console.log('Username: ' + this.login.username + ', Password: ' + this.login.password )
 			this.$store.dispatch('login', this.login)
 		}
 	}
