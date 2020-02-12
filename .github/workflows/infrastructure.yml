@@ -17,5 +17,9 @@ jobs:
           aws-region: us-east-1
 
       # Upload template to s3 artifacts
-      #- name: Upload Cloudformation Template
-      #  run: cd infrastructure/cloudformation && zip -r profiles.zip * && aws lambda update-function-code --function-name NFAurora-DummyLambda-148PL7XXTJSZS --zip-file fileb://profiles.zip
+      - name: Upload Cloudformation Template
+        run: cd infrastructure/cloudformation && aws s3 cp master.yml s3://lepantrychefartifacts
+
+      # Update CloudFormation Template
+      - name: Upload Cloudformation Template
+        run: cd infrastructure/cloudformation && aws update-stack --stack-name NFAurora --template-url s3://lepantrychefartifacts/master.yml
