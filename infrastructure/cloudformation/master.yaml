@@ -850,7 +850,7 @@ Resources:
       Runtime: python3.6
       Role: !GetAtt DummyLambdaRole.Arn
       MemorySize: 512
-      Timeout: 30
+      Timeout: 15
 
   # This is the access permission we give to the Lambda, in this case, it can pretty much do logging (in real cases, you'd probably want to give database access, etc)
   DummyLambdaRole:
