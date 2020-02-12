@@ -45,6 +45,13 @@ Resources:
         ErrorDocument: error.html
     DeletionPolicy: Retain
 
+  # This is where all the back-end code will live and be referenced by lambdas; also holds the CloudFormation template itself
+  S3Artifacts:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: lepantrychefartifacts
+    DeletionPolicy: Retain
+
   # Allows all objects in the front-end bucket to have public read access (it is the WWW after all)
   StaticContentPolicy:
     Type: AWS::S3::BucketPolicy
