@@ -18,8 +18,8 @@ jobs:
 
       # Upload template to s3 artifacts
       - name: Upload Cloudformation Template
-        run: cd infrastructure/cloudformation && aws s3 cp master.yml s3://lepantrychefartifacts
+        run: cd infrastructure/cloudformation && aws s3 cp master.yaml s3://lepantrychefartifacts
 
       # Update CloudFormation Template
-      #- name: Upload Cloudformation Template
-      #  run: cd infrastructure/cloudformation && aws update-stack --stack-name NFAurora --template-url s3://lepantrychefartifacts/master.yml
+      - name: Upload Cloudformation Template
+        run: cd infrastructure/cloudformation && aws update-stack --stack-name NFAurora --template-url s3://lepantrychefartifacts/master.yaml
