@@ -12,7 +12,6 @@ const getters = {
 
 const actions = {
 	createProfile({ commit }, payload) {
-		console.log(payload)
 		api.users.createProfile(payload).then(() => {
 			commit('ADD_PROFILE', payload)
 		})
