@@ -10,7 +10,9 @@ export default {
 			Username: username,
 			Password: password
 		}
-		var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails( authenticationData)
+		var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
+			authenticationData
+		)
 		var poolData = {
 			UserPoolId: UserPoolId,
 			ClientId: ClientId
@@ -22,18 +24,19 @@ export default {
 		}
 		var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
 		cognitoUser.authenticateUser(authenticationDetails, {
-			onSuccess: function (result) {
+			onSuccess: function(result) {
 				// eslint-disable-next-line no-unused-vars
 				var accessToken = result.getAccessToken().getJwtToken()
 				AWS.config.region = 'us-east-1'
 				AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-					IdentityPoolId: 'us-east-1:d7ab3904-42a7-4f17-967d-0877b9ff6fed', // your identity pool id here
+					IdentityPoolId:
+						'us-east-1:d7ab3904-42a7-4f17-967d-0877b9ff6fed', // your identity pool id here
 					Logins: {
 						// Change the key below according to the specific region your user pool is in.
 						'cognito-idp.us-east-1.amazonaws.com/us-east-1_895IYJN1N': result
 							.getIdToken()
-							.getJwtToken(),
-					},
+							.getJwtToken()
+					}
 				})
 
 				//refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
@@ -44,7 +47,7 @@ export default {
 				})
 			},
 
-			onFailure: function (err) {
+			onFailure: function(err) {
 				alert(err.message)
 			},
 
@@ -58,7 +61,10 @@ export default {
 
 				// store userAttributes on global variable
 				var sessionUserAttributes = userAttributes
-				cognitoUser.completeNewPasswordChallenge('NewPassword1', sessionUserAttributes)
+				cognitoUser.completeNewPasswordChallenge(
+					'NewPassword1',
+					sessionUserAttributes
+				)
 			}
 		})
 	}

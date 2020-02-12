@@ -5,13 +5,14 @@ const state = {
 }
 
 const getters = {
-	isAuthenticated(state){
+	isAuthenticated(state) {
 		return state.isAuthenticated
 	}
 }
 
 const actions = {
-	login({ commit },payload) {
+	login({ commit }, payload) {
+		// eslint-disable-next-line no-console
 		console.log(payload)
 		api.login.authenticate(payload.username, payload.password).then(() => {
 			commit('AUTHENICATE', payload)
@@ -21,6 +22,7 @@ const actions = {
 
 const mutations = {
 	AUTHENICATE(state) {
+		// eslint-disable-next-line no-console
 		console.log('User Auth - Succeeded!')
 		state.isAuthenticated = true
 	}
