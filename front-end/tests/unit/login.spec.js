@@ -9,7 +9,7 @@ chai.use(sinonChai)
 chai.use(chaiAsPromised)
 
 import Login from '../../src/components/LoginMain'
-import user from '../../src/store/modules/user'
+import user from '../../src/store/modules/users'
 import api from '../../src/api'
 
 const localVue = createLocalVue()
@@ -17,7 +17,6 @@ const localVue = createLocalVue()
 localVue.use(Vuex)
 
 describe('LoginMain.vue', () => {
-
 	let store
 
 	beforeEach(() => {
@@ -28,20 +27,20 @@ describe('LoginMain.vue', () => {
 		})
 	})
 
-	it('user state is mutated to authenticated after login'), () => {
+	it('user state is mutated to authenticated after login', () => {
 		let state = {
 			isAuthenticated: false
 		}
 
 		user.mutations.AUTHENICATE(state)
 		expect(state.isAuthenticated).to.equal(true)
-	}
+	})
 
 	it('calls the api when the login button is clicked', () => {
 		let stub = sinon.stub(api.users, 'authenticate')
-		stub.resolves( 'test', 'test')
+		stub.resolves('test', 'test')
 
-		const wrapper = shallowMount(Login, {store, localVue})
+		const wrapper = shallowMount(Login, { store, localVue })
 		const button = wrapper.find('button')
 		button.trigger('click')
 		expect(api.login.authenticate).calledOnce

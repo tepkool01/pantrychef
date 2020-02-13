@@ -17,7 +17,6 @@ const localVue = createLocalVue()
 localVue.use(Vuex)
 
 describe('ProfileCreate.vue', () => {
-
 	let store
 
 	beforeEach(() => {
@@ -30,7 +29,7 @@ describe('ProfileCreate.vue', () => {
 
 	it('calls store action "createProfile" when button is clicked', () => {
 		let stub = sinon.stub(api.users, 'createProfile')
-		stub.resolves({id: 1, name: 'test'})
+		stub.resolves({ id: 1, name: 'test' })
 
 		const wrapper = shallowMount(ProfileCreate, { store, localVue })
 		const button = wrapper.find('button')
@@ -52,7 +51,7 @@ describe('ProfileCreate.vue', () => {
 		let state = {
 			profiles: []
 		}
-		profile.mutations.ADD_PROFILE(state, {name: "test"})
+		profile.mutations.ADD_PROFILE(state, { name: 'test' })
 		expect(state.profiles).to.have.lengthOf(1)
 	})
 
