@@ -4,7 +4,52 @@ import * as AWS from 'aws-sdk/global'
 const UserPoolId = 'us-east-1_895IYJN1N'
 const ClientId = '1f4k0ktrcbthkq7foan121c9sq'
 
+const poolData  = {
+	UserPoolId: UserPoolId,
+	ClientId: ClientId
+}
+
+var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData)
+
 export default {
+	logout(cognitoUser) {
+		cognitoUser.signOut()
+	},
+
+	updatePassword(cognitoUser, newPassword, oldPassword) {
+		cognitoUser.changePassword(oldPassword, newPassword, function(err, result) {
+			if (err) {
+				alert(err.message)
+				return
+			}
+			return result
+		})
+	},
+
+	register(username, password, email) {
+		var attributeList = []
+
+		var dataEmail = {
+			Name: 'email',
+			Value: email
+		}
+
+		var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail)
+
+		attributeList.push(attributeEmail)
+
+		userPool.signUp(username, password, attributeList, null, function(
+			err,
+			result
+		) {
+			if (err) {
+				alert(err.message)
+				return
+			}
+			return result
+		})
+	},
+
 	authenticate(username, password) {
 		var authenticationData = {
 			Username: username,
@@ -13,11 +58,6 @@ export default {
 		var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
 			authenticationData
 		)
-		var poolData = {
-			UserPoolId: UserPoolId,
-			ClientId: ClientId
-		}
-		var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData)
 		var userData = {
 			Username: username,
 			Pool: userPool
@@ -45,6 +85,7 @@ export default {
 						alert(error)
 					}
 				})
+				return cognitoUser
 			},
 
 			onFailure: function(err) {
@@ -59,6 +100,7 @@ export default {
 				// the api doesn't accept this field back
 				delete userAttributes.email_verified
 
+				//TODO: write code here for actual use case.
 				// store userAttributes on global variable
 				var sessionUserAttributes = userAttributes
 				cognitoUser.completeNewPasswordChallenge(
