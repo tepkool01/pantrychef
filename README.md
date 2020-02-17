@@ -26,7 +26,7 @@ Uncover recipes from ingredients in your cabinet
 4. Then run `eslint YOUR_FILE`
 or autofix using
 5. `eslint --fix YOUR_FILE`
-
+* Note, you can also run this using the local system using `npx eslint FILENAME --fix`
 ## Running
 1. `cd front-end`
 2. `npm run serve`

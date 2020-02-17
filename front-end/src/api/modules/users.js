@@ -4,7 +4,7 @@ import * as AWS from 'aws-sdk/global'
 const UserPoolId = 'us-east-1_895IYJN1N'
 const ClientId = '1f4k0ktrcbthkq7foan121c9sq'
 
-const poolData  = {
+const poolData = {
 	UserPoolId: UserPoolId,
 	ClientId: ClientId
 }
@@ -17,7 +17,10 @@ export default {
 	},
 
 	updatePassword(cognitoUser, newPassword, oldPassword) {
-		cognitoUser.changePassword(oldPassword, newPassword, function(err, result) {
+		cognitoUser.changePassword(oldPassword, newPassword, function(
+			err,
+			result
+		) {
 			if (err) {
 				alert(err.message)
 				return
@@ -34,7 +37,9 @@ export default {
 			Value: email
 		}
 
-		var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail)
+		var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(
+			dataEmail
+		)
 
 		attributeList.push(attributeEmail)
 
