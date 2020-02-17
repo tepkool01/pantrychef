@@ -40,6 +40,14 @@ or autofix using
 ## Testing
 - Highly recommend install the chai, mocha, sinon, and etc libraries for easier autocompletion (jetbrains settings)
 - do `npm run tester` to get code coverage reports
+### Python (backend) Unit Testing
+- In JetBrain's PyCharm (I'm using the 2019 latest version), go to bottom right and configure the interpreter. This will create your virtual environment.
+- Run `pip install pytest`
+- Run `pip install pytest-cov`
+- Go to your project folder, i.e. `cd back-end/lambdas/profiles` (or go to new-user, or whichever lambda)
+- Run `pytest` and you'll see the results, which are located in the relative `tests/unit` folder
+- To get coverage reports, do `pytest --cov-report term --cov=profiles tests/` while you are in the profiles (or other lambda) directory
+- To get an HTML report, just change `term` to `html` in the above command. Viola!
 
 ## Fun Tips
 1. Using `vue ui` you can get to the UI manager for this application. You'll need to import the `pantry-chef` folder as a project first.
