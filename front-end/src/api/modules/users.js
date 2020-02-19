@@ -10,15 +10,15 @@ const poolData = {
 	ClientId: ClientId
 }
 
-var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData)
+let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData)
 
 //TODO: Fix this location
 function setupCongnitoUser(username) {
-	var userData = {
+	let userData = {
 		Username: username,
 		Pool: userPool
 	}
-	var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
+	let cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
 	return cognitoUser
 }
 
@@ -27,32 +27,36 @@ export default {
 		cognitoUser.signOut()
 	},
 	//TODO: Fix this location
-	getUser(username){
-		var cognitoUser = setupCongnitoUser(username)
+	getUser(username) {
+		let cognitoUser = setupCongnitoUser(username)
 		return cognitoUser
 	},
 
 	forgotPassword(username) {
-		var cognitoUser = setupCongnitoUser(username)
+		let cognitoUser = setupCongnitoUser(username)
 		cognitoUser.forgotPassword({
 			onSuccess: function(data) {
 				// successfully initiated reset password request
-				console.log('CodeDeliveryData from forgotPassword: ' + data);
+				// eslint-disable-next-line no-console
+				console.log('CodeDeliveryData from forgotPassword: ' + data)
 			},
 			onFailure: function(err) {
-				alert(err.message);
+				alert(err.message)
 			},
 			//Optional automatic callback
 			inputVerificationCode: function(data) {
+				// eslint-disable-next-line no-console
 				console.log('Code sent to: ' + data)
-				var verificationCode = document.getElementById('code').value
-				var newPassword = document.getElementById('new_password').value
+				let verificationCode = document.getElementById('code').value
+				let newPassword = document.getElementById('new_password').value
 				cognitoUser.confirmPassword(verificationCode, newPassword, {
 					onSuccess() {
+						// eslint-disable-next-line no-console
 						console.log('Password confirmed!')
 					},
 					// eslint-disable-next-line no-unused-vars
-					onFailure(err) {
+					onFailure() {
+						// eslint-disable-next-line no-console
 						console.log('Password not confirmed!')
 					}
 				})
@@ -63,6 +67,7 @@ export default {
 	updatePassword(cognitoUser, newPassword, oldPassword) {
 		cognitoUser.changePassword(oldPassword, newPassword, function(
 			err,
+			// eslint-disable-next-line no-unused-vars
 			result
 		) {
 			if (err) {
@@ -72,14 +77,14 @@ export default {
 	},
 
 	register(username, password, email) {
-		var attributeList = []
+		let attributeList = []
 
-		var dataEmail = {
+		let dataEmail = {
 			Name: 'email',
 			Value: email
 		}
 
-		var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(
+		let attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(
 			dataEmail
 		)
 
@@ -87,6 +92,7 @@ export default {
 
 		userPool.signUp(username, password, attributeList, null, function(
 			err,
+			// eslint-disable-next-line no-unused-vars
 			result
 		) {
 			if (err) {
@@ -97,16 +103,18 @@ export default {
 	},
 
 	authenticate(username, password) {
-		var authenticationData = {
+		let authenticationData = {
 			Username: username,
 			Password: password
 		}
-		var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData)
-		var cognitoUser = setupCongnitoUser(username)
+		let authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
+			authenticationData
+		)
+		let cognitoUser = setupCongnitoUser(username)
 		cognitoUser.authenticateUser(authenticationDetails, {
 			onSuccess: function(result) {
 				// eslint-disable-next-line no-unused-vars
-				var accessToken = result.getAccessToken().getJwtToken()
+				let accessToken = result.getAccessToken().getJwtToken()
 				AWS.config.region = 'us-east-1'
 				AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 					IdentityPoolId:
@@ -141,8 +149,8 @@ export default {
 				delete userAttributes.email_verified
 
 				//TODO: write code here for actual use case.
-				// store userAttributes on global variable
-				var sessionUserAttributes = userAttributes
+				// store userAttributes on global letiable
+				let sessionUserAttributes = userAttributes
 				cognitoUser.completeNewPasswordChallenge(
 					'NewPassword1',
 					sessionUserAttributes
