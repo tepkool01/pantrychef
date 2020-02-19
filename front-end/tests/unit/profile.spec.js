@@ -28,13 +28,13 @@ describe('ProfileCreate.vue', () => {
 	})
 
 	it('calls store action "createProfile" when button is clicked', () => {
-		let stub = sinon.stub(api.users, 'createProfile')
+		let stub = sinon.stub(api.profile, 'createProfile')
 		stub.resolves({ id: 1, name: 'test' })
 
 		const wrapper = shallowMount(ProfileCreate, { store, localVue })
 		const button = wrapper.find('button')
 		button.trigger('click')
-		expect(api.users.createProfile).calledOnce
+		expect(api.profile.createProfile).calledOnce
 	})
 
 	it('increments the profile count by 1', () => {

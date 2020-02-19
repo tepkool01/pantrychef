@@ -1,4 +1,5 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils'
+import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js'
 import Vuex from 'vuex'
 import chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
@@ -29,11 +30,37 @@ describe('LoginMain.vue', () => {
 
 	it('user state is mutated to authenticated after login', () => {
 		let state = {
-			isAuthenticated: false
+			isAuthenticated: false,
+			user: null
+		}
+		let response = AmazonCognitoIdentity.CognitoUser
+
+		user.mutations.AUTHENICATE(state, response)
+		expect(state.isAuthenticated).to.equal(true)
+		expect(state.user).to.not.be.null
+	})
+
+	it('user state is mutated after registration', () => {
+		let state = {
+			isAuthenticated: false,
+			user: null
+		}
+		let response = AmazonCognitoIdentity.CognitoUser
+
+		user.mutations.REGISTER(state, response)
+		expect(state.isAuthenticated).to.equal(true)
+		expect(state.user).to.not.be.null
+	})
+
+	it('user state is invalidated after logout', () => {
+		let state = {
+			isAuthenticated: true,
+			user: AmazonCognitoIdentity.CognitoUser
 		}
 
-		user.mutations.AUTHENICATE(state)
-		expect(state.isAuthenticated).to.equal(true)
+		user.mutations.LOGOUT(state)
+		expect(state.isAuthenticated).to.equal(false)
+		expect(state.user).to.be.null
 	})
 
 	it('calls the api when the login button is clicked', () => {
@@ -43,8 +70,46 @@ describe('LoginMain.vue', () => {
 		const wrapper = shallowMount(Login, { store, localVue })
 		const button = wrapper.find('button')
 		button.trigger('click')
-		expect(api.login.authenticate).calledOnce
+		expect(api.users.authenticate).calledOnce
 	})
+
+	it('fails to log in with invalid credentials', () => {
+		api.users.authenticate('invalidUser', 'invalidPassword').then(response => {
+			console.log(response)
+			expect(response).to.be.null
+		})
+	})
+
+	it('logs in with valid credentials', () => {
+		api.users.authenticate('test','test').then(response => {
+			expect(response).to.not.be.null
+		})
+	})
+
+
+	it('logs out of an authenticated account', () => {
+		var user = api.users.getUser("test2")
+		api.users.logout(user)
+		expect().to.not.cause.error
+	})
+
+	it('fails to log out of an authenticated account', () => {
+		var user = api.users.getUser("test2")
+		api.users.logout(user)
+		expect().to.cause.error
+	})
+
+	it('register a new user', () => {
+		var response = api.users.register("Test3", "TestTest3", "test@test.com").
+		console.log(response)
+		expect(response).to.not.be.null
+	})
+
+	//it('logs in with valid credentials', () => {
+	//	api.users.logout(cognitoUser).then(response => {
+	//		expect(response).to.not.be.null
+	//	})
+	//})
 
 	//it('fails to login with invalid credentials', () => {
 	//	//const wrapper = shallowMount(Login, { store, localVue })

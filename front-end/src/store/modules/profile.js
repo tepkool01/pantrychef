@@ -12,12 +12,12 @@ const getters = {
 
 const actions = {
 	createProfile({ commit }, payload) {
-		api.users.createProfile(payload).then(() => {
+		api.profile.createProfile(payload).then(() => {
 			commit('ADD_PROFILE', payload)
 		})
 	},
 	getProfiles({ commit }) {
-		api.users.getProfiles().then(response => {
+		api.profile.getProfiles().then(response => {
 			commit('SET_PROFILES', response)
 		})
 	}

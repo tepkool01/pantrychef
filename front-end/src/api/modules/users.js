@@ -1,6 +1,7 @@
 import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 
+//TODO: move this to a better place
 const UserPoolId = 'us-east-1_895IYJN1N'
 const ClientId = '1f4k0ktrcbthkq7foan121c9sq'
 
@@ -11,9 +12,52 @@ const poolData = {
 
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData)
 
+//TODO: Fix this location
+function setupCongnitoUser(username) {
+	var userData = {
+		Username: username,
+		Pool: userPool
+	}
+	var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
+	return cognitoUser
+}
+
 export default {
 	logout(cognitoUser) {
 		cognitoUser.signOut()
+	},
+	//TODO: Fix this location
+	getUser(username){
+		var cognitoUser = setupCongnitoUser(username)
+		return cognitoUser
+	},
+
+	forgotPassword(username) {
+		var cognitoUser = setupCongnitoUser(username)
+		cognitoUser.forgotPassword({
+			onSuccess: function(data) {
+				// successfully initiated reset password request
+				console.log('CodeDeliveryData from forgotPassword: ' + data);
+			},
+			onFailure: function(err) {
+				alert(err.message);
+			},
+			//Optional automatic callback
+			inputVerificationCode: function(data) {
+				console.log('Code sent to: ' + data)
+				var verificationCode = document.getElementById('code').value
+				var newPassword = document.getElementById('new_password').value
+				cognitoUser.confirmPassword(verificationCode, newPassword, {
+					onSuccess() {
+						console.log('Password confirmed!')
+					},
+					// eslint-disable-next-line no-unused-vars
+					onFailure(err) {
+						console.log('Password not confirmed!')
+					}
+				})
+			}
+		})
 	},
 
 	updatePassword(cognitoUser, newPassword, oldPassword) {
@@ -23,9 +67,7 @@ export default {
 		) {
 			if (err) {
 				alert(err.message)
-				return
 			}
-			return result
 		})
 	},
 
@@ -51,7 +93,6 @@ export default {
 				alert(err.message)
 				return
 			}
-			return result
 		})
 	},
 
@@ -60,14 +101,8 @@ export default {
 			Username: username,
 			Password: password
 		}
-		var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
-			authenticationData
-		)
-		var userData = {
-			Username: username,
-			Pool: userPool
-		}
-		var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
+		var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData)
+		var cognitoUser = setupCongnitoUser(username)
 		cognitoUser.authenticateUser(authenticationDetails, {
 			onSuccess: function(result) {
 				// eslint-disable-next-line no-unused-vars

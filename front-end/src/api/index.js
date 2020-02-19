@@ -1,7 +1,7 @@
-import users from './modules/profile.js'
-import login from './modules/users.js'
+import profile from './modules/profile.js'
+import users from './modules/users.js'
 
 export default {
 	users,
-	login
+	profile
 }
