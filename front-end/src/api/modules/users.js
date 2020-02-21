@@ -135,7 +135,6 @@ export default {
 					// todo: actually needed?
 					AWS.config.credentials.refresh(error => {
 						if (error) {
-							alert(error)
 							reject(error)
 						}
 					})
@@ -148,7 +147,6 @@ export default {
 				},
 
 				onFailure: function(err) {
-					alert(err.message)
 					reject(err.message)
 				},
 
