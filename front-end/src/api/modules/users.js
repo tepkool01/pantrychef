@@ -111,51 +111,60 @@ export default {
 			authenticationData
 		)
 		let cognitoUser = setupCongnitoUser(username)
-		cognitoUser.authenticateUser(authenticationDetails, {
-			onSuccess: function(result) {
-				// eslint-disable-next-line no-unused-vars
-				let accessToken = result.getAccessToken().getJwtToken()
-				AWS.config.region = 'us-east-1'
-				AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-					IdentityPoolId:
-						'us-east-1:d7ab3904-42a7-4f17-967d-0877b9ff6fed', // your identity pool id here
-					Logins: {
-						// Change the key below according to the specific region your user pool is in.
-						'cognito-idp.us-east-1.amazonaws.com/us-east-1_895IYJN1N': result
-							.getIdToken()
-							.getJwtToken()
-					}
-				})
+		return new Promise((resolve, reject) => {
+			cognitoUser.authenticateUser(authenticationDetails, {
+				onSuccess: function(result) {
+					// eslint-disable-next-line no-unused-vars
+					AWS.config.region = 'us-east-1'
+					AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+						IdentityPoolId:
+							'us-east-1:d7ab3904-42a7-4f17-967d-0877b9ff6fed', // your identity pool id here
+						Logins: {
+							// Change the key below according to the specific region your user pool is in.
+							'cognito-idp.us-east-1.amazonaws.com/us-east-1_895IYJN1N': result
+								.getIdToken()
+								.getJwtToken()
+						}
+					})
 
-				//refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
-				AWS.config.credentials.refresh(error => {
-					if (error) {
-						alert(error)
-					}
-				})
-				return cognitoUser
-			},
+					//refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+					// todo: actually needed?
+					AWS.config.credentials.refresh(error => {
+						if (error) {
+							alert(error)
+							reject(error)
+						}
+					})
+					resolve({
+						userId: cognitoUser.getUsername(),
+						accessToken: result.getAccessToken().getJwtToken(),
+						refreshToken: result.getRefreshToken().getToken(),
+						idToken: result.getIdToken().getJwtToken()
+					})
+				},
 
-			onFailure: function(err) {
-				alert(err.message)
-			},
+				onFailure: function(err) {
+					alert(err.message)
+					reject(err.message)
+				},
 
-			newPasswordRequired: function(userAttributes) {
-				// User was signed up by an admin and must provide new
-				// password and required attributes, if any, to complete
-				// authentication.
+				newPasswordRequired: function(userAttributes) {
+					// User was signed up by an admin and must provide new
+					// password and required attributes, if any, to complete
+					// authentication.
 
-				// the api doesn't accept this field back
-				delete userAttributes.email_verified
+					// the api doesn't accept this field back
+					delete userAttributes.email_verified
 
-				//TODO: write code here for actual use case.
-				// store userAttributes on global letiable
-				let sessionUserAttributes = userAttributes
-				cognitoUser.completeNewPasswordChallenge(
-					'NewPassword1',
-					sessionUserAttributes
-				)
-			}
+					//TODO: write code here for actual use case.
+					// store userAttributes on global letiable
+					let sessionUserAttributes = userAttributes
+					cognitoUser.completeNewPasswordChallenge(
+						'NewPassword1',
+						sessionUserAttributes
+					)
+				}
+			})
 		})
 	}
 }

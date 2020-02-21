@@ -17,12 +17,14 @@ const getters = {
 
 const actions = {
 	login({ commit }, payload) {
-		//TODO: Figure Out how to call this async
-		let response = api.users.authenticate(
-			payload.username,
-			payload.password
-		)
-		commit('AUTHENICATE', response)
+		return new Promise((resolve, reject) => {
+			api.users.authenticate(payload.username, payload.password).then(result => {
+				commit('AUTHENTICATE', result)
+				resolve(true)
+			}).catch(err => {
+				reject(err)
+			})
+		})
 	},
 
 	createAccount({ commit }, payload) {
@@ -47,9 +49,9 @@ const actions = {
 }
 
 const mutations = {
-	AUTHENICATE(state, returnedUser) {
+	AUTHENTICATE(state, returnedUser) {
 		// eslint-disable-next-line no-console
-		console.log('User Authenication - Succeeded!')
+		console.log('User Authentication - Succeeded!')
 		if (returnedUser != null) {
 			state.isAuthenticated = true
 			state.user = returnedUser

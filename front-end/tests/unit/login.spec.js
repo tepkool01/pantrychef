@@ -9,7 +9,7 @@ import sinonChai from 'sinon-chai'
 chai.use(sinonChai)
 chai.use(chaiAsPromised)
 
-import Login from '../../src/components/LoginMain'
+import Login from '../../src/components/Login'
 import user from '../../src/store/modules/users'
 import api from '../../src/api'
 
@@ -17,7 +17,7 @@ const localVue = createLocalVue()
 
 localVue.use(Vuex)
 
-describe('LoginMain.vue', () => {
+describe('Login.vue', () => {
 	let store
 
 	beforeEach(() => {

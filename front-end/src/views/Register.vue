@@ -1,6 +1,5 @@
 <template>
-	<div class="register">
-		<h1>Register</h1>
+	<div class="register vh-100">
 		<register-main></register-main>
 	</div>
 </template>
@@ -16,3 +15,13 @@ export default {
 	}
 }
 </script>
+
+<style scoped>
+	.register {
+		background: linear-gradient(
+				rgba(255, 255, 255, 0.65),
+				rgba(255, 255, 255, 0.65)
+		), url('../assets/register__photo-background.jpg') no-repeat
+		center center / cover;
+	}
+</style>
