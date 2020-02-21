@@ -116,16 +116,18 @@ export default {
 				onSuccess: function(result) {
 					// eslint-disable-next-line no-unused-vars
 					AWS.config.region = 'us-east-1'
-					AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-						IdentityPoolId:
-							'us-east-1:d7ab3904-42a7-4f17-967d-0877b9ff6fed', // your identity pool id here
-						Logins: {
-							// Change the key below according to the specific region your user pool is in.
-							'cognito-idp.us-east-1.amazonaws.com/us-east-1_895IYJN1N': result
-								.getIdToken()
-								.getJwtToken()
+					AWS.config.credentials = new AWS.CognitoIdentityCredentials(
+						{
+							IdentityPoolId:
+								'us-east-1:d7ab3904-42a7-4f17-967d-0877b9ff6fed', // your identity pool id here
+							Logins: {
+								// Change the key below according to the specific region your user pool is in.
+								'cognito-idp.us-east-1.amazonaws.com/us-east-1_895IYJN1N': result
+									.getIdToken()
+									.getJwtToken()
+							}
 						}
-					})
+					)
 
 					//refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
 					// todo: actually needed?

@@ -18,12 +18,15 @@ const getters = {
 const actions = {
 	login({ commit }, payload) {
 		return new Promise((resolve, reject) => {
-			api.users.authenticate(payload.username, payload.password).then(result => {
-				commit('AUTHENTICATE', result)
-				resolve(true)
-			}).catch(err => {
-				reject(err)
-			})
+			api.users
+				.authenticate(payload.username, payload.password)
+				.then(result => {
+					commit('AUTHENTICATE', result)
+					resolve(true)
+				})
+				.catch(err => {
+					reject(err)
+				})
 		})
 	},
 
