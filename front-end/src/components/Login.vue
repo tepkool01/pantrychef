@@ -129,7 +129,7 @@ export default {
 				this.$store
 					.dispatch('login', this.login)
 					.then(() => {
-						this.$router.replace('/profiles')
+						this.$router.replace('/pantry')
 					})
 					.catch(err => {
 						this.validation.errors.push({

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
 	{
@@ -20,9 +20,9 @@ const routes = [
 		component: () => import('../views/Register.vue')
 	},
 	{
-		path: '/profiles',
-		name: 'profiles',
-		component: () => import('../views/Profiles.vue')
+		path: '/pantry',
+		name: 'pantry',
+		component: () => import('../views/Pantry.vue')
 	}
 ]
 
