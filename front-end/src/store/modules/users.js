@@ -31,11 +31,17 @@ const actions = {
 	},
 
 	createAccount({ commit }, payload) {
-		api.users
-			.register(payload.username, payload.password, payload.email)
-			.then(response => {
-				commit('REGISTER', response)
-			})
+		return new Promise((resolve, reject) => {
+			api.users
+				.register(payload.username, payload.password, payload.email)
+				.then(response => {
+					commit('REGISTER', response)
+					resolve(true)
+				})
+				.catch(err => {
+					reject(err)
+				})
+		})
 	},
 	// eslint-disable-next-line no-unused-vars
 	logout({ commit }, payload) {

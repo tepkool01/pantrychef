@@ -90,15 +90,17 @@ export default {
 
 		attributeList.push(attributeEmail)
 
-		userPool.signUp(username, password, attributeList, null, function(
-			err,
-			// eslint-disable-next-line no-unused-vars
-			result
-		) {
-			if (err) {
-				alert(err.message)
-				return
-			}
+		return new Promise((resolve, reject) => {
+			userPool.signUp(username, password, attributeList, null, function(
+				err,
+				result
+			) {
+				if (err) {
+					alert(err.message)
+					reject(err)
+				}
+				resolve(result)
+			})
 		})
 	},
 

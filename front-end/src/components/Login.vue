@@ -66,6 +66,7 @@ export default {
 				.dispatch('login', this.login)
 				.then(() => {
 					alert('LOGGED IN')
+					this.$router.replace('/profiles')
 				})
 				.catch(err => {
 					alert(err)
