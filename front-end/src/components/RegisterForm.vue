@@ -90,6 +90,14 @@ export default {
 				password: '',
 				repassword: '',
 				dietType: ''
+			},
+			validation: {
+				errors: [],
+				username: false,
+				password: false,
+				repassword: false,
+				email: false,
+				fullName: false
 			}
 		}
 	},
@@ -98,7 +106,10 @@ export default {
 			this.$store
 				.dispatch('createAccount', this.user)
 				.then(() => {
-					alert('REGISTERED')
+					// This is a really cool method, it allows you to talk back to the parent view or component, in this case
+					// Register.vue, it will send back data to the parent (in this case, just a true value), and then the parent
+					// can make a decision on what to do. This is similar to 'props' (passing data from parent to child), just reversed
+					this.$emit('successfulRegister', true)
 				})
 				.catch(err => {
 					alert(err)
@@ -109,6 +120,9 @@ export default {
 </script>
 
 <style scoped>
+.form-control:focus {
+	box-shadow: none;
+}
 .register {
 	text-align: left;
 }

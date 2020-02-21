@@ -11,7 +11,12 @@
 								Already have an account?
 								<router-link to="/">Login</router-link>
 							</p>
-							<register-form></register-form>
+
+							<register-form
+								@successfulRegister="showSuccessComponent"
+								v-if="!showSuccessPage"
+							></register-form>
+							<register-success v-else></register-success>
 						</div>
 					</div>
 				</div>
@@ -23,11 +28,24 @@
 <script>
 // @ is an alias to /src
 import RegisterForm from '@/components/RegisterForm.vue'
+import RegisterSuccess from '@/components/RegisterSuccess.vue'
 
 export default {
 	name: 'register',
 	components: {
-		RegisterForm: RegisterForm
+		RegisterForm: RegisterForm,
+		RegisterSuccess: RegisterSuccess
+	},
+	data() {
+		return {
+			showSuccessPage: false
+		}
+	},
+	methods: {
+		showSuccessComponent(data) {
+			// Received success message from register, so hide the register component and show the success page
+			this.showSuccessPage = data
+		}
 	}
 }
 </script>
