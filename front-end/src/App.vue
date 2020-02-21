@@ -37,4 +37,9 @@
 #nav a.router-link-exact-active {
 	color: #42b983;
 }
+
+.input--error {
+	border-color: red !important;
+	border-width: medium !important;
+}
 </style>
