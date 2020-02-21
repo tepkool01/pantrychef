@@ -96,8 +96,7 @@ export default {
 				result
 			) {
 				if (err) {
-					alert(err.message)
-					reject(err)
+					reject(err.message)
 				}
 				resolve(result)
 			})
