@@ -8,7 +8,7 @@ import sinonChai from 'sinon-chai'
 chai.use(sinonChai)
 chai.use(chaiAsPromised)
 
-import Register from '../../src/components/RegisterMain'
+import Register from '../../src/components/RegisterForm'
 
 const localVue = createLocalVue()
 
