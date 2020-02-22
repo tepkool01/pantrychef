@@ -7,36 +7,34 @@ from database import DB
 db = DB(database_name=os.environ['DB_NAME'], cluster_arn=os.environ['RDS_ARN'], secret_arn=os.environ['Secrets_ARN'])
 
 
+
 def lambda_handler(event, context):
 
     print(event)
     print(context)
     result = {}
 
-    if event['resource'] == '/profiles':
+    if event['resource'] == '/ingredients':
         if event['httpMethod'] == 'GET':
             # Retrieve all profiles
             result = db.execute(
-                sql="select * FROM `UserProfile` up JOIN `User` u on u.ID=up.UserId WHERE u.CognitoID=:cognitoId",
-                parameters=[
-                    {
-                        'name': 'cognitoId',
-                        'value': {
-                            'stringValue': ''
-                        }
-                    }
-                ]
+                sql="select * FROM `Recipe`",
+                parameters=[]
             )
-            # todo: parse info
-        elif event['httpMethod'] == 'POST':
-            result = {}
-            # Create a profile
-            print("Create a profile")
-
-    elif event['resource'] == '/profiles/{profileId}':
-        result = {}
+    elif event['resource'] == '/ingredients/{ingredientId}':
+        print("recipe ID:", event['pathParameters']['ingredientId'])
+        result = db.execute(
+            sql="select * FROM `Ingredient` WHERE ID=:id",
+            parameters=[
+                {
+                    'name': 'id',
+                    'value': {
+                        'longValue': int(event['pathParameters']['ingredientId'])
+                    }
+                }
+            ]
+        )
         print("Entered specific profile route")
-        print("profile ID:", event['pathParameters']['profileId'])
 
     return {
         'statusCode': 200,

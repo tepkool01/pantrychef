@@ -16,9 +16,9 @@ export default {
 	name: 'Recipes',
 	created() {
 		this.$emit('title', 'Ingredients')
+		this.$store.dispatch('recipes/getRecipes')
 	}
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

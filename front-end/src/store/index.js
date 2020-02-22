@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import profile from './modules/profile'
 import users from './modules/users'
+import recipes from './modules/recipes'
 
 Vue.use(Vuex)
 
@@ -21,6 +22,13 @@ export default new Vuex.Store({
 			actions: users.actions,
 			getters: users.getters,
 			mutations: users.mutations
+		},
+		recipes: {
+			namespaced: true,
+			state: recipes.state,
+			actions: recipes.actions,
+			getters: recipes.getters,
+			mutations: recipes.mutations
 		}
 	}
 })

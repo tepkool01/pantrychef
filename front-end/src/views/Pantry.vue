@@ -43,15 +43,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'Profiles',
-	data() {
-		return {
-			toggle: false
-		}
-	},
 	computed: {
-		...mapGetters('users', {
-			userId: 'userId'
-		}),
 		...mapGetters('profile', {
 			profiles: 'profiles'
 		})

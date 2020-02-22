@@ -1,17 +1,39 @@
 import json
-from database import get_secret, do_stuff
+import os
+from database import DB
+
+# Everything outside of the handler is 'cached' on the virtual machine, connections should be here
+# Initialize the DB connect
+db = DB(database_name=os.environ['DB_NAME'], cluster_arn=os.environ['RDS_ARN'], secret_arn=os.environ['Secrets_ARN'])
+
 
 def lambda_handler(event, context):
 
     print(event)
-    #print(context)
-    print("Hello World 5")
+    print(context)
+    result = {}
 
-    print(get_secret())
-
-    print(do_stuff())
-    # Retrieve database content
-    result = [{"name": "Test Profile 1"}, {"name": "Test Profile 2"}]
+    if event['resource'] == '/recipes':
+        if event['httpMethod'] == 'GET':
+            # Retrieve all profiles
+            result = db.execute(
+                sql="select * FROM `Recipe`",
+                parameters=[]
+            )
+    elif event['resource'] == '/recipes/{recipeId}':
+        print("Entered specific profile route")
+        print("recipe ID:", event['pathParameters']['recipeId'])
+        result = db.execute(
+            sql="select * FROM `Recipe` WHERE ID=:id",
+            parameters=[
+                {
+                    'name': 'id',
+                    'value': {
+                        'longValue': int(event['pathParameters']['recipeId'])
+                    }
+                }
+            ]
+        )
 
     return {
         'statusCode': 200,

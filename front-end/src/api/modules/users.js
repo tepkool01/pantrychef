@@ -45,7 +45,7 @@ export default {
 					})
 				} else {
 					// do something
-					reject("Could not locate user.")
+					reject('Could not locate user.')
 				}
 			})
 		})
