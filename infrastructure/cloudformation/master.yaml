@@ -18,7 +18,7 @@ Parameters:
     Type: String
     Default: "arn:aws:secretsmanager:us-east-1:878527066650:secret:pantrychefdb-OKx5ZI"
   DBClusterArn:
-    Description:
+    Description: This is the ARN for the database cluster
     Type: String
     Default: "arn:aws:rds:us-east-1:878527066650:cluster:pantrychef"
   DBName:
