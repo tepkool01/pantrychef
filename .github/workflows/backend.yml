@@ -18,22 +18,22 @@ jobs:
 
       # Upload artifact to s3 bucket to be referenced, this is only for the instantiation of the lambda for the CFT
       - name: Upload to s3 artifact bucket
-        run: cd back-end/lambdas/profiles && zip -r profiles.zip * && aws s3 cp profiles.zip s3://lepantrychefartifacts
+        run: cd back-end/lambdas/profiles && pip install -r requirements.txt -t . && zip -r profiles.zip * && aws s3 cp profiles.zip s3://lepantrychefartifacts
 
       # Deploy Lambda Profiles
       - name: Deploy Profile Lambda
-        run: cd back-end/lambdas/profiles && zip -r profiles.zip * && aws lambda update-function-code --function-name pc-profile --zip-file fileb://profiles.zip
+        run: cd back-end/lambdas/profiles && pip install -r requirements.txt -t . && zip -r profiles.zip * && aws lambda update-function-code --function-name pc-profile --zip-file fileb://profiles.zip
 
       # Recipe Lambda
       - name: Upload to s3 artifact bucket
-        run: cd back-end/lambdas/recipes && zip -r recipes.zip * && aws s3 cp recipes.zip s3://lepantrychefartifacts
+        run: cd back-end/lambdas/recipes && pip install -r requirements.txt -t . && zip -r recipes.zip * && aws s3 cp recipes.zip s3://lepantrychefartifacts
 
       - name: Deploy Recipe Lambda
-        run: cd back-end/lambdas/recipes && zip -r recipes.zip * && aws lambda update-function-code --function-name pc-recipe --zip-file fileb://recipes.zip
+        run: cd back-end/lambdas/recipes && pip install -r requirements.txt -t . && zip -r recipes.zip * && aws lambda update-function-code --function-name pc-recipe --zip-file fileb://recipes.zip
 
       # Ingredient Lambda
       - name: Upload to s3 artifact bucket
-        run: cd back-end/lambdas/ingredients && zip -r ingredients.zip * && aws s3 cp ingredients.zip s3://lepantrychefartifacts
+        run: cd back-end/lambdas/ingredients && pip install -r requirements.txt -t . && zip -r ingredients.zip * && aws s3 cp ingredients.zip s3://lepantrychefartifacts
 
       - name: Deploy Ingredient Lambda
-        run: cd back-end/lambdas/ingredients && zip -r ingredients.zip * && aws lambda update-function-code --function-name pc-ingredient --zip-file fileb://ingredients.zip
+        run: cd back-end/lambdas/ingredients && pip install -r requirements.txt -t . && zip -r ingredients.zip * && aws lambda update-function-code --function-name pc-ingredient --zip-file fileb://ingredients.zip
