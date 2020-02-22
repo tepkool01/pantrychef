@@ -1,7 +1,6 @@
 import json
 import os
 from database import DB
-from identity import getClaim
 
 # Everything outside of the handler is 'cached' on the virtual machine, connections should be here
 # Initialize the DB connect
@@ -13,7 +12,6 @@ def lambda_handler(event, context):
     print(event)
     print(context)
     result = {}
-    print(getClaim(event, context))
 
     if event['resource'] == '/profiles':
         if event['httpMethod'] == 'GET':
