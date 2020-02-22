@@ -86,7 +86,6 @@ const mutations = {
 	AUTHENTICATE(state, returnedUser) {
 		// eslint-disable-next-line no-console
 		console.log('User Authentication - Succeeded!')
-		console.log(returnedUser)
 		if (returnedUser != null) {
 			state.isAuthenticated = true
 			state.user = returnedUser
