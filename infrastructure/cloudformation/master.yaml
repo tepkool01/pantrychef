@@ -21,6 +21,10 @@ Parameters:
     Description: Name of the database
     Type: String
     Default: "pantryDB"
+  DateTime:
+    Description: A timestamp to trigger updates
+    Type: String
+    Default: 1
 Resources:
   # Create VPC 
   VPC:
@@ -915,7 +919,7 @@ Resources:
       Action: "lambda:InvokeFunction"
       FunctionName: !GetAtt ProfilesLambda.Arn
       Principal: "apigateway.amazonaws.com"
-      SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${API}/*"
+      SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${API}/"
 
   ###
   # RECIPE LAMBDA
