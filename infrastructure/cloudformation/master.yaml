@@ -830,7 +830,7 @@ Resources:
     Type: 'AWS::ApiGateway::Deployment'
     Properties:
       RestApiId: !Ref API
-      StageDescription: !Ref DateTime # Forces deployment every time
+      Description: !Ref DateTime # Forces deployment every time
 
   # This deployment stage makes the API visible to the web
   APIStage:
