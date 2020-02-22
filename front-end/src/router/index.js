@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import store from '../store/index'
-import axios from "axios";
+import axios from 'axios'
 
 Vue.use(VueRouter)
 
@@ -34,7 +34,9 @@ const routes = [
 					// todo: dry
 					// If we can get a token, then they can proceed, otherwise redirect them to the sign-in page
 					if (store.state.users.user.idToken != null) {
-						axios.defaults.headers.common['Authorization'] = store.state.users.user.idToken
+						axios.defaults.headers.common['Authorization'] =
+							store.state.users.user.idToken
+
 						next()
 					} else {
 						next('/')
@@ -54,6 +56,10 @@ const routes = [
 				.dispatch('users/getSession')
 				.then(() => {
 					if (store.state.users.user.idToken != null) {
+						// Sets the authorization token so the user can access this endpoint
+						axios.defaults.headers.common['Authorization'] =
+							store.state.users.user.idToken
+
 						next()
 					} else {
 						next('/')
@@ -73,6 +79,10 @@ const routes = [
 				.dispatch('users/getSession')
 				.then(() => {
 					if (store.state.users.user.idToken != null) {
+						// Sets the authorization token so the user can access this endpoint
+						axios.defaults.headers.common['Authorization'] =
+							store.state.users.user.idToken
+
 						next()
 					} else {
 						next('/')
@@ -92,6 +102,10 @@ const routes = [
 				.dispatch('users/getSession')
 				.then(() => {
 					if (store.state.users.user.idToken != null) {
+						// Sets the authorization token so the user can access this endpoint
+						axios.defaults.headers.common['Authorization'] =
+							store.state.users.user.idToken
+
 						next()
 					} else {
 						next('/')
