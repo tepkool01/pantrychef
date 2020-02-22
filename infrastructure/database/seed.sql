@@ -1,0 +1,1 @@
+REPLACE INTO `Ingredient` SET `ID`='1', `IngredientName`='butter', `IngredientType`='unhealthy';
