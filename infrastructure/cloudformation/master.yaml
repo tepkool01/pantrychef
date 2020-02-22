@@ -1320,14 +1320,6 @@ Resources:
           Required: true
       UserPoolName: "le-pantry-chef"
 
-  CognitoCustomDomainRegister:
-    Type: AWS::Cognito::UserPoolDomain
-    Properties:
-      CustomDomainConfig:
-        CertificateArn: "arn:aws:acm:us-east-1:878527066650:certificate/1d439dcd-b25b-4ea0-8cbb-eb315c773383"
-      Domain: "register.lepantrychef.com"
-      UserPoolId: !Ref CognitoUserPool
-
   ### CLOUDFORMER CFT Creation Resources, in case things go really bad, for reference
 #  zonelepantrychefcom:
 #    Type: AWS::Route53::HostedZone
