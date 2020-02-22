@@ -52,6 +52,7 @@ or autofix using
 ## Fun Tips
 1. Using `vue ui` you can get to the UI manager for this application. You'll need to import the `pantry-chef` folder as a project first.
 2. Use terminal window in webstorm to install mocha and chai.
+3. https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en - the VueJS chrome plugin is invaluable-- I use it to check the 'state' (store) of the application.
 ## References / Resources
 https://www.vuemastery.com/courses/real-world-vue-js/vue-cli/ (followed this to create the project)
 
