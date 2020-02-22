@@ -1,6 +1,6 @@
 import json
 import os
-from .database import DB
+from database import DB
 
 # Everything outside of the handler is 'cached' on the virtual machine, connections should be here
 # Initialize the DB connect
@@ -12,8 +12,8 @@ def lambda_handler(event, context):
     print(event)
     print(context)
 
-    if event.path == '/profiles':
-        if event.httpMethod == 'GET':
+    if event['path'] == '/profiles':
+        if event['httpMethod'] == 'GET':
             # Retrieve all profiles
             result = db.execute(
                 sql="select * FROM `UserProfile` up JOIN `User` u on u.ID=up.UserId WHERE u.CognitoID=:cognitoId",
@@ -27,11 +27,11 @@ def lambda_handler(event, context):
                 ]
             )
             # todo: parse info
-        elif event.httpMethod == 'POST':
+        elif event['httpMethod'] == 'POST':
             # Create a profile
             print("Create a profile")
 
-    elif event.path == '/profiles/{profileId}':
+    elif event['path'] == '/profiles/{profileId}':
         print("Entered specific profile route")
 
     return {
