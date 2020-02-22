@@ -154,7 +154,7 @@ export default {
 				this.validation.email = true
 				this.validation.errors.push({
 					id: 4,
-					msg: 'Email is required'
+					msg: 'Full Name is required'
 				})
 				isValid = false
 			}
@@ -206,7 +206,7 @@ export default {
 		registerUser(e) {
 			if (this.validateForm(e)) {
 				this.$store
-					.dispatch('createAccount', this.user)
+					.dispatch('users/createAccount', this.user)
 					.then(() => {
 						// This is a really cool method, it allows you to talk back to the parent view or component, in this case
 						// Register.vue, it will send back data to the parent (in this case, just a true value), and then the parent
