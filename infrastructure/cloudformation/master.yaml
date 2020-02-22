@@ -29,6 +29,10 @@ Parameters:
     Description: A timestamp to trigger updates
     Type: String
     Default: 1
+  CognitoPoolID:
+    Description: The Cognito Pool ID for all our users
+    Type: String
+    Default: "us-east-1_895IYJN1N"
 Resources:
   # Create VPC 
   VPC:
@@ -1131,7 +1135,7 @@ Resources:
         S3Bucket: "lepantrychefartifacts"
         S3Key: "profiles.zip"
       Handler: index.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.7
       Role: !GetAtt GenericLambdaRole.Arn
       MemorySize: 512
       Timeout: 15
@@ -1140,6 +1144,7 @@ Resources:
           DB_NAME: !Ref DBName
           RDS_ARN: !Ref DBClusterArn
           Secrets_ARN: !Ref DBSecretsArn
+          Cognito_Pool_ID: !Ref CognitoPoolID
 
   # This is the access permission we give to the Lambda, in this case, it can pretty much do logging (in real cases, you'd probably want to give database access, etc)
   GenericLambdaRole:
@@ -1201,7 +1206,7 @@ Resources:
         S3Bucket: "lepantrychefartifacts"
         S3Key: "recipes.zip"
       Handler: index.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.7
       Role: !GetAtt GenericLambdaRole.Arn
       MemorySize: 512
       Timeout: 15
@@ -1210,6 +1215,7 @@ Resources:
           DB_Name: !Ref DBName
           RDS_ARN: !Ref DBClusterArn
           Secrets_ARN: !Ref DBSecretsArn
+          Cognito_Pool_ID: !Ref CognitoPoolID
 
   RecipesLambdaInvoke:
     DependsOn: API
@@ -1231,7 +1237,7 @@ Resources:
         S3Bucket: "lepantrychefartifacts"
         S3Key: "ingredients.zip"
       Handler: index.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.7
       Role: !GetAtt GenericLambdaRole.Arn
       MemorySize: 512
       Timeout: 15
@@ -1240,6 +1246,7 @@ Resources:
           DB_Name: !Ref DBName
           RDS_ARN: !Ref DBClusterArn
           Secrets_ARN: !Ref DBSecretsArn
+          Cognito_Pool_ID: !Ref CognitoPoolID
 
   IngredientsLambdaInvoke:
     DependsOn: API
