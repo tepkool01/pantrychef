@@ -2,8 +2,8 @@ import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 
 //TODO: move this to a better place
-const UserPoolId = 'us-east-1_895IYJN1N'
-const ClientId = '1f4k0ktrcbthkq7foan121c9sq'
+const UserPoolId = 'us-east-1_DEgBJUPlO'
+const ClientId = '426724im0ednh2pdrpr7r02ove'
 
 const poolData = {
 	UserPoolId: UserPoolId,
@@ -142,7 +142,7 @@ export default {
 								'us-east-1:d7ab3904-42a7-4f17-967d-0877b9ff6fed', // your identity pool id here
 							Logins: {
 								// Change the key below according to the specific region your user pool is in.
-								'cognito-idp.us-east-1.amazonaws.com/us-east-1_895IYJN1N': result
+								'cognito-idp.us-east-1.amazonaws.com/us-east-1_DEgBJUPlO': result
 									.getIdToken()
 									.getJwtToken()
 							}

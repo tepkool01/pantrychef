@@ -1325,6 +1325,17 @@ Resources:
       SupportedIdentityProviders:
         - COGNITO
       UserPoolId: !Ref CognitoUserPool
+  CognitoCustomDomainRegistration:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties:
+      CustomDomainConfig:
+        CertificateArn: "arn:aws:acm:us-east-1:878527066650:certificate/1d439dcd-b25b-4ea0-8cbb-eb315c773383"
+      Domain: "registration.lepantrychef.com"
+      UserPoolId: !Ref CognitoUserPool
+Outputs:
+  UserPoolDomain:
+    Description: "Domain output for cognito"
+    Value: !Ref CognitoCustomDomainRegistration
 
   ### CLOUDFORMER CFT Creation Resources, in case things go really bad, for reference
 #  zonelepantrychefcom:
