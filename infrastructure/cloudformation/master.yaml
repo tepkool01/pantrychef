@@ -1256,3 +1256,68 @@ Resources:
       FunctionName: !GetAtt IngredientsLambda.Arn
       Principal: "apigateway.amazonaws.com"
       SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${API}/*"
+
+  ###
+  # NEW USER LAMBDA (TRIGGER)
+  ###
+  NewUserLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: "pc-new-user"
+      Code:
+        S3Bucket: "lepantrychefartifacts"
+        S3Key: "new-user.zip"
+      Handler: index.lambda_handler
+      Runtime: python3.7
+      Role: !GetAtt GenericLambdaRole.Arn
+      MemorySize: 512
+      Timeout: 15
+      Environment:
+        Variables:
+          DB_Name: !Ref DBName
+          RDS_ARN: !Ref DBClusterArn
+          Secrets_ARN: !Ref DBSecretsArn
+  # Adds ability for cognito to invoke the above lambda
+  UserPoolLambdaInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:invokeFunction
+      Principal: cognito-idp.amazonaws.com
+      FunctionName: !Ref NewUserLambda
+      SourceArn: !Sub "arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/*"
+
+  # Holds all of our users
+  CognitoUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      AliasAttributes:
+        - email
+        - given_name
+        - family_name
+      AutoVerifiedAttributes:
+        - email
+      EmailConfiguration:
+        EmailSendingAccount: "DEVELOPER"
+        From: "LePantryChef <no-reply@lepantrychef.com>"
+        ReplyToEmailAddress: "no-reply@lepantrychef.com"
+        SourceArn: "arn:aws:ses:us-east-1:878527066650:identity/no-reply@lepantrychef.com"
+      EmailVerificationMessage: "Please click the link below to verify your email address. {##Verify Email##}"
+      EmailVerificationSubject: "Le Pantry Chef Verification"
+
+      #LambdaConfig:
+      #  LambdaConfig
+
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 8
+          RequireLowercase: true
+          RequireNumbers: true
+          RequireSymbols: false
+          RequireUppercase: true
+          TemporaryPasswordValidityDays: 7
+      Schema:
+        - Name: email
+          AttributeDataType: String
+          Mutable: true
+          Required: true
+      UserPoolName: "le-pantry-chef"
