@@ -1,9 +1,11 @@
 <template>
 	<div class="create-profile">
-		<label>
-			<input type="text" name="profile-name" v-model="profile.name" />
-		</label>
-		<button @click="onSubmit">Create</button>
+		<div class="form-group">
+			<label>
+				<input type="text" name="profile-name" class="form-control" v-model="profile.name" />
+			</label>
+		</div>
+		<button class="btn btn-dark" @click="onSubmit">Create</button>
 	</div>
 </template>
 
