@@ -15,9 +15,10 @@ def lambda_handler(event, context):
 
     # Grab data about person invoking the request
     ident = Identity(event)
-    print(ident)
-    if 'sub' in ident:
-        print("User is actively logged in, their user ID (cognitoId) is:", ident['sub'])
+    claim = ident.get_claim()
+    print(claim)
+    if 'sub' in claim:
+        print("User is actively logged in, their user ID (cognitoId) is:", claim['sub'])
     else:
         # todo
         print("User token is expired, corrupted, we should exit/aka return out of the lambda early")
