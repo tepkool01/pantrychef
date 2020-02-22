@@ -1,0 +1,16 @@
+import axios from "axios";
+
+export default {
+	getRecipes() {
+		console.log("Hit")
+		return axios.get('/recipes', {
+			headers: {
+				'Authorization': 'eyJraWQiOiJmSkFwSGNhYUVmbUJUVTMwTWh5VTZrbFcyMXM3TU1GUDlaZXpDQWZwRHhJPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzYWEyMzY5MC0zMTMzLTRhMjMtYWIyZi03ZTU5OGI5MDcxZGEiLCJldmVudF9pZCI6ImE1NjA5YTc1LTY2YTEtMTFlOS1hYWQ2LTQ1YWM1NDc5NzVjOCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE1NTYxMTgwMDYsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX3ZUc3ZMS1EzeiIsImV4cCI6MTU1NjEyMTYwNiwiaWF0IjoxNTU2MTE4MDA2LCJqdGkiOiJhZjA2Y2IyOS1jZDkwLTRlODctOTI1Mi05MzcxZWFlMzI1NDUiLCJjbGllbnRfaWQiOiI2NzZ1Y3IzdW82aGI0ZmlxYTNyYzdjc21xNCIsInVzZXJuYW1lIjoidGVwa29vbDAxIn0.bfh2qyt6vM0bEPxiDuct7EohJo1Aq0mLW0ZdiVW_gL2TD_m3ufhvmy8hc8U9DZJ1GdcID4nY3bExyNWec9I_wF9iKPAM5dmMwnpjaHZAn5gXDZvRNDyR6QEVqhINNbazoRAUa73p9DlDI5l9SFGsVXa5iG0OLQy4z-5k62YgK_biFWzo1ArfVjrRfvw2w_QLHVM41lIJ9yqUQF_9B11RnzL-oG5VgIIJHZodfWramkloJ1DBkKAUXVPCHpk99mUpULzJXRcMThk7fhzkfRhhF3u3FOBVaqRWjtExgbIbSiFPCp-FZ1ijZCLp8jq7Q6qqWy1d4VqEMAucpGXbrgIf0w'
+			}
+		})
+	},
+	// eslint-disable-next-line no-unused-vars
+	getRecipe(recipe) {
+		return Promise.resolve()
+	}
+}

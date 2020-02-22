@@ -625,7 +625,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "options": {
                   "consumes": [
@@ -792,6 +797,20 @@ Resources:
                       }
                     }
                   }
+                }
+              }
+            },
+            "securityDefinitions": {
+              "pantrychef_authorizer": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header",
+                "x-amazon-apigateway-authtype": "cognito_user_pools",
+                "x-amazon-apigateway-authorizer": {
+                  "type": "cognito_user_pools",
+                  "providerARNs": [
+                    "arn:aws:cognito-idp:us-east-1:878527066650:userpool/us-east-1_895IYJN1N"
+                  ]
                 }
               }
             },

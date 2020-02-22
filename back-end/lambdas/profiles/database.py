@@ -1,54 +1,28 @@
 import boto3
-import base64
-from botocore.exceptions import ClientError
 
-
-# Todo: make this a class
-def do_stuff():
-    client = boto3.client('rds-data')
-    response = client.execute_statement(
-        database="pantryDB",
-        resourceArn="arn:aws:rds:us-east-1:878527066650:cluster:pantrychef",
-        secretArn="arn:aws:secretsmanager:us-east-1:878527066650:secret:pantrychefdb-OKx5ZI",
-        sql="SELECT * FROM `Ingredient`"
-    )
-    print("Come response")
-    print(response)
-
-
+# For more information regarding the underlying boto calls and how to expand this class, go here:
 # https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/rds-data.html
 
-def get_secret():
-    secret_name = "pantrychefdb"
-    region_name = "us-east-1"
 
-    # Create a Secrets Manager client
-    session = boto3.session.Session()
-    client = session.client(
-        service_name='secretsmanager',
-        region_name=region_name
-    )
+""" Utility class for accessing the Database and running executable statements """
 
-    try:
-        get_secret_value_response = client.get_secret_value(
-            SecretId=secret_name
+
+class DB:
+
+    """Initialize the variables that will be used in all the executable statements"""
+    def __init__(self, database_name, cluster_arn, secret_arn):
+        self.client = boto3.client('rds-data')
+        self.database_name = database_name
+        self.cluster_arn = cluster_arn
+        self.secret_arn = secret_arn
+
+    """Executes a SQL Statement"""
+    def execute(self, sql, parameters):
+        return self.client.execute_statement(
+            database=self.database_name,
+            resourceArn=self.cluster_arn,
+            secretArn=self.secret_arn,
+            sql=sql,
+            parameters=parameters
         )
-    except ClientError as e:
-        if e.response['Error']['Code'] == 'DecryptionFailureException':
-            raise e
-        elif e.response['Error']['Code'] == 'InternalServiceErrorException':
-            raise e
-        elif e.response['Error']['Code'] == 'InvalidParameterException':
-            raise e
-        elif e.response['Error']['Code'] == 'InvalidRequestException':
-            raise e
-        elif e.response['Error']['Code'] == 'ResourceNotFoundException':
-            raise e
-    else:
-        if 'SecretString' in get_secret_value_response:
-            secret = get_secret_value_response['SecretString']
-        else:
-            secret = base64.b64decode(get_secret_value_response['SecretBinary'])
-    return secret
-
 

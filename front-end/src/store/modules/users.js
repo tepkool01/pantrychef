@@ -3,7 +3,12 @@ import api from '../../api'
 
 const state = {
 	isAuthenticated: false,
-	user: null
+	user: {
+		accessToken: '',
+		idToken: '',
+		refreshToken: '',
+		userId: ''
+	}
 }
 
 const getters = {
@@ -24,7 +29,7 @@ const getters = {
 		if (state.user.hasOwnProperty('idToken')) {
 			return state.user.idToken
 		} else {
-			return null
+			return ''
 		}
 	}
 }

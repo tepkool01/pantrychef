@@ -92,7 +92,8 @@ export default {
 	},
 	computed: {
 		...mapGetters('users', {
-			isAuthenticated: 'isAuthenticated'
+			isAuthenticated: 'isAuthenticated',
+			userId: 'userId'
 		})
 	},
 	watch: {
