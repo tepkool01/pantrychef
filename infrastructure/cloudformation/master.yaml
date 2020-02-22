@@ -13,6 +13,14 @@ Parameters:
     Description: The Base URL for the API
     Type: String
     Default: "api.lepantrychef.com"
+  DB_SecretsArn:
+    Description: The secret for the RDS database credentials
+    Type: String
+    Default: "arn:aws:secretsmanager:us-east-1:878527066650:secret:pantrychefdb-OKx5ZI"
+  DB_Name:
+    Description: Name of the database
+    Type: String
+    Default: "pantryDB"
 Resources:
   # Create VPC 
   VPC:
@@ -25,8 +33,9 @@ Resources:
   Aurora:
     Type: 'AWS::RDS::DBCluster'
     Properties:
-      DatabaseName: 'pantryDB'
+      DatabaseName: !Ref DB_Name
       DBClusterIdentifier: 'pantryChef'
+      # TODO: Use secrets manager!
       MasterUsername: 'testusername'
       MasterUserPassword: 'testpassword'
       Engine: aurora
@@ -156,7 +165,7 @@ Resources:
                     }
                   },
                   "x-amazon-apigateway-integration": {
-                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${DummyLambda.Arn}/invocations",
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfilesLambda.Arn}/invocations",
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
@@ -223,7 +232,7 @@ Resources:
                     }
                   },
                   "x-amazon-apigateway-integration": {
-                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${DummyLambda.Arn}/invocations",
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfilesLambda.Arn}/invocations",
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
@@ -339,7 +348,7 @@ Resources:
                     }
                   },
                   "x-amazon-apigateway-integration": {
-                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${DummyLambda.Arn}/invocations",
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfilesLambda.Arn}/invocations",
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
@@ -412,7 +421,7 @@ Resources:
                     }
                   },
                   "x-amazon-apigateway-integration": {
-                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${DummyLambda.Arn}/invocations",
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfilesLambda.Arn}/invocations",
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
@@ -488,7 +497,7 @@ Resources:
                     }
                   },
                   "x-amazon-apigateway-integration": {
-                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${DummyLambda.Arn}/invocations",
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfilesLambda.Arn}/invocations",
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
@@ -604,7 +613,7 @@ Resources:
                     }
                   },
                   "x-amazon-apigateway-integration": {
-                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${DummyLambda.Arn}/invocations",
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfilesLambda.Arn}/invocations",
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
@@ -720,7 +729,7 @@ Resources:
                     }
                   },
                   "x-amazon-apigateway-integration": {
-                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${DummyLambda.Arn}/invocations",
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfilesLambda.Arn}/invocations",
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
@@ -840,20 +849,25 @@ Resources:
       Stage: !Ref APIStage
 
   # Basic lambda template for testing (won't actually use this)
-  DummyLambda:
+  ProfilesLambda:
     Type: AWS::Lambda::Function
     Properties:
+      FunctionName: "pc-profile"
       Code:
         S3Bucket: "lepantrychefartifacts"
         S3Key: "profiles.zip"
       Handler: index.lambda_handler
       Runtime: python3.6
-      Role: !GetAtt DummyLambdaRole.Arn
+      Role: !GetAtt GenericLambdaRole.Arn
       MemorySize: 512
       Timeout: 15
+      Environment:
+        Variables:
+          RDS_ARN: !Ref Aurora
+          Secrets_ARN: !Ref DB_SecretsArn
 
   # This is the access permission we give to the Lambda, in this case, it can pretty much do logging (in real cases, you'd probably want to give database access, etc)
-  DummyLambdaRole:
+  GenericLambdaRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -874,13 +888,29 @@ Resources:
                 Action:
                   - "logs:*"
                 Resource: "*"
+        - PolicyName: SecretsManagerAccess
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action:
+                  - "secretsmanager:GetSecretValue"
+                Resource: "arn:aws:secretsmanager:us-east-1:878527066650:secret:pantrychefdb-OKx5ZI"
+        - PolicyName: DatabaseAccess
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action:
+                  - "rds-data:ExecuteStatement"
+                Resource: "*"
 
   # This provides API Gateway access to invoke this lambda
-  DummyLambdaInvoke:
+  ProfilesLambdaInvoke:
     DependsOn: API
     Type: "AWS::Lambda::Permission"
     Properties:
       Action: "lambda:InvokeFunction"
-      FunctionName: !GetAtt DummyLambda.Arn
+      FunctionName: !GetAtt ProfilesLambda.Arn
       Principal: "apigateway.amazonaws.com"
       SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${API}/*"
