@@ -1046,7 +1046,7 @@ Resources:
                 "x-amazon-apigateway-authorizer": {
                   "type": "cognito_user_pools",
                   "providerARNs": [
-                    "arn:aws:cognito-idp:us-east-1:878527066650:userpool/us-east-1_895IYJN1N"
+                    "arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/${CognitoUserPool}"
                   ]
                 }
               }
@@ -1319,6 +1319,12 @@ Resources:
           Mutable: true
           Required: true
       UserPoolName: "le-pantry-chef"
+  CognitoClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      SupportedIdentityProviders:
+        - COGNITO
+      UserPoolId: !Ref CognitoUserPool
 
   ### CLOUDFORMER CFT Creation Resources, in case things go really bad, for reference
 #  zonelepantrychefcom:
