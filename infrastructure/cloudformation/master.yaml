@@ -87,10 +87,7 @@ Resources:
   API:
     Type: AWS::ApiGateway::RestApi
     Properties:
-      Name: !Join
-        - ''
-        - - 'pantry-chef'
-          - !Ref DateTime
+      Name: 'pantry-chef'
       Body:
         Fn::Sub:
           |
