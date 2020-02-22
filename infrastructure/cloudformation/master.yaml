@@ -613,7 +613,7 @@ Resources:
                     }
                   },
                   "x-amazon-apigateway-integration": {
-                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfilesLambda.Arn}/invocations",
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${RecipesLambda.Arn}/invocations",
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
@@ -729,7 +729,7 @@ Resources:
                     }
                   },
                   "x-amazon-apigateway-integration": {
-                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfilesLambda.Arn}/invocations",
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${RecipesLambda.Arn}/invocations",
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
@@ -848,7 +848,9 @@ Resources:
       RestApiId: !Ref API
       Stage: !Ref APIStage
 
-  # Basic lambda template for testing (won't actually use this)
+  ###
+  # PROFILE LAMBDA
+  ###
   ProfilesLambda:
     Type: AWS::Lambda::Function
     Properties:
@@ -912,5 +914,34 @@ Resources:
     Properties:
       Action: "lambda:InvokeFunction"
       FunctionName: !GetAtt ProfilesLambda.Arn
+      Principal: "apigateway.amazonaws.com"
+      SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${API}/*"
+
+  ###
+  # RECIPE LAMBDA
+  ###
+  RecipesLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: "pc-recipe"
+      Code:
+        S3Bucket: "lepantrychefartifacts"
+        S3Key: "recipes.zip"
+      Handler: index.lambda_handler
+      Runtime: python3.6
+      Role: !GetAtt GenericLambdaRole.Arn
+      MemorySize: 512
+      Timeout: 15
+      Environment:
+        Variables:
+          RDS_ARN: !Ref Aurora
+          Secrets_ARN: !Ref DBSecretsArn
+
+  RecipesLambdaInvoke:
+    DependsOn: API
+    Type: "AWS::Lambda::Permission"
+    Properties:
+      Action: "lambda:InvokeFunction"
+      FunctionName: !GetAtt RecipesLambda.Arn
       Principal: "apigateway.amazonaws.com"
       SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${API}/*"
