@@ -28,5 +28,12 @@ jobs:
       - name: Upload to s3 artifact bucket
         run: cd back-end/lambdas/recipes && zip -r recipes.zip * && aws s3 cp recipes.zip s3://lepantrychefartifacts
 
-      - name: Deploy Profile Lambda
+      - name: Deploy Recipe Lambda
         run: cd back-end/lambdas/recipes && zip -r recipes.zip * && aws lambda update-function-code --function-name pc-recipe --zip-file fileb://recipes.zip
+
+      # Ingredient Lambda
+      - name: Upload to s3 artifact bucket
+        run: cd back-end/lambdas/ingredients && zip -r ingredients.zip * && aws s3 cp ingredients.zip s3://lepantrychefartifacts
+
+      - name: Deploy Ingredient Lambda
+        run: cd back-end/lambdas/ingredients && zip -r ingredients.zip * && aws lambda update-function-code --function-name pc-ingredient --zip-file fileb://ingredients.zip
