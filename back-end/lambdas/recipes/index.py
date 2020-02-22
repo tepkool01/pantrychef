@@ -13,19 +13,27 @@ def lambda_handler(event, context):
     print(context)
     result = {}
 
-    if event['path'] == '/recipes':
+    if event['resource'] == '/recipes':
         if event['httpMethod'] == 'GET':
             # Retrieve all profiles
             result = db.execute(
                 sql="select * FROM `Recipe`",
                 parameters=[]
             )
-    elif event['path'] == '/recipes/{recipeId}':
-        result = db.execute(
-            sql="select * FROM `Recipe`",
-            parameters=[]
-        )
+    elif event['resource'] == '/recipes/{recipeId}':
         print("Entered specific profile route")
+        print("recipe ID:", event['pathParameters']['recipeId'])
+        result = db.execute(
+            sql="select * FROM `Recipe` WHERE ID=:id",
+            parameters=[
+                {
+                    'name': 'id',
+                    'value': {
+                        'longValue': int(event['pathParameters']['recipeId'])
+                    }
+                }
+            ]
+        )
 
     return {
         'statusCode': 200,
