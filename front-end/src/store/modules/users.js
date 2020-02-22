@@ -12,6 +12,20 @@ const getters = {
 	},
 	user(state) {
 		return state.user
+	},
+	userId(state) {
+		if (state.user.hasOwnProperty('userId')) {
+			return state.user.userId
+		} else {
+			return ''
+		}
+	},
+	idToken(state) {
+		if (state.user.hasOwnProperty('idToken')) {
+			return state.user.idToken
+		} else {
+			return null
+		}
 	}
 }
 
@@ -23,6 +37,20 @@ const actions = {
 				.then(result => {
 					commit('AUTHENTICATE', result)
 					resolve(true)
+				})
+				.catch(err => {
+					reject(err)
+				})
+		})
+	},
+
+	getSession({ commit }) {
+		return new Promise((resolve, reject) => {
+			api.users
+				.getUserSession()
+				.then(response => {
+					commit('AUTHENTICATE', response)
+					resolve(response)
 				})
 				.catch(err => {
 					reject(err)
@@ -43,14 +71,11 @@ const actions = {
 				})
 		})
 	},
-	// eslint-disable-next-line no-unused-vars
-	logout({ commit }, payload) {
-		api.users.logout().then(() => {
-			commit('LOGOUT')
-		})
+	logout({ commit }) {
+		api.users.logout()
+		commit('LOGOUT')
 	},
-	// eslint-disable-next-line no-unused-vars
-	UpdatePassword({ commit }, payload) {
+	UpdatePassword({ commit }) {
 		api.users.updatePassword(state.user).then(() => {
 			commit('CHANGEPASSWORD')
 		})
@@ -61,6 +86,7 @@ const mutations = {
 	AUTHENTICATE(state, returnedUser) {
 		// eslint-disable-next-line no-console
 		console.log('User Authentication - Succeeded!')
+		console.log(returnedUser)
 		if (returnedUser != null) {
 			state.isAuthenticated = true
 			state.user = returnedUser

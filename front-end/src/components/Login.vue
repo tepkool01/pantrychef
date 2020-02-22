@@ -127,7 +127,7 @@ export default {
 			if (this.validateForm(e)) {
 				// initiate call to the store module for state changes/api request to validate user
 				this.$store
-					.dispatch('login', this.login)
+					.dispatch('users/login', this.login)
 					.then(() => {
 						this.$router.replace('/pantry')
 					})

@@ -18,7 +18,7 @@ const actions = {
 	},
 	getProfiles({ commit }) {
 		api.profile.getProfiles().then(response => {
-			commit('SET_PROFILES', response)
+			commit('SET_PROFILES', response.data)
 		})
 	}
 }

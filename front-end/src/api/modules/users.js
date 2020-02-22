@@ -14,22 +14,41 @@ let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData)
 
 //TODO: Fix this location
 function setupCongnitoUser(username) {
-	let userData = {
+	return new AmazonCognitoIdentity.CognitoUser({
 		Username: username,
 		Pool: userPool
-	}
-	let cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
-	return cognitoUser
+	})
 }
 
 export default {
-	logout(cognitoUser) {
-		cognitoUser.signOut()
+	logout() {
+		this.getUser().signOut()
 	},
 	//TODO: Fix this location
-	getUser(username) {
-		let cognitoUser = setupCongnitoUser(username)
-		return cognitoUser
+	getUser() {
+		return userPool.getCurrentUser()
+	},
+
+	getUserSession() {
+		return new Promise((resolve, reject) => {
+			this.getUser().getSession((err, session) => {
+				if (err) {
+					// do something
+					reject(err)
+				} else if (session.isValid()) {
+					// Valid session
+					resolve({
+						idToken: session.getIdToken().getJwtToken(),
+						refreshToken: session.getRefreshToken().getToken(),
+						accessToken: session.getAccessToken().getJwtToken(),
+						userId: this.getUser().getUsername()
+					})
+				} else {
+					// do something
+					reject("Could not locate user.")
+				}
+			})
+		})
 	},
 
 	forgotPassword(username) {

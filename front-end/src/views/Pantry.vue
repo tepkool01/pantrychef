@@ -1,7 +1,7 @@
 <template>
 	<div class="login">
 		<h1>Pantry</h1>
-		<h3>Welcome {{ user.userId }}!</h3>
+		<h3>Welcome {{ userId }}!</h3>
 		<br /><br /><br />
 		<h2>Create a Profile</h2>
 		<profile-create></profile-create>
@@ -22,14 +22,21 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
 	name: 'Profiles',
 	computed: {
-		...mapGetters(['profiles', 'user'])
+		...mapGetters('users', {
+			userId: 'userId'
+		}),
+		...mapGetters('profile', {
+			profiles: 'profiles'
+		})
 	},
 	components: {
 		Profile,
 		ProfileCreate
 	},
 	methods: {
-		...mapActions(['getProfiles'])
+		...mapActions('profile', {
+			getProfiles: 'getProfiles'
+		})
 	},
 	created() {
 		this.getProfiles()
