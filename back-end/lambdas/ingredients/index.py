@@ -7,7 +7,6 @@ from database import DB
 db = DB(database_name=os.environ['DB_NAME'], cluster_arn=os.environ['RDS_ARN'], secret_arn=os.environ['Secrets_ARN'])
 
 
-
 def lambda_handler(event, context):
 
     print(event)
