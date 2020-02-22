@@ -57,3 +57,10 @@ https://www.vuemastery.com/courses/real-world-vue-js/vue-cli/ (followed this to 
 
 ##Notes
 Chai is the testing environment and chai is the assertion library.
+
+## Resources created, but not contained within infrastructure yaml
+- Route 53 DNS
+- SES (email)
+- Cognito
+- Secrets Manager
+- CloudFront (CDN)

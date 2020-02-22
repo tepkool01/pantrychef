@@ -13,11 +13,11 @@ Parameters:
     Description: The Base URL for the API
     Type: String
     Default: "api.lepantrychef.com"
-  DB_SecretsArn:
+  DBSecretsArn:
     Description: The secret for the RDS database credentials
     Type: String
     Default: "arn:aws:secretsmanager:us-east-1:878527066650:secret:pantrychefdb-OKx5ZI"
-  DB_Name:
+  DBName:
     Description: Name of the database
     Type: String
     Default: "pantryDB"
@@ -33,7 +33,7 @@ Resources:
   Aurora:
     Type: 'AWS::RDS::DBCluster'
     Properties:
-      DatabaseName: !Ref DB_Name
+      DatabaseName: !Ref DBName
       DBClusterIdentifier: 'pantryChef'
       # TODO: Use secrets manager!
       MasterUsername: 'testusername'
@@ -864,7 +864,7 @@ Resources:
       Environment:
         Variables:
           RDS_ARN: !Ref Aurora
-          Secrets_ARN: !Ref DB_SecretsArn
+          Secrets_ARN: !Ref DBSecretsArn
 
   # This is the access permission we give to the Lambda, in this case, it can pretty much do logging (in real cases, you'd probably want to give database access, etc)
   GenericLambdaRole:
