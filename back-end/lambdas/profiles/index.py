@@ -1,7 +1,7 @@
 import json
 import os
 from database import DB
-import cognitojwt
+from identity import Identity
 
 # Everything outside of the handler is 'cached' on the virtual machine, connections should be here
 # Initialize the DB connect
@@ -13,23 +13,14 @@ def lambda_handler(event, context):
     print(context)
     result = {}
 
-    # Grab Bearer token, without the bearer, and it becomes a normal JWT we can decode
-    id_token = event['headers']['Authorization'].replace('Bearer ', '')
-    print(id_token)
-    REGION = 'us-east-1'  # todo: become part of environ
-    USERPOOL_ID = ' us-east-1_895IYJN1N'
-    APP_CLIENT_ID = '1f4k0ktrcbthkq7foan121c9sq'
-
-    # Sync mode
-    verified_claims: dict = await cognitojwt.decode_async(
-        id_token,
-        REGION,
-        USERPOOL_ID,
-        app_client_id=APP_CLIENT_ID,  # Optional
-        testmode=True  # Disable token expiration check for testing purposes
-    )
-    print("Claim!!!")
-    print(verified_claims)
+    # Grab data about person invoking the request
+    ident = Identity(event)
+    print(ident)
+    if 'sub' in ident:
+        print("User is actively logged in, their user ID (cognitoId) is:", ident['sub'])
+    else:
+        # todo
+        print("User token is expired, corrupted, we should exit/aka return out of the lambda early")
 
     if event['resource'] == '/profiles':
         if event['httpMethod'] == 'GET':
