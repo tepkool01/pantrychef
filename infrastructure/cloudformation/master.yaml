@@ -17,6 +17,10 @@ Parameters:
     Description: The secret for the RDS database credentials
     Type: String
     Default: "arn:aws:secretsmanager:us-east-1:878527066650:secret:pantrychefdb-OKx5ZI"
+  DBClusterArn:
+    Description:
+    Type: String
+    Default: "arn:aws:rds:us-east-1:878527066650:cluster:pantrychef"
   DBName:
     Description: Name of the database
     Type: String
@@ -869,7 +873,8 @@ Resources:
       Timeout: 15
       Environment:
         Variables:
-          RDS_ARN: !Ref Aurora
+          DB_NAME: !Ref DBName
+          RDS_ARN: !Ref DBClusterArn
           Secrets_ARN: !Ref DBSecretsArn
 
   # This is the access permission we give to the Lambda, in this case, it can pretty much do logging (in real cases, you'd probably want to give database access, etc)
@@ -938,7 +943,8 @@ Resources:
       Timeout: 15
       Environment:
         Variables:
-          RDS_ARN: !Ref Aurora
+          DB_Name: !Ref DBName
+          RDS_ARN: !Ref DBClusterArn
           Secrets_ARN: !Ref DBSecretsArn
 
   RecipesLambdaInvoke:
