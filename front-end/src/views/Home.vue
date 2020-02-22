@@ -1,15 +1,11 @@
 <template>
 	<div class="login">
 		<!-- Page Content -->
-		<div class="row">
-			<div class="col-lg-6 landing__photo-left"></div>
+		<div class="row min-vh-100">
+			<div class="col-lg-6 landing__photo-left d-none d-md-block"></div>
 
-			<div class="col-lg-6 text-center">
+			<div class="col-lg-6 text-center my-auto">
 				<login></login>
-			</div>
-
-			<div class="row landing__photo-bottom">
-				<div class="min-vh-100"></div>
 			</div>
 		</div>
 	</div>
