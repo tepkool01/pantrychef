@@ -5,7 +5,7 @@
 Example claims from deciphering Json Web Token (JWT)
 `{
   "sub": "02fbfe1b-ad3f-44be-bca7-b549f6c86eba",
-  "aud": "1f4k0ktrcbthkq7foan121c9sq",
+  "aud": "426724im0ednh2pdrpr7r02ove",
   "email_verified": true,
   "event_id": "42adc631-5bb2-439e-bd99-1c1b8c8b29c5",
   "token_use": "id",

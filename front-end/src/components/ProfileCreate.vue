@@ -2,7 +2,12 @@
 	<div class="create-profile">
 		<div class="form-group">
 			<label>
-				<input type="text" name="profile-name" class="form-control" v-model="profile.name" />
+				<input
+					type="text"
+					name="profile-name"
+					class="form-control"
+					v-model="profile.name"
+				/>
 			</label>
 		</div>
 		<button class="btn btn-dark" @click="onSubmit">Create</button>
