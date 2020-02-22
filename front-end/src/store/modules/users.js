@@ -99,7 +99,6 @@ const mutations = {
 	REGISTER(state, returnedUser) {
 		// eslint-disable-next-line no-console
 		console.log('New User Registered!')
-		state.isAuthenticated = true
 		state.user = returnedUser
 	},
 	LOGOUT(state) {

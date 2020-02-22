@@ -55,9 +55,11 @@ or autofix using
 3. https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en - the VueJS chrome plugin is invaluable-- I use it to check the 'state' (store) of the application.
 ## References / Resources
 https://www.vuemastery.com/courses/real-world-vue-js/vue-cli/ (followed this to create the project)
+https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html -- for creating triggers on Cognito events
 
 ##Notes
 Chai is the testing environment and chai is the assertion library.
+
 
 ## Resources created, but not contained within infrastructure yaml
 - Route 53 DNS
