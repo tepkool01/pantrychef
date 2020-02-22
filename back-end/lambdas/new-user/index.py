@@ -32,7 +32,7 @@ def lambda_handler(event, context):
                     {
                         'name': 'validated',
                         'value': {
-                            'booleanValues': True
+                            'booleanValue': True
                         }
                     }
                 ]
