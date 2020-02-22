@@ -64,6 +64,9 @@ Chai is the testing environment and chai is the assertion library.
 ## Resources created, but not contained within infrastructure yaml
 - Route 53 DNS
 - SES (email)
-- Cognito
 - Secrets Manager
 - CloudFront (CDN)
+
+
+# Installing system for first time
+1. Go to cognito after running the template, and set up custom domain
