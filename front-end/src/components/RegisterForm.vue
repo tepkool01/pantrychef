@@ -73,7 +73,7 @@
 			Sign up
 		</button>
 		<!-- Error validation block -->
-		<div v-if="validation.errors.length > 0" class="error-box">
+		<div v-if="validation.errors.length > 0" class="error-box my-2 py-3">
 			<ul>
 				<li v-for="error in validation.errors" :key="error.id">
 					{{ error.msg }}
@@ -229,7 +229,7 @@ export default {
 .error-box {
 	border: 1px solid red;
 	text-align: left;
-	padding-top: 10px;
+	border-radius: 6px;
 }
 .form-control:focus {
 	box-shadow: none;
