@@ -30,6 +30,7 @@ const routes = [
 			store
 				.dispatch('users/getSession')
 				.then(() => {
+					// todo: dry
 					// If we can get a token, then they can proceed, otherwise redirect them to the sign-in page
 					if (store.state.users.user.idToken != null) {
 						next()
@@ -47,11 +48,47 @@ const routes = [
 		name: 'pantry',
 		component: () => import('../views/Ingredients.vue'),
 		beforeEnter(to, from, next) {
-			// Get session in case they refreshed the page
 			store
 				.dispatch('users/getSession')
 				.then(() => {
-					// If we can get a token, then they can proceed, otherwise redirect them to the sign-in page
+					if (store.state.users.user.idToken != null) {
+						next()
+					} else {
+						next('/')
+					}
+				})
+				.catch(() => {
+					next('/')
+				})
+		}
+	},
+	{
+		path: '/recipes',
+		name: 'recipes',
+		component: () => import('../views/Recipes.vue'),
+		beforeEnter(to, from, next) {
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					if (store.state.users.user.idToken != null) {
+						next()
+					} else {
+						next('/')
+					}
+				})
+				.catch(() => {
+					next('/')
+				})
+		}
+	},
+	{
+		path: '/settings',
+		name: 'settings',
+		component: () => import('../views/Settings.vue'),
+		beforeEnter(to, from, next) {
+			store
+				.dispatch('users/getSession')
+				.then(() => {
 					if (store.state.users.user.idToken != null) {
 						next()
 					} else {
