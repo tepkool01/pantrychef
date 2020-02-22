@@ -22,4 +22,11 @@ jobs:
 
       # Deploy Lambda Profiles
       - name: Deploy Profile Lambda
-        run: cd back-end/lambdas/profiles && zip -r profiles.zip * && aws lambda update-function-code --function-name NFAurora-DummyLambda-148PL7XXTJSZS --zip-file fileb://profiles.zip
+        run: cd back-end/lambdas/profiles && zip -r profiles.zip * && aws lambda update-function-code --function-name pc-profile --zip-file fileb://profiles.zip
+
+      # Recipe Lambda
+      - name: Upload to s3 artifact bucket
+        run: cd back-end/lambdas/recipes && zip -r recipes.zip * && aws s3 cp recipes.zip s3://lepantrychefartifacts
+
+      - name: Deploy Profile Lambda
+        run: cd back-end/lambdas/recipes && zip -r recipes.zip * && aws lambda update-function-code --function-name pc-recipe --zip-file fileb://recipes.zip
