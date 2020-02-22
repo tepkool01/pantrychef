@@ -40,6 +40,7 @@ export default {
 	},
 	created() {
 		this.getProfiles()
+		this.$emit('title', 'Pantry')
 	}
 }
 </script>

@@ -46,6 +46,9 @@ export default {
 			// Received success message from register, so hide the register component and show the success page
 			this.showSuccessPage = data
 		}
+	},
+	created() {
+		this.$emit('title', 'Register')
 	}
 }
 </script>

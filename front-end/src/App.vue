@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<a href="" @click="onLogout" v-if="isAuthenticated">Logout</a>
-		<router-view />
+		<router-view @title="pageTitle = $event" />
 	</div>
 </template>
 
@@ -11,12 +11,19 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
 	name: 'app',
 	data() {
-		return {}
+		return {
+			pageTitle: ''
+		}
 	},
 	computed: {
 		...mapGetters('users', {
 			isAuthenticated: 'isAuthenticated'
 		})
+	},
+	watch: {
+		pageTitle(val) {
+			document.title = 'Pantry Chef - ' + val
+		}
 	},
 	methods: {
 		...mapActions('users', {
