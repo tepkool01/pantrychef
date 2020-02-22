@@ -41,3 +41,10 @@ jobs:
 
       - name: Deploy Ingredient Lambda
         run: cd back-end/lambdas/ingredients && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r ingredients.zip * && aws lambda update-function-code --function-name pc-ingredient --zip-file fileb://ingredients.zip
+
+      # New User Lambda
+      - name: Upload to s3 artifact bucket
+        run: cd back-end/lambdas/new-user && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r new-user.zip * && aws s3 cp new-user.zip s3://lepantrychefartifacts
+
+      - name: Deploy Ingredient Lambda
+        run: cd back-end/lambdas/new-user && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r new-user.zip * && aws lambda update-function-code --function-name pc-new-user --zip-file fileb://new-user.zip
