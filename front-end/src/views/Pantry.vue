@@ -1,14 +1,36 @@
 <template>
-	<div class="login">
-		<h1>Pantry</h1>
-		<h3>Welcome {{ userId }}!</h3>
-		<br /><br /><br />
-		<h2>Create a Profile</h2>
-		<profile-create></profile-create>
+	<div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="mt-4">Pantry</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-10 offset-1">
+				<div class="card-deck">
+					<div class="card m-4">
+						<div class="card-header">
+							<h5 class="card-title">Create a Profile</h5>
+						</div>
+						<div class="card-body my-2">
+							<profile-create></profile-create>
+						</div>
+					</div>
 
-		<h2>Select an existing profile</h2>
-		<div v-for="p in profiles" v-bind:key="p.name">
-			<profile :profile="p"></profile>
+					<div class="card m-4">
+						<div class="card-header">
+							<h5 class="card-title">
+								Select an existing profile
+							</h5>
+						</div>
+						<div class="card-body my-2">
+							<div v-for="p in profiles" v-bind:key="p.name">
+								<profile :profile="p"></profile>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -21,6 +43,11 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'Profiles',
+	data() {
+		return {
+			toggle: false
+		}
+	},
 	computed: {
 		...mapGetters('users', {
 			userId: 'userId'
@@ -44,3 +71,19 @@ export default {
 	}
 }
 </script>
+
+<style scoped>
+.border-between > [class*='col-']:before {
+	background: #e3e3e3;
+	bottom: 0;
+	content: ' ';
+	left: 0;
+	position: absolute;
+	width: 1px;
+	top: 0;
+}
+
+.border-between > [class*='col-']:first-child:before {
+	display: none;
+}
+</style>

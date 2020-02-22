@@ -41,6 +41,27 @@ const routes = [
 					next('/')
 				})
 		}
+	},
+	{
+		path: '/ingredients',
+		name: 'pantry',
+		component: () => import('../views/Ingredients.vue'),
+		beforeEnter(to, from, next) {
+			// Get session in case they refreshed the page
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					// If we can get a token, then they can proceed, otherwise redirect them to the sign-in page
+					if (store.state.users.user.idToken != null) {
+						next()
+					} else {
+						next('/')
+					}
+				})
+				.catch(() => {
+					next('/')
+				})
+		}
 	}
 ]
 
