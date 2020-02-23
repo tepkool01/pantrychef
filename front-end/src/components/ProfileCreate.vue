@@ -1,16 +1,15 @@
 <template>
-	<div class="create-profile">
-		<div class="form-group">
-			<label>
-				<input
-					type="text"
-					name="profile-name"
-					class="form-control"
-					v-model="profile.name"
-				/>
-			</label>
-		</div>
-		<button class="btn btn-dark" @click="onSubmit">Create</button>
+	<div class="create-profile d-flex justify-content-between">
+		<input
+			type="text"
+			name="profile-name"
+			class="form-control"
+			v-model="profile.name"
+		/>
+
+		<b-button variant="outline-secondary" class="ml-3" @click="onSubmit"
+			>Create</b-button
+		>
 	</div>
 </template>
 
