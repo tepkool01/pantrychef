@@ -101,9 +101,15 @@ def lambda_handler(event, context):
                 print(str(e))
 
     elif event['resource'] == '/profiles/{profileId}':
-        result = {}
-        print("Entered specific profile route")
-        print("profile ID:", event['pathParameters']['profileId'])
+        if event['httpMethod'] == 'DELETE':
+            print("Deleting", event['pathParameters']['profileId'])
+            db.execute(
+                sql="DELETE FROM UserProfile WHERE UserId=:userId AND ID=:id",
+                parameters=[
+                    {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
+                    {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
+                ]
+            )
 
     return {
         'statusCode': status_code,

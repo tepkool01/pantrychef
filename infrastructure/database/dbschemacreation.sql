@@ -23,8 +23,8 @@ CREATE TABLE UserProfile (
     ShoppingList INT,
     PRIMARY KEY (ID),
     FOREIGN KEY (UserID) REFERENCES User(ID),
-    FOREIGN KEY (PantryList) REFERENCES IngredientList(ID),
-    FOREIGN KEY (ShoppingList) REFERENCES IngredientList(ID)
+    FOREIGN KEY (PantryList) REFERENCES IngredientList(ID) ON DELETE CASCADE,
+    FOREIGN KEY (ShoppingList) REFERENCES IngredientList(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Ingredient (
