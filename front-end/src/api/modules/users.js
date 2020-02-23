@@ -85,7 +85,10 @@ export default {
 
 	updatePassword(cognitoUser, newPassword, oldPassword) {
 		return new Promise((resolve, reject) => {
-			cognitoUser.changePassword(oldPassword, newPassword, function(err, result) {
+			cognitoUser.changePassword(oldPassword, newPassword, function(
+				err,
+				result
+			) {
 				if (err) {
 					reject(err.message)
 				}

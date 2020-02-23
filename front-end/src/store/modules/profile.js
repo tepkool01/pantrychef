@@ -22,7 +22,7 @@ const actions = {
 		})
 	},
 	deleteProfile({ commit }, id) {
-		api.profile.deleteProfile().then(() => {
+		api.profile.deleteProfile(id).then(() => {
 			commit('DELETE_PROFILE', id)
 		})
 	}
@@ -30,7 +30,7 @@ const actions = {
 
 const mutations = {
 	ADD_PROFILE(state, profile) {
-		console.log("Adding profile", profile)
+		console.log('Adding profile', profile)
 		state.profiles.push(profile)
 	},
 	SET_PROFILES(state, profiles) {
