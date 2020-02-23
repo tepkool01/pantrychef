@@ -6,5 +6,8 @@ export default {
 	},
 	createProfile(profile) {
 		return axios.post('/profiles', profile)
+	},
+	deleteProfile(id) {
+		return axios.delete('/profiles/' + id)
 	}
 }

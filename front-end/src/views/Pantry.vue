@@ -25,7 +25,7 @@
 						</div>
 						<div class="card-body my-2">
 							<div v-for="p in profiles" v-bind:key="p.name">
-								<profile :profile="p"></profile>
+								<profile :profile="p" :key="p.id"></profile>
 							</div>
 						</div>
 					</div>
