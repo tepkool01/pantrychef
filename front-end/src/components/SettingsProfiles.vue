@@ -19,22 +19,6 @@
 			<b-list-group class="col-lg-6">
 				<b-list-group-item
 					class="d-flex justify-content-between align-items-center"
-				>
-					Steve French
-					<b-button-group>
-						<b-button variant="outline-secondary">
-							<b-icon-pencil></b-icon-pencil>
-						</b-button>
-						<b-button variant="outline-secondary">
-							<b-icon-trash></b-icon-trash>
-						</b-button>
-					</b-button-group>
-				</b-list-group-item>
-			</b-list-group>
-
-			<b-list-group class="col-lg-6">
-				<b-list-group-item
-					class="d-flex justify-content-between align-items-center"
 					v-for="p in profiles"
 					v-bind:key="p.name"
 				>
