@@ -29,7 +29,7 @@ class DB:
             return self.client.execute_statement(
                 **self.db_params,
                 **required_params,
-                **{'transaction_id': transaction_id}
+                **{'transactionId': transaction_id}
             )
         else:
             return self.client.execute_statement(

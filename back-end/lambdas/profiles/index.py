@@ -2,6 +2,7 @@ import json
 import os
 from database import DB
 from identity import Identity
+from user import User
 
 # Everything outside of the handler is 'cached' on the virtual machine, connections should be here
 # Initialize the DB connect
@@ -12,6 +13,7 @@ def lambda_handler(event, context):
     print(event)
 
     # Safe defaults for return values
+    u = None  # The user
     result = {}
     status_code = 200  # todo: make 201
 
@@ -20,12 +22,17 @@ def lambda_handler(event, context):
     print(payload)
 
     ###
-    # Grab data about person invoking the request
+    # Grab data about person invoking the request TODO: refactor this out?
     ###
     ident = Identity(event)
     claim = ident.get_claim()
     if 'sub' in claim:
         print("User is actively logged in, their user ID (cognitoId) is:", claim['sub'])
+        # Retrieve User Data for USER ID
+        u = User(db, claim['sub'])
+        u.retrieve_info()
+        print(u.get_id())
+        print(u.get_username())
     else:
         print("User token is expired, corrupted, we should exit/aka return out of the lambda early")
         return {
@@ -75,10 +82,10 @@ def lambda_handler(event, context):
                 profile = db.execute(
                     sql="INSERT INTO `UserProfile` (UserID, DietType, PantryList, ShoppingList) VALUES(:userId, :dietType, :pantryList, :shoppingList)",
                     parameters=[
-                        {'name': 'userId', 'value': {'longValue': int()}},
+                        {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
                         {'name': 'dietType', 'value': {'longValue': int(1)}},
-                        {'name': 'pantryList', 'value': {'longValue': int(1)}},
-                        {'name': 'shoppingList', 'value': {'longValue': int(2)}},
+                        {'name': 'pantryList', 'value': {'longValue': int(1)}},  # todo: how to get these values?
+                        {'name': 'shoppingList', 'value': {'longValue': int(2)}},  # todo: how to get these values?
                     ],
                     transaction_id=transaction_id
                 )
