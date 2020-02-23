@@ -13,13 +13,8 @@ def lambda_handler(event, context):
     print(event)
 
     # Safe defaults for return values
-    u = None  # The user
     result = {}
     status_code = 200  # todo: make 201
-
-    # Incoming payload from user
-    payload = json.loads(event['body'])
-    print(payload)
 
     ###
     # Grab data about person invoking the request TODO: refactor this out?
@@ -48,21 +43,26 @@ def lambda_handler(event, context):
     if event['resource'] == '/profiles':
         if event['httpMethod'] == 'GET':
             # Retrieve all profiles
-            result = db.execute(
-                sql="select * FROM `UserProfile` up JOIN `User` u on u.ID=up.UserId WHERE u.CognitoID=:cognitoId",
-                parameters=[
-                    {
-                        'name': 'cognitoId',
-                        'value': {
-                            'stringValue': claim['sub']
-                        }
-                    }
-                ]
+            raw_result = db.execute(
+                sql="select * FROM `UserProfile` WHERE UserID=:userId",
+                parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
             )
-            # todo: parse info
+
+            # Parsing info, because this database outputs crazy ass shit
+            result = []
+            for record in raw_result['records']:
+                result.append({
+                    'id': record[0]['longValue'],
+                    'profile_name': record[5]['stringValue']
+                })
+
         elif event['httpMethod'] == 'POST':
             # Create a profile
             print("Create a profile")
+
+            # First, grab the payload the user sent, and parse it
+            payload = json.loads(event['body'])
+
             transaction_id = db.begin_transaction()
             try:
                 list1 = db.execute(
