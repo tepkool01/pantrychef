@@ -53,17 +53,14 @@
 						id="navbarSupportedContent"
 					>
 						<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-							<li class="nav-item active">
-								<a class="nav-link" href="#">{{ userId }}</a>
-							</li>
-							<li>
-								<a
+							<b-nav-item-dropdown :text="userId" right>
+								<b-dropdown-item
 									href=""
 									@click="onLogout"
 									v-if="isAuthenticated"
-									>Logout</a
+									>Logout</b-dropdown-item
 								>
-							</li>
+							</b-nav-item-dropdown>
 						</ul>
 					</div>
 				</nav>
