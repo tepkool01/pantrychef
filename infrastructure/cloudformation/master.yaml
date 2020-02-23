@@ -433,7 +433,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "patch": {
                   "produces": [
@@ -509,7 +514,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "options": {
                   "consumes": [
@@ -746,7 +756,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "options": {
                   "consumes": [
@@ -983,7 +998,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "options": {
                   "consumes": [
@@ -1178,7 +1198,7 @@ Resources:
             Statement:
               - Effect: "Allow"
                 Action:
-                  - "rds-data:ExecuteStatement"
+                  - "rds-data:*"
                 Resource: "*"
 
   # This provides API Gateway access to invoke this lambda

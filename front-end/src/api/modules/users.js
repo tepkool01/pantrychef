@@ -84,14 +84,16 @@ export default {
 	},
 
 	updatePassword(cognitoUser, newPassword, oldPassword) {
-		cognitoUser.changePassword(oldPassword, newPassword, function(
-			err,
-			// eslint-disable-next-line no-unused-vars
-			result
-		) {
-			if (err) {
-				alert(err.message)
-			}
+		return new Promise((resolve, reject) => {
+			cognitoUser.changePassword(oldPassword, newPassword, function(
+				err,
+				result
+			) {
+				if (err) {
+					reject(err.message)
+				}
+				resolve(result)
+			})
 		})
 	},
 

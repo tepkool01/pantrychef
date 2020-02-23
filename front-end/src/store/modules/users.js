@@ -80,10 +80,12 @@ const actions = {
 		api.users.logout()
 		commit('LOGOUT')
 	},
-	UpdatePassword({ commit }) {
-		api.users.updatePassword(state.user).then(() => {
-			commit('CHANGEPASSWORD')
-		})
+	UpdatePassword({ commit }, newPassword, oldPassword) {
+		api.users
+			.updatePassword(state.user, newPassword, oldPassword)
+			.then(() => {
+				commit('CHANGEPASSWORD')
+			})
 	}
 }
 
