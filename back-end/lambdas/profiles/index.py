@@ -88,7 +88,12 @@ def lambda_handler(event, context):
                 )
                 print(profile)
                 db.commit_transaction(transaction_id)
-                result = profile
+
+                # Parse results for VueJS
+                result = {
+                    'id': profile['generatedFields'][0]['longValue'],
+                    'profile_name': str(payload['name'])
+                }
             except Exception as e:
                 db.rollback_transaction(transaction_id)
                 status_code = 500
