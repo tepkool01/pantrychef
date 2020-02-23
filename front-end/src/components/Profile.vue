@@ -1,6 +1,6 @@
 <template>
 	<div class="chef-profile">
-		{{ profile.name }}
+		 {{ profile.profile_name }} ({{ profile.id }})
 	</div>
 </template>
 
