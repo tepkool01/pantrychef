@@ -30,7 +30,6 @@ const actions = {
 
 const mutations = {
 	ADD_PROFILE(state, profile) {
-		console.log('Adding profile', profile)
 		state.profiles.push(profile)
 	},
 	SET_PROFILES(state, profiles) {
