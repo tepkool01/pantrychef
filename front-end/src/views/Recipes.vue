@@ -5,7 +5,7 @@
 				<h1 class="mt-4">Recipes</h1>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row">gi c
 			Test
 		</div>
 	</div>
