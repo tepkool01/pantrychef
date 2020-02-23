@@ -6,55 +6,46 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-12 settings--section-label">
+			<div class="col-lg-8 settings--section-label">
 				Account preferences
 			</div>
 		</div>
 		<div class="row mb-3">
-			<div class="col-lg-12">
-				<div class="form-group">
-					<label for="username"
-						>Update username
-						<input
-							type="text"
-							name="username"
-							id="username"
-							class="form-control"
-							:value="userId"
-						/>
-					</label>
+			<div class="col-lg-8 d-flex justify-content-between">
+				<div>
+					<div class="settings--content-label">Update username</div>
+					<div class="settings--content-sublabel">{{ userId }}</div>
+				</div>
+				<div>
 					<b-button
 						variant="outline-secondary"
 						class="ml-3"
-						@click="onSubmit"
+						v-b-modal="'update-username'"
 						>Update</b-button
 					>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-12">
-				<div class="form-group">
-					<label for="password"
-						>Update password
-						<input
-							type="text"
-							name="password"
-							id="password"
-							class="form-control"
-						/>
-					</label>
+			<div class="col-lg-8 d-flex justify-content-between">
+				<div>
+					<div class="settings--content-label">Update password</div>
+					<div class="settings--content-sublabel">
+						Password must be at least 6 characters long
+					</div>
+				</div>
+				<div>
 					<b-button
 						variant="outline-secondary"
 						class="ml-3"
-						@click="onSubmit"
+						v-b-modal="'update-password'"
 						>Update</b-button
 					>
 				</div>
 			</div>
 		</div>
 		<div class="row mt-4">
-			<div class="col-lg-12 settings--section-label">
+			<div class="col-lg-8 settings--section-label">
 				Deactivate account
 			</div>
 		</div>
@@ -66,13 +57,18 @@
 				</button>
 			</div>
 		</div>
+		<update-password></update-password>
+		<update-username></update-username>
 	</div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import UpdatePassword from './modals/UpdatePassword'
+import UpdateUsername from './modals/UpdateUsername'
 export default {
 	name: 'SettingsAccount',
+	components: { UpdateUsername, UpdatePassword },
 	computed: {
 		...mapGetters('users', {
 			userId: 'userId'
@@ -92,5 +88,18 @@ export default {
 	color: #7c7c7c;
 	margin-bottom: 32px;
 	padding-bottom: 6px;
+}
+
+.settings--content-label {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 20px;
+	margin-bottom: 4px;
+}
+
+.settings--content-sublabel {
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 16px;
 }
 </style>
