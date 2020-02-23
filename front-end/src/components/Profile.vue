@@ -12,6 +12,7 @@ export default {
 	},
 	methods: {
 		onDelete() {
+			console.log("Deleting", this.profile.id)
 			this.$store.dispatch('profile/deleteProfile', this.profile.id)
 		}
 	}

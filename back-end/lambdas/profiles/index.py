@@ -102,6 +102,7 @@ def lambda_handler(event, context):
 
     elif event['resource'] == '/profiles/{profileId}':
         if event['httpMethod'] == 'DELETE':
+            # todo: status code 204
             print("Deleting", event['pathParameters']['profileId'])
             db.execute(
                 sql="DELETE FROM UserProfile WHERE UserId=:userId AND ID=:id",
