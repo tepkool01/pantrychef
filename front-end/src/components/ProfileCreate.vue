@@ -27,7 +27,7 @@ export default {
 	},
 	methods: {
 		onSubmit() {
-			this.$store.dispatch('createProfile', this.profile)
+			this.$store.dispatch('profile/createProfile', this.profile)
 			this.profile = {
 				name: '',
 				ingredients: []

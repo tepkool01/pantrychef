@@ -1178,7 +1178,7 @@ Resources:
             Statement:
               - Effect: "Allow"
                 Action:
-                  - "rds-data:ExecuteStatement"
+                  - "rds-data:*"
                 Resource: "*"
 
   # This provides API Gateway access to invoke this lambda

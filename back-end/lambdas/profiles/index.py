@@ -16,7 +16,7 @@ def lambda_handler(event, context):
     status_code = 200  # todo: make 201
 
     # Incoming payload from user
-    payload = json.loads(event.body)
+    payload = json.loads(event['body'])
     print(payload)
 
     ###
