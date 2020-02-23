@@ -20,15 +20,17 @@
 				<b-list-group-item
 					class="d-flex justify-content-between align-items-center"
 					v-for="p in profiles"
-					v-bind:key="p.name"
+					v-bind:key="p.id"
 				>
-					<profile :profile="p"></profile>
+					{{ p.profile_name }}
 					<b-button-group>
 						<b-button variant="outline-secondary">
 							<b-icon-pencil></b-icon-pencil>
 						</b-button>
 						<b-button variant="outline-secondary">
-							<b-icon-trash></b-icon-trash>
+							<b-icon-trash
+								@click="onDelete(p.id)"
+							></b-icon-trash>
 						</b-button>
 					</b-button-group>
 				</b-list-group-item>
@@ -48,7 +50,6 @@
 </template>
 
 <script>
-import Profile from '@/components/Profile.vue'
 import ProfileCreate from '../components/ProfileCreate'
 import { mapGetters, mapActions } from 'vuex'
 export default {
@@ -59,10 +60,12 @@ export default {
 		})
 	},
 	components: {
-		Profile,
 		ProfileCreate
 	},
 	methods: {
+		onDelete(id) {
+			this.$store.dispatch('profile/deleteProfile', id)
+		},
 		...mapActions('profile', {
 			getProfiles: 'getProfiles'
 		})
