@@ -11,7 +11,7 @@ class User:
         )
 
     def get_id(self):
-        return self.user_data['ID'] if self.user_data is not None else ''
+        return self.user_data['records'][0][0]['longValue'] if self.user_data is not None and len(self.user_data['records']) > 0 else ''
 
     def get_username(self):
-        return self.user_data['Username'] if self.user_data is not None else ''
+        return self.user_data['records'][0][1]['stringValue'] if self.user_data is not None and len(self.user_data['records']) > 0 else ''

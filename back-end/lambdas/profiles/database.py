@@ -21,6 +21,7 @@ class DB:
     """Executes a SQL Statement"""
     def execute(self, sql, parameters, transaction_id=''):
         required_params = {
+            # 'includeResultMetadata': True,
             'database': self.database,
             'sql': sql,
             'parameters': parameters

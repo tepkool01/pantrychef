@@ -16,6 +16,7 @@ CREATE TABLE IngredientList (
 
 CREATE TABLE UserProfile (
     ID INT NOT NULL AUTO_INCREMENT,
+    ProfileName VARCHAR(50),
     UserID INT,
     DietType INT,
     PantryList INT,

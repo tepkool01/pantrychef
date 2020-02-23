@@ -31,8 +31,6 @@ def lambda_handler(event, context):
         # Retrieve User Data for USER ID
         u = User(db, claim['sub'])
         u.retrieve_info()
-        print(u.get_id())
-        print(u.get_username())
     else:
         print("User token is expired, corrupted, we should exit/aka return out of the lambda early")
         return {
@@ -72,20 +70,19 @@ def lambda_handler(event, context):
                     parameters=[{'name': 'stuff', 'value': {'stringValue': 'WhatGoesHere'}}],
                     transaction_id=transaction_id
                 )
-                print(list1)
                 list2 = db.execute(
                     sql="INSERT INTO `IngredientList` (ListType) VALUES(:stuff)",
                     parameters=[{'name': 'stuff', 'value': {'stringValue': 'WhatGoesHere'}}],
                     transaction_id=transaction_id
                 )
-                print(list2)
                 profile = db.execute(
-                    sql="INSERT INTO `UserProfile` (UserID, DietType, PantryList, ShoppingList) VALUES(:userId, :dietType, :pantryList, :shoppingList)",
+                    sql="INSERT INTO `UserProfile` (ProfileName, UserID, DietType, PantryList, ShoppingList) VALUES(:profileName, :userId, :dietType, :pantryList, :shoppingList)",
                     parameters=[
+                        {'name': 'profileName', 'value': {'stringValue': str(payload['name'])}},
                         {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
-                        {'name': 'dietType', 'value': {'longValue': int(1)}},
-                        {'name': 'pantryList', 'value': {'longValue': int(1)}},  # todo: how to get these values?
-                        {'name': 'shoppingList', 'value': {'longValue': int(2)}},  # todo: how to get these values?
+                        {'name': 'dietType', 'value': {'longValue': int(1)}},  # Random number for now
+                        {'name': 'pantryList', 'value': {'longValue': int(list1['generatedFields'][0]['longValue'])}},
+                        {'name': 'shoppingList', 'value': {'longValue': int(list2['generatedFields'][0]['longValue'])}}
                     ],
                     transaction_id=transaction_id
                 )
