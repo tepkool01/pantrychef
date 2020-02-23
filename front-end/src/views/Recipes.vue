@@ -5,15 +5,17 @@
 				<h1 class="mt-4">Recipes</h1>
 			</div>
 		</div>
-		<div class="row">gi c
-			Test
+		<div class="row">
+			<recipe-card></recipe-card>
 		</div>
 	</div>
 </template>
 
 <script>
+import RecipeCard from '../components/RecipeCard'
 export default {
 	name: 'Recipes',
+	components: { RecipeCard },
 	created() {
 		this.$emit('title', 'Ingredients')
 		this.$store.dispatch('recipes/getRecipes')
