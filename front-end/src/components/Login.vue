@@ -58,6 +58,10 @@
 				</li>
 			</ul>
 		</div>
+
+		<p class="mb-6">
+			<router-link to="/ForgotPassword">Forgot Password?</router-link>
+		</p>
 	</div>
 </template>
 

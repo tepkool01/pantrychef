@@ -56,6 +56,7 @@
 							<b-nav-item-dropdown :text="userId" right>
 								<b-dropdown-item
 									href=""
+									id="logoutButton"
 									@click="onLogout"
 									v-if="isAuthenticated"
 									>Logout</b-dropdown-item

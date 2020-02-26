@@ -62,7 +62,19 @@ const actions = {
 				})
 		})
 	},
-
+	forgotPassword({ commit }, payload) {
+		return new Promise((resolve, reject) => {
+			api.users
+				.forgotPassword(payload.username)
+				.then(response => {
+					commit('FORGOTPASSWORD', response)
+					resolve(response)
+				})
+				.catch(err => {
+					reject(err)
+				})
+		})
+	},
 	createAccount({ commit }, payload) {
 		return new Promise((resolve, reject) => {
 			api.users
@@ -111,6 +123,12 @@ const mutations = {
 	},
 	// eslint-disable-next-line no-unused-vars
 	CHANGEPASSWORD(state) {
+		// eslint-disable-next-line no-console
+		console.log('Users password is updated!')
+		//TODO: Update User?
+	},
+	// eslint-disable-next-line no-unused-vars
+	FORGOTPASSWORD(state) {
 		// eslint-disable-next-line no-console
 		console.log('Users password is updated!')
 		//TODO: Update User?
