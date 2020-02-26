@@ -74,33 +74,34 @@ describe('Login.vue', () => {
 	})
 
 	it('fails to log in with invalid credentials', () => {
-		api.users.authenticate('invalidUser', 'invalidPassword').then(response => {
-			console.log(response)
-			expect(response).to.be.null
-		})
+		api.users
+			.authenticate('invalidUser', 'invalidPassword')
+			.then(response => {
+				console.log(response)
+				expect(response).to.be.null
+			})
 	})
 
 	it('logs in with valid credentials', () => {
-		api.users.authenticate('test','test').then(response => {
+		api.users.authenticate('test', 'test').then(response => {
 			expect(response).to.not.be.null
 		})
 	})
 
-
 	it('logs out of an authenticated account', () => {
-		var user = api.users.getUser("test2")
+		var user = api.users.getUser('test2')
 		api.users.logout(user)
 		expect().to.not.cause.error
 	})
 
 	it('fails to log out of an authenticated account', () => {
-		var user = api.users.getUser("test2")
+		var user = api.users.getUser('test2')
 		api.users.logout(user)
 		expect().to.cause.error
 	})
 
 	it('register a new user', () => {
-		var response = api.users.register("Test3", "TestTest3", "test@test.com").
+		var response = api.users.register('Test3', 'TestTest3', 'test@test.com')
 		console.log(response)
 		expect(response).to.not.be.null
 	})

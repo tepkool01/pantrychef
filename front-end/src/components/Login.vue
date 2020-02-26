@@ -1,69 +1,62 @@
 <template>
-	<div class="col-lg-4 offset-4">
-		<div class="container">
-			<h1 class="mt-5 landing__title">Pantry Chef</h1>
-			<p class="mb-2">Sign-up and spark your recipe ideas.</p>
-			<p class="mb-5">
-				New to Pantry Chef?
-				<router-link to="/register">Sign up</router-link>
-			</p>
+	<div class="container">
+		<h1 class="mt-5 landing__title">Pantry Chef</h1>
+		<p class="mb-2">Spark your recipe ideas.</p>
+		<p class="mb-5">
+			New to Pantry Chef?
+			<router-link to="/register">Sign up</router-link>
+		</p>
 
-			<button class="btn btn-block btn-primary button--facebook-login">
-				Login with Facebook
-			</button>
-			<button class="btn btn-block btn-danger button--google-login">
-				Login with Google
-			</button>
+		<button class="btn btn-block btn-primary button--facebook-login">
+			Login with Facebook
+		</button>
+		<button class="btn btn-block btn-danger button--google-login">
+			Login with Google
+		</button>
 
-			<div>or</div>
+		<div class="login--separator my-4"><span>or</span></div>
 
-			<form
-				id="login"
-				@submit="loginUser"
-				method="post"
-				:novalidate="true"
-			>
-				<div class="input-group mb-3">
-					<input
-						v-model="login.username"
-						type="text"
-						class="form-control"
-						:class="{ 'input--error': validation.username }"
-						placeholder="Username"
-						aria-label="Username"
-						autocomplete="username"
-					/>
-				</div>
-				<div class="input-group mb-3">
-					<input
-						v-model="login.password"
-						type="password"
-						class="form-control"
-						:class="{ 'input--error': validation.password }"
-						placeholder="Password"
-						aria-label="Password"
-						autocomplete="current-password"
-					/>
-				</div>
-
-				<div class="mt-2 mb-5">
-					<button
-						@click="loginUser"
-						class="btn btn-primary btn-block button--login"
-					>
-						Login
-					</button>
-				</div>
-			</form>
-
-			<!-- Error validation block -->
-			<div v-if="validation.errors.length > 0" class="error-box">
-				<ul>
-					<li v-for="error in validation.errors" :key="error.id">
-						{{ error.msg }}
-					</li>
-				</ul>
+		<form id="login" @submit="loginUser" method="post" :novalidate="true">
+			<div class="input-group mb-3">
+				<input
+					v-model="login.username"
+					type="text"
+					class="form-control"
+					:class="{ 'input--error': validation.username }"
+					placeholder="Username"
+					aria-label="Username"
+					autocomplete="username"
+				/>
 			</div>
+			<div class="input-group mb-3">
+				<input
+					v-model="login.password"
+					type="password"
+					class="form-control"
+					:class="{ 'input--error': validation.password }"
+					placeholder="Password"
+					aria-label="Password"
+					autocomplete="current-password"
+				/>
+			</div>
+
+			<div class="mt-2 mb-5">
+				<button
+					@click="loginUser"
+					class="btn btn-primary btn-block button--login"
+				>
+					Login
+				</button>
+			</div>
+		</form>
+
+		<!-- Error validation block -->
+		<div v-if="validation.errors.length > 0" class="error-box">
+			<ul>
+				<li v-for="error in validation.errors" :key="error.id">
+					{{ error.msg }}
+				</li>
+			</ul>
 		</div>
 	</div>
 </template>
@@ -127,9 +120,9 @@ export default {
 			if (this.validateForm(e)) {
 				// initiate call to the store module for state changes/api request to validate user
 				this.$store
-					.dispatch('login', this.login)
+					.dispatch('users/login', this.login)
 					.then(() => {
-						this.$router.replace('/profiles')
+						this.$router.replace('/pantry')
 					})
 					.catch(err => {
 						this.validation.errors.push({
@@ -176,5 +169,21 @@ export default {
 .button--login:hover {
 	background-color: #717880;
 	transition: 0.3s;
+}
+
+.container {
+	max-width: 60%;
+}
+
+.login--separator {
+	width: 100%;
+	text-align: center;
+	border-bottom: 1px solid #889099;
+	line-height: 0.1em;
+}
+
+.login--separator span {
+	padding: 0 10px;
+	background-color: #212b33;
 }
 </style>

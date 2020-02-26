@@ -8,6 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use
+          architecture: 'x64' # optional x64 or x86
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -18,8 +22,29 @@ jobs:
 
       # Upload artifact to s3 bucket to be referenced, this is only for the instantiation of the lambda for the CFT
       - name: Upload to s3 artifact bucket
-        run: cd back-end/lambdas/profiles && zip -r profiles.zip * && aws s3 cp profiles.zip s3://lepantrychefartifacts
+        run: cd back-end/lambdas/profiles && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r profiles.zip * && aws s3 cp profiles.zip s3://lepantrychefartifacts
 
       # Deploy Lambda Profiles
       - name: Deploy Profile Lambda
-        run: cd back-end/lambdas/profiles && zip -r profiles.zip * && aws lambda update-function-code --function-name NFAurora-DummyLambda-148PL7XXTJSZS --zip-file fileb://profiles.zip
+        run: cd back-end/lambdas/profiles && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r profiles.zip * && aws lambda update-function-code --function-name pc-profile --zip-file fileb://profiles.zip
+
+      # Recipe Lambda
+      - name: Upload to s3 artifact bucket
+        run: cd back-end/lambdas/recipes && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r recipes.zip * && aws s3 cp recipes.zip s3://lepantrychefartifacts
+
+      - name: Deploy Recipe Lambda
+        run: cd back-end/lambdas/recipes && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r recipes.zip * && aws lambda update-function-code --function-name pc-recipe --zip-file fileb://recipes.zip
+
+      # Ingredient Lambda
+      - name: Upload to s3 artifact bucket
+        run: cd back-end/lambdas/ingredients && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r ingredients.zip * && aws s3 cp ingredients.zip s3://lepantrychefartifacts
+
+      - name: Deploy Ingredient Lambda
+        run: cd back-end/lambdas/ingredients && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r ingredients.zip * && aws lambda update-function-code --function-name pc-ingredient --zip-file fileb://ingredients.zip
+
+      # New User Lambda
+      - name: Upload to s3 artifact bucket
+        run: cd back-end/lambdas/new-user && zip -r new-user.zip * && aws s3 cp new-user.zip s3://lepantrychefartifacts
+
+      - name: Deploy Ingredient Lambda
+        run: cd back-end/lambdas/new-user && zip -r new-user.zip * && aws lambda update-function-code --function-name pc-new-user --zip-file fileb://new-user.zip

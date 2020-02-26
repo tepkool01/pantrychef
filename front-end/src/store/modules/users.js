@@ -3,7 +3,12 @@ import api from '../../api'
 
 const state = {
 	isAuthenticated: false,
-	user: null
+	user: {
+		accessToken: '',
+		idToken: '',
+		refreshToken: '',
+		userId: ''
+	}
 }
 
 const getters = {
@@ -12,6 +17,20 @@ const getters = {
 	},
 	user(state) {
 		return state.user
+	},
+	userId(state) {
+		if (state.user.hasOwnProperty('userId')) {
+			return state.user.userId
+		} else {
+			return ''
+		}
+	},
+	idToken(state) {
+		if (state.user.hasOwnProperty('idToken')) {
+			return state.user.idToken
+		} else {
+			return ''
+		}
 	}
 }
 
@@ -23,6 +42,20 @@ const actions = {
 				.then(result => {
 					commit('AUTHENTICATE', result)
 					resolve(true)
+				})
+				.catch(err => {
+					reject(err)
+				})
+		})
+	},
+
+	getSession({ commit }) {
+		return new Promise((resolve, reject) => {
+			api.users
+				.getUserSession()
+				.then(response => {
+					commit('AUTHENTICATE', response)
+					resolve(response)
 				})
 				.catch(err => {
 					reject(err)
@@ -43,17 +76,16 @@ const actions = {
 				})
 		})
 	},
-	// eslint-disable-next-line no-unused-vars
-	logout({ commit }, payload) {
-		api.users.logout().then(() => {
-			commit('LOGOUT')
-		})
+	logout({ commit }) {
+		api.users.logout()
+		commit('LOGOUT')
 	},
-	// eslint-disable-next-line no-unused-vars
-	UpdatePassword({ commit }, payload) {
-		api.users.updatePassword(state.user).then(() => {
-			commit('CHANGEPASSWORD')
-		})
+	UpdatePassword({ commit }, newPassword, oldPassword) {
+		api.users
+			.updatePassword(state.user, newPassword, oldPassword)
+			.then(() => {
+				commit('CHANGEPASSWORD')
+			})
 	}
 }
 
@@ -69,7 +101,6 @@ const mutations = {
 	REGISTER(state, returnedUser) {
 		// eslint-disable-next-line no-console
 		console.log('New User Registered!')
-		state.isAuthenticated = true
 		state.user = returnedUser
 	},
 	LOGOUT(state) {

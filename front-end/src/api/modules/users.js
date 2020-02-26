@@ -2,8 +2,8 @@ import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 
 //TODO: move this to a better place
-const UserPoolId = 'us-east-1_895IYJN1N'
-const ClientId = '1f4k0ktrcbthkq7foan121c9sq'
+const UserPoolId = 'us-east-1_DEgBJUPlO'
+const ClientId = '426724im0ednh2pdrpr7r02ove'
 
 const poolData = {
 	UserPoolId: UserPoolId,
@@ -14,22 +14,41 @@ let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData)
 
 //TODO: Fix this location
 function setupCongnitoUser(username) {
-	let userData = {
+	return new AmazonCognitoIdentity.CognitoUser({
 		Username: username,
 		Pool: userPool
-	}
-	let cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
-	return cognitoUser
+	})
 }
 
 export default {
-	logout(cognitoUser) {
-		cognitoUser.signOut()
+	logout() {
+		this.getUser().signOut()
 	},
 	//TODO: Fix this location
-	getUser(username) {
-		let cognitoUser = setupCongnitoUser(username)
-		return cognitoUser
+	getUser() {
+		return userPool.getCurrentUser()
+	},
+
+	getUserSession() {
+		return new Promise((resolve, reject) => {
+			this.getUser().getSession((err, session) => {
+				if (err) {
+					// do something
+					reject(err)
+				} else if (session.isValid()) {
+					// Valid session
+					resolve({
+						idToken: session.getIdToken().getJwtToken(),
+						refreshToken: session.getRefreshToken().getToken(),
+						accessToken: session.getAccessToken().getJwtToken(),
+						userId: this.getUser().getUsername()
+					})
+				} else {
+					// do something
+					reject('Could not locate user.')
+				}
+			})
+		})
 	},
 
 	forgotPassword(username) {
@@ -65,14 +84,16 @@ export default {
 	},
 
 	updatePassword(cognitoUser, newPassword, oldPassword) {
-		cognitoUser.changePassword(oldPassword, newPassword, function(
-			err,
-			// eslint-disable-next-line no-unused-vars
-			result
-		) {
-			if (err) {
-				alert(err.message)
-			}
+		return new Promise((resolve, reject) => {
+			cognitoUser.changePassword(oldPassword, newPassword, function(
+				err,
+				result
+			) {
+				if (err) {
+					reject(err.message)
+				}
+				resolve(result)
+			})
 		})
 	},
 
@@ -123,7 +144,7 @@ export default {
 								'us-east-1:d7ab3904-42a7-4f17-967d-0877b9ff6fed', // your identity pool id here
 							Logins: {
 								// Change the key below according to the specific region your user pool is in.
-								'cognito-idp.us-east-1.amazonaws.com/us-east-1_895IYJN1N': result
+								'cognito-idp.us-east-1.amazonaws.com/us-east-1_DEgBJUPlO': result
 									.getIdToken()
 									.getJwtToken()
 							}

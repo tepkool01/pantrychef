@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
+import store from '../store/index'
+import axios from 'axios'
+
+Vue.use(VueRouter)
 
 const routes = [
 	{
@@ -20,9 +23,98 @@ const routes = [
 		component: () => import('../views/Register.vue')
 	},
 	{
-		path: '/profiles',
-		name: 'profiles',
-		component: () => import('../views/Profiles.vue')
+		path: '/pantry',
+		name: 'pantry',
+		component: () => import('../views/Pantry.vue'),
+		beforeEnter(to, from, next) {
+			// Get session in case they refreshed the page
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					// todo: dry
+					// If we can get a token, then they can proceed, otherwise redirect them to the sign-in page
+					if (store.state.users.user.idToken != null) {
+						axios.defaults.headers.common['Authorization'] =
+							store.state.users.user.idToken
+
+						next()
+					} else {
+						next('/')
+					}
+				})
+				.catch(() => {
+					next('/')
+				})
+		}
+	},
+	{
+		path: '/ingredients',
+		name: 'ingredients',
+		component: () => import('../views/Ingredients.vue'),
+		beforeEnter(to, from, next) {
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					if (store.state.users.user.idToken != null) {
+						// Sets the authorization token so the user can access this endpoint
+						axios.defaults.headers.common['Authorization'] =
+							store.state.users.user.idToken
+
+						next()
+					} else {
+						next('/')
+					}
+				})
+				.catch(() => {
+					next('/')
+				})
+		}
+	},
+	{
+		path: '/recipes',
+		name: 'recipes',
+		component: () => import('../views/Recipes.vue'),
+		beforeEnter(to, from, next) {
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					if (store.state.users.user.idToken != null) {
+						// Sets the authorization token so the user can access this endpoint
+						axios.defaults.headers.common['Authorization'] =
+							store.state.users.user.idToken
+
+						next()
+					} else {
+						next('/')
+					}
+				})
+				.catch(() => {
+					next('/')
+				})
+		}
+	},
+	{
+		path: '/settings',
+		name: 'settings',
+		component: () => import('../views/Settings.vue'),
+		beforeEnter(to, from, next) {
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					if (store.state.users.user.idToken != null) {
+						// Sets the authorization token so the user can access this endpoint
+						axios.defaults.headers.common['Authorization'] =
+							store.state.users.user.idToken
+
+						next()
+					} else {
+						next('/')
+					}
+				})
+				.catch(() => {
+					next('/')
+				})
+		}
 	}
 ]
 

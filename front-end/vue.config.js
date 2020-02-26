@@ -1,4 +1,6 @@
 module.exports = {
+	// prevent irritating lint on save
+	lintOnSave: process.env.NODE_ENV === 'production',
 	chainWebpack: (config) => {
 		const path = require('path')
 

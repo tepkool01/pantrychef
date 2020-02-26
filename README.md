@@ -55,8 +55,21 @@ or autofix using
 ## Fun Tips
 1. Using `vue ui` you can get to the UI manager for this application. You'll need to import the `pantry-chef` folder as a project first.
 2. Use terminal window in webstorm to install mocha and chai.
+3. https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en - the VueJS chrome plugin is invaluable-- I use it to check the 'state' (store) of the application.
 ## References / Resources
 https://www.vuemastery.com/courses/real-world-vue-js/vue-cli/ (followed this to create the project)
+https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html -- for creating triggers on Cognito events
 
 ##Notes
 Chai is the testing environment and chai is the assertion library.
+
+
+## Resources created, but not contained within infrastructure yaml
+- Route 53 DNS
+- SES (email)
+- Secrets Manager
+- CloudFront (CDN)
+
+
+# Installing system for first time
+1. Go to cognito after running the template, and set up custom domain

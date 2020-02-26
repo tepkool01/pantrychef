@@ -1,9 +1,21 @@
 {
-    "request": {
-        "userAttributes": {
-            "email": "user@example.com",
-            "email_verified": true
-        }
-    },
-    "response": {}
+  "version": "1",
+  "region": "us-east-1",
+  "userPoolId": "us-east-1_895IYJN1N",
+  "userName": "tepkool01",
+  "callerContext": {
+    "awsSdkVersion": "aws-sdk-unknown-unknown",
+    "clientId": "426724im0ednh2pdrpr7r02ove"
+  },
+  "triggerSource": "PostConfirmation_ConfirmSignUp",
+  "request": {
+    "userAttributes": {
+      "sub": "dd0b6add-c787-4a59-9ebf-e1e57bcce5b6",
+      "cognito:user_status": "CONFIRMED",
+      "email_verified": "true",
+      "cognito:email_alias": "mvy1221@gmail.com",
+      "email": "mvy1221@gmail.com"
+    }
+  },
+  "response": {}
 }
