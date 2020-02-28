@@ -25,13 +25,13 @@
 <script>
 // @ is an alias to /src
 import ForgotPasswordForm from '@/components/ForgotPasswordForm.vue'
-//import RegisterSuccess from '@/components/RegisterSuccess.vue'
+import ForgotPasswordSuccess from '@/components/ForgotPasswordSuccess.vue'
 
 export default {
 	name: 'forgotPassword',
 	components: {
-		ForgotPasswordForm: ForgotPasswordForm
-		//RegisterSuccess: RegisterSuccess
+		ForgotPasswordForm: ForgotPasswordForm,
+		ForgotPasswordSuccess: ForgotPasswordSuccess
 	},
 	data() {
 		return {
@@ -40,7 +40,7 @@ export default {
 	},
 	methods: {
 		showSuccessComponent(data) {
-			// Received success message from register, so hide the register component and show the success page
+			// Received success message from cognito forgot password, so hide the form component and show the success page
 			this.showSuccessPage = data
 		}
 	},
