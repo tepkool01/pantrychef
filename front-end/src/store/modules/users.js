@@ -75,6 +75,19 @@ const actions = {
 				})
 		})
 	},
+	forgotPasswordVerification({ commit }, payload) {
+		return new Promise((resolve, reject) => {
+			api.users
+				.forgotPasswordVerification(payload.username, payload.code, payload.newPassword)
+				.then(response => {
+					commit('FORGOTPASSWORD', response)
+					resolve(response)
+				})
+				.catch(err => {
+					reject(err)
+				})
+		})
+	},
 	createAccount({ commit }, payload) {
 		return new Promise((resolve, reject) => {
 			api.users

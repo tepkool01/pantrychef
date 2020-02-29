@@ -1,15 +1,25 @@
 <template>
 	<form
-		id="forgotPassword"
-		@submit="forgotPasswordSubmit"
+		id="forgotPasswordVerification"
+		@submit="forgotPasswordVerificationSubmit"
 		method="post"
 		:novalidate="true"
 	>
-		<div class="forgotPassword">
+		<div class="forgotPasswordVerification">
 			<div class="form-group mb-3">
-				<label>Username</label>
+
+				<label>Verification Code</label>
 				<input
-					v-model="user.username"
+					v-model="user.code"
+					type="text"
+					class="form-control"
+					placeholder="Username"
+					aria-label="Username"
+					autocomplete="username"
+				/>
+				<label>New Password</label>
+				<input
+					v-model="user.newPassword"
 					type="text"
 					class="form-control"
 					placeholder="Username"
@@ -29,6 +39,7 @@
 				</li>
 			</ul>
 		</div>
+
 	</form>
 </template>
 
@@ -44,16 +55,18 @@ export default {
 				passwordNumbers: /[0-9]/
 			},
 			user: {
-				username: ''
+				code: '',
+				newPassword: ''
 			},
 			validation: {
 				errors: [],
-				username: false
+				code: false,
+				newPassword: false
 			}
 		}
 	},
 	methods: {
-		// Validates the username and provides error messaging if needed
+		// Validates the username, password, password confirmation, etc, and provides error messaging if needed
 		validateForm(e) {
 			// Return the status of the form to the submission handler
 			let isValid = true
@@ -80,10 +93,10 @@ export default {
 			this.validation.errors = []
 			this.validation.username = false
 		},
-		forgotPasswordSubmit(e) {
+		forgotPasswordVerificationSubmit(e) {
 			if (this.validateForm(e)) {
 				this.$store
-					.dispatch('users/forgotPassword', this.user)
+					.dispatch('users/forgotPasswordVerification', this.user)
 					.then(() => {
 						// See Micheal Young's notes on this method under register
 						// Hint: he likes it.

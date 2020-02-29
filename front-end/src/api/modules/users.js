@@ -54,31 +54,27 @@ export default {
 	forgotPassword(username) {
 		let cognitoUser = setupCongnitoUser(username)
 		cognitoUser.forgotPassword({
-			onSuccess: function(data) {
+			onSuccess: function (data) {
 				// successfully initiated reset password request
 				// eslint-disable-next-line no-console
 				console.log('CodeDeliveryData from forgotPassword: ' + data)
 			},
-			onFailure: function(err) {
+			onFailure: function (err) {
 				alert(err.message)
-			},
-			//Optional automatic callback
-			inputVerificationCode: function(data) {
+			}
+		})
+	},
+	forgotPasswordVerification(username, code, newPassword) {
+		let cognitoUser = setupCongnitoUser(username)
+		cognitoUser.confirmPassword(code, newPassword, {
+			onSuccess() {
 				// eslint-disable-next-line no-console
-				console.log('Code sent to: ' + data)
-				let verificationCode = document.getElementById('code').value
-				let newPassword = document.getElementById('new_password').value
-				cognitoUser.confirmPassword(verificationCode, newPassword, {
-					onSuccess() {
-						// eslint-disable-next-line no-console
-						console.log('Password confirmed!')
-					},
-					// eslint-disable-next-line no-unused-vars
-					onFailure() {
-						// eslint-disable-next-line no-console
-						console.log('Password not confirmed!')
-					}
-				})
+				console.log('Password confirmed!')
+			},
+			// eslint-disable-next-line no-unused-vars
+			onFailure() {
+				// eslint-disable-next-line no-console
+				console.log('Password not confirmed!')
 			}
 		})
 	},
