@@ -3,6 +3,7 @@ import api from '../../api'
 
 const state = {
 	isAuthenticated: false,
+	username: '',
 	user: {
 		accessToken: '',
 		idToken: '',
@@ -67,7 +68,7 @@ const actions = {
 			api.users
 				.forgotPassword(payload.username)
 				.then(response => {
-					commit('FORGOTPASSWORD', response)
+					commit('FORGOTPASSWORD', payload.username)
 					resolve(response)
 				})
 				.catch(err => {
@@ -76,11 +77,12 @@ const actions = {
 		})
 	},
 	forgotPasswordVerification({ commit }, payload) {
+		console.log(state.username)
 		return new Promise((resolve, reject) => {
 			api.users
-				.forgotPasswordVerification(payload.username, payload.code, payload.newPassword)
+				.forgotPasswordVerification(state.username, payload.code, payload.newPassword)
 				.then(response => {
-					commit('FORGOTPASSWORD', response)
+					commit('FORGOTPASSWORDVERIFICATION', response)
 					resolve(response)
 				})
 				.catch(err => {
@@ -140,10 +142,15 @@ const mutations = {
 		console.log('Users password is updated!')
 		//TODO: Update User?
 	},
-	// eslint-disable-next-line no-unused-vars
-	FORGOTPASSWORD(state) {
+	FORGOTPASSWORD(state, username) {
 		// eslint-disable-next-line no-console
-		console.log('Users password is updated!')
+		console.log('FORGOTPASSWORD: Users password is updated...' + username)
+		state.username = username
+	},
+	// eslint-disable-next-line no-unused-vars
+	FORGOTPASSWORDVERIFICATION(state) {
+		// eslint-disable-next-line no-console
+		console.log('FORGOTPASSWORD: Users password is updated...')
 		//TODO: Update User?
 	}
 }

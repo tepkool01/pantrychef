@@ -8,14 +8,21 @@
 				<div class="container">
 					<h1>Forgot your password?</h1>
 					<forgotPassword-form
-						@successfulRegister="showSuccessComponent"
-						v-if="!showSuccessPage"
+						@passwordVerification="showVerificationComponent"
+						v-if="!showSuccessPage && !showVerificationPage"
 					></forgotPassword-form>
+					<forgotPassword-verification-form
+						@successfulVerification="showSuccessComponent"
+						v-else-if="showVerificationPage && !showSuccessPage"
+					>	</forgotPassword-verification-form>
 					<forgotPassword-success v-else></forgotPassword-success>
-					<p class="mb-5">
+					<div
+						v-if="!showSuccessPage"
+					><p class="mb-5">
 						Don't want to change your password?
 						<router-link to="/">Go Back</router-link>
-					</p>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -25,22 +32,30 @@
 <script>
 // @ is an alias to /src
 import ForgotPasswordForm from '@/components/ForgotPasswordForm.vue'
+import ForgotPasswordVerificationForm from '@/components/ForgotPasswordVerificationForm.vue'
 import ForgotPasswordSuccess from '@/components/ForgotPasswordSuccess.vue'
 
 export default {
 	name: 'forgotPassword',
 	components: {
 		ForgotPasswordForm: ForgotPasswordForm,
+		ForgotPasswordVerificationForm: ForgotPasswordVerificationForm,
 		ForgotPasswordSuccess: ForgotPasswordSuccess
 	},
 	data() {
 		return {
-			showSuccessPage: false
+			showSuccessPage: false,
+			showVerificationPage: false
 		}
 	},
 	methods: {
+		showVerificationComponent(data) {
+			console.log('Verification:'+data)
+			this.showVerificationPage = data
+		},
 		showSuccessComponent(data) {
 			// Received success message from cognito forgot password, so hide the form component and show the success page
+			console.log('Success:'+data)
 			this.showSuccessPage = data
 		}
 	},

@@ -87,7 +87,7 @@ export default {
 					.then(() => {
 						// See Micheal Young's notes on this method under register
 						// Hint: he likes it.
-						this.$emit('Successful Reset Password', true)
+						this.$emit('passwordVerification', true)
 					})
 					.catch(err => {
 						this.validation.errors.push({

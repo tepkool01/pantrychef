@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2>Nearly Complete!</h2>
+		<h2>Success</h2>
 		<p>
 			Your password has been reset. Please go back to the
 			<router-link to="/">login page</router-link>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-	name: 'forgotpassword-success'
+	name: 'forgotPassword-success'
 }
 </script>
 

@@ -53,29 +53,31 @@ export default {
 
 	forgotPassword(username) {
 		let cognitoUser = setupCongnitoUser(username)
-		cognitoUser.forgotPassword({
-			onSuccess: function (data) {
-				// successfully initiated reset password request
-				// eslint-disable-next-line no-console
-				console.log('CodeDeliveryData from forgotPassword: ' + data)
-			},
-			onFailure: function (err) {
-				alert(err.message)
-			}
+		return new Promise((resolve, reject) => {
+			cognitoUser.forgotPassword( {
+				onSuccess: function (data) {
+					// successfully initiated reset password request
+					// eslint-disable-next-line no-console
+					console.log('CodeDeliveryData from forgotPassword: ' + data)
+					resolve(data)
+				},
+				onFailure: function (err) {
+					reject(err.message)
+				}
+			})
 		})
 	},
 	forgotPasswordVerification(username, code, newPassword) {
 		let cognitoUser = setupCongnitoUser(username)
-		cognitoUser.confirmPassword(code, newPassword, {
-			onSuccess() {
-				// eslint-disable-next-line no-console
-				console.log('Password confirmed!')
-			},
-			// eslint-disable-next-line no-unused-vars
-			onFailure() {
-				// eslint-disable-next-line no-console
-				console.log('Password not confirmed!')
-			}
+		return new Promise((resolve, reject) => {
+			cognitoUser.confirmPassword(code, newPassword, {
+				onSuccess: function (data) {
+					resolve(data)
+				},
+				onFailure: function (err) {
+					reject(err)
+				}
+			})
 		})
 	},
 

@@ -1,30 +1,30 @@
 <template>
 	<form
-		id="forgotPasswordVerification"
+		id="forgotPasswordVerificationFrom"
 		@submit="forgotPasswordVerificationSubmit"
 		method="post"
 		:novalidate="true"
 	>
 		<div class="forgotPasswordVerification">
 			<div class="form-group mb-3">
-
+				<label>An email was sent to your account containing a verification code.</label>
 				<label>Verification Code</label>
 				<input
 					v-model="user.code"
 					type="text"
 					class="form-control"
-					placeholder="Username"
-					aria-label="Username"
-					autocomplete="username"
+					placeholder="Verification Code"
+					aria-label="Verification Code"
+					autocomplete="code"
 				/>
 				<label>New Password</label>
 				<input
 					v-model="user.newPassword"
-					type="text"
+					type="password"
 					class="form-control"
-					placeholder="Username"
-					aria-label="Username"
-					autocomplete="username"
+					placeholder="Password"
+					aria-label="Password"
+					autocomplete="password"
 				/>
 			</div>
 		</div>
@@ -56,7 +56,8 @@ export default {
 			},
 			user: {
 				code: '',
-				newPassword: ''
+				newPassword: '',
+				username: ''
 			},
 			validation: {
 				errors: [],
@@ -78,12 +79,19 @@ export default {
 			this.resetForm()
 
 			// Validate that they actually input something
-			if (this.user.username.length === 0) {
+			if (this.user.code.length === 0) {
 				// Makes the 'input--error' class active, so we will get a red border
-				this.validation.username = true
+				this.validation.code = true
 				this.validation.errors.push({
 					id: 1,
-					msg: 'Username is required'
+					msg: 'Verification Code is required'
+				})
+			}
+			if (this.user.newPassword.length < 8) {
+				this.validation.newPassword = true
+				this.validation.errors.push({
+					id: 2,
+					msg: 'You new Password needs to be greater than 8 characters'
 				})
 				isValid = false
 			}
@@ -91,16 +99,16 @@ export default {
 		},
 		resetForm() {
 			this.validation.errors = []
-			this.validation.username = false
+			this.validation.code = false
+			this.validation.newPassword = false
 		},
 		forgotPasswordVerificationSubmit(e) {
 			if (this.validateForm(e)) {
 				this.$store
 					.dispatch('users/forgotPasswordVerification', this.user)
 					.then(() => {
-						// See Micheal Young's notes on this method under register
-						// Hint: he likes it.
-						this.$emit('Successful Reset Password', true)
+						// See Micheal Young's notes on this method under register. Hint: he likes it.
+						this.$emit('successfulVerification', true)
 					})
 					.catch(err => {
 						this.validation.errors.push({
