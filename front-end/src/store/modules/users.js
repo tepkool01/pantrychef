@@ -3,6 +3,7 @@ import api from '../../api'
 
 const state = {
 	isAuthenticated: false,
+	username: '',
 	user: {
 		accessToken: '',
 		idToken: '',
@@ -62,7 +63,33 @@ const actions = {
 				})
 		})
 	},
-
+	forgotPassword({ commit }, payload) {
+		return new Promise((resolve, reject) => {
+			api.users
+				.forgotPassword(payload.username)
+				.then(response => {
+					commit('FORGOTPASSWORD', payload.username)
+					resolve(response)
+				})
+				.catch(err => {
+					reject(err)
+				})
+		})
+	},
+	forgotPasswordVerification({ commit }, payload) {
+		console.log(state.username)
+		return new Promise((resolve, reject) => {
+			api.users
+				.forgotPasswordVerification(state.username, payload.code, payload.newPassword)
+				.then(response => {
+					commit('FORGOTPASSWORDVERIFICATION', response)
+					resolve(response)
+				})
+				.catch(err => {
+					reject(err)
+				})
+		})
+	},
 	createAccount({ commit }, payload) {
 		return new Promise((resolve, reject) => {
 			api.users
@@ -113,6 +140,17 @@ const mutations = {
 	CHANGEPASSWORD(state) {
 		// eslint-disable-next-line no-console
 		console.log('Users password is updated!')
+		//TODO: Update User?
+	},
+	FORGOTPASSWORD(state, username) {
+		// eslint-disable-next-line no-console
+		console.log('FORGOTPASSWORD: Users password is updated...' + username)
+		state.username = username
+	},
+	// eslint-disable-next-line no-unused-vars
+	FORGOTPASSWORDVERIFICATION(state) {
+		// eslint-disable-next-line no-console
+		console.log('FORGOTPASSWORD: Users password is updated...')
 		//TODO: Update User?
 	}
 }
