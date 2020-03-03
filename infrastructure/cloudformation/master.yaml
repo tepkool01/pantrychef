@@ -1055,7 +1055,7 @@ Resources:
                     }
                   }
                 }
-              }
+              },
               "/ingredientsList": {
                 "get": {
                   "produces": [
