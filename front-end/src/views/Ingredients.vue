@@ -6,7 +6,7 @@
 			</div>
 		</div>
 		<div class="row">
-			Test
+			This will be a listing of all the ingredients that we have in our tables
 		</div>
 	</div>
 </template>
