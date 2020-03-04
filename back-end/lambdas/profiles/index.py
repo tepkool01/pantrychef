@@ -93,7 +93,8 @@ def lambda_handler(event, context):
                 # Parse results for VueJS
                 result = {
                     'id': profile['generatedFields'][0]['longValue'],
-                    'profile_name': str(payload['name'])
+                    'profile_name': str(payload['name']),
+                    'organization_name': str(payload['organizationName'])
                 }
             except Exception as e:
                 db.rollback_transaction(transaction_id)
