@@ -13,14 +13,14 @@ def lambda_handler(event, context):
     print(context)
     result = {}
 
-    if event['resource'] == '/ingredientsList':
+    if event['resource'] == '/ingredientList':
         if event['httpMethod'] == 'GET':
             # Retrieve all profiles
             result = db.execute(
                 sql="select * FROM `IngredientList`",
                 parameters=[]
             )
-    elif event['resource'] == '/ingredientsList/{ingredientsListId}':
+    elif event['resource'] == '/ingredientList/{ingredientListId}':
         print("Ingredient List ID:", event['pathParameters']['ingredientId'])
         result = db.execute(
             sql="select * FROM `IngredientList` WHERE ID=:id",
