@@ -4,7 +4,7 @@ from database import DB
 
 # Everything outside of the handler is 'cached' on the virtual machine, connections should be here
 # Initialize the DB connect
-db = DB(database_name=os.environ['DB_NAME'], cluster_arn=os.environ['RDS_ARN'], secret_arn=os.environ['Secrets_ARN'])
+db = DB(database_name=os.environ['DB_Name'], cluster_arn=os.environ['RDS_ARN'], secret_arn=os.environ['Secrets_ARN'])
 
 
 def lambda_handler(event, context):
