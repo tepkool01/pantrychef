@@ -17,7 +17,7 @@ def lambda_handler(event, context):
         if event['httpMethod'] == 'GET':
             # Retrieve all profiles
             result = db.execute(
-                sql="select * FROM `Recipe`",
+                sql="select * FROM `Ingredient`",
                 parameters=[]
             )
     elif event['resource'] == '/ingredients/{ingredientId}':
