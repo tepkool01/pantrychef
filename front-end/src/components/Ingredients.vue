@@ -1,6 +1,6 @@
 <template>
 	<div class="chef-profile">
-		{{ ingredients.IngredientName }} {{ ingredients.IngredientType }}  ({{ ingredients.id }})
+		Name:{{ ingredients.IngredientName }} Type:{{ ingredients.IngredientType }}  Id:({{ ingredients.id }})
 	</div>
 </template>
 
