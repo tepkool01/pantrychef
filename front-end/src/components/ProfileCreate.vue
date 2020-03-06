@@ -7,6 +7,13 @@
 			v-model="profile.name"
 		/>
 
+		<input
+			type="text"
+			name="organization-name"
+			class="form-control"
+			v-model="profile.organization"
+		/>
+
 		<b-button variant="outline-secondary" class="ml-3" @click="onSubmit"
 			>Create</b-button
 		>
@@ -20,7 +27,8 @@ export default {
 		return {
 			profile: {
 				name: '',
-				ingredients: []
+				ingredients: [],
+				organization: ''
 			}
 		}
 	},
@@ -29,7 +37,8 @@ export default {
 			this.$store.dispatch('profile/createProfile', this.profile)
 			this.profile = {
 				name: '',
-				ingredients: []
+				ingredients: [],
+				organization: ''
 			}
 		}
 	}

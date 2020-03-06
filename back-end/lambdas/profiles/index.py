@@ -76,9 +76,10 @@ def lambda_handler(event, context):
                     transaction_id=transaction_id
                 )
                 profile = db.execute(
-                    sql="INSERT INTO `UserProfile` (ProfileName, UserID, DietType, PantryList, ShoppingList) VALUES(:profileName, :userId, :dietType, :pantryList, :shoppingList)",
+                    sql="INSERT INTO `UserProfile` (ProfileName, OrganizationName, UserID, DietType, PantryList, ShoppingList) VALUES(:profileName, :organizationName, :userId, :dietType, :pantryList, :shoppingList)",
                     parameters=[
                         {'name': 'profileName', 'value': {'stringValue': str(payload['name'])}},
+                        {'name': 'organizationName', 'value': {'stringValue': str(payload['organization'])}},
                         {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
                         {'name': 'dietType', 'value': {'longValue': int(1)}},  # Random number for now
                         {'name': 'pantryList', 'value': {'longValue': int(list1['generatedFields'][0]['longValue'])}},
@@ -92,7 +93,8 @@ def lambda_handler(event, context):
                 # Parse results for VueJS
                 result = {
                     'id': profile['generatedFields'][0]['longValue'],
-                    'profile_name': str(payload['name'])
+                    'profile_name': str(payload['name']),
+                    'organization_name': str(payload['organizationName'])
                 }
             except Exception as e:
                 db.rollback_transaction(transaction_id)

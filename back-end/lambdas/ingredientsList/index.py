@@ -4,7 +4,7 @@ from database import DB
 
 # Everything outside of the handler is 'cached' on the virtual machine, connections should be here
 # Initialize the DB connect
-db = DB(database_name=os.environ['DB_Name'], cluster_arn=os.environ['RDS_ARN'], secret_arn=os.environ['Secrets_ARN'])
+db = DB(database_name=os.environ['DB_NAME'], cluster_arn=os.environ['RDS_ARN'], secret_arn=os.environ['Secrets_ARN'])
 
 
 def lambda_handler(event, context):
@@ -13,17 +13,17 @@ def lambda_handler(event, context):
     print(context)
     result = {}
 
-    if event['resource'] == '/ingredients':
+    if event['resource'] == '/ingredientList':
         if event['httpMethod'] == 'GET':
             # Retrieve all profiles
             result = db.execute(
-                sql="select * FROM `Recipe`",
+                sql="select * FROM `IngredientList`",
                 parameters=[]
             )
-    elif event['resource'] == '/ingredients/{ingredientId}':
-        print("recipe ID:", event['pathParameters']['ingredientId'])
+    elif event['resource'] == '/ingredientList/{ingredientListId}':
+        print("Ingredient List ID:", event['pathParameters']['ingredientId'])
         result = db.execute(
-            sql="select * FROM `Ingredient` WHERE ID=:id",
+            sql="select * FROM `IngredientList` WHERE ID=:id",
             parameters=[
                 {
                     'name': 'id',
@@ -33,7 +33,7 @@ def lambda_handler(event, context):
                 }
             ]
         )
-        print("Entered specific profile route")
+        print("Entered specific ingredient list id")
 
     return {
         'statusCode': 200,
