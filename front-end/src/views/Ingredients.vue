@@ -16,7 +16,7 @@
 						</div>
 						<div class="card-body my-2">
 							<div v-for="i in ingredients" v-bind:key="i.name">
-								<ingredients :ingredients="i" :key="i.id"></ingredients>
+								<ingredient :ingredient="i" :key="i.id"></ingredient>
 							</div>
 						</div>
 					</div>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Ingredients from '@/components/Ingredients.vue'
+import Ingredient from '@/components/Ingredient.vue'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -39,7 +39,7 @@ export default {
 		})
 	},
 	components: {
-		Ingredients
+		Ingredient
 	},
 	methods: {
 		...mapActions('ingredients', {
