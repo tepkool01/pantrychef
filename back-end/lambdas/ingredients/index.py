@@ -16,10 +16,18 @@ def lambda_handler(event, context):
     if event['resource'] == '/ingredients':
         if event['httpMethod'] == 'GET':
             # Retrieve all profiles
-            result = db.execute(
+            raw_result = db.execute(
                 sql="select * FROM `Ingredient`",
                 parameters=[]
             )
+
+            result = []
+            for record in raw_result['records']:
+                result.append({
+                    'id': record[0]['longValue'],
+                    'ingredient_name': record[1]['stringValue'],
+                    'ingredient_type': record[2]['stringValue']
+                })
     elif event['resource'] == '/ingredients/{ingredientId}':
         print("recipe ID:", event['pathParameters']['ingredientId'])
         result = db.execute(
