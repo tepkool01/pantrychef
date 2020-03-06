@@ -51,15 +51,22 @@ CREATE TABLE Recipe (
     RecipeName VARCHAR(255),
     CookTime INT,
     DietType INT,
-    Field VARCHAR(50),
     PRIMARY KEY (ID)
+);
+
+CREATE TABLE RecipeIngredients (
+    ID INT NOT NULL AUTO_INCREMENT,
+    RecipeID INT,
+    IngredientList VARCHAR(900),
+    PRIMARY KEY (ID),
+    FOREIGN KEY (RecipeID) REFERENCES Recipe(ID)
 );
 
 CREATE TABLE Directions (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeID INT,
     SortOrder INT,
-    Directions VARCHAR(255),
+    Directions VARCHAR(4850),
     PRIMARY KEY (ID),
     FOREIGN KEY (RecipeID) REFERENCES Recipe(ID)
 );
@@ -81,4 +88,6 @@ CREATE TABLE FavoriteRecipes (
 --Removed the underscore from all Foriegn Keys.
 --Renamed Directions Order to SortOrder.
 --Removed Max to 255
+--Removed Field from Recipe Table
+--Added RecipeIngredients Table
 --Removed inline comments
