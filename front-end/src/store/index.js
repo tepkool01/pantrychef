@@ -4,7 +4,6 @@ import Vuex from 'vuex'
 import profile from './modules/profile'
 import users from './modules/users'
 import ingredients from "./modules/ingredients"
-import ingredientList from "./modules/ingredientList"
 import recipes from './modules/recipes'
 
 Vue.use(Vuex)
@@ -31,13 +30,6 @@ export default new Vuex.Store({
 			actions: ingredients.actions,
 			getters: ingredients.getters,
 			mutations: ingredients.mutations
-		},
-		ingredientsList: {
-			namespaced: true,
-			state: ingredientList.state,
-			actions: ingredientList.actions,
-			getters: ingredientList.getters,
-			mutations: ingredientList.mutations
 		},
 		recipes: {
 			namespaced: true,
