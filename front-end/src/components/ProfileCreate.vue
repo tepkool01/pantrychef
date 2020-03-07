@@ -1,5 +1,6 @@
 <template>
 	<div class="create-profile d-flex justify-content-between">
+		Name:
 		<input
 			type="text"
 			name="profile-name"
@@ -7,6 +8,7 @@
 			v-model="profile.name"
 		/>
 
+		Organization:
 		<input
 			type="text"
 			name="organization-name"
