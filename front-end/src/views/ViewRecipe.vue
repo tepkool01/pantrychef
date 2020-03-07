@@ -4,6 +4,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="mt-4">View Recipe</h1>
+                <p>Retrieve recipe with ID:{{ $route.params.id }}</p>
             </div>
         </div>
     </div>
@@ -11,10 +12,7 @@
 
 
 <script>
-    export default{
-        name:"Todos",
-        props: ["Todos"]
-    }
+
 
 </script>
 
