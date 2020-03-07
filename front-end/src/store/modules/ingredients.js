@@ -5,7 +5,7 @@ const state = {
 }
 
 const getters = {
-	profiles(state) {
+	ingredients(state) {
 		return state.ingredients
 	}
 }
@@ -13,15 +13,14 @@ const getters = {
 const actions = {
 	getIngredients({ commit }) {
 		api.ingredients.getIngredients().then(response => {
-			commit('SET_PROFILES', response.data)
+			commit('SET_INGREDIENTS', response.data)
 		})
 	}
 }
 
 const mutations = {
-
-	SET_PROFILES(state, profiles) {
-		state.profiles = profiles
+	SET_INGREDIENTS(state, ingredients) {
+		state.ingredients = ingredients
 	}
 }
 
