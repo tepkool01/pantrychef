@@ -13,8 +13,12 @@
 							<h5 class="card-title">Add new Ingredients</h5>
 						</div>
 						<div class="card-body my-2">
-							<AutoComplete :suggestionsMstr="ingredients" ></autoComplete>
+							<AutoComplete :componentTitle="Title1" :suggestionsMstr="ingredients" :objectAttribute="Attr1" :toolTip="Tip1" ></autoComplete>
+							<AutoComplete :componentTitle="Title2" :suggestionsMstr="unitsOfMeasure" :objectAttribute="Attr2" :toolTip="Tip2" ></autoComplete>
+		
+				
 						</div>
+
 					</div>
 
 					<div class="card m-4">
@@ -65,9 +69,33 @@ export default {
 	},
 	data: function () {
 		return {
-			cities: ['FLorida','Texas']
+			unitsOfMeasure: [ 
+				{"name": "kilogram",
+				 "abbreviation": "kg"
+				},
+				{"name": "gram",
+				 "abbreviation": "g"
+				},
+				{"name": "milligram",
+				 "abbreviation": "mg"
+				},
+				{"name": "pound",
+				"abbreviation":"lb"
+				},
+				{"name":"liter",
+				  "abbreviation":"L"
+				},
+				{"name":"milliliter",
+				"abbreviation":"mL"
+				}],
+			Title1: 'Ingredient',
+			Attr1: 'ingredient_name',
+			Tip1: 'Choose ingredient to add to your pantry.',
+			Title2: 'Unit',
+			Attr2: 'abbreviation',
+			Tip2: 'Choose the unit of measure for your ingredient.'
 		}
-	},
+	}
 }
 </script>
 
