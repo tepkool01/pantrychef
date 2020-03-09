@@ -2,8 +2,8 @@ import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 
 //TODO: move this to a better place
-const UserPoolId = 'us-east-1_895IYJN1N'
-const ClientId = '1f4k0ktrcbthkq7foan121c9sq'
+const UserPoolId = 'us-east-1_FfJ4ffeia'
+const ClientId = '2lk7bjr0akm1ncuo8i8piqv33g'
 
 const poolData = {
 	UserPoolId: UserPoolId,
