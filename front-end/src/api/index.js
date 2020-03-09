@@ -1,13 +1,13 @@
 import profile from './modules/profile.js'
 import users from './modules/users.js'
 import ingredients from "./modules/ingredients"
-import ingredientList from "./modules/ingredientList"
+import pantry from "./modules/pantry"
 import recipe from './modules/recipe.js'
 
 export default {
 	users,
 	profile,
 	ingredients,
-	ingredientList,
+	pantry,
 	recipe
 }
