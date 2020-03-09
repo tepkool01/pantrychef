@@ -113,6 +113,7 @@ def lambda_handler(event, context):
                     {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
                 ]
             )
+
     elif event['resource'] == '/pantry':
         if event['httpMethod'] == 'GET':
             ## Get user information, and the pantryListID
@@ -127,6 +128,35 @@ def lambda_handler(event, context):
             )
 
             pantry_item_list = db.execute(
+                sql="select * FROM `IngredientListItem` WHERE ListId=:listId",
+                parameters=[{'name': 'listId', 'value': {'longValue': int(active_profile.PantryList)}}]
+            )
+
+						result = []
+            for record in pantry_item_list['records']:
+                result.append({
+                    'ID': record[0]['longValue'],
+                    'ListID': record[1]['longValue'],
+                    'IngredientID': record[0]['longValue'],
+                    'Amount': record[1]['longValue'],
+                    'UnitType': record[0]['longValue'],
+                    'ExpirationDate': record[1]['dateTimeValue'],
+                })
+
+    elif event['resource'] == '/shoppingList':
+        if event['httpMethod'] == 'GET':
+            ## Get user information, and the pantryListID
+            active_profile = db.execute(
+                sql="select top 1 * FROM `UserProfile` WHERE UserID=:userId",
+                parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
+            )
+
+            pantry_list = db.execute(
+                sql="select * FROM `IngredientList` WHERE ListId=:listId",
+                parameters=[{'name': 'listId', 'value': {'longValue': int(active_profile.ShoppingList)}}]
+            )
+
+            shopping_item_list = db.execute(
                 sql="select * FROM `IngredientListItem` WHERE ListId=:listId",
                 parameters=[{'name': 'listId', 'value': {'longValue': int(active_profile.PantryList)}}]
             )
