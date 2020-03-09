@@ -16,8 +16,8 @@
 							</h5>
 						</div>
 						<div class="card-body my-2">
-							<div v-for="item in pantryItem" v-bind:key="item.name">
-								<Pantry :pantryItem="item" :key="item.id"></Pantry>
+							<div v-for="item in pantryList" v-bind:key="item.name">
+								<Pantry :pantryList="item" :key="item.id"></Pantry>
 							</div>
 						</div>
 					</div>
@@ -35,20 +35,21 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
 	name: 'Pantry',
 	computed: {
-		...mapGetters('profile', {
-			profiles: 'profiles'
+		...mapGetters('pantry', {
+			pantry: 'pantry'
 		})
 	},
 	components: {
 		Pantry
 	},
 	methods: {
-		...mapActions('profile', {
-			getProfiles: 'getProfiles'
+		...mapActions('pantry', {
+			getPantryList: 'getPantryList'
 		})
 	},
 	created() {
-		this.getProfiles()
+		console.log("Created?")
+		this.getPantryList()
 		this.$emit('title', 'Pantry')
 	}
 }
