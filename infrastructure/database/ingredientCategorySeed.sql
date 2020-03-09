@@ -1,0 +1,12 @@
+REPLACE INTO `IngredientCategories` SET `ID`='1', `CategoryName`='Fruit';
+REPLACE INTO `IngredientCategories` SET `ID`='2', `CategoryName`='Vegetable';
+REPLACE INTO `IngredientCategories` SET `ID`='3', `CategoryName`='Meat';
+REPLACE INTO `IngredientCategories` SET `ID`='4', `CategoryName`='Seafood';
+REPLACE INTO `IngredientCategories` SET `ID`='5', `CategoryName`='Bread';
+REPLACE INTO `IngredientCategories` SET `ID`='6', `CategoryName`='Pastry';
+REPLACE INTO `IngredientCategories` SET `ID`='7', `CategoryName`='Dairy';
+REPLACE INTO `IngredientCategories` SET `ID`='8', `CategoryName`='Baking';
+REPLACE INTO `IngredientCategories` SET `ID`='9', `CategoryName`='Broth';
+REPLACE INTO `IngredientCategories` SET `ID`='10', `CategoryName`='Spices';
+REPLACE INTO `IngredientCategories` SET `ID`='11', `CategoryName`='Oil-Condiments';
+REPLACE INTO `IngredientCategories` SET `ID`='12', `CategoryName`='Pasta-Rice';
