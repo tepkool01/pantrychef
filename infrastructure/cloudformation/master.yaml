@@ -814,7 +814,7 @@ Resources:
                   }
                 }
               },
-              "/ingredients": {
+              "/pantry": {
                 "get": {
                   "produces": [
                     "application/json"
@@ -823,7 +823,7 @@ Resources:
                     "200": {
                       "description": "200 response",
                       "schema": {
-                        "$ref": "#/definitions/IngredientsResponse"
+                        "$ref": "#/definitions/PantryResponse"
                       },
                       "headers": {
                         "Access-Control-Allow-Origin": {
