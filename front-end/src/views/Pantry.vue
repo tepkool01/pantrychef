@@ -16,8 +16,8 @@
 							</h5>
 						</div>
 						<div class="card-body my-2">
-							<div v-for="item in pantryList" v-bind:key="item.name">
-								<Pantry :pantryList="item" :key="item.id"></Pantry>
+							<div v-for="item in pantry" v-bind:key="item.name">
+								<Pantry :pantry="item" :key="item.id"></Pantry>
 							</div>
 						</div>
 					</div>
