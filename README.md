@@ -42,6 +42,9 @@ or autofix using
 - do `npm run tester` to get code coverage reports
 ### Python (backend) Unit Testing
 - In JetBrain's PyCharm (I'm using the 2019 latest version), go to bottom right and configure the interpreter. This will create your virtual environment.
+- Before launching the pycharm application make sure the environement variable is set for PYTHONPATH.
+- PYTHONPATH should be set to your workspace directory in webstorm. For example "C:\psuWorkspace\pantryWorkspace\pantrychef\back-end\lambdas" 
+- Then launch Pycharm and go to the bottom window ->click Terminal and cd to your webstorm directory.
 - Run `pip install pytest`
 - Run `pip install pytest-cov`
 - Go to your project folder, i.e. `cd back-end/lambdas/profiles` (or go to new-user, or whichever lambda)

@@ -50,7 +50,7 @@ CREATE TABLE Recipe (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeName VARCHAR(255),
     CookTime INT,
-    DietType INT,
+    DietType VARCHAR(10),
     PRIMARY KEY (ID)
 );
 
@@ -90,4 +90,5 @@ CREATE TABLE FavoriteRecipes (
 --Removed Max to 255
 --Removed Field from Recipe Table
 --Added RecipeIngredients Table
+--Changed DietType to VARCHAR due to the conversation of having ALL and Vegetarian as options
 --Removed inline comments

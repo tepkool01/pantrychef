@@ -8,24 +8,16 @@
 		<div class="row">
 			<div class="col-lg-10 offset-1">
 				<div class="card-deck">
-					<div class="card m-4">
-						<div class="card-header">
-							<h5 class="card-title">Create a Profile</h5>
-						</div>
-						<div class="card-body my-2">
-							<profile-create></profile-create>
-						</div>
-					</div>
 
 					<div class="card m-4">
 						<div class="card-header">
 							<h5 class="card-title">
-								Select an existing profile
+								List of the Ingredients
 							</h5>
 						</div>
 						<div class="card-body my-2">
-							<div v-for="p in profiles" v-bind:key="p.name">
-								<profile :profile="p" :key="p.id"></profile>
+							<div v-for="item in pantry" v-bind:key="item.name">
+								<Pantry :pantry="item" :key="item.id"></Pantry>
 							</div>
 						</div>
 					</div>
@@ -37,28 +29,27 @@
 
 <script>
 // @ is an alias to /src
-import Profile from '@/components/Profile.vue'
-import ProfileCreate from '../components/ProfileCreate'
+import Pantry from '@/components/Pantry.vue'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-	name: 'Profiles',
+	name: 'Pantry',
 	computed: {
-		...mapGetters('profile', {
-			profiles: 'profiles'
+		...mapGetters('pantry', {
+			pantry: 'pantry'
 		})
 	},
 	components: {
-		Profile,
-		ProfileCreate
+		Pantry
 	},
 	methods: {
-		...mapActions('profile', {
-			getProfiles: 'getProfiles'
+		...mapActions('pantry', {
+			getPantryList: 'getPantryList'
 		})
 	},
 	created() {
-		this.getProfiles()
+		console.log("Created?")
+		this.getPantryList()
 		this.$emit('title', 'Pantry')
 	}
 }

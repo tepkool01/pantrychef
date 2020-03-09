@@ -45,7 +45,7 @@
 				>
 			</div>
 			<div class="recipe-card--view">
-				<button class="btn btn-sm btn-primary">View Recipe</button>
+				<button @click = "getRecipeCard(123)" class="btn btn-sm btn-primary">View Recipe</button>
 			</div>
 		</div>
 	</div>
@@ -53,7 +53,12 @@
 
 <script>
 export default {
-	name: 'RecipeCard'
+	name: 'RecipeCard',
+	methods:{
+		getRecipeCard(id){
+			this.$router.replace("/recipes/" +  id);
+		}
+	}
 }
 </script>
 

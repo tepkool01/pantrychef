@@ -1,6 +1,6 @@
 <template>
-	<div class="chef-profile">
-		Name:{{ ingredient.IngredientName }} Type:{{ ingredient.IngredientType }}  Id:({{ ingredient.id }})
+	<div class="chef-ingredient">
+		[{{ ingredient.ingredient_type }}] {{ ingredient.ingredient_name }}   ({{ ingredient.id }})
 	</div>
 </template>
 
