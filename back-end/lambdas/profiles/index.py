@@ -132,7 +132,7 @@ def lambda_handler(event, context):
                 parameters=[{'name': 'listId', 'value': {'longValue': int(active_profile.PantryList)}}]
             )
 
-						result = []
+            result = []
             for record in pantry_item_list['records']:
                 result.append({
                     'ID': record[0]['longValue'],
@@ -161,7 +161,7 @@ def lambda_handler(event, context):
                 parameters=[{'name': 'listId', 'value': {'longValue': int(active_profile.PantryList)}}]
             )
 
-						result = []
+            result = []
             for record in pantry_item_list['records']:
                 result.append({
                     'ID': record[0]['longValue'],
