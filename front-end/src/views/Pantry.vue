@@ -16,8 +16,8 @@
 							</h5>
 						</div>
 						<div class="card-body my-2">
-							<div v-for="item in pantry" v-bind:key="item.name">
-								<Pantry :pantry="item" :key="item.id"></Pantry>
+							<div v-for="item in pantryList" v-bind:key="item.name">
+								<PantryItem :pantryItem="item"></PantryItem>
 							</div>
 						</div>
 					</div>
@@ -29,18 +29,18 @@
 
 <script>
 // @ is an alias to /src
-import Pantry from '@/components/Pantry.vue'
+import PantryItem from '@/components/PantryItem.vue'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'Pantry',
 	computed: {
 		...mapGetters('pantry', {
-			pantry: 'pantry'
+			pantryList: 'pantry'
 		})
 	},
 	components: {
-		Pantry
+		PantryItem
 	},
 	methods: {
 		...mapActions('pantry', {

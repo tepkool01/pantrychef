@@ -44,7 +44,7 @@ def lambda_handler(event, context):
         if event['httpMethod'] == 'GET':
             # Retrieve all profiles
             raw_result = db.execute(
-                sql="select * FROM `UserProfile` WHERE UserID=:userId",
+                sql="SELECT ID, ProfileName FROM `UserProfile` WHERE UserID=:userId",
                 parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
             )
 
@@ -53,7 +53,7 @@ def lambda_handler(event, context):
             for record in raw_result['records']:
                 result.append({
                     'id': record[0]['longValue'],
-                    'profile_name': record[5]['stringValue']
+                    'profile_name': record[1]['stringValue']
                 })
 
         elif event['httpMethod'] == 'POST':
@@ -62,39 +62,23 @@ def lambda_handler(event, context):
 
             # First, grab the payload the user sent, and parse it
             payload = json.loads(event['body'])
-
-            transaction_id = db.begin_transaction()
+            
             try:
-                list1 = db.execute(
-                    sql="INSERT INTO `IngredientList` (ListType) VALUES(:stuff)",
-                    parameters=[{'name': 'stuff', 'value': {'stringValue': 'WhatGoesHere'}}],
-                    transaction_id=transaction_id
-                )
-                list2 = db.execute(
-                    sql="INSERT INTO `IngredientList` (ListType) VALUES(:stuff)",
-                    parameters=[{'name': 'stuff', 'value': {'stringValue': 'WhatGoesHere'}}],
-                    transaction_id=transaction_id
-                )
+
                 profile = db.execute(
-                    sql="INSERT INTO `UserProfile` (ProfileName, OrganizationName, UserID, DietType, PantryList, ShoppingList) VALUES(:profileName, :organizationName, :userId, :dietType, :pantryList, :shoppingList)",
+                    sql="INSERT INTO `UserProfile` (ProfileName, UserID, DietType) VALUES(:profileName, :userId, :dietType)",
                     parameters=[
                         {'name': 'profileName', 'value': {'stringValue': str(payload['name'])}},
-                        {'name': 'organizationName', 'value': {'stringValue': str(payload['organization'])}},
                         {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
                         {'name': 'dietType', 'value': {'longValue': int(1)}},  # Random number for now
-                        {'name': 'pantryList', 'value': {'longValue': int(list1['generatedFields'][0]['longValue'])}},
-                        {'name': 'shoppingList', 'value': {'longValue': int(list2['generatedFields'][0]['longValue'])}}
-                    ],
-                    transaction_id=transaction_id
+                    ]
                 )
                 print(profile)
-                db.commit_transaction(transaction_id)
 
                 # Parse results for VueJS
                 result = {
                     'id': profile['generatedFields'][0]['longValue'],
-                    'profile_name': str(payload['name']),
-                    'organization_name': str(payload['organizationName'])
+                    'profile_name': str(payload['name'])
                 }
             except Exception as e:
                 db.rollback_transaction(transaction_id)
@@ -117,63 +101,65 @@ def lambda_handler(event, context):
     elif event['resource'] == '/pantry':
         if event['httpMethod'] == 'GET':
             ## Get user information, and the pantryListID
-            active_profile = db.execute(
-                sql="SELECT * FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
-                parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
-            )
+            
+            try:
+                active_profile = db.execute(
+                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
+                    parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
+                )
 
-            pantry_list = db.execute(
-                sql="select * FROM `IngredientList` WHERE ListId=:listId",
-                parameters=[{'name': 'listId', 'value': {'longValue': int(active_profile.PantryList)}}]
-            )
+                pantry_item_list = db.execute(
+                    sql="SELECT ID, IngredientID FROM `IngredientListItem` WHERE UserProfile=:listId",
+                    parameters=[{'name': 'ProflieID', 'value': {'longValue': int(active_profile.ID)}}]
+                )
 
-            pantry_item_list = db.execute(
-                sql="select * FROM `IngredientListItem` WHERE ListId=:listId",
-                parameters=[{'name': 'listId', 'value': {'longValue': int(active_profile.PantryList)}}]
-            )
-
-            result = []
-            for record in pantry_item_list['records']:
-                result.append({
-                    'ID': record[0]['longValue'],
-                    'ListID': record[1]['longValue'],
-                    'IngredientID': record[0]['longValue'],
-                    'Amount': record[1]['longValue'],
-                    'UnitType': record[0]['longValue'],
-                    'ExpirationDate': record[1]['dateTimeValue'],
+                result = []
+                for record in pantry_item_list['records']:
+                    result.append({
+                        'ID': record[0]['longValue'],
+                        'IngredientID': record[1]['longValue']
                 })
+            except Exception as e:
+                print(str(e))
+                return {
+                    'statusCode': 500,
+                    'headers': {
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    'body': str(e)
+                }
 
     elif event['resource'] == '/shoppingList':
         if event['httpMethod'] == 'GET':
             ## Get user information, and the pantryListID
-            active_profile = db.execute(
-                sql="SELECT * FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
-                parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
-            )
+            try:
+                active_profile = db.execute(
+                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
+                    parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
+                )
 
-            pantry_list = db.execute(
-                sql="select * FROM `IngredientList` WHERE ListId=:listId",
-                parameters=[{'name': 'listId', 'value': {'longValue': int(active_profile.ShoppingList)}}]
-            )
+                shopping_item_list = db.execute(
+                    sql="SELECT ID, IngredientID FROM `ShoppingListItem` WHERE UserProfile=:listId",
+                    parameters=[{'name': 'ProflieID', 'value': {'longValue': int(active_profile.ID)}}]
+                )
 
-            shopping_item_list = db.execute(
-                sql="select * FROM `IngredientListItem` WHERE ListId=:listId",
-                parameters=[{'name': 'listId', 'value': {'longValue': int(active_profile.PantryList)}}]
-            )
-
-            result = []
-            for record in pantry_item_list['records']:
-                result.append({
-                    'ID': record[0]['longValue'],
-                    'ListID': record[1]['longValue'],
-                    'IngredientID': record[0]['longValue'],
-                    'Amount': record[1]['longValue'],
-                    'UnitType': record[0]['longValue'],
-                    'ExpirationDate': record[1]['dateTimeValue'],
+                result = []
+                for record in pantry_item_list['records']:
+                    result.append({
+                        'ID': record[0]['longValue'],
+                        'IngredientID': record[1]['longValue']
                 })
-
-        elif event['httpMethod'] == 'POST':
-            print('Updating the ')
+            except Exception as e:
+                print(str(e))
+                return {
+                    'statusCode': 500,
+                    'headers': {
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    'body': str(e)
+                }
 
     return {
         'statusCode': status_code,
