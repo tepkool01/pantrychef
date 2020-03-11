@@ -8,12 +8,6 @@ CREATE TABLE User (
     PRIMARY KEY (ID)
 );
 
-CREATE TABLE IngredientList (
-    ID INT NOT NULL AUTO_INCREMENT,
-    ListType VARCHAR(50),
-    PRIMARY KEY (ID)
-);
-
 CREATE TABLE UserProfile (
     ID INT NOT NULL AUTO_INCREMENT,
     ProfileName VARCHAR(50),
@@ -64,12 +58,13 @@ CREATE TABLE Recipe (
     PRIMARY KEY (ID)
 );
 
-CREATE TABLE RecipeIngredients (
+CREATE TABLE RecipeListItem (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeID INT,
-    IngredientList VARCHAR(900),
+    IngredientID VARCHAR(900),
     PRIMARY KEY (ID),
-    FOREIGN KEY (RecipeID) REFERENCES Recipe(ID)
+    FOREIGN KEY (RecipeID) REFERENCES Recipe(ID),
+    FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID)
 );
 
 CREATE TABLE Directions (
