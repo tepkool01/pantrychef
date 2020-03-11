@@ -8,12 +8,6 @@ CREATE TABLE User (
     PRIMARY KEY (ID)
 );
 
-CREATE TABLE IngredientList (
-    ID INT NOT NULL AUTO_INCREMENT,
-    ListType VARCHAR(50),
-    PRIMARY KEY (ID)
-);
-
 CREATE TABLE UserProfile (
     ID INT NOT NULL AUTO_INCREMENT,
     ProfileName VARCHAR(50),
@@ -29,6 +23,11 @@ CREATE TABLE IngredientCategories (
     PRIMARY KEY (ID)
 );
 
+CREATE TABLE AmountUnits (
+    ID INT NOT NULL AUTO_INCREMENT,
+    UnitName VARCHAR(50),
+    PRIMARY KEY (ID)
+);
 
 CREATE TABLE Ingredient (
     ID INT NOT NULL AUTO_INCREMENT,
@@ -45,7 +44,6 @@ CREATE TABLE IngredientListItem (
     FOREIGN KEY (UserProfile) REFERENCES UserProfile(ID),
     FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID)
 );
-
 
 CREATE TABLE ShoppingListItem (
     ID INT NOT NULL AUTO_INCREMENT,
@@ -64,6 +62,17 @@ CREATE TABLE Recipe (
     PRIMARY KEY (ID)
 );
 
+CREATE TABLE RecipeListItem (
+    ID INT NOT NULL AUTO_INCREMENT,
+    RecipeID INT,
+    IngredientID INT,
+    Amount Varchar(20),
+    PRIMARY KEY (ID),
+    FOREIGN KEY (RecipeID) REFERENCES Recipe(ID),
+    FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID)
+);
+
+--TODO:Remove This.
 CREATE TABLE RecipeIngredients (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeID INT,
@@ -102,3 +111,6 @@ CREATE TABLE FavoriteRecipes (
 --Added RecipeIngredients Table
 --Changed DietType to VARCHAR due to the conversation of having ALL and Vegetarian as options
 --Removed inline comments
+--Added Units
+--Removed Ingredients List
+--Added RecipeListItem
