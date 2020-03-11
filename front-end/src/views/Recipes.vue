@@ -13,9 +13,13 @@
 
 <script>
 import RecipeCard from '../components/RecipeCard'
+import ViewRecipe from './ViewRecipe'
 export default {
 	name: 'Recipes',
-	components: { RecipeCard },
+	components: {
+		RecipeCard,
+	    ViewRecipe
+	},
 	created() {
 		this.$emit('title', 'Ingredients')
 		this.$store.dispatch('recipes/getRecipes')

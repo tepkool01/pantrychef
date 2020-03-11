@@ -99,6 +99,29 @@ const routes = [
 		}
 	},
 	{
+		path: '/recipes/:id',
+		name: 'viewRecipes',
+		component: () => import('../views/ViewRecipe.vue'),
+		beforeEnter(to, from, next) {
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					if (store.state.users.user.idToken != null) {
+						// Sets the authorization token so the user can access this endpoint
+						axios.defaults.headers.common['Authorization'] =
+							store.state.users.user.idToken
+
+						next()
+					} else {
+						next('/')
+					}
+				})
+				.catch(() => {
+					next('/')
+				})
+		}
+	},
+	{
 		path: '/settings',
 		name: 'settings',
 		component: () => import('../views/Settings.vue'),

@@ -1,33 +1,33 @@
 <template>
 	<div>
 		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="mt-4">Ingredients</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-10 offset-1">
-				<div class="card-deck">
-					<div class="card m-4">
+	
+					<IngredientSubmissionPanel :suggestionsMstr="ingredients" ></IngredientSubmissionPanel>
+
+					<div class="card m-4 text-center" style="width:50%">
 						<div class="card-header">
 							<h5 class="card-title">
-								Display existing ingredients
+								Ingredients In Pantry
 							</h5>
 						</div>
-						<div class="card-body my-2">
+						<div class="card-body m-4 text-center" style="width: 50%">
 							<div v-for="i in ingredients" v-bind:key="i.name">
 								<ingredient :ingredient="i" :key="i.id"></ingredient>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+
 		</div>
 	</div>
 </template>
 
+
+
+
+
 <script>
 import Ingredient from '@/components/Ingredient.vue'
+import IngredientSubmissionPanel from '@/components/IngredientSubmissionPanel.vue'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -39,12 +39,14 @@ export default {
 		})
 	},
 	components: {
+		IngredientSubmissionPanel,
 		Ingredient
 	},
 	methods: {
 		...mapActions('ingredients', {
 			getIngredients: 'getIngredients'
-		})
+		}),
+		  
 	},
 	created() {
 		this.getIngredients()

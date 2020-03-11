@@ -14,22 +14,22 @@
 				<!--TODO: Bind dietType data here-->
 				<div class="list-group list-group-flush">
 					<a
-						href="pantry"
+						href="/pantry"
 						class="list-group-item list-group-item-action"
 						><b-icon icon="house"></b-icon> Pantry</a
 					>
 					<a
-						href="ingredients"
+						href="/ingredients"
 						class="list-group-item list-group-item-action"
 						><b-icon icon="list-check"></b-icon> Ingredients</a
 					>
 					<a
-						href="recipes"
+						href="/recipes"
 						class="list-group-item list-group-item-action"
 						><b-icon icon="book"></b-icon> Recipes</a
 					>
 					<a
-						href="settings"
+						href="/settings"
 						class="list-group-item list-group-item-action"
 						><b-icon icon="gear"></b-icon> Settings</a
 					>

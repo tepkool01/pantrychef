@@ -19,13 +19,16 @@ CREATE TABLE UserProfile (
     ProfileName VARCHAR(50),
     UserID INT,
     DietType INT,
-    PantryList INT,
-    ShoppingList INT,
     PRIMARY KEY (ID),
-    FOREIGN KEY (UserID) REFERENCES User(ID),
-    FOREIGN KEY (PantryList) REFERENCES IngredientList(ID) ON DELETE CASCADE,
-    FOREIGN KEY (ShoppingList) REFERENCES IngredientList(ID) ON DELETE CASCADE
+    FOREIGN KEY (UserID) REFERENCES User(ID)
 );
+
+CREATE TABLE IngredientCategories (
+    ID INT NOT NULL AUTO_INCREMENT,
+    CategoryName VARCHAR(50),
+    PRIMARY KEY (ID)
+);
+
 
 CREATE TABLE Ingredient (
     ID INT NOT NULL AUTO_INCREMENT,
@@ -36,13 +39,20 @@ CREATE TABLE Ingredient (
 
 CREATE TABLE IngredientListItem (
     ID INT NOT NULL AUTO_INCREMENT,
-    ListID INT,  
+    UserProfile INT,  
     IngredientID INT,
-    Amount float,
-    UnitType VARCHAR(25),
-    ExpirationDate Date, 
     PRIMARY KEY (ID),
-    FOREIGN KEY (ListID) REFERENCES IngredientList(ID),
+    FOREIGN KEY (UserProfile) REFERENCES UserProfile(ID),
+    FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID)
+);
+
+
+CREATE TABLE ShoppingListItem (
+    ID INT NOT NULL AUTO_INCREMENT,
+    UserProfile INT,  
+    IngredientID INT,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (UserProfile) REFERENCES UserProfile(ID),
     FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID)
 );
 
