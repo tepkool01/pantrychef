@@ -30,9 +30,9 @@ count = 1
 for json in jsondata:
 	dict_items = json.items()
 	a,b,c,d = dict_items
-	replaceIntoRecipeStatement += "REPLACE INTO '" + recipeTable + "' SET 'ID'='" +  str(count) + "', 'RecipeName'='" + a[1] + "', CookTime'='" + d[1] + "', DietType'='" + 'TBD' + "';\n"
-	replaceIntoIngredientListStatement += "REPLACE INTO '" + ingredientTable + "' SET 'ID'='" +  str(count) + "', 'RecipeID'='" + str(count) +"', 'IngredientList'='" + b[1] + "';\n"
-	replaceIntoDirectionsStatement += "REPLACE INTO '" + directionsTable + "' SET 'ID'='" +  str(count) + "', 'RecipeID'='" + str(count) +"', 'SortOrder'='" + '0' +"', 'Directions'='" + c[1] + "';\n"
+	replaceIntoRecipeStatement += "REPLACE INTO `" + recipeTable + "` SET `ID`='" +  str(count) + "', `RecipeName`='" + a[1] + "', `CookTime`='" + d[1] + "', `DietType`='" + 'TBD' + "';\n"
+	replaceIntoIngredientListStatement += "REPLACE INTO `" + ingredientTable + "` SET `ID`='" +  str(count) + "', `RecipeID`='" + str(count) +"', `IngredientList`='" + b[1] + "';\n"
+	replaceIntoDirectionsStatement += "REPLACE INTO `" + directionsTable + "` SET `ID`='" +  str(count) + "', `RecipeID`='" + str(count) +"', `SortOrder`='" + '0' +"', `Directions`='" + c[1] + "';\n"
 	count = count + 1
 	with io.open(recipeSeed, 'w', encoding="utf-8") as f1:
 		f1.write(replaceIntoRecipeStatement)
