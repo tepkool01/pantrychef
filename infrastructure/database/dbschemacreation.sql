@@ -66,10 +66,12 @@ CREATE TABLE RecipeListItem (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeID INT,
     IngredientID INT,
-    Amount Varchar(20),
+    Amount INT,
+    AmountUnitID INT
     PRIMARY KEY (ID),
     FOREIGN KEY (RecipeID) REFERENCES Recipe(ID),
-    FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID)
+    FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID),
+    FOREIGN KEY (AmountUnitID) REFERENCES AmountUnit(ID)
 );
 
 --TODO:Remove This.
