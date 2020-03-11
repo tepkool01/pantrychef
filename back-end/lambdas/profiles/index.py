@@ -118,7 +118,7 @@ def lambda_handler(event, context):
         if event['httpMethod'] == 'GET':
             ## Get user information, and the pantryListID
             active_profile = db.execute(
-                sql="select top 1 * FROM `UserProfile` WHERE UserID=:userId",
+                sql="SELECT * FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                 parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
             )
 
@@ -147,7 +147,7 @@ def lambda_handler(event, context):
         if event['httpMethod'] == 'GET':
             ## Get user information, and the pantryListID
             active_profile = db.execute(
-                sql="select top 1 * FROM `UserProfile` WHERE UserID=:userId",
+                sql="SELECT * FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                 parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
             )
 
