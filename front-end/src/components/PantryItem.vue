@@ -1,6 +1,6 @@
 <template>
 	<div class="Pantry">
-		{{ pantryItem.name }} ({{ pantryItem.id }})
+		{{ pantryItem }}
 	</div>
 </template>
 

@@ -44,7 +44,7 @@ def lambda_handler(event, context):
         if event['httpMethod'] == 'GET':
             # Retrieve all profiles
             raw_result = db.execute(
-                sql="select * FROM `UserProfile` WHERE UserID=:userId",
+                sql="SELECT ID, ProfileName FROM `UserProfile` WHERE UserID=:userId",
                 parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
             )
 
@@ -53,7 +53,7 @@ def lambda_handler(event, context):
             for record in raw_result['records']:
                 result.append({
                     'id': record[0]['longValue'],
-                    'profile_name': record[5]['stringValue']
+                    'profile_name': record[1]['stringValue']
                 })
 
         elif event['httpMethod'] == 'POST':
@@ -104,12 +104,12 @@ def lambda_handler(event, context):
             
             try:
                 active_profile = db.execute(
-                    sql="SELECT * FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
+                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                     parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
                 )
 
                 pantry_item_list = db.execute(
-                    sql="select * FROM `IngredientListItem` WHERE UserProfile=:listId",
+                    sql="SELECT ID, IngredientID FROM `IngredientListItem` WHERE UserProfile=:listId",
                     parameters=[{'name': 'ProflieID', 'value': {'longValue': int(active_profile.ID)}}]
                 )
 
@@ -117,8 +117,7 @@ def lambda_handler(event, context):
                 for record in pantry_item_list['records']:
                     result.append({
                         'ID': record[0]['longValue'],
-                        'UserProfile': record[0]['longValue'],
-                        'IngredientID': record[0]['longValue']
+                        'IngredientID': record[1]['longValue']
                 })
             except Exception as e:
                 print(str(e))
@@ -136,23 +135,21 @@ def lambda_handler(event, context):
             ## Get user information, and the pantryListID
             try:
                 active_profile = db.execute(
-                   sql="SELECT * FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
+                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                     parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
                 )
 
                 shopping_item_list = db.execute(
-                    sql="select * FROM `ShoppingListItem` WHERE UserProfile=:listId",
+                    sql="SELECT ID, IngredientID FROM `ShoppingListItem` WHERE UserProfile=:listId",
                     parameters=[{'name': 'ProflieID', 'value': {'longValue': int(active_profile.ID)}}]
                 )
 
                 result = []
                 for record in pantry_item_list['records']:
                     result.append({
-                            'ID': record[0]['longValue'],
-                            'UserProfile': record[0]['longValue'],
-                            'IngredientID': record[0]['longValue']
-                    })
-
+                        'ID': record[0]['longValue'],
+                        'IngredientID': record[1]['longValue']
+                })
             except Exception as e:
                 print(str(e))
                 return {
