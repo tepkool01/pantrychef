@@ -71,7 +71,7 @@ CREATE TABLE RecipeListItem (
     PRIMARY KEY (ID),
     FOREIGN KEY (RecipeID) REFERENCES Recipe(ID),
     FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID),
-    FOREIGN KEY (AmountUnitID) REFERENCES AmountUnit(ID)
+    FOREIGN KEY (AmountUnitID) REFERENCES AmountUnits(ID)
 );
 
 --TODO:Remove This.
@@ -114,5 +114,6 @@ CREATE TABLE FavoriteRecipes (
 --Changed DietType to VARCHAR due to the conversation of having ALL and Vegetarian as options
 --Removed inline comments
 --Added Units
+--Corrected AmountUnit to AmountUnits in the RecipeListItem Table
 --Removed Ingredients List
 --Added RecipeListItem
