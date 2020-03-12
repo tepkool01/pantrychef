@@ -307,3 +307,5 @@ REPLACE INTO `Ingredient` SET `ID`='306', `IngredientName`='zucchini', `Ingredie
 REPLACE INTO `Ingredient` SET `ID`='307', `IngredientName`='cheese', `IngredientType`='unhealthy';
 REPLACE INTO `Ingredient` SET `ID`='308', `IngredientName`='beer', `IngredientType`='unhealthy';
 REPLACE INTO `Ingredient` SET `ID`='309', `IngredientName`='fish', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='310', `IngredientName`='bread crumbs', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='311', `IngredientName`='parmesan cheese', `IngredientType`='healthy';
