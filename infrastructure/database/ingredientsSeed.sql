@@ -312,3 +312,7 @@ REPLACE INTO `Ingredient` SET `ID`='311', `IngredientName`='parmesan cheese', `I
 REPLACE INTO `Ingredient` SET `ID`='312', `IngredientName`='garlic powder', `IngredientType`='healthy';
 REPLACE INTO `Ingredient` SET `ID`='313', `IngredientName`='ground beef', `IngredientType`='healthy';
 REPLACE INTO `Ingredient` SET `ID`='314', `IngredientName`='taco seasoning', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='315', `IngredientName`='cresent rolls', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='316', `IngredientName`='ranch', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='317', `IngredientName`='dry dip', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='318', `IngredientName`='green onions', `IngredientType`='healthy';

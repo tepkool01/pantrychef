@@ -21,3 +21,14 @@ REPLACE INTO `RecipeListItem` SET `ID`='17', `RecipeID`='4', `IngredientID`='123
 REPLACE INTO `RecipeListItem` SET `ID`='18', `RecipeID`='4', `IngredientID`='313', `Amount`='1', `AmountUnitID`='2';
 REPLACE INTO `RecipeListItem` SET `ID`='19', `RecipeID`='4', `IngredientID`='75', `Amount`='2', `AmountUnitID`='1';
 REPLACE INTO `RecipeListItem` SET `ID`='20', `RecipeID`='4', `IngredientID`='314', `Amount`='1', `AmountUnitID`='11';
+
+
+REPLACE INTO `RecipeListItem` SET `ID`='21', `RecipeID`='5', `IngredientID`='315', `Amount`='2', `AmountUnitID`='4';
+REPLACE INTO `RecipeListItem` SET `ID`='22', `RecipeID`='5', `IngredientID`='316', `Amount`='1', `AmountUnitID`='23';
+REPLACE INTO `RecipeListItem` SET `ID`='23', `RecipeID`='5', `IngredientID`='317', `Amount`='1', `AmountUnitID`='23';
+REPLACE INTO `RecipeListItem` SET `ID`='24', `RecipeID`='5', `IngredientID`='75', `Amount`='8', `AmountUnitID`='1';
+REPLACE INTO `RecipeListItem` SET `ID`='25', `RecipeID`='5', `IngredientID`='154', `Amount`='1', `AmountUnitID`='3';
+REPLACE INTO `RecipeListItem` SET `ID`='26', `RecipeID`='5', `IngredientID`='45', `Amount`='1', `AmountUnitID`='3';
+REPLACE INTO `RecipeListItem` SET `ID`='27', `RecipeID`='5', `IngredientID`='43', `Amount`='1', `AmountUnitID`='3';
+REPLACE INTO `RecipeListItem` SET `ID`='28', `RecipeID`='5', `IngredientID`='318', `Amount`='1', `AmountUnitID`='3';
+REPLACE INTO `RecipeListItem` SET `ID`='29', `RecipeID`='5', `IngredientID`='307', `Amount`='1', `AmountUnitID`='3';
