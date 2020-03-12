@@ -118,7 +118,7 @@ def lambda_handler(event, context):
 
                 result = []
                 for record in pantry_item_list['records']:
-                    results.append({
+                    result.append({
                         'ItemID': record[0]['longValue'],
                         'IngredientName': record[1]['stringValue']
                 })
