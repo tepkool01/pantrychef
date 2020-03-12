@@ -6,7 +6,10 @@
 			</div>
 		</div>
 		<div class="row">
-			<recipe-card></recipe-card>
+			<div v-for="i in recipes" v-bind:key="i.name">
+				<recipe-card :recipe="i" v-if="i.id < 5"></recipe-card>
+
+			</div>
 		</div>
 	</div>
 </template>
@@ -14,15 +17,29 @@
 <script>
 import RecipeCard from '../components/RecipeCard'
 import ViewRecipe from './ViewRecipe'
+
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-	name: 'Recipes',
+	name: 'recipes',
+	computed: {
+		...mapGetters('recipes', {
+			recipes: 'recipes'
+		})
+	},
 	components: {
 		RecipeCard,
-	    ViewRecipe
+		ViewRecipe
+	},
+	methods: {
+		...mapActions('recipes', {
+			getRecipes: 'getRecipes'
+		}),
+		  
 	},
 	created() {
-		this.$emit('title', 'Ingredients')
-		this.$store.dispatch('recipes/getRecipes')
+		this.getRecipes()
+		this.$emit('title', 'Pantry')
 	}
 }
 </script>

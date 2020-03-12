@@ -3,7 +3,7 @@
 		<div
 			class="card-header recipe-card--header d-flex justify-content-between"
 		>
-			<h4 class="recipe-card--title">Simple Italian Omelette</h4>
+			<h4 class="recipe-card--title">{{recipe.recipe_name}}</h4>
 			<button class="btn btn-sm btn-light active">
 				<b-icon-check></b-icon-check>
 				All Ingredients Present
@@ -35,17 +35,17 @@
 		<div class="card-footer d-flex justify-content-between">
 			<div class="recipe-card--badges">
 				<span class="badge badge-pill badge-secondary mx-1"
-					>Cooktime: 30 minutes or less</span
+					>Cooktime: {{recipe.cook_time}} minutes or less</span
 				>
 				<span class="badge badge-pill badge-secondary mx-1"
-					>Diet: Vegetarian</span
+					>Diet: {{recipe.diet_type}}</span
 				>
 				<span class="badge badge-pill badge-secondary mx-1"
-					>Meal: Breakfast</span
+					>Meal: NA</span
 				>
 			</div>
 			<div class="recipe-card--view">
-				<button @click = "getRecipeCard(123)" class="btn btn-sm btn-primary">View Recipe</button>
+				<button @click = "getRecipeCard(recipe.id)" class="btn btn-sm btn-primary">View Recipe</button>
 			</div>
 		</div>
 	</div>
@@ -54,6 +54,9 @@
 <script>
 export default {
 	name: 'RecipeCard',
+	props: {
+      recipe: Object
+	},
 	methods:{
 		getRecipeCard(id){
 			this.$router.replace("/recipes/" +  id);
