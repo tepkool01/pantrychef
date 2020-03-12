@@ -67,7 +67,7 @@ CREATE TABLE RecipeListItem (
     RecipeID INT,
     IngredientID INT,
     Amount FLOAT,
-    AmountUnitID INT
+    AmountUnitID INT,
     PRIMARY KEY (ID),
     FOREIGN KEY (RecipeID) REFERENCES Recipe(ID),
     FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID),
