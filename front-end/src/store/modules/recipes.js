@@ -19,8 +19,8 @@ const actions = {
 }
 
 const mutations = {
-	SET_RECIPES(state, profiles) {
-		state.profiles = profiles
+	SET_RECIPES(state, recipes) {
+		state.recipes = recipes
 	}
 }
 
