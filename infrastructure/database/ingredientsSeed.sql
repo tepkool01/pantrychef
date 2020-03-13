@@ -316,3 +316,10 @@ REPLACE INTO `Ingredient` SET `ID`='315', `IngredientName`='cresent rolls', `Ing
 REPLACE INTO `Ingredient` SET `ID`='316', `IngredientName`='ranch', `IngredientType`='healthy';
 REPLACE INTO `Ingredient` SET `ID`='317', `IngredientName`='dry dip', `IngredientType`='healthy';
 REPLACE INTO `Ingredient` SET `ID`='318', `IngredientName`='green onions', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='319', `IngredientName`='french loaf', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='320', `IngredientName`='bacon bits', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='321', `IngredientName`='yellow mustard', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='322', `IngredientName`='lemon juice', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='323', `IngredientName`='tater tots', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='324', `IngredientName`='minced onions', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='325', `IngredientName`='ground black pepper', `IngredientType`='healthy';
