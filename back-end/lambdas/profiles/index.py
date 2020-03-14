@@ -119,8 +119,8 @@ def lambda_handler(event, context):
                 result = []
                 for record in pantry_item_list['records']:
                     result.append({
-                        'ItemID': record[0]['longValue'],
-                        'IngredientName': record[1]['stringValue']
+                        'id': record[0]['longValue'],
+                        'ingredient_name': record[1]['stringValue']
                 })
             except Exception as e:
                 print("Exception:" + str(e))

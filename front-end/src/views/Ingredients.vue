@@ -12,7 +12,7 @@
 						</div>
 						<div class="card-body m-4 text-center" style="width: 50%">
 							<div v-for="i in ingredients" v-bind:key="i.name">
-								<ingredient :ingredient="i" :key="i.id"></ingredient>
+								<ingredient :ingredient="i" :listType="pantryType" :key="i.id"></ingredient>
 							</div>
 						</div>
 					</div>
@@ -46,11 +46,15 @@ export default {
 		...mapActions('ingredients', {
 			getIngredients: 'getIngredients'
 		}),
-		  
 	},
 	created() {
 		this.getIngredients()
 		this.$emit('title', 'Pantry')
+	},
+	data() {
+		return {
+			pantryType: "shopping"
+		}
 	}
 }
 </script>

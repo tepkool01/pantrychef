@@ -7,26 +7,7 @@
         </div>
         <div class="card-body my-2" style="width: 18rem;">
             <AutoComplete :componentTitle="Title1" :suggestionsMstr="suggestionsMstr" :objectAttribute="Attr1" :toolTip="Tip1" ></autoComplete>
-            <br>
-
-            <AutoComplete :componentTitle="Title2" :suggestionsMstr="unitsOfMeasure" :objectAttribute="Attr2" :toolTip="Tip2" ></autoComplete>
-            <br>
-
-
-            <label v-b-tooltip.hover.left v-bind:title="Tip3" 
-            for="lfname">{{Title3}}:</label> 
-            <input type="number" step=0.25 min=0.0 max=999.9 value=0.0 pattern="^\d*(\.\d{0,2})?$" class="bg-gray-300 px-4 py-2" autocomplete="off" oninput="this.value = Math.abs(this.value)" v-model="Value3">
-            <br>
-
-            <label v-b-tooltip.hover.left v-bind:title="Tip4" 
-            for="lfname">{{Title4}}:</label> 
-            <br>
-
-            <input type="date" id="start" name="trip-start" v-bind:value="currentDate" v-bind:min="currentDate">
-            <br><br><br>
-            <b-button variant="outline-secondary" class="ml-3"
-			>Add</b-button
-		>
+            <button type="button" class="btn btn-outline-success btn-sm" >Add</button>
         </div>
     </div>
 </template>
