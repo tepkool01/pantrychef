@@ -17,7 +17,6 @@
 						</div>
 						<div class="card-body my-2">
 							<div v-for="i in pantryList" v-bind:key="i.name">
-							    {{i}}
 								<ingredient :ingredient="i" :listType="pantryType"></ingredient>
 							</div>
 						</div>
