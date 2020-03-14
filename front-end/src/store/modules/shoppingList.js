@@ -12,7 +12,7 @@ const getters = {
 
 const actions = {
 	getShoppingList({ commit }) {
-		api.pantry.getShoppingList().then(response => {
+		api.shoppingList.getShoppingList().then(response => {
 			commit('SET_SHOPPING', response.data)
 		})
 	}

@@ -10,5 +10,6 @@ export default {
 	profile,
 	ingredients,
 	pantry,
+	shoppingList,
 	recipe
 }

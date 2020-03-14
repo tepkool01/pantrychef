@@ -135,7 +135,10 @@ def lambda_handler(event, context):
 
     elif event['resource'] == '/shoppingList':
         if event['httpMethod'] == 'GET':
+            print("Getting pantryList")
+
             try:
+                
                 active_profile = db.execute(
                     sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                     parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
@@ -145,6 +148,8 @@ def lambda_handler(event, context):
                     sql="SELECT IL.ID as ItemID, IngredientName FROM `ShoppingListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
                     parameters=[{'name': 'ProfileID', 'value': {'longValue': int(active_profile['records'][0][0]['longValue'])}}]
                 )
+
+                print(shopping_item_list)
 
                 result = []
                 for record in shopping_item_list['records']:
