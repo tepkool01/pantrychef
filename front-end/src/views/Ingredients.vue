@@ -37,7 +37,7 @@ export default {
 		...mapGetters('ingredients', {
 			ingredients: 'ingredients'
 		}),
-		...mapGetters('shopping', {
+		...mapGetters('shoppingList', {
 			shoppingList: 'shoppingList'
 		})
 	},
@@ -49,8 +49,8 @@ export default {
 		...mapActions('ingredients', {
 			getIngredients: 'getIngredients'
 		}),
-		...mapActions('shopping', {
-			getShoppingList: 'getShopping'
+		...mapActions('shoppingList', {
+			getShoppingList: 'getShoppingList'
 		})
 	},
 	created() {

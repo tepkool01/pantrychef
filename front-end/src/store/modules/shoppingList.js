@@ -5,14 +5,14 @@ const state = {
 }
 
 const getters = {
-	shopping(state) {
+	shoppingList(state) {
 		return state.shopping
 	}
 }
 
 const actions = {
 	getShoppingList({ commit }) {
-		api.pantry.getShopping().then(response => {
+		api.pantry.getShoppingList().then(response => {
 			commit('SET_SHOPPING', response.data)
 		})
 	}
