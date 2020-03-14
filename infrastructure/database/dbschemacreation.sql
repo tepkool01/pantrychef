@@ -65,22 +65,13 @@ CREATE TABLE Recipe (
 CREATE TABLE RecipeListItem (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeID INT,
-    IngredientID INT,
-    Amount FLOAT,
-    AmountUnitID INT,
+    IngredientID INT
+    --Amount FLOAT DEFAULT NULL,
+    --AmountUnitID INT DEFAULT NULL,
     PRIMARY KEY (ID),
     FOREIGN KEY (RecipeID) REFERENCES Recipe(ID),
     FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID),
-    FOREIGN KEY (AmountUnitID) REFERENCES AmountUnits(ID)
-);
-
---TODO:Remove This.
-CREATE TABLE RecipeIngredients (
-    ID INT NOT NULL AUTO_INCREMENT,
-    RecipeID INT,
-    IngredientList VARCHAR(900),
-    PRIMARY KEY (ID),
-    FOREIGN KEY (RecipeID) REFERENCES Recipe(ID)
+    --FOREIGN KEY (AmountUnitID) REFERENCES AmountUnits(ID)
 );
 
 CREATE TABLE Directions (
