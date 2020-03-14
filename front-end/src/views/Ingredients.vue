@@ -11,7 +11,7 @@
 							</h5>
 						</div>
 						<div class="card-body m-4 text-center" style="width: 50%">
-							<div v-for="i in pantryList" v-bind:key="i.name">
+							<div v-for="i in shoppingList" v-bind:key="i.name">
 								<ingredient :ingredient="i" :listType="pantryType"></ingredient>
 							</div>
 						</div>
@@ -37,8 +37,8 @@ export default {
 		...mapGetters('ingredients', {
 			ingredients: 'ingredients'
 		}),
-		...mapGetters('pantry', {
-			pantryList: 'pantry'
+		...mapGetters('shoppingList', {
+			shoppingList: 'shoppingList'
 		})
 	},
 	components: {
@@ -49,13 +49,13 @@ export default {
 		...mapActions('ingredients', {
 			getIngredients: 'getIngredients'
 		}),
-		...mapActions('pantry', {
-			getPantryList: 'getPantryList'
+		...mapActions('shoppingList', {
+			getShoppingList: 'getShoppingList'
 		})
 	},
 	created() {
 		this.getIngredients()
-		this.getPantryList()
+		this.getShoppingList()
 		this.$emit('title', 'Pantry')
 	},
 	data() {
