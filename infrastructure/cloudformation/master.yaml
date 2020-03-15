@@ -181,6 +181,7 @@ Resources:
                     {
                       "pantrychef_authorizer": []
                     }
+                  ]
                 },
                 "post": {
                   "produces": [
@@ -252,6 +253,7 @@ Resources:
                     {
                       "pantrychef_authorizer": []
                     }
+                  ]
                 },
                 "options": {
                   "consumes": [
@@ -372,6 +374,7 @@ Resources:
                     {
                       "pantrychef_authorizer": []
                     }
+                  ]
                 },
                 "delete": {
                   "produces": [
@@ -965,6 +968,7 @@ Resources:
                     {
                       "pantrychef_authorizer": []
                     }
+                  ]
                 },
                 "options": {
                   "consumes": [
@@ -1085,6 +1089,7 @@ Resources:
                     {
                       "pantrychef_authorizer": []
                     }
+                  ]
                 },
                 "delete": {
                   "produces": [
@@ -1404,6 +1409,7 @@ Resources:
                     {
                       "pantrychef_authorizer": []
                     }
+                  ]
                 },
                 "delete": {
                   "produces": [
