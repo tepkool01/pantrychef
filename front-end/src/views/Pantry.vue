@@ -30,7 +30,7 @@
 <script>
 import Ingredient from '@/components/Ingredient.vue'
 import IngredientSubmissionPanel from '@/components/IngredientSubmissionPanel.vue'
-import Profile from "../store/modules/profile";
+//import Profile from "../store/modules/profile";
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -50,7 +50,7 @@ export default {
 	components: {
 		IngredientSubmissionPanel,
 		Ingredient,
-		Profile
+		//Profile
 	},
 	methods: {
 		...mapActions('pantry', {
@@ -81,8 +81,7 @@ export default {
 		//Get profile for this page
 
 		this.getIngredients()
-		var test = this.$store.dispatch('pantry/getPantryList', 4)
-		console.log(test)
+		this.getPantryList()
 		this.$emit('title', 'Pantry')
 	}
 }
