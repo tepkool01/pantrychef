@@ -99,7 +99,11 @@ def lambda_handler(event, context):
             )
     elif event['resource'] == '/profiles/{profileId}/activate':
         if event['httpMethod'] == 'PUT':
-            print("Updating", event['pathParameters']['profileId'])
+            # Reset all to 0
+            db.execute(
+                sql="UPDATE UserProfile SET IsActive=0 WHERE UserId=:userId",
+                parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
+            )
             db.execute(
                 sql="UPDATE UserProfile SET IsActive=1 WHERE UserId=:userId and ID=:id",
                 parameters=[

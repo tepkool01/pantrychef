@@ -80,6 +80,11 @@ export default {
 			})
 		}
 	},
+	watch: {
+		activeProfile: function(val) {
+			this.getPantryList(this.activeProfile)
+		}
+	},
 	data() {
 		return {
 			pantryType: 'pantry'
@@ -87,10 +92,12 @@ export default {
 	},
 	created() {
 		//Get profile for this page
-		let test_id = 1
-		console.log("Calling pantry with ID", test_id)
+		if (this.activeProfile) {
+			console.log("Calling pantry with ID", this.activeProfile)
+			this.getPantryList(this.activeProfile)
+		}
+
 		this.getIngredients()
-		this.getPantryList(test_id)
 		this.$emit('title', 'Pantry')
 	}
 }
