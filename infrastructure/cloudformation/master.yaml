@@ -1153,7 +1153,7 @@ Resources:
                   ],
                   "parameters": [
                     {
-                      "name": "item Id",
+                      "name": "itemId",
                       "in": "path",
                       "description": "item id",
                       "required": true,
@@ -1468,7 +1468,7 @@ Resources:
                   ],
                   "parameters": [
                     {
-                      "name": "item Id",
+                      "name": "itemId",
                       "in": "path",
                       "description": "item id",
                       "required": true,
@@ -1768,6 +1768,14 @@ Resources:
               }
             },
             "definitions": {
+              "ShoppingListResponse": {
+                "type": "object",
+                "title": "Shopping List Response"
+              },
+              "PantryResponse": {
+                "type": "object",
+                "title": "Pantry Response"
+              },
               "ProfilesResponse": {
                 "type": "object",
                 "title": "Profiles Response"
