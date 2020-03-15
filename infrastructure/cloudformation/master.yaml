@@ -1195,7 +1195,7 @@ Resources:
                   }
                 }
               },
-              "/shoppinglist": {
+              "/shopping-lists": {
                 "get": {
                   "produces": [
                     "application/json"
@@ -1307,7 +1307,7 @@ Resources:
                   }
                 }
               },
-              "/shoppinglist/{itemId}": {
+              "/shopping-lists/{itemId}": {
                 "post": {
                   "produces": [
                     "application/json"
@@ -1885,10 +1885,10 @@ Resources:
   ShoppingListLambda:
     Type: AWS::Lambda::Function
     Properties:
-      FunctionName: "pc-shoppinglist"
+      FunctionName: "pc-shopping-list"
       Code:
         S3Bucket: "lepantrychefartifacts"
-        S3Key: "shoppinglist.zip"
+        S3Key: "shopping-list.zip"
       Handler: index.lambda_handler
       Runtime: python3.7
       Role: !GetAtt GenericLambdaRole.Arn
