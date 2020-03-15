@@ -96,6 +96,15 @@ def lambda_handler(event, context):
                     {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
                 ]
             )
+        elif event['httpMethod'] == 'PUT':
+            print("Updating", event['pathParameters']['profileId'])
+            db.execute(
+                sql="UPDATE UserProfile SET IsActive=1 WHERE UserId=:userId and ID=:id",
+                parameters=[
+                    {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
+                    {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
+                ]
+            )
 
     return {
         'statusCode': status_code,
