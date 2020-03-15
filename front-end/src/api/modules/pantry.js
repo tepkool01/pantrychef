@@ -11,6 +11,6 @@ export default {
 		return axios.delete('/pantry', ingredient)
 	},
 	getShoppingList() {
-		return axios.get('/shoppingList')
+		return axios.get('/shopping-lists')
 	}
 }
