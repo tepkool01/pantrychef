@@ -52,40 +52,40 @@ Resources:
       StorageEncrypted: True
 
   # This is where all the front-end VueJS content will go
-  StaticContent:
-    Type: AWS::S3::Bucket
-    Properties:
-      AccessControl: PublicRead
-      BucketName: lepantrychef.com
-      WebsiteConfiguration:
-        IndexDocument: index.html
-        ErrorDocument: error.html
-    DeletionPolicy: Retain
+#  StaticContent:
+#    Type: AWS::S3::Bucket
+#    Properties:
+#      AccessControl: PublicRead
+#      BucketName: lepantrychef.com
+#      WebsiteConfiguration:
+#        IndexDocument: index.html
+#        ErrorDocument: error.html
+#    DeletionPolicy: Retain
 
   # This is where all the back-end code will live and be referenced by lambdas; also holds the CloudFormation template itself
-  S3Artifacts:
-    Type: AWS::S3::Bucket
-    Properties:
-      BucketName: lepantrychefartifacts
-    DeletionPolicy: Retain
+#  S3Artifacts:
+#    Type: AWS::S3::Bucket
+#    Properties:
+#      BucketName: lepantrychefartifacts
+#    DeletionPolicy: Retain
 
   # Allows all objects in the front-end bucket to have public read access (it is the WWW after all)
-  StaticContentPolicy:
-    Type: AWS::S3::BucketPolicy
-    Properties:
-      Bucket: !Ref StaticContent
-      PolicyDocument:
-        Statement:
-          - Action:
-              - "s3:GetObject"
-            Effect: "Allow"
-            Resource:
-              Fn::Join:
-                - ""
-                - - "arn:aws:s3:::"
-                  - !Ref StaticContent
-                  - "/*"
-            Principal: "*"
+#  StaticContentPolicy:
+#    Type: AWS::S3::BucketPolicy
+#    Properties:
+#      Bucket: !Ref StaticContent
+#      PolicyDocument:
+#        Statement:
+#          - Action:
+#              - "s3:GetObject"
+#            Effect: "Allow"
+#            Resource:
+#              Fn::Join:
+#                - ""
+#                - - "arn:aws:s3:::"
+#                  - !Ref StaticContent
+#                  - "/*"
+#            Principal: "*"
 
   # The meat of the API, note that the integration is ALWAYS 'POST', even if the request method is not. Also connects the lambda to API Gateway
   API:
