@@ -11,9 +11,10 @@
 				:suggestionsMstr="suggestionsMstr"
 				:objectAttribute="Attr1"
 				:toolTip="Tip1"
+				@selection="selectionEvent"
 			></AutoComplete>
 			<br /><br />
-			<b-button variant="outline-secondary" class="ml-3">Add </b-button>
+			<b-button variant="outline-secondary" class="ml-3" v-on:click="childEvent" v-if="this.selectedId != ''">Add</b-button>
 		</div>
 	</div>
 </template>
@@ -37,39 +38,24 @@ export default {
 	methods: {
 		...mapActions('pantry', {
 			addItem: 'addItem'
-		})
+		}),
+
+		childEvent: function() {
+			console.log("child event")
+			this.$emit('clickedItem',this.selectedId)
+		},
+		selectionEvent: function(value){
+			console.log("select")
+			console.log(value)
+			this.selectedId=value
+		}
 	},
 	data: function() {
 		return {
-			unitsOfMeasure: [
-				{
-					name: 'kilogram',
-					abbreviation: 'kg'
-				},
-				{
-					name: 'gram',
-					abbreviation: 'g'
-				},
-				{
-					name: 'milligram',
-					abbreviation: 'mg'
-				},
-				{
-					name: 'pound',
-					abbreviation: 'lb'
-				},
-				{
-					name: 'liter',
-					abbreviation: 'L'
-				},
-				{
-					name: 'milliliter',
-					abbreviation: 'mL'
-				}
-			],
 			Title1: 'Ingredient',
 			Attr1: 'ingredient_name',
 			Tip1: 'Choose ingredient to add to your pantry.',
+			selectedId: '',
 			currentDate: new Date().toISOString().substr(0, 10)
 		}
 	}

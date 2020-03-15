@@ -2,7 +2,7 @@
 	<div>
 		<div class="row">
 
-			<IngredientSubmissionPanel :suggestionsMstr="ingredients"></IngredientSubmissionPanel>
+			<IngredientSubmissionPanel :suggestionsMstr="ingredients" @clickedItem="eventChild"></IngredientSubmissionPanel>
 
 			<div class="card m-4 text-center" style="width:50%">
 				<div class="card-header">
@@ -47,7 +47,11 @@ export default {
 		}),
 		...mapActions('shoppingList', {
 			getShoppingList: 'getShoppingList'
-		})
+		}),
+		eventChild: function(value) {
+      		console.log('submit here!') // someValue
+			  console.log(value) // someValue
+		}
 	},
 	created() {
 		this.getIngredients()

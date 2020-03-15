@@ -55,6 +55,7 @@
 		}, 
         setState(suggestion){
             this.queryStr=suggestion[this.objectAttribute]
+            this.$emit('selection',suggestion['id'])
             this.modal=false
         }
     },
