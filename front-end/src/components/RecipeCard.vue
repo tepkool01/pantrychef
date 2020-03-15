@@ -3,7 +3,7 @@
 		<div class="card-header recipe-card--header d-flex justify-content-between">
 			<h4 class="recipe-card--title">{{recipe.recipe_name}}</h4>
 			<button class="btn btn-sm btn-light active">
-				<template v-if="recipe.ingredients_in_pantry ===  recipe.ingredient_count">
+				<template v-if="parseInt(recipe.ingredients_in_pantry) ===  parseInt(recipe.ingredient_count)">
 				<b-icon-check></b-icon-check>
 				All Ingredients Present
 				</template>
@@ -14,7 +14,8 @@
 		<div class="card-body">
 			<div class="row no-gutters">
 				<div class="col-lg-3">
-					<img src="https://placekitten.com/150/150" />
+					<img v-if="recipe.img_url" :src="'img/food/' + recipe.img_url" style="width: 100px; height: 100px"/>
+					<div v-else style="width: 100px; height: 100px; background-color: #5b6976; text-align: center; color: white;">Noneya</div>
 				</div>
 				<div class="col-lg-9 recipe-card--body d-flex align-items-start flex-column">
 					<div class="recipe-card--description">
