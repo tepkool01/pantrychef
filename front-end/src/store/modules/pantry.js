@@ -1,16 +1,12 @@
 import api from '../../api'
 
 const state = {
-	pantry: [],
-	shopping: []
+	pantry: []
 }
 
 const getters = {
 	pantry(state) {
 		return state.pantry
-	},
-	shopping(state) {
-		return state.shopping
 	}
 }
 
@@ -20,15 +16,17 @@ const actions = {
 			commit('SET_PANTRY', response.data)
 		})
 	},
-	addItem({ commit }) {
-		api.pantry.addItem().then(response => {
-			commit('SET_PANTRY', response.data)
-		})
+	addIngredient({ commit }, ingredient_id) {
+		commit('ADD_INGREDIENT', ingredient_id)
+		//api.pantry.addItem().then(response => {
+
+		//})
 	},
-	deleteItem({ commit }) {
-		api.pantry.deleteItem().then(response => {
-			commit('SET_PANTRY', response.data)
-		})
+	removeIngredient({ commit }, ingredient_id) {
+		commit('REMOVE_INGREDIENT', ingredient_id)
+		//api.pantry.deleteItem().then(response => {
+
+		//})
 	},
 	getShoppingList({ commit }) {
 		api.pantry.getShoppingList().then(response => {
@@ -44,8 +42,13 @@ const mutations = {
 	SET_PANTRY(state, pantry) {
 		state.pantry = pantry
 	},
-	SET_SHOPPING(state, shopping) {
-		state.shopping = shopping
+	ADD_INGREDIENT(state, ingredient) {
+		if (!state.pantry.includes(ingredient)) {
+			state.pantry.push(ingredient)
+		}
+	},
+	REMOVE_INGREDIENT(state, ingredient) {
+		state.pantry.splice(state.pantry.indexOf(ingredient), 1)
 	}
 }
 

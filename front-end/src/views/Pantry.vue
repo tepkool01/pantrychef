@@ -3,7 +3,7 @@
 		<div class="row">
 			<IngredientSubmissionPanel
 				:suggestionsMstr="ingredients"
-				@clickedItem="eventChild"
+				@clickedItem="addIngredientToPantry"
 			></IngredientSubmissionPanel>
 
 			<div class="card m-4 text-center" style="width:50%">
@@ -54,7 +54,9 @@ export default {
 	},
 	methods: {
 		...mapActions('pantry', {
-			getPantryList: 'getPantryList'
+			getPantryList: 'getPantryList',
+			addIngredient: 'addIngredient',
+			removeIngredient: 'removeIngredient'
 		}),
 		...mapActions('ingredients', {
 			getIngredients: 'getIngredients'
@@ -63,13 +65,12 @@ export default {
 			getProfiles: 'getProfiles'
 		}),
 
-		eventChild: function(value) {
-			console.log('submit here!') // someValue
-			console.log(value) // someValue
+		addIngredientToPantry (ingredient) {
+			console.log("Adding:", ingredient)
+			this.addIngredient(ingredient)
 		},
-		handleIngredientRemove: function(value) {
-			console.log('remove here!') // someValue
-			console.log(value) // someValue
+		handleIngredientRemove (ingredient) {
+			this.removeIngredient(ingredient)
 		}
 	},
 	data() {
@@ -79,9 +80,10 @@ export default {
 	},
 	created() {
 		//Get profile for this page
-
+		let test_id = 1
+		console.log("Calling pantry with ID", test_id)
 		this.getIngredients()
-		this.getPantryList()
+		this.getPantryList(test_id)
 		this.$emit('title', 'Pantry')
 	}
 }

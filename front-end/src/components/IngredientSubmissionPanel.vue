@@ -14,15 +14,13 @@
 				@selection="selectionEvent"
 			></AutoComplete>
 			<br /><br />
-			<b-button variant="outline-secondary" class="ml-3" v-on:click="childEvent" v-if="this.selectedId != ''">Add</b-button>
+			<b-button variant="outline-secondary" class="ml-3" @click="childEvent" v-if="Object.keys(this.selected_ingredient).length !== 0">Add</b-button>
 		</div>
 	</div>
 </template>
 
 <script>
 import AutoComplete from '@/components/AutoComplete.vue'
-import { mapActions } from 'vuex'
-
 
 export default {
 	name: 'ingredients',
@@ -36,26 +34,19 @@ export default {
 		AutoComplete
 	},
 	methods: {
-		...mapActions('pantry', {
-			addItem: 'addItem'
-		}),
-
-		childEvent: function() {
-			console.log("child event")
-			this.$emit('clickedItem',this.selectedId)
+		childEvent () {
+			this.$emit('clickedItem', this.selected_ingredient)
 		},
-		selectionEvent: function(value){
-			console.log("select")
-			console.log(value)
-			this.selectedId=value
+		selectionEvent (value){
+			this.selected_ingredient = value
 		}
 	},
-	data: function() {
+	data () {
 		return {
 			Title1: 'Ingredient',
 			Attr1: 'ingredient_name',
 			Tip1: 'Choose ingredient to add to your pantry.',
-			selectedId: '',
+			selected_ingredient: {},
 			currentDate: new Date().toISOString().substr(0, 10)
 		}
 	}
