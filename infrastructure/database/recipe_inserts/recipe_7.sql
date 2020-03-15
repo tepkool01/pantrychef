@@ -354,7 +354,7 @@ UPDATE `Recipe` SET RecipeName='Sloppier Joes', CookTime='45', DietType='TBD', I
 UPDATE `Recipe` SET RecipeName='Sloppiest Joe', CookTime='10', DietType='TBD', IngredientCount='2' WHERE ID=3317;
 UPDATE `Recipe` SET RecipeName='Southwest Chicken Wraps', CookTime='20', DietType='TBD', IngredientCount='17' WHERE ID=3318;
 UPDATE `Recipe` SET RecipeName='Spicy Shrimp Sandwich', CookTime='10', DietType='TBD', IngredientCount='14' WHERE ID=3319;
-UPDATE `Recipe` SET RecipeName='Stuffed Calzone Sandwiches', CookTime='None', DietType='TBD', IngredientCount='14' WHERE ID=3320;
+UPDATE `Recipe` SET RecipeName='Stuffed Calzone Sandwiches', CookTime='0', DietType='TBD', IngredientCount='14' WHERE ID=3320;
 UPDATE `Recipe` SET RecipeName='Stuffed Ham and Cheese Biscuits', CookTime='15', DietType='TBD', IngredientCount='4' WHERE ID=3321;
 UPDATE `Recipe` SET RecipeName='Sunny Side Breakfast Sandwich', CookTime='25', DietType='TBD', IngredientCount='6' WHERE ID=3322;
 UPDATE `Recipe` SET RecipeName='Superburger Sandwich', CookTime='25', DietType='TBD', IngredientCount='10' WHERE ID=3323;
@@ -390,7 +390,7 @@ UPDATE `Recipe` SET RecipeName='Wine and Cheese Grilled Cheese', CookTime='25', 
 UPDATE `Recipe` SET RecipeName='Winnie Latos', CookTime='30', DietType='TBD', IngredientCount='5' WHERE ID=3353;
 UPDATE `Recipe` SET RecipeName='Baked Shrimp Scampi', CookTime='45', DietType='TBD', IngredientCount='18' WHERE ID=3354;
 UPDATE `Recipe` SET RecipeName='Butter Beer Shrimp', CookTime='5', DietType='TBD', IngredientCount='10' WHERE ID=3355;
-UPDATE `Recipe` SET RecipeName='Cheesy Shrimp and Grits', CookTime='None', DietType='TBD', IngredientCount='10' WHERE ID=3356;
+UPDATE `Recipe` SET RecipeName='Cheesy Shrimp and Grits', CookTime='0', DietType='TBD', IngredientCount='10' WHERE ID=3356;
 UPDATE `Recipe` SET RecipeName='Cilantro Lime Fish Tacos', CookTime='90', DietType='TBD', IngredientCount='12' WHERE ID=3357;
 UPDATE `Recipe` SET RecipeName='Crab Rangoon Pizza', CookTime='35', DietType='TBD', IngredientCount='10' WHERE ID=3358;
 UPDATE `Recipe` SET RecipeName='Crispy Garlic Lemon Shrimp', CookTime='10', DietType='TBD', IngredientCount='11' WHERE ID=3359;

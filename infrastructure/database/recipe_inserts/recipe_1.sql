@@ -238,7 +238,7 @@ UPDATE `Recipe` SET RecipeName='Southwest Eggrolls', CookTime='35', DietType='TB
 UPDATE `Recipe` SET RecipeName='Spicy Armadillo Eggs', CookTime='20', DietType='TBD', IngredientCount='9' WHERE ID=238;
 UPDATE `Recipe` SET RecipeName='Spicy Crab Cuccumbers', CookTime='120', DietType='TBD', IngredientCount='11' WHERE ID=239;
 UPDATE `Recipe` SET RecipeName='Spicy Crispy Cauliflower', CookTime='20', DietType='TBD', IngredientCount='9' WHERE ID=240;
-UPDATE `Recipe` SET RecipeName='Spicy Sausage Stuffed Bread', CookTime='None', DietType='TBD', IngredientCount='11' WHERE ID=241;
+UPDATE `Recipe` SET RecipeName='Spicy Sausage Stuffed Bread', CookTime='0', DietType='TBD', IngredientCount='11' WHERE ID=241;
 UPDATE `Recipe` SET RecipeName='Spinach and Feta Stuffed Mushrooms', CookTime='30', DietType='TBD', IngredientCount='12' WHERE ID=242;
 UPDATE `Recipe` SET RecipeName='Spinach Artichoke Bites', CookTime='20', DietType='TBD', IngredientCount='7' WHERE ID=243;
 UPDATE `Recipe` SET RecipeName='Spinach Bacon Quesadilla', CookTime='25', DietType='TBD', IngredientCount='7' WHERE ID=244;
