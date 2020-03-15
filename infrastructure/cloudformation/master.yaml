@@ -1244,7 +1244,7 @@ Resources:
                   }
                 }
               },
-              "/pantry/{profileId}/ingredient/{ingredientId}": {
+              "/pantry/{profileId}/ingredients/{ingredientId}": {
                 "get": {
                   "produces": [
                     "application/json"
@@ -1766,7 +1766,7 @@ Resources:
                   }
                 }
               },
-              "/shopping-list/{profileId}/ingredient/{ingredientId}": {
+              "/shopping-list/{profileId}/ingredients/{ingredientId}": {
                 "get": {
                   "produces": [
                     "application/json"
