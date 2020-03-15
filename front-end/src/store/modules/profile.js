@@ -10,6 +10,7 @@ const getters = {
 		return state.profiles
 	},
 	activeProfile(state) {
+		console.log("Returning active profile", state.active_profile)
 		return state.active_profile
 	}
 }
@@ -27,6 +28,7 @@ const actions = {
 		//})
 	},
 	getProfiles({ commit }) {
+		console.log("Getting profiles")
 		api.profile.getProfiles().then(response => {
 			commit('SET_PROFILES', response.data)
 		})

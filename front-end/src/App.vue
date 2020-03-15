@@ -13,8 +13,9 @@
 				<div class="sidebar--diet-type mb-5">Vegetarian</div>
 				<!--TODO: Bind dietType data here-->
 
-				<select v-model="activeProfile">
-					<option v-for="p in profiles"></option>
+				<select @change="switchProfile">
+					<option></option>
+					<option v-for="p in profiles" :value="p.id" :selected="p.id == activeProfile">{{p.profile_name}} ({{p.id}})</option>
 				</select>
 				<div class="list-group list-group-flush">
 					<a
@@ -89,8 +90,7 @@ export default {
 	data() {
 		return {
 			pageTitle: '',
-			toggle: false,
-			activeProfile: null
+			toggle: false
 		}
 	},
 	computed: {
@@ -100,8 +100,20 @@ export default {
 		}),
 		...mapGetters('profile', {
 			profiles: 'profiles',
-			activeProfile: 'activeProfile'
+			aProfile: 'activeProfile'
 		}),
+		activeProfile: {
+			get: function() {
+				console.log("Getting profile", this.aProfile)
+				console.log(this.profiles)
+				return this.aProfile
+
+			},
+			set: function(newProfile) {
+				console.log("Setting profile", newProfile)
+				this.activateProfile(newProfile)
+			}
+		}
 	},
 	watch: {
 		pageTitle(val) {
@@ -115,6 +127,10 @@ export default {
 		...mapActions('profile', {
 			activateProfile: 'activateProfile'
 		}),
+		switchProfile(profile) {
+			console.log("Switching profile: ", profile.target.value)
+			this.activateProfile(profile.target.value)
+		},
 		onLogout() {
 			// Invalidate the session
 			this.logout()

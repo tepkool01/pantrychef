@@ -39,9 +39,10 @@ const routes = [
 					// todo: dry
 					// If we can get a token, then they can proceed, otherwise redirect them to the sign-in page
 					if (store.state.users.user.idToken != null) {
-						axios.defaults.headers.common['Authorization'] =
-							store.state.users.user.idToken
+						axios.defaults.headers.common['Authorization'] = store.state.users.user.idToken
 
+						// Grab profiles
+						store.dispatch('profile/getProfiles')
 						next()
 					} else {
 						next('/')
@@ -62,9 +63,9 @@ const routes = [
 				.then(() => {
 					if (store.state.users.user.idToken != null) {
 						// Sets the authorization token so the user can access this endpoint
-						axios.defaults.headers.common['Authorization'] =
-							store.state.users.user.idToken
+						axios.defaults.headers.common['Authorization'] = store.state.users.user.idToken
 
+						store.dispatch('profile/getProfiles')
 						next()
 					} else {
 						next('/')
@@ -85,9 +86,9 @@ const routes = [
 				.then(() => {
 					if (store.state.users.user.idToken != null) {
 						// Sets the authorization token so the user can access this endpoint
-						axios.defaults.headers.common['Authorization'] =
-							store.state.users.user.idToken
+						axios.defaults.headers.common['Authorization'] = store.state.users.user.idToken
 
+						store.dispatch('profile/getProfiles')
 						next()
 					} else {
 						next('/')
@@ -108,9 +109,9 @@ const routes = [
 				.then(() => {
 					if (store.state.users.user.idToken != null) {
 						// Sets the authorization token so the user can access this endpoint
-						axios.defaults.headers.common['Authorization'] =
-							store.state.users.user.idToken
+						axios.defaults.headers.common['Authorization'] = store.state.users.user.idToken
 
+						store.dispatch('profile/getProfiles')
 						next()
 					} else {
 						next('/')
@@ -131,9 +132,9 @@ const routes = [
 				.then(() => {
 					if (store.state.users.user.idToken != null) {
 						// Sets the authorization token so the user can access this endpoint
-						axios.defaults.headers.common['Authorization'] =
-							store.state.users.user.idToken
+						axios.defaults.headers.common['Authorization'] = store.state.users.user.idToken
 
+						store.dispatch('profile/getProfiles')
 						next()
 					} else {
 						next('/')

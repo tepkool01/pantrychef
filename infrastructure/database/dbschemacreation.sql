@@ -13,6 +13,7 @@ CREATE TABLE UserProfile (
     ProfileName VARCHAR(50),
     UserID INT,
     DietType INT,
+    IsActive TINYINT(1) DEFAULT 0
     PRIMARY KEY (ID),
     FOREIGN KEY (UserID) REFERENCES User(ID)
 );
