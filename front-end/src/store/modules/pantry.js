@@ -22,7 +22,7 @@ const actions = {
 	},
 	getShoppingList({ commit }) {
 		console.log("output")
-		api.pantry.getShopping().then(response => {
+		api.pantry.getShoppingList().then(response => {
 			commit('SET_SHOPPING', response.data)
 		})
 	}
