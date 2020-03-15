@@ -5,6 +5,7 @@ import profile from './modules/profile'
 import users from './modules/users'
 import ingredients from "./modules/ingredients"
 import pantry from "./modules/pantry"
+import shoppingList from "./modules/shoppingList"
 import recipes from './modules/recipes'
 
 Vue.use(Vuex)
@@ -33,6 +34,13 @@ export default new Vuex.Store({
 			mutations: ingredients.mutations
 		},
 		pantry: {
+			namespaced: true,
+			state: pantry.state,
+			actions: pantry.actions,
+			getters: pantry.getters,
+			mutations: pantry.mutations
+		},
+		shoppingList: {
 			namespaced: true,
 			state: pantry.state,
 			actions: pantry.actions,

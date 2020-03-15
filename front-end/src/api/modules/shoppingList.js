@@ -2,12 +2,12 @@ import axios from 'axios'
 
 export default {
 	getShoppingList() {
-		return axios.get('/shoppingList')
+		return axios.get('/shopping-lists')
 	},
 	addItem(ingredient) {
-		return axios.post('/shoppingList', ingredient)
+		return axios.post('/shopping-lists', ingredient)
 	},
 	deleteItem(ingredient) {
-		return axios.delete('/shoppingList', ingredient)
+		return axios.delete('/shopping-lists', ingredient)
 	}
 }
