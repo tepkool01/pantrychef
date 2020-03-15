@@ -42,10 +42,10 @@ export default new Vuex.Store({
 		},
 		shoppingList: {
 			namespaced: true,
-			state: pantry.state,
-			actions: pantry.actions,
-			getters: pantry.getters,
-			mutations: pantry.mutations
+			state: shoppingList.state,
+			actions: shoppingList.actions,
+			getters: shoppingList.getters,
+			mutations: shoppingList.mutations
 		},
 		recipes: {
 			namespaced: true,
