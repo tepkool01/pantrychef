@@ -2232,17 +2232,9 @@ Resources:
                 "type": "object",
                 "title": "Recipe Response"
               },
-              "PantryResponse": {
-                "type": "object",
-                "title": "Pantry Response"
-              },
               "PantryItemResponse": {
                 "type": "object",
                 "title": "Pantry Item Response"
-              },
-              "ShoppingListResponse": {
-                "type": "object",
-                "title": "ShoppingList Response"
               },
               "ShoppingListItemResponse": {
                 "type": "object",
