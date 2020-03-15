@@ -176,7 +176,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "post": {
                   "produces": [
@@ -243,7 +248,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "options": {
                   "consumes": [
@@ -359,7 +369,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "delete": {
                   "produces": [
@@ -948,7 +963,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "options": {
                   "consumes": [
@@ -1064,7 +1084,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "delete": {
                   "produces": [
@@ -1379,7 +1404,12 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
                 },
                 "delete": {
                   "produces": [
@@ -2016,6 +2046,24 @@ Resources:
     Properties:
       Action: "lambda:InvokeFunction"
       FunctionName: !GetAtt IngredientsLambda.Arn
+      Principal: "apigateway.amazonaws.com"
+      SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${API}/*"
+
+  PantryLambdaInvoke:
+    DependsOn: API
+    Type: "AWS::Lambda::Permission"
+    Properties:
+      Action: "lambda:InvokeFunction"
+      FunctionName: !GetAtt PantryLambda.Arn
+      Principal: "apigateway.amazonaws.com"
+      SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${API}/*"
+
+  ShoppingListLambdaInvoke:
+    DependsOn: API
+    Type: "AWS::Lambda::Permission"
+    Properties:
+      Action: "lambda:InvokeFunction"
+      FunctionName: !GetAtt ShoppingListLambda.Arn
       Principal: "apigateway.amazonaws.com"
       SourceArn: !Sub "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${API}/*"
 
