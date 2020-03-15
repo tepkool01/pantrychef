@@ -63,8 +63,7 @@ export default {
 			getIngredients: 'getIngredients'
 		}),
 		...mapActions('profile', {
-			getProfiles: 'getProfiles',
-			activeProfile: 'activeProfile'
+			getProfiles: 'getProfiles'
 		}),
 
 		addIngredientToPantry (ingredient) {
@@ -91,9 +90,7 @@ export default {
 		}
 	},
 	created() {
-		//Get profile for this page
 		if (this.activeProfile) {
-			console.log("Calling pantry with ID", this.activeProfile)
 			this.getPantryList(this.activeProfile)
 		}
 

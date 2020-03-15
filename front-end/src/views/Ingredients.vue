@@ -35,6 +35,10 @@ export default {
 		}),
 		...mapGetters('shoppingList', {
 			shoppingList: 'shopping'
+		}),
+		...mapGetters('profile', {
+			profiles: 'profiles',
+			activeProfile: 'activeProfile'
 		})
 	},
 	components: {
@@ -46,7 +50,9 @@ export default {
 			getIngredients: 'getIngredients'
 		}),
 		...mapActions('shoppingList', {
-			getShoppingList: 'getShoppingList'
+			getShoppingList: 'getShoppingList',
+			addIngredient: 'addIngredient',
+			removeIngredient: 'removeIngredient'
 		}),
 		eventChild: function(value) {
       		console.log('submit here!') // someValue
@@ -57,9 +63,18 @@ export default {
 			  console.log(value) // someValue
 		}
 	},
+	watch: {
+		activeProfile: function(val) {
+			this.getShoppingList(this.activeProfile)
+		}
+	},
 	created() {
 		this.getIngredients()
-		this.getShoppingList()
+
+		if (this.activeProfile) {
+			this.getShoppingList(this.activeProfile)
+		}
+
 		this.$emit('title', 'Pantry')
 	},
 	data() {

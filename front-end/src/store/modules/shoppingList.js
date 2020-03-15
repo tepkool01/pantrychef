@@ -11,22 +11,19 @@ const getters = {
 }
 
 const actions = {
-	getShoppingList({ commit }) {
-        console.log('output')
-		api.shoppinglist.getShoppingList().then(response => {
+	getShoppingList({ commit }, profileId) {
+		api.shoppinglist.getShoppingList(profileId).then(response => {
 			commit('SET_SHOPPING', response.data)
 		})
 	},
-	addIngredient({ commit }, ingredient_id, profile_id) {
-		console.log("Adding ingredient", ingredient_id)
-		api.shoppinglist.addIngredient(profile_id, ingredient_id).then(() => {
-			commit('ADD_INGREDIENT', ingredient_id)
+	addIngredient({ commit }, payload) {
+		api.shoppinglist.addIngredient(payload.ingredient.id, payload.profile_id).then(() => {
+			commit('ADD_INGREDIENT', payload.ingredient)
 		})
 	},
-	removeIngredient({ commit }, ingredient_id, profile_id) {
-		console.log("Removing ingredient", ingredient_id)
-		api.shoppinglist.deleteIngredient(profile_id, ingredient_id).then(() => {
-			commit('REMOVE_INGREDIENT', ingredient_id)
+	removeIngredient({ commit }, payload) {
+		api.shoppinglist.deleteIngredient(payload.ingredient.id, payload.profile_id).then(() => {
+			commit('REMOVE_INGREDIENT', payload.ingredient)
 		})
 	}
 }

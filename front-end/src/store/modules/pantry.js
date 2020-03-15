@@ -25,14 +25,6 @@ const actions = {
 		api.pantry.deleteIngredient(payload.ingredient.id, payload.profile_id).then(() => {
 			commit('REMOVE_INGREDIENT', payload.ingredient)
 		})
-	},
-	getShoppingList({ commit }) {
-		api.pantry.getShoppingList().then(response => {
-			commit('SET_SHOPPING', response.data)
-		})
-
-		console.log('output')
-		console.log(this.shopping)
 	}
 }
 
