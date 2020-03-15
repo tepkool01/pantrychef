@@ -44,7 +44,8 @@ export default {
 			ingredients: 'ingredients'
 		}),
 		...mapGetters('profile', {
-			profiles: 'profiles'
+			profiles: 'profiles',
+			activeProfile: 'activeProfile'
 		})
 	},
 	components: {
@@ -67,10 +68,10 @@ export default {
 
 		addIngredientToPantry (ingredient) {
 			console.log("Adding:", ingredient)
-			this.addIngredient(ingredient)
+			this.addIngredient(ingredient, this.activeProfile)
 		},
 		handleIngredientRemove (ingredient) {
-			this.removeIngredient(ingredient)
+			this.removeIngredient(ingredient, this.activeProfile)
 		}
 	},
 	data() {

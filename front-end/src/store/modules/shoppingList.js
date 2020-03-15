@@ -17,13 +17,17 @@ const actions = {
 			commit('SET_SHOPPING', response.data)
 		})
 	},
-	addIngredient({ commit }, ingredient_id) {
+	addIngredient({ commit }, ingredient_id, profile_id) {
 		console.log("Adding ingredient", ingredient_id)
-		commit('ADD_INGREDIENT', ingredient_id)
+		api.shoppinglist.addIngredient(profile_id, ingredient_id).then(() => {
+			commit('ADD_INGREDIENT', ingredient_id)
+		})
 	},
-	removeIngredient({ commit }, ingredient_id) {
+	removeIngredient({ commit }, ingredient_id, profile_id) {
 		console.log("Removing ingredient", ingredient_id)
-		commit('REMOVE_INGREDIENT', ingredient_id)
+		api.shoppinglist.deleteIngredient(profile_id, ingredient_id).then(() => {
+			commit('REMOVE_INGREDIENT', ingredient_id)
+		})
 	}
 }
 

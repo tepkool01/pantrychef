@@ -16,17 +16,15 @@ const actions = {
 			commit('SET_PANTRY', response.data)
 		})
 	},
-	addIngredient({ commit }, ingredient_id) {
-		commit('ADD_INGREDIENT', ingredient_id)
-		//api.pantry.addItem().then(response => {
-
-		//})
+	addIngredient({ commit }, ingredient_id, profile_id) {
+		api.pantry.addIngredient().then(() => {
+			commit('ADD_INGREDIENT', ingredient_id)
+		})
 	},
-	removeIngredient({ commit }, ingredient_id) {
-		commit('REMOVE_INGREDIENT', ingredient_id)
-		//api.pantry.deleteItem().then(response => {
-
-		//})
+	removeIngredient({ commit }, ingredient_id, profile_id) {
+		api.pantry.deleteIngredient().then(() => {
+			commit('REMOVE_INGREDIENT', ingredient_id)
+		})
 	},
 	getShoppingList({ commit }) {
 		api.pantry.getShoppingList().then(response => {

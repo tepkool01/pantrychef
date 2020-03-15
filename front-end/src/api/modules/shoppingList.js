@@ -4,10 +4,10 @@ export default {
 	getShoppingList() {
 		return axios.get('/shopping-lists')
 	},
-	addIngredient(ingredient) {
-		return axios.post('/shopping-lists', ingredient)
+	addIngredient(profile_id, ingredient_id) {
+		return axios.put('/shopping-lists/' + profile_id + '/ingredients/' + ingredient_id)
 	},
-	deleteItem(ingredient) {
-		return axios.delete('/shopping-lists', ingredient)
+	deleteIngredient(profile_id, ingredient_id) {
+		return axios.delete('/shopping-lists/' + profile_id + '/ingredients/' + ingredient_id)
 	}
 }
