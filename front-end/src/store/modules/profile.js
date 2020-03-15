@@ -21,11 +21,10 @@ const actions = {
 			commit('ADD_PROFILE', response.data)
 		})
 	},
-	activateProfile({ commit }, payload) {
-		commit('SET_ACTIVE', payload)
-		//api.profile.createProfile(payload).then(response => {
-
-		//})
+	activateProfile({ commit }, profile_id) {
+		api.profile.setActive(profile_id).then(() => {
+			commit('SET_ACTIVE', profile_id)
+		})
 	},
 	getProfiles({ commit }) {
 		console.log("Getting profiles")
