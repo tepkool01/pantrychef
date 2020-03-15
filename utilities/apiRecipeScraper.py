@@ -15,6 +15,10 @@ import re
 # path with the urls we want to scrape
 strPath = os.path.join(os.getcwd(),'myfridgefoodURLs.txt')
 
+# Retrieve for current state of DB with IDs
+with open("recipe_seed.json", encoding="utf8") as fr:
+    recipes = json.load(fr)
+
 with open(strPath, 'r') as f:
     x = f.readlines()
     out_list=[]
@@ -120,12 +124,31 @@ with open(strPath, 'r') as f:
         duration = re.sub(r'<.+?>',"", duration)
         duration = " ".join(duration.split())
 
+        # retrieve the image
+        img = content.findAll('img', class_="recipe-img", limit=1)
+        img_url = ''
+        if len(img) > 0:
+            img_url = "https://myfridgefood.com" + img[0]['src']
+            img_data = requests.get(img_url).content
+            recipe_id = None
+            for recipe in recipes:
+                if recipe['recipe_name'] == title:
+                    recipe_id = recipe['id']
+
+            if recipe_id is None:
+                print("Could not find image! Shit!")
+            else:
+                with open('img/' + recipe_id + '.jpg', 'wb') as handler:
+                    handler.write(img_data)
+
         # create json object
         recipe_object = {
             "Recipe_Name": title,
             "Ingredients": ingredients,
             "Cooking_Steps": steps,
-            "Cooking_Duration": duration}
+            "Cooking_Duration": duration,
+            "Recipe_Image_URL": img_url
+        }
         print(recipe_object)
         out_list.append(recipe_object)
     output_json_file = os.path.join(os.getcwd(),'recipe_info2.json')
