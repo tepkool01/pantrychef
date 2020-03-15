@@ -4,8 +4,10 @@ export default {
 	getPantry() {
 		return axios.get('/pantry')
 	},
-	getShopping() {
-		console.log("calling shop")
-		return axios.get('/shopping')
+	addItem(ingredient) {
+		return axios.post('/pantry', ingredient)
+	},
+	deleteItem(ingredient) {
+		return axios.delete('/pantry', ingredient)
 	}
 }

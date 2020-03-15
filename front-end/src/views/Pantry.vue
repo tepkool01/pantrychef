@@ -6,6 +6,7 @@
 			</div>
 		</div>
 		<div class="row">
+			<IngredientSubmissionPanel :suggestionsMstr="ingredients"></IngredientSubmissionPanel>
 			<div class="col-lg-10 offset-1">
 				<div class="card-deck">
 
@@ -17,7 +18,7 @@
 						</div>
 						<div class="card-body my-2">
 							<div v-for="i in pantryList" v-bind:key="i.name">
-								<ingredient :ingredient="i" :listType="pantryType"></ingredient>
+								<ingredients :ingredient="i" :listType="pantryType"></ingredients>
 							</div>
 						</div>
 					</div>
@@ -29,7 +30,9 @@
 
 <script>
 // @ is an alias to /src
-import Ingredient from '@/components/Ingredient.vue'
+import Ingredients from '@/components/Ingredient.vue'
+import IngredientSubmissionPanel from '@/components/IngredientSubmissionPanel.vue'
+
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -37,15 +40,22 @@ export default {
 	computed: {
 		...mapGetters('pantry', {
 			pantryList: 'pantry'
+		}),
+		...mapGetters('ingredients', {
+			ingredients: 'ingredients'
 		})
 	},
 	components: {
-		Ingredient
+		IngredientSubmissionPanel,
+		Ingredients
 	},
 	methods: {
 		...mapActions('pantry', {
 			getPantryList: 'getPantryList'
-		})
+		}),
+		...mapActions('ingredients', {
+			getIngredients: 'getIngredients'
+		}),
 	},
 	data() {
 		return {
@@ -53,7 +63,7 @@ export default {
 		}
 	},
 	created() {
-		console.log("Created?")
+		this.getIngredients()
 		this.getPantryList()
 		this.$emit('title', 'Pantry')
 	}

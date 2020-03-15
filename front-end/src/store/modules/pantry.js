@@ -20,10 +20,14 @@ const actions = {
 			commit('SET_PANTRY', response.data)
 		})
 	},
-	getShoppingList({ commit }) {
-		console.log("output")
-		api.pantry.getShopping().then(response => {
-			commit('SET_SHOPPING', response.data)
+	addItem({ commit }) {
+		api.pantry.addItem().then(response => {
+			commit('SET_PANTRY', response.data)
+		})
+	},
+	deleteItem({ commit }) {
+		api.pantry.deleteItem().then(response => {
+			commit('SET_PANTRY', response.data)
 		})
 	}
 }
