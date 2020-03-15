@@ -238,7 +238,7 @@ REPLACE INTO `Recipe` SET `ID`='237', `RecipeName`='Southwest Eggrolls', `CookTi
 REPLACE INTO `Recipe` SET `ID`='238', `RecipeName`='Spicy Armadillo Eggs', `CookTime`='20', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='239', `RecipeName`='Spicy Crab Cuccumbers', `CookTime`='120', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='240', `RecipeName`='Spicy Crispy Cauliflower', `CookTime`='20', `DietType`='TBD';
-REPLACE INTO `Recipe` SET `ID`='241', `RecipeName`='Spicy Sausage Stuffed Bread', `CookTime`='N/A', `DietType`='TBD';
+REPLACE INTO `Recipe` SET `ID`='241', `RecipeName`='Spicy Sausage Stuffed Bread', `CookTime`=null, `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='242', `RecipeName`='Spinach and Feta Stuffed Mushrooms', `CookTime`='30', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='243', `RecipeName`='Spinach Artichoke Bites', `CookTime`='20', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='244', `RecipeName`='Spinach Bacon Quesadilla', `CookTime`='25', `DietType`='TBD';
@@ -2532,7 +2532,7 @@ REPLACE INTO `Recipe` SET `ID`='2532', `RecipeName`='One Pot Creamy Tomato Pasta
 REPLACE INTO `Recipe` SET `ID`='2533', `RecipeName`='One Pot Fajita Pasta', `CookTime`='15', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='2534', `RecipeName`='One Pot Southwest Pasta', `CookTime`='25', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='2535', `RecipeName`='Parmesan Taco Shells', `CookTime`='15', `DietType`='TBD';
-REPLACE INTO `Recipe` SET `ID`='2536', `RecipeName`='Pasta Bolognese', `CookTime`='2 hours', `DietType`='TBD';
+REPLACE INTO `Recipe` SET `ID`='2536', `RecipeName`='Pasta Bolognese', `CookTime`='120', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='2537', `RecipeName`='Penne Pasta with Chorizo Sausage', `CookTime`='45', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='2538', `RecipeName`='Penne Sausage Pasta', `CookTime`='15', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='2539', `RecipeName`='Pizza Pasta', `CookTime`='30', `DietType`='TBD';
@@ -3316,7 +3316,7 @@ REPLACE INTO `Recipe` SET `ID`='3316', `RecipeName`='Sloppier Joes', `CookTime`=
 REPLACE INTO `Recipe` SET `ID`='3317', `RecipeName`='Sloppiest Joe', `CookTime`='10', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3318', `RecipeName`='Southwest Chicken Wraps', `CookTime`='20', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3319', `RecipeName`='Spicy Shrimp Sandwich', `CookTime`='10', `DietType`='TBD';
-REPLACE INTO `Recipe` SET `ID`='3320', `RecipeName`='Stuffed Calzone Sandwiches', `CookTime`='N/A', `DietType`='TBD';
+REPLACE INTO `Recipe` SET `ID`='3320', `RecipeName`='Stuffed Calzone Sandwiches', `CookTime`=null, `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3321', `RecipeName`='Stuffed Ham and Cheese Biscuits', `CookTime`='15', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3322', `RecipeName`='Sunny Side Breakfast Sandwich', `CookTime`='25', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3323', `RecipeName`='Superburger Sandwich', `CookTime`='25', `DietType`='TBD';
@@ -3352,8 +3352,8 @@ REPLACE INTO `Recipe` SET `ID`='3352', `RecipeName`='Wine and Cheese Grilled Che
 REPLACE INTO `Recipe` SET `ID`='3353', `RecipeName`='Winnie Latos', `CookTime`='30', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3354', `RecipeName`='Baked Shrimp Scampi', `CookTime`='45', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3355', `RecipeName`='Butter Beer Shrimp', `CookTime`='5', `DietType`='TBD';
-REPLACE INTO `Recipe` SET `ID`='3356', `RecipeName`='Cheesy Shrimp and Grits', `CookTime`='N/A', `DietType`='TBD';
-REPLACE INTO `Recipe` SET `ID`='3357', `RecipeName`='Cilantro Lime Fish Tacos', `CookTime`='90 minutes', `DietType`='TBD';
+REPLACE INTO `Recipe` SET `ID`='3356', `RecipeName`='Cheesy Shrimp and Grits', `CookTime`=null, `DietType`='TBD';
+REPLACE INTO `Recipe` SET `ID`='3357', `RecipeName`='Cilantro Lime Fish Tacos', `CookTime`='90', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3358', `RecipeName`='Crab Rangoon Pizza', `CookTime`='35', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3359', `RecipeName`='Crispy Garlic Lemon Shrimp', `CookTime`='10', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3360', `RecipeName`='Easy Garlic Shrimp', `CookTime`='25', `DietType`='TBD';
@@ -3361,10 +3361,10 @@ REPLACE INTO `Recipe` SET `ID`='3361', `RecipeName`='Easy Shrimp Pasta Salad', `
 REPLACE INTO `Recipe` SET `ID`='3362', `RecipeName`='Great Great Shrimp', `CookTime`='30', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3363', `RecipeName`='Honey Lime Fish', `CookTime`='60', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3364', `RecipeName`='Quick and Easy Garlic Shrimp', `CookTime`='5', `DietType`='TBD';
-REPLACE INTO `Recipe` SET `ID`='3365', `RecipeName`='Salmon Cakes', `CookTime`='15 - 20 minutes', `DietType`='TBD';
+REPLACE INTO `Recipe` SET `ID`='3365', `RecipeName`='Salmon Cakes', `CookTime`='20', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3366', `RecipeName`='Scampi Pasta', `CookTime`='20', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3367', `RecipeName`='Skinny Shrimp Pasta', `CookTime`='30', `DietType`='TBD';
-REPLACE INTO `Recipe` SET `ID`='3368', `RecipeName`='Spicy Tangy Salmon', `CookTime`='30 minutes', `DietType`='TBD';
+REPLACE INTO `Recipe` SET `ID`='3368', `RecipeName`='Spicy Tangy Salmon', `CookTime`='30', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3369', `RecipeName`='Sweet Garlic Shrimp', `CookTime`='30', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3370', `RecipeName`='Ants on a Log', `CookTime`='2', `DietType`='TBD';
 REPLACE INTO `Recipe` SET `ID`='3371', `RecipeName`='Apple Snack', `CookTime`='5', `DietType`='TBD';
