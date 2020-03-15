@@ -37,74 +37,65 @@ def lambda_handler(event, context):
             'body': json.dumps(result)
         }
 
-    if event['resource'] == '/pantry':
+###
+    # Actual Routing
+    ###
+    if event['resource'] == '/profiles':
         if event['httpMethod'] == 'GET':
-            ## Get user information, and the pantryListID
-            print("Getting pantryList")
+            # Retrieve all profiles
+            raw_result = db.execute(
+                sql="SELECT ID, ProfileName FROM `UserProfile` WHERE UserID=:userId",
+                parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
+            )
+
+            # Parsing info, because this database outputs crazy ass shit
+            result = []
+            for record in raw_result['records']:
+                result.append({
+                    'id': record[0]['longValue'],
+                    'profile_name': record[1]['stringValue']
+                })
+
+        elif event['httpMethod'] == 'POST':
+            # Create a profile
+            print("Create a profile")
+
+            # First, grab the payload the user sent, and parse it
+            payload = json.loads(event['body'])
 
             try:
-                active_profile = db.execute(
-                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
-                    parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
-                )
-                
-                pantry_item_list = db.execute(
-                    sql="SELECT IL.ID as ItemID, IngredientName FROM `IngredientListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
-                    parameters=[{'name': 'ProfileID', 'value': {'longValue': int(active_profile['records'][0][0]['longValue'])}}]
-                )
-                
-                print(pantry_item_list)
 
-                result = []
-                for record in pantry_item_list['records']:
-                    result.append({
-                        'id': record[0]['longValue'],
-                        'ingredient_name': record[1]['stringValue']
-                })
-            except Exception as e:
-                print("Exception:" + str(e))
-                return {
-                    'statusCode': 500,
-                    'headers': {
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*"
-                    },
-                    'body': str(e)
+                profile = db.execute(
+                    sql="INSERT INTO `UserProfile` (ProfileName, UserID, DietType) VALUES(:profileName, :userId, :dietType)",
+                    parameters=[
+                        {'name': 'profileName', 'value': {'stringValue': str(payload['name'])}},
+                        {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
+                        {'name': 'dietType', 'value': {'longValue': int(1)}},  # Random number for now
+                    ]
+                )
+                print(profile)
+
+                # Parse results for VueJS
+                result = {
+                    'id': profile['generatedFields'][0]['longValue'],
+                    'profile_name': str(payload['name'])
                 }
-
-    elif event['resource'] == '/shopping':
-        if event['httpMethod'] == 'GET':
-            print("Getting shoppingList")
-
-            try:
-                active_profile = db.execute(
-                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
-                    parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
-                )
-
-                shopping_item_list = db.execute(
-                    sql="SELECT IL.ID as ItemID, IngredientName FROM `ShoppingListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
-                    parameters=[{'name': 'ProfileID', 'value': {'longValue': int(active_profile['records'][0][0]['longValue'])}}]
-                )
-
-                print(shopping_item_list)
-
-                result = []
-                for record in shopping_item_list['records']:
-                    result.append({
-                        'id': record[0]['longValue'],
-                        'ingredient_name': record[1]['longValue']
-                })
             except Exception as e:
+                status_code = 500
+                result = {'errorMessage': 'Could not save the profile.'}
                 print(str(e))
-                return {
-                    'statusCode': 500,
-                    'headers': {
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*"
-                    },
-                    'body': str(e)
-                }
+
+    elif event['resource'] == '/profiles/{profileId}':
+        if event['httpMethod'] == 'DELETE':
+            # todo: status code 204
+            print("Deleting", event['pathParameters']['profileId'])
+            db.execute(
+                sql="DELETE FROM UserProfile WHERE UserId=:userId AND ID=:id",
+                parameters=[
+                    {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
+                    {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
+                ]
+            )
 
     return {
         'statusCode': status_code,
