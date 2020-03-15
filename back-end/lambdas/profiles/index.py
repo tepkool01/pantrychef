@@ -54,7 +54,7 @@ def lambda_handler(event, context):
                 result.append({
                     'id': record[0]['longValue'],
                     'profile_name': record[1]['stringValue'],
-                    'isActive': record[2]['longValue']
+                    'isActive': record[2]['booleanValue']
                 })
 
         elif event['httpMethod'] == 'POST':
@@ -97,7 +97,8 @@ def lambda_handler(event, context):
                     {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
                 ]
             )
-        elif event['httpMethod'] == 'PUT':
+    elif event['resource'] == '/profiles/{profileId}/activate':
+        if event['httpMethod'] == 'PUT':
             print("Updating", event['pathParameters']['profileId'])
             db.execute(
                 sql="UPDATE UserProfile SET IsActive=1 WHERE UserId=:userId and ID=:id",
