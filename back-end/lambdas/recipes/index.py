@@ -54,7 +54,7 @@ def lambda_handler(event, context):
                 print(my_ingredient_ids)
 
                 recipes = db.execute(
-                    sql="SELECT RecipeID, RecipeName, CookTime, DietType, IngredientCount, count(*) as grp_count, round((count(*) / IngredientCount), 2) as pct_match \
+                    sql="SELECT RecipeID, RecipeName, CookTime, DietType, IngredientCount, count(*) as grp_count, round((count(*) / IngredientCount), 2) as pct_match, ImgURL \
                         FROM `RecipeListItem` ri \
                         LEFT JOIN Recipe r \
                         ON r.ID=ri.RecipeID \
@@ -78,7 +78,8 @@ def lambda_handler(event, context):
                         'diet_type': record[3]['stringValue'],
                         'ingredient_count': record[4]['longValue'],
                         'ingredients_in_pantry': record[5]['longValue'],
-                        'match_percent': record[6]['stringValue']
+                        'match_percent': record[6]['stringValue'],
+                        'img_url': record[7]['stringValue']
                     })
 
                 # Parse records into python object
@@ -101,13 +102,28 @@ def lambda_handler(event, context):
                         'diet_type': record[3]['stringValue'],
                         'ingredient_count': record[4]['longValue'],
                         'ingredients_in_pantry': 0,
-                        'match_percent': 0
+                        'match_percent': 0,
+                        'img_url': record[5]['stringValue']
                     })
     elif event['resource'] == '/recipes/{recipeId}':
-        result = db.execute(
-            sql="select * FROM `Recipe` WHERE ID=:id",
+        # Placeholder for all the information needed for a recipe page
+        result = {
+            "img": "",
+            "ingredients": [],
+            "directions": [],
+        }
+
+        # Grab ingredients first, and then parse them into readable format for the front end
+        ingredients = db.execute(
+            sql="SELECT IngredientID, IngredientName, IngredientType FROM `RecipeListItem` r JOIN `Ingredient` i ON i.ID=r.IngredientID WHERE r.RecipeID=:id",
             parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
         )
+        for ingredient in ingredients['records']:
+            result['ingredients'].append({
+                'id': ingredient[0]['longValue'],
+                'name': ingredient[1]['stringValue'],
+                'type': ingredient[2]['stringValue']
+            })
 
     return {
         'statusCode': 200,
