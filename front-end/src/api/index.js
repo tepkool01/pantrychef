@@ -1,8 +1,8 @@
 import profile from './modules/profile.js'
 import users from './modules/users.js'
-import ingredients from "./modules/ingredients"
-import pantry from "./modules/pantry"
-import shoppingList from "./modules/shoppingList"
+import ingredients from './modules/ingredients.js'
+import pantry from './modules/pantry.js'
+import shoppinglist from './modules/shoppingList.js'
 import recipe from './modules/recipe.js'
 
 export default {
@@ -10,6 +10,6 @@ export default {
 	profile,
 	ingredients,
 	pantry,
-	shoppingList,
+	shoppinglist,
 	recipe
 }

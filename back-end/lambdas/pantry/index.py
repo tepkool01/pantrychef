@@ -37,7 +37,7 @@ def lambda_handler(event, context):
             'body': json.dumps(result)
         }
 
-###
+    ###
     # Actual Routing
     ###
     if event['resource'] == '/profiles':
@@ -62,7 +62,7 @@ def lambda_handler(event, context):
 
             # First, grab the payload the user sent, and parse it
             payload = json.loads(event['body'])
-
+            
             try:
 
                 profile = db.execute(
@@ -96,6 +96,76 @@ def lambda_handler(event, context):
                     {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
                 ]
             )
+
+    elif event['resource'] == '/pantry':
+        if event['httpMethod'] == 'GET':
+            ## Get user information, and the pantryListID
+            print("Getting pantryList")
+
+            try:
+                active_profile = db.execute(
+                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
+                    parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
+                )
+                
+                pantry_item_list = db.execute(
+                    sql="SELECT IL.ID as ItemID, IngredientName FROM `IngredientListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
+                    parameters=[{'name': 'ProfileID', 'value': {'longValue': int(active_profile['records'][0][0]['longValue'])}}]
+                )
+                
+                print(pantry_item_list)
+
+                result = []
+                for record in pantry_item_list['records']:
+                    result.append({
+                        'id': record[0]['longValue'],
+                        'ingredient_name': record[1]['stringValue']
+                })
+            except Exception as e:
+                print("Exception:" + str(e))
+                return {
+                    'statusCode': 500,
+                    'headers': {
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    'body': str(e)
+                }
+
+    elif event['resource'] == '/shoppingList':
+        if event['httpMethod'] == 'GET':
+            print("Getting pantryList")
+
+            try:
+                
+                active_profile = db.execute(
+                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
+                    parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
+                )
+
+                shopping_item_list = db.execute(
+                    sql="SELECT IL.ID as ItemID, IngredientName FROM `ShoppingListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
+                    parameters=[{'name': 'ProfileID', 'value': {'longValue': int(active_profile['records'][0][0]['longValue'])}}]
+                )
+
+                print(shopping_item_list)
+
+                result = []
+                for record in shopping_item_list['records']:
+                    result.append({
+                        'id': record[0]['longValue'],
+                        'ingredient_name': record[1]['longValue']
+                })
+            except Exception as e:
+                print(str(e))
+                return {
+                    'statusCode': 500,
+                    'headers': {
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    'body': str(e)
+                }
 
     return {
         'statusCode': status_code,
