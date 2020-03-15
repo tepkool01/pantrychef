@@ -7,8 +7,7 @@
 		</div>
 		<div class="row">
 			<div v-for="i in recipes" v-bind:key="i.name">
-				<recipe-card :recipe="i" v-if="i.id < 5"></recipe-card>
-
+				<recipe-card :recipe="i" v-if="i.id"></recipe-card>
 			</div>
 		</div>
 	</div>
