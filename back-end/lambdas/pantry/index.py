@@ -73,7 +73,7 @@ def lambda_handler(event, context):
             try:
                 if check_user_profile(profile_id, user_id):
                     db.execute(
-                        sql="INSERT IGNORE INTO `IngredientListItem` SET UserProfile=':ProfileID', IngredientID=':IngID'",
+                        sql="INSERT IGNORE INTO `IngredientListItem` SET UserProfile=:ProfileID, IngredientID=:IngID",
                         parameters=[
                             {'name': 'ProfileID', 'value': {'longValue': profile_id}},
                             {'name': 'IngID', 'value': {'longValue': ingredient_id}}
