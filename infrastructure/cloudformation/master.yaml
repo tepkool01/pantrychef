@@ -1856,7 +1856,6 @@ Resources:
           RDS_ARN: !Ref DBClusterArn
           Secrets_ARN: !Ref DBSecretsArn
           Cognito_Pool_ID: !Ref CognitoUserPool
-
   ###
   # PANTRY LAMBDA
   ###
