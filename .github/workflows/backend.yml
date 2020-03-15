@@ -51,14 +51,14 @@ jobs:
 
       # Pantry Lambda
       - name: Upload Pantry to s3 artifact bucket
-        run: cd back-end/lambdas/pantry && zip -r pantry.zip * && aws s3 cp pantry.zip s3://lepantrychefartifacts
+        run: cd back-end/lambdas/pantry && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r pantry.zip * && aws s3 cp pantry.zip s3://lepantrychefartifacts
 
       - name: Deploy Pantry Lambda
         run: cd back-end/lambdas/pantry && zip -r pantry.zip * && aws lambda update-function-code --function-name pc-pantry --zip-file fileb://pantry.zip
 
       # Shopping List Lambda
       - name: Upload Shopping List to s3 artifact bucket
-        run: cd back-end/lambdas/shopping-list && zip -r shopping-list.zip * && aws s3 cp shopping-list.zip s3://lepantrychefartifacts
+        run: cd back-end/lambdas/shopping-list && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r shopping-list.zip * && aws s3 cp shopping-list.zip s3://lepantrychefartifacts
 
       - name: Deploy Shopping List Lambda
         run: cd back-end/lambdas/shopping-list && zip -r shopping-list.zip * && aws lambda update-function-code --function-name pc-shopping-list --zip-file fileb://shopping-list.zip
