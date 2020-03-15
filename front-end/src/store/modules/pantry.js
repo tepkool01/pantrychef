@@ -1,12 +1,16 @@
 import api from '../../api'
 
 const state = {
-	pantry: []
+	pantry: [],
+	shopping: []
 }
 
 const getters = {
 	pantry(state) {
 		return state.pantry
+	},
+	shopping(state) {
+		return state.shopping
 	}
 }
 
@@ -15,12 +19,21 @@ const actions = {
 		api.pantry.getPantry().then(response => {
 			commit('SET_PANTRY', response.data)
 		})
+	},
+	getShoppingList({ commit }) {
+		console.log("output")
+		api.pantry.getShopping().then(response => {
+			commit('SET_SHOPPING', response.data)
+		})
 	}
 }
 
 const mutations = {
 	SET_PANTRY(state, pantry) {
 		state.pantry = pantry
+	},
+	SET_SHOPPING(state, shopping) {
+		state.shopping = shopping
 	}
 }
 

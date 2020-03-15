@@ -133,7 +133,7 @@ def lambda_handler(event, context):
                     'body': str(e)
                 }
 
-    elif event['resource'] == '/shoppingList':
+    elif event['resource'] == '/shopping':
         if event['httpMethod'] == 'GET':
             print("Getting shoppingList")
 
