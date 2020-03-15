@@ -40,12 +40,11 @@ def lambda_handler(event, context):
     ###
     # Actual Routing
     ###
-    if event['resource'] == '/shoppingList':
+    if event['resource'] == '/shopping-lists':
         if event['httpMethod'] == 'GET':
             print("Getting pantryList")
 
             try:
-                
                 active_profile = db.execute(
                     sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                     parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
