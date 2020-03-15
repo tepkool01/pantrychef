@@ -9,8 +9,5 @@ export default {
 	},
 	deleteItem(ingredient) {
 		return axios.delete('/pantry', ingredient)
-	},
-	getShoppingList() {
-		return axios.get('/shopping-lists')
 	}
 }
