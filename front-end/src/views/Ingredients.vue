@@ -7,7 +7,7 @@
 			<div class="card m-4 text-center" style="width:50%">
 				<div class="card-header">
 					<h5 class="card-title">
-						Ingredients In Pantry
+						Shopping List
 					</h5>
 				</div>
 				<div class="card-body m-4 text-center" style="width: 50%">

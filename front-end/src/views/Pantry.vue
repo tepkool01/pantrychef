@@ -1,36 +1,29 @@
 <template>
 	<div>
 		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="mt-4">Pantry</h1>
-			</div>
-		</div>
-		<div class="row">
-			<IngredientSubmissionPanel :suggestionsMstr="ingredients"></IngredientSubmissionPanel>
-			<div class="col-lg-10 offset-1">
-				<div class="card-deck">
 
-					<div class="card m-4">
-						<div class="card-header">
-							<h5 class="card-title">
-								List of the Ingredients
-							</h5>
-						</div>
-						<div class="card-body my-2">
-							<div v-for="i in pantryList" v-bind:key="i.name">
-								<ingredients :ingredient="i" :listType="pantryType"></ingredients>
-							</div>
-						</div>
+			<IngredientSubmissionPanel :suggestionsMstr="ingredients"></IngredientSubmissionPanel>
+
+			<div class="card m-4 text-center" style="width:50%">
+				<div class="card-header">
+					<h5 class="card-title">
+						Shopping List
+					</h5>
+				</div>
+				<div class="card-body m-4 text-center" style="width: 50%">
+					<div v-for="i in pantryList" v-bind:key="i.name">
+						<ingredient :ingredient="i" :key="i.id" :listType="pantryType"></ingredient>
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Ingredients from '@/components/Ingredient.vue'
+import Ingredient from '@/components/Ingredient.vue'
 import IngredientSubmissionPanel from '@/components/IngredientSubmissionPanel.vue'
 
 import { mapGetters, mapActions } from 'vuex'
@@ -47,7 +40,7 @@ export default {
 	},
 	components: {
 		IngredientSubmissionPanel,
-		Ingredients
+		Ingredient
 	},
 	methods: {
 		...mapActions('pantry', {
