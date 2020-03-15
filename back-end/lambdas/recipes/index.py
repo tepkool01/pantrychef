@@ -58,7 +58,7 @@ def lambda_handler(event, context):
                         FROM `RecipeListItem` ri \
                         LEFT JOIN Recipe r \
                         ON r.ID=ri.RecipeID \
-                        WHERE ri.IngredientID IN (:my_ingredient_ids) \
+                        WHERE ri.IngredientID IN (:myIngredients) \
                         GROUP BY ri.RecipeID \
                         ORDER BY pct_match DESC LIMIT :offset, :limit",
                     parameters=[
@@ -68,7 +68,7 @@ def lambda_handler(event, context):
                     ]
 
                 )
-                print(recipes)
+
                 result = []
                 for record in recipes['records']:
                     result.append({
@@ -76,7 +76,9 @@ def lambda_handler(event, context):
                         'recipe_name': record[1]['stringValue'],
                         'cook_time': record[2]['longValue'],
                         'diet_type': record[3]['stringValue'],
-                        'ingredient_count': record[4]['longValue']
+                        'ingredient_count': record[4]['longValue'],
+                        'ingredients_in_pantry': record[5]['longValue'],
+                        'match_percent': record[6]['stringValue']
                     })
 
                 # Parse records into python object
@@ -97,7 +99,9 @@ def lambda_handler(event, context):
                         'recipe_name': record[1]['stringValue'],
                         'cook_time': record[2]['longValue'],
                         'diet_type': record[3]['stringValue'],
-                        'ingredient_count': record[4]['longValue']
+                        'ingredient_count': record[4]['longValue'],
+                        'ingredients_in_pantry': 0,
+                        'match_percent': 0
                     })
     elif event['resource'] == '/recipes/{recipeId}':
         result = db.execute(
