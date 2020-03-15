@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 
 Parameters:
   CidrRange:
-    Description: '1.1.1.0/16'
+    Description: "1.1.1.0/16"
     Type: String
     Default: 73.73.0.0/24
   CertificateARN:
@@ -30,22 +30,22 @@ Parameters:
     Type: String
     Default: 1
 Resources:
-  # Create VPC 
+  # Create VPC
   VPC:
-    Type: 'AWS::EC2::VPC'
+    Type: "AWS::EC2::VPC"
     Properties:
       CidrBlock: !Ref CidrRange
       EnableDnsHostnames: false
       EnableDnsSupport: false
-      InstanceTenancy: 'default'
+      InstanceTenancy: "default"
   Aurora:
-    Type: 'AWS::RDS::DBCluster'
+    Type: "AWS::RDS::DBCluster"
     Properties:
       DatabaseName: !Ref DBName
-      DBClusterIdentifier: 'pantryChef'
+      DBClusterIdentifier: "pantryChef"
       # TODO: Use secrets manager!
-      MasterUsername: 'testusername'
-      MasterUserPassword: 'testpassword'
+      MasterUsername: "testusername"
+      MasterUserPassword: "testpassword"
       Engine: aurora
       EngineMode: serverless
       Port: 3306
@@ -91,10 +91,9 @@ Resources:
   API:
     Type: AWS::ApiGateway::RestApi
     Properties:
-      Name: 'pantry-chef'
+      Name: "pantry-chef"
       Body:
-        Fn::Sub:
-          |
+        Fn::Sub: |
           {
             "swagger": "2.0",
             "info": {
@@ -926,16 +925,98 @@ Resources:
                   }
                 }
               },
-              "/shoppingList": {
-                "get": {
+              "/pantry/{itemId}": {
+                "post": {
                   "produces": [
                     "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "itemId",
+                      "in": "path",
+                      "description": "item id",
+                      "required": true,
+                      "type": "string"
+                    }
                   ],
                   "responses": {
                     "200": {
                       "description": "200 response",
                       "schema": {
-                        "$ref": "#/definitions/ShoppingListResponse"
+                        "$ref": "#/definitions/PantryItemResponse"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "400": {
+                      "description": "400 response",
+                      "schema": {
+                        "$ref": "#/definitions/Error"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "500": {
+                      "description": "500 response",
+                      "schema": {
+                        "$ref": "#/definitions/Error"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-amazon-apigateway-integration": {
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${PantryLambda.Arn}/invocations",
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "type": "aws_proxy"
+                  }
+                },
+                "delete": {
+                  "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "itemId",
+                      "in": "path",
+                      "description": "item id",
+                      "required": true,
+                      "type": "string"
+                    }
+                  ],
+                  "responses": {
+                    "204": {
+                      "description": "204 response",
+                      "schema": {
+                        "$ref": "#/definitions/Empty"
                       },
                       "headers": {
                         "Access-Control-Allow-Origin": {
@@ -1003,6 +1084,127 @@ Resources:
                   "produces": [
                     "application/json"
                   ],
+                  "parameters": [
+                    {
+                      "name": "item Id",
+                      "in": "path",
+                      "description": "item id",
+                      "required": true,
+                      "type": "string"
+                    }
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "Default CORS response",
+                      "headers": {
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-amazon-apigateway-integration": {
+                    "httpMethod": "OPTIONS",
+                    "type": "mock",
+                    "requestTemplates": {
+                      "application/json": "{\"statusCode\": 200}"
+                    },
+                    "responses": {
+                      "default": {
+                        "statusCode": "200",
+                        "responseParameters": {
+                          "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                          "method.response.header.Access-Control-Allow-Methods": "'POST,OPTIONS'",
+                          "method.response.header.Access-Control-Allow-Origin": "'*'"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "/shoppingList": {
+                "get": {
+                  "produces": [
+                    "application/json"
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "200 response",
+                      "schema": {
+                        "$ref": "#/definitions/ShoppingListResponse"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "400": {
+                      "description": "400 response",
+                      "schema": {
+                        "$ref": "#/definitions/Error"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "500": {
+                      "description": "500 response",
+                      "schema": {
+                        "$ref": "#/definitions/Error"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-amazon-apigateway-integration": {
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ShoppingListLambda.Arn}/invocations",
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "type": "aws_proxy"
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
+                },
+                "options": {
+                  "consumes": [
+                    "application/json"
+                  ],
+                  "produces": [
+                    "application/json"
+                  ],
                   "responses": {
                     "200": {
                       "description": "Default CORS response",
@@ -1030,6 +1232,209 @@ Resources:
                         "statusCode": "200",
                         "responseParameters": {
                          "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
+                          "method.response.header.Access-Control-Allow-Methods": "'POST,OPTIONS'",
+                          "method.response.header.Access-Control-Allow-Origin": "'*'"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "/shoppinglist/{itemId}": {
+                "post": {
+                  "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "itemId",
+                      "in": "path",
+                      "description": "item id",
+                      "required": true,
+                      "type": "string"
+                    }
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "200 response",
+                      "schema": {
+                        "$ref": "#/definitions/ShoppingListItemResponse"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "400": {
+                      "description": "400 response",
+                      "schema": {
+                        "$ref": "#/definitions/Error"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "500": {
+                      "description": "500 response",
+                      "schema": {
+                        "$ref": "#/definitions/Error"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-amazon-apigateway-integration": {
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ShoppingListLambda.Arn}/invocations",
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "type": "aws_proxy"
+                  }
+                },
+                "delete": {
+                  "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "itemId",
+                      "in": "path",
+                      "description": "item id",
+                      "required": true,
+                      "type": "string"
+                    }
+                  ],
+                  "responses": {
+                    "204": {
+                      "description": "204 response",
+                      "schema": {
+                        "$ref": "#/definitions/Empty"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "400": {
+                      "description": "400 response",
+                      "schema": {
+                        "$ref": "#/definitions/Error"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "500": {
+                      "description": "500 response",
+                      "schema": {
+                        "$ref": "#/definitions/Error"
+                      },
+                      "headers": {
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-amazon-apigateway-integration": {
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ShoppingListLambda.Arn}/invocations",
+                    "passthroughBehavior": "when_no_match",
+                    "httpMethod": "POST",
+                    "type": "aws_proxy"
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
+                  ]
+                },
+                "options": {
+                  "consumes": [
+                    "application/json"
+                  ],
+                  "produces": [
+                    "application/json"
+                  ],
+                  "parameters": [
+                    {
+                      "name": "item Id",
+                      "in": "path",
+                      "description": "item id",
+                      "required": true,
+                      "type": "string"
+                    }
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "Default CORS response",
+                      "headers": {
+                        "Access-Control-Allow-Headers": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Methods": {
+                          "type": "string"
+                        },
+                        "Access-Control-Allow-Origin": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-amazon-apigateway-integration": {
+                    "httpMethod": "OPTIONS",
+                    "type": "mock",
+                    "requestTemplates": {
+                      "application/json": "{\"statusCode\": 200}"
+                    },
+                    "responses": {
+                      "default": {
+                        "statusCode": "200",
+                        "responseParameters": {
+                          "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
                           "method.response.header.Access-Control-Allow-Methods": "'POST,OPTIONS'",
                           "method.response.header.Access-Control-Allow-Origin": "'*'"
                         }
@@ -1336,29 +1741,28 @@ Resources:
             }
           }
 
-
   # This is a preliminary step for the stage, it's silly, but required.
   APIDeploy:
-    Type: 'AWS::ApiGateway::Deployment'
+    Type: "AWS::ApiGateway::Deployment"
     Properties:
       RestApiId: !Ref API
 
   # This deployment stage makes the API visible to the web
   APIStage:
     DependsOn: APIDeploy
-    Type: 'AWS::ApiGateway::Stage'
+    Type: "AWS::ApiGateway::Stage"
     Properties:
       DeploymentId: !Ref APIDeploy
       RestApiId: !Ref API
 
   DomainName:
-    Type: 'AWS::ApiGateway::DomainName'
+    Type: "AWS::ApiGateway::DomainName"
     Properties:
       CertificateArn: !Ref CertificateARN
       DomainName: !Ref APIDomainName
 
   Mapping:
-    Type: 'AWS::ApiGateway::BasePathMapping'
+    Type: "AWS::ApiGateway::BasePathMapping"
     Properties:
       DomainName: !Ref DomainName
       RestApiId: !Ref API
@@ -1386,12 +1790,56 @@ Resources:
           Secrets_ARN: !Ref DBSecretsArn
           Cognito_Pool_ID: !Ref CognitoUserPool
 
+  ###
+  # PANTRY LAMBDA
+  ###
+  PantryLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: "pc-pantry"
+      Code:
+        S3Bucket: "lepantrychefartifacts"
+        S3Key: "pantry.zip"
+      Handler: index.lambda_handler
+      Runtime: python3.7
+      Role: !GetAtt GenericLambdaRole.Arn
+      MemorySize: 512
+      Timeout: 15
+      Environment:
+        Variables:
+          DB_NAME: !Ref DBName
+          RDS_ARN: !Ref DBClusterArn
+          Secrets_ARN: !Ref DBSecretsArn
+          Cognito_Pool_ID: !Ref CognitoUserPool
+
+  ###
+  # SHOPPINGLIST LAMBDA
+  ###
+  ShoppingListLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: "pc-shoppinglist"
+      Code:
+        S3Bucket: "lepantrychefartifacts"
+        S3Key: "shoppinglist.zip"
+      Handler: index.lambda_handler
+      Runtime: python3.7
+      Role: !GetAtt GenericLambdaRole.Arn
+      MemorySize: 512
+      Timeout: 15
+      Environment:
+        Variables:
+          DB_NAME: !Ref DBName
+          RDS_ARN: !Ref DBClusterArn
+          Secrets_ARN: !Ref DBSecretsArn
+          Cognito_Pool_ID: !Ref CognitoUserPool
+
   # This is the access permission we give to the Lambda, in this case, it can pretty much do logging (in real cases, you'd probably want to give database access, etc)
   GenericLambdaRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
-        Version: '2012-10-17'
+        Version: "2012-10-17"
         Statement:
           - Effect: Allow
             Principal:
@@ -1580,7 +2028,6 @@ Outputs:
   UserPoolDomain:
     Description: "Domain output for cognito"
     Value: !Ref CognitoCustomDomainRegistration
-
   ### CLOUDFORMER CFT Creation Resources, in case things go really bad, for reference
 #  zonelepantrychefcom:
 #    Type: AWS::Route53::HostedZone

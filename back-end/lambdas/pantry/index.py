@@ -37,7 +37,67 @@ def lambda_handler(event, context):
             'body': json.dumps(result)
         }
 
-    if event['resource'] == '/pantry':
+    ###
+    # Actual Routing
+    ###
+    if event['resource'] == '/profiles':
+        if event['httpMethod'] == 'GET':
+            # Retrieve all profiles
+            raw_result = db.execute(
+                sql="SELECT ID, ProfileName FROM `UserProfile` WHERE UserID=:userId",
+                parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
+            )
+
+            # Parsing info, because this database outputs crazy ass shit
+            result = []
+            for record in raw_result['records']:
+                result.append({
+                    'id': record[0]['longValue'],
+                    'profile_name': record[1]['stringValue']
+                })
+
+        elif event['httpMethod'] == 'POST':
+            # Create a profile
+            print("Create a profile")
+
+            # First, grab the payload the user sent, and parse it
+            payload = json.loads(event['body'])
+            
+            try:
+
+                profile = db.execute(
+                    sql="INSERT INTO `UserProfile` (ProfileName, UserID, DietType) VALUES(:profileName, :userId, :dietType)",
+                    parameters=[
+                        {'name': 'profileName', 'value': {'stringValue': str(payload['name'])}},
+                        {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
+                        {'name': 'dietType', 'value': {'longValue': int(1)}},  # Random number for now
+                    ]
+                )
+                print(profile)
+
+                # Parse results for VueJS
+                result = {
+                    'id': profile['generatedFields'][0]['longValue'],
+                    'profile_name': str(payload['name'])
+                }
+            except Exception as e:
+                status_code = 500
+                result = {'errorMessage': 'Could not save the profile.'}
+                print(str(e))
+
+    elif event['resource'] == '/profiles/{profileId}':
+        if event['httpMethod'] == 'DELETE':
+            # todo: status code 204
+            print("Deleting", event['pathParameters']['profileId'])
+            db.execute(
+                sql="DELETE FROM UserProfile WHERE UserId=:userId AND ID=:id",
+                parameters=[
+                    {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
+                    {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
+                ]
+            )
+
+    elif event['resource'] == '/pantry':
         if event['httpMethod'] == 'GET':
             ## Get user information, and the pantryListID
             print("Getting pantryList")
@@ -72,11 +132,12 @@ def lambda_handler(event, context):
                     'body': str(e)
                 }
 
-    elif event['resource'] == '/shopping':
+    elif event['resource'] == '/shoppingList':
         if event['httpMethod'] == 'GET':
-            print("Getting shoppingList")
+            print("Getting pantryList")
 
             try:
+                
                 active_profile = db.execute(
                     sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                     parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
