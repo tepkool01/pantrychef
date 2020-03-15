@@ -176,7 +176,11 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
                 },
                 "post": {
                   "produces": [
@@ -243,7 +247,11 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
                 },
                 "options": {
                   "consumes": [
@@ -359,7 +367,11 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
                 },
                 "delete": {
                   "produces": [
@@ -948,7 +960,11 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
                 },
                 "options": {
                   "consumes": [
@@ -1064,7 +1080,11 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
                 },
                 "delete": {
                   "produces": [
@@ -1379,7 +1399,11 @@ Resources:
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
-                  }
+                  },
+                  "security": [
+                    {
+                      "pantrychef_authorizer": []
+                    }
                 },
                 "delete": {
                   "produces": [
