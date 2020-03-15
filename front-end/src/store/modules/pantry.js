@@ -28,14 +28,14 @@ const actions = {
 	deleteItem({ commit }) {
 		api.pantry.deleteItem().then(response => {
 			commit('SET_PANTRY', response.data)
+		})
 	},
 	getShoppingList({ commit }) {
-
 		api.pantry.getShoppingList().then(response => {
 			commit('SET_SHOPPING', response.data)
 		})
-		
-		console.log("output")
+
+		console.log('output')
 		console.log(this.shopping)
 	}
 }
