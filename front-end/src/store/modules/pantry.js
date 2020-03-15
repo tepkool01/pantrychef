@@ -15,8 +15,8 @@ const getters = {
 }
 
 const actions = {
-	getPantryList({ commit }) {
-		api.pantry.getPantry().then(response => {
+	getPantryList({ commit }, profileId) {
+		api.pantry.getPantry(profileId).then(response => {
 			commit('SET_PANTRY', response.data)
 		})
 	},

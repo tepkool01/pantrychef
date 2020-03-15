@@ -1,8 +1,10 @@
 <template>
 	<div>
 		<div class="row">
-
-			<IngredientSubmissionPanel :suggestionsMstr="ingredients" @clickedItem="eventChild"></IngredientSubmissionPanel>
+			<IngredientSubmissionPanel
+				:suggestionsMstr="ingredients"
+				@clickedItem="eventChild"
+			></IngredientSubmissionPanel>
 
 			<div class="card m-4 text-center" style="width:50%">
 				<div class="card-header">
@@ -12,11 +14,15 @@
 				</div>
 				<div class="card-body m-4 text-center" style="width: 50%">
 					<div v-for="i in pantryList" v-bind:key="i.name">
-						<ingredient :ingredient="i" :key="i.id" :listType="pantryType" @removeCall="handleIngredientRemove"></ingredient>
+						<ingredient
+							:ingredient="i"
+							:key="i.id"
+							:listType="pantryType"
+							@removeCall="handleIngredientRemove"
+						></ingredient>
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </template>
@@ -24,6 +30,7 @@
 <script>
 import Ingredient from '@/components/Ingredient.vue'
 import IngredientSubmissionPanel from '@/components/IngredientSubmissionPanel.vue'
+import Profile from "../store/modules/profile";
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -35,11 +42,15 @@ export default {
 		}),
 		...mapGetters('ingredients', {
 			ingredients: 'ingredients'
+		}),
+		...mapGetters('profile', {
+			profiles: 'profiles'
 		})
 	},
 	components: {
 		IngredientSubmissionPanel,
-		Ingredient
+		Ingredient,
+		Profile
 	},
 	methods: {
 		...mapActions('pantry', {
@@ -48,23 +59,30 @@ export default {
 		...mapActions('ingredients', {
 			getIngredients: 'getIngredients'
 		}),
+		...mapActions('profile', {
+			getProfiles: 'getProfiles'
+		}),
+
 		eventChild: function(value) {
-      		console.log('submit here!') // someValue
-			  console.log(value) // someValue
+			console.log('submit here!') // someValue
+			console.log(value) // someValue
 		},
 		handleIngredientRemove: function(value) {
-      		console.log('remove here!') // someValue
-			  console.log(value) // someValue
+			console.log('remove here!') // someValue
+			console.log(value) // someValue
 		}
 	},
 	data() {
 		return {
-			pantryType: "pantry"
+			pantryType: 'pantry'
 		}
 	},
 	created() {
+		//Get profile for this page
+
 		this.getIngredients()
-		this.getPantryList()
+		var test = this.$store.dispatch('pantry/getPantryList', 4)
+		console.log(test)
 		this.$emit('title', 'Pantry')
 	}
 }

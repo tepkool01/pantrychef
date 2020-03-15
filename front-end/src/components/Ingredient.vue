@@ -9,7 +9,12 @@
 		>
 			Add
 		</button>
-		<button type="button" class="btn btn-outline-danger btn-sm" @click="handleRemoveIngredient" v-else>
+		<button
+			type="button"
+			class="btn btn-outline-danger btn-sm"
+			@click="handleRemoveIngredient"
+			v-else
+		>
 			Remove
 		</button>
 	</div>
@@ -26,17 +31,17 @@ export default {
 		listType: {
 			type: String,
 			required: true,
-			validator: function (value) {
+			validator: function(value) {
 				return ['shopping', 'pantry', 'search'].indexOf(value) !== -1
 			}
 		}
 	},
 	methods: {
-	handleAddIngredient: function() {
-		this.$emit('addCall',this.ingredient)
+		handleAddIngredient: function() {
+			this.$emit('addCall', this.ingredient)
 		},
-	handleRemoveIngredient: function() {
-		this.$emit('removeCall',this.ingredient)
+		handleRemoveIngredient: function() {
+			this.$emit('removeCall', this.ingredient)
 		}
 	}
 }

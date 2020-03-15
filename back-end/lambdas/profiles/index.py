@@ -37,7 +37,7 @@ def lambda_handler(event, context):
             'body': json.dumps(result)
         }
 
-###
+    ###
     # Actual Routing
     ###
     if event['resource'] == '/profiles':

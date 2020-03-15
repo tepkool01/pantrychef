@@ -40,31 +40,30 @@ def lambda_handler(event, context):
     ###
     # Actual Routing
     ###
-    if event['resource'] == '/shopping-lists':
+    if event['resource'] == '/shopping-list/{profileId}':
         if event['httpMethod'] == 'GET':
-            print("Getting pantryList")
-
             try:
-                active_profile = db.execute(
-                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
-                    parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
-                )
-                
-                shopping_item_list = db.execute(
-                    sql="SELECT IL.ID as ItemID, IngredientName FROM `ShoppingListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
-                    parameters=[{'name': 'ProfileID', 'value': {'longValue': int(active_profile['records'][0][0]['longValue'])}}]
-                )
-                
-                print(shopping_item_list)
+                profileid = int(event['pathParameters']['profileId'])
+                userid = int(u.get_id())
+                print("Getting pantryList for profile:" + profileid + "user:" + userid)
 
-                result = []
-                for record in shopping_item_list['records']:
-                    result.append({
-                        'id': record[0]['longValue'],
-                        'ingredient_name': record[1]['stringValue']
-                })
+                if checkUserProfile(profileid, userid):
+                    pantry_item_list = db.execute(
+                        sql="SELECT IL.ID as ItemID, IngredientName FROM `ShoppingListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
+                        parameters=[
+                            {'name': 'ProfileID', 'value': {'longValue': profileid}}]
+                    )
+
+                    print(pantry_item_list)
+
+                    result = []
+                    for record in pantry_item_list['records']:
+                        result.append({
+                            'id': record[0]['longValue'],
+                            'ingredient_name': record[1]['stringValue']
+                        })
             except Exception as e:
-                print(str(e))
+                print("Exception:" + str(e))
                 return {
                     'statusCode': 500,
                     'headers': {
@@ -74,6 +73,32 @@ def lambda_handler(event, context):
                     'body': str(e)
                 }
 
+    elif event['httpMethod'] == 'DELETE':
+        print("Delete shoppinglist for profile:" + event['pathParameters']['profileId'])
+
+        try:
+            profileid = int(event['pathParameters']['profileId'])
+            userid = int(u.get_id())
+            print("Getting shoppinglist for profile:" + profileid + "user:" + userid)
+
+            if checkUserProfile(profileid, userid):
+                db.execute(
+                    sql="DELETE FROM `ShoppingListItem` WHERE UserProfile=:ProfileID",
+                    parameters=[
+                        {'name': 'ProfileID', 'value': {'longValue': profileid}}
+                    ]
+                )
+        except Exception as e:
+            print("Exception:" + str(e))
+            return {
+                'statusCode': 500,
+                'headers': {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                },
+                'body': str(e)
+            }
+
     return {
         'statusCode': status_code,
         'headers': {
@@ -82,3 +107,15 @@ def lambda_handler(event, context):
         },
         'body': json.dumps(result)
     }
+
+
+def checkUserProfile(profileid, userid):
+    is_profile_for_user = db.execute(
+        sql="SELECT * FROM `UserProfile` WHERE UserID=:userId AND ID=:profileId",
+        parameters=[
+            {'name': 'userId', 'value': {'longValue': userid}},
+            {'name': 'profileId', 'value': {'longValue': profileid}}
+        ]
+    )
+    print(is_profile_for_user)
+    return True

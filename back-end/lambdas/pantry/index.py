@@ -37,90 +37,28 @@ def lambda_handler(event, context):
             'body': json.dumps(result)
         }
 
-    ###
-    # Actual Routing
-    ###
-    if event['resource'] == '/profiles':
+    if event['resource'] == '/pantry/{profileId}':
         if event['httpMethod'] == 'GET':
-            # Retrieve all profiles
-            raw_result = db.execute(
-                sql="SELECT ID, ProfileName FROM `UserProfile` WHERE UserID=:userId",
-                parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
-            )
-
-            # Parsing info, because this database outputs crazy ass shit
-            result = []
-            for record in raw_result['records']:
-                result.append({
-                    'id': record[0]['longValue'],
-                    'profile_name': record[1]['stringValue']
-                })
-
-        elif event['httpMethod'] == 'POST':
-            # Create a profile
-            print("Create a profile")
-
-            # First, grab the payload the user sent, and parse it
-            payload = json.loads(event['body'])
-            
             try:
+                profileid = int(event['pathParameters']['profileId'])
+                userid = int(u.get_id())
+                print("Getting pantryList for profile:" + profileid + "user:" + userid)
 
-                profile = db.execute(
-                    sql="INSERT INTO `UserProfile` (ProfileName, UserID, DietType) VALUES(:profileName, :userId, :dietType)",
-                    parameters=[
-                        {'name': 'profileName', 'value': {'stringValue': str(payload['name'])}},
-                        {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
-                        {'name': 'dietType', 'value': {'longValue': int(1)}},  # Random number for now
-                    ]
-                )
-                print(profile)
+                if checkUserProfile(profileid, userid):
+                    pantry_item_list = db.execute(
+                        sql="SELECT IL.ID as ItemID, IngredientName FROM `IngredientListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
+                        parameters=[
+                            {'name': 'ProfileID', 'value': {'longValue': int(event['pathParameters']['profileId'])}}]
+                    )
 
-                # Parse results for VueJS
-                result = {
-                    'id': profile['generatedFields'][0]['longValue'],
-                    'profile_name': str(payload['name'])
-                }
-            except Exception as e:
-                status_code = 500
-                result = {'errorMessage': 'Could not save the profile.'}
-                print(str(e))
+                    print(pantry_item_list)
 
-    elif event['resource'] == '/profiles/{profileId}':
-        if event['httpMethod'] == 'DELETE':
-            # todo: status code 204
-            print("Deleting", event['pathParameters']['profileId'])
-            db.execute(
-                sql="DELETE FROM UserProfile WHERE UserId=:userId AND ID=:id",
-                parameters=[
-                    {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
-                    {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
-                ]
-            )
-
-    elif event['resource'] == '/pantry':
-        if event['httpMethod'] == 'GET':
-            ## Get user information, and the pantryListID
-            print("Getting pantryList")
-
-            try:
-                active_profile = db.execute(
-                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
-                    parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
-                )
-                
-                pantry_item_list = db.execute(
-                    sql="SELECT IL.ID as ItemID, IngredientName FROM `IngredientListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
-                    parameters=[{'name': 'ProfileID', 'value': {'longValue': int(active_profile['records'][0][0]['longValue'])}}]
-                )
-                
-                print(pantry_item_list)
-
-                result = []
-                for record in pantry_item_list['records']:
-                    result.append({
-                        'id': record[0]['longValue'],
-                        'ingredient_name': record[1]['stringValue']
-                })
+                    result = []
+                    for record in pantry_item_list['records']:
+                        result.append({
+                            'id': record[0]['longValue'],
+                            'ingredient_name': record[1]['stringValue']
+                        })
             except Exception as e:
                 print("Exception:" + str(e))
                 return {
@@ -131,8 +69,25 @@ def lambda_handler(event, context):
                     },
                     'body': str(e)
                 }
+
+        elif event['httpMethod'] == 'DELETE':
+            print("Delete pantryList for profile:" + event['pathParameters']['profileId'])
+
+            try:
+                profileid = int(event['pathParameters']['profileId'])
+                userid = int(u.get_id())
+                print("Getting pantryList for profile:" + profileid + "user:" + userid)
+
+                if checkUserProfile(profileid, userid):
+                    db.execute(
+                        sql="DELETE FROM `IngredientListItem` WHERE UserProfile=:ProfileID",
+                        parameters=[
+                            {'name': 'ProfileID', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
+                        ]
+                    )
+
             except Exception as e:
-                print(str(e))
+                print("Exception:" + str(e))
                 return {
                     'statusCode': 500,
                     'headers': {
@@ -150,3 +105,15 @@ def lambda_handler(event, context):
         },
         'body': json.dumps(result)
     }
+
+
+def checkUserProfile(profileid, userid):
+    is_profile_for_user = db.execute(
+        sql="SELECT * FROM `UserProfile` WHERE UserID=:userId AND ID=:profileId",
+        parameters=[
+            {'name': 'userId', 'value': {'longValue': userid}},
+            {'name': 'profileId', 'value': {'longValue': profileid}}
+        ]
+    )
+    print(is_profile_for_user)
+    return True

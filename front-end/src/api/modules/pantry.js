@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 export default {
-	getPantry() {
-		return axios.get('/pantry')
+	getPantry(profile) {
+		return axios.get('/pantry', profile)
 	},
 	addItem(ingredient) {
 		return axios.post('/pantry', ingredient)
