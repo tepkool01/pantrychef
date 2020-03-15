@@ -12,7 +12,7 @@
 				</div>
 				<div class="card-body m-4 text-center" style="width: 50%">
 					<div v-for="i in pantryList" v-bind:key="i.name">
-						<ingredient :ingredient="i" :key="i.id" :listType="pantryType"></ingredient>
+						<ingredient :ingredient="i" :key="i.id" :listType="pantryType" @removeCall="handleIngredientRemove"></ingredient>
 					</div>
 				</div>
 			</div>
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Ingredient from '@/components/Ingredient.vue'
 import IngredientSubmissionPanel from '@/components/IngredientSubmissionPanel.vue'
 
@@ -51,6 +50,10 @@ export default {
 		}),
 		eventChild: function(value) {
       		console.log('submit here!') // someValue
+			  console.log(value) // someValue
+		},
+		handleIngredientRemove: function(value) {
+      		console.log('remove here!') // someValue
 			  console.log(value) // someValue
 		}
 	},

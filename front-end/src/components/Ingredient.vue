@@ -5,11 +5,11 @@
 			type="button"
 			class="btn btn-outline-success btn-sm close"
 			v-if="listType === 'search'"
-			@click="addPantryItem"
+			@click="handleAddIngredient"
 		>
 			Add
 		</button>
-		<button type="button" class="btn btn-outline-danger btn-sm" v-else>
+		<button type="button" class="btn btn-outline-danger btn-sm" @click="handleRemoveIngredient" v-else>
 			Remove
 		</button>
 	</div>
@@ -32,12 +32,11 @@ export default {
 		}
 	},
 	methods: {
-		addPantryItem() {
-			this.$store.dispatch('profile/createProfile', this.profile)
-			this.profile = {
-				name: '',
-				ingredients: []
-			}
+	handleAddIngredient: function() {
+		this.$emit('addCall',this.ingredient)
+		},
+	handleRemoveIngredient: function() {
+		this.$emit('removeCall',this.ingredient)
 		}
 	}
 }
