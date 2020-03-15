@@ -1,7 +1,8 @@
 import api from '../../api'
 
 const state = {
-	profiles: []
+	profiles: [],
+	active_profile: null
 }
 
 const getters = {
@@ -16,6 +17,12 @@ const actions = {
 			commit('ADD_PROFILE', response.data)
 		})
 	},
+	activateProfile({ commit }, payload) {
+		commit('SET_ACTIVE', payload)
+		//api.profile.createProfile(payload).then(response => {
+
+		//})
+	},
 	getProfiles({ commit }) {
 		api.profile.getProfiles().then(response => {
 			commit('SET_PROFILES', response.data)
@@ -29,6 +36,9 @@ const actions = {
 }
 
 const mutations = {
+	SET_ACTIVE(state, profile) {
+		state.active_profile = profile
+	},
 	ADD_PROFILE(state, profile) {
 		state.profiles.push(profile)
 	},

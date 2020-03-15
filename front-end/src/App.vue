@@ -12,6 +12,10 @@
 				<div class="sidebar-heading">Welcome back, {{ userId }}</div>
 				<div class="sidebar--diet-type mb-5">Vegetarian</div>
 				<!--TODO: Bind dietType data here-->
+
+				<select v-model="activeProfile">
+					<option v-for="p in profiles"></option>
+				</select>
 				<div class="list-group list-group-flush">
 					<a
 						href="/pantry"
@@ -85,14 +89,18 @@ export default {
 	data() {
 		return {
 			pageTitle: '',
-			toggle: false
+			toggle: false,
+			activeProfile: null
 		}
 	},
 	computed: {
 		...mapGetters('users', {
 			isAuthenticated: 'isAuthenticated',
 			userId: 'userId'
-		})
+		}),
+		...mapGetters('profile', {
+			profiles: 'profiles'
+		}),
 	},
 	watch: {
 		pageTitle(val) {
@@ -102,6 +110,9 @@ export default {
 	methods: {
 		...mapActions('users', {
 			logout: 'logout'
+		}),
+		...mapActions('profile', {
+			activateProfile: 'activateProfile'
 		}),
 		onLogout() {
 			// Invalidate the session
