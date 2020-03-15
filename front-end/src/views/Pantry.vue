@@ -69,13 +69,13 @@ export default {
 
 		addIngredientToPantry (ingredient) {
 			this.addIngredient({
-				ingredient_id: ingredient.id,
+				ingredient: ingredient,
 				profile_id: this.activeProfile
 			})
 		},
 		handleIngredientRemove (ingredient) {
 			this.removeIngredient({
-				ingredient_id: ingredient.id,
+				ingredient: ingredient,
 				profile_id: this.activeProfile
 			})
 		}

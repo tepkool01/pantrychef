@@ -17,13 +17,13 @@ const actions = {
 		})
 	},
 	addIngredient({ commit }, payload) {
-		api.pantry.addIngredient(payload.ingredient_id, payload.profile_id).then(() => {
-			commit('ADD_INGREDIENT', payload.ingredient_id)
+		api.pantry.addIngredient(payload.ingredient.id, payload.profile_id).then(() => {
+			commit('ADD_INGREDIENT', payload.ingredient)
 		})
 	},
 	removeIngredient({ commit }, payload) {
-		api.pantry.deleteIngredient(payload.ingredient_id, payload.profile_id).then(() => {
-			commit('REMOVE_INGREDIENT', payload.ingredient_id)
+		api.pantry.deleteIngredient(payload.ingredient.id, payload.profile_id).then(() => {
+			commit('REMOVE_INGREDIENT', payload.ingredient)
 		})
 	},
 	getShoppingList({ commit }) {
