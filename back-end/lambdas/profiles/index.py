@@ -44,7 +44,7 @@ def lambda_handler(event, context):
         if event['httpMethod'] == 'GET':
             # Retrieve all profiles
             raw_result = db.execute(
-                sql="SELECT ID, ProfileName FROM `UserProfile` WHERE UserID=:userId",
+                sql="SELECT ID, ProfileName, IsActive FROM `UserProfile` WHERE UserID=:userId",
                 parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
             )
 
@@ -53,7 +53,8 @@ def lambda_handler(event, context):
             for record in raw_result['records']:
                 result.append({
                     'id': record[0]['longValue'],
-                    'profile_name': record[1]['stringValue']
+                    'profile_name': record[1]['stringValue'],
+                    'isActive': record[2]['longValue']
                 })
 
         elif event['httpMethod'] == 'POST':
