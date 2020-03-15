@@ -21,10 +21,13 @@ const actions = {
 		})
 	},
 	getShoppingList({ commit }) {
-		console.log("output")
+
 		api.pantry.getShoppingList().then(response => {
 			commit('SET_SHOPPING', response.data)
 		})
+		
+		console.log("output")
+		console.log(this.shopping)
 	}
 }
 
