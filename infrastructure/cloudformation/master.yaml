@@ -872,7 +872,7 @@ Resources:
                     }
                   },
                   "x-amazon-apigateway-integration": {
-                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${ProfilesLambda.Arn}/invocations",
+                    "uri": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${PantryLambda.Arn}/invocations",
                     "passthroughBehavior": "when_no_match",
                     "httpMethod": "POST",
                     "type": "aws_proxy"
@@ -943,7 +943,7 @@ Resources:
                     "200": {
                       "description": "200 response",
                       "schema": {
-                        "$ref": "#/definitions/PantryItemResponse"
+                        "$ref": "#/definitions/PantryResponse"
                       },
                       "headers": {
                         "Access-Control-Allow-Origin": {
@@ -1258,7 +1258,7 @@ Resources:
                     "200": {
                       "description": "200 response",
                       "schema": {
-                        "$ref": "#/definitions/ShoppingListItemResponse"
+                        "$ref": "#/definitions/ShoppingListResponse"
                       },
                       "headers": {
                         "Access-Control-Allow-Origin": {
