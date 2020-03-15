@@ -7,6 +7,10 @@ from user import User
 # Everything outside of the handler is 'cached' on the virtual machine, connections should be here
 # Initialize the DB connect
 db = DB(database_name=os.environ['DB_NAME'], cluster_arn=os.environ['RDS_ARN'], secret_arn=os.environ['Secrets_ARN'])
+headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*"
+}
 
 
 def lambda_handler(event, context):
@@ -30,31 +34,23 @@ def lambda_handler(event, context):
         print("User token is expired, corrupted, we should exit/aka return out of the lambda early")
         return {
             'statusCode': 403,
-            'headers': {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            },
+            'headers': headers,
             'body': json.dumps(result)
         }
 
     ###
     # Actual Routing
     ###
-    if event['resource'] == '/shopping-list/{profileId}':
+    if event['resource'] == '/shopping-lists/{profileId}':
+        profile_id = int(event['pathParameters']['profileId'])
+        user_id = int(u.get_id())
+
         if event['httpMethod'] == 'GET':
             try:
-                profileid = int(event['pathParameters']['profileId'])
-                userid = int(u.get_id())
-                print("Getting pantryList for profile:" + profileid + "user:" + userid)
-
-                if checkUserProfile(profileid, userid):
+                if check_user_profile(profile_id, user_id):
                     pantry_item_list = db.execute(
                         sql="SELECT IL.ID as ItemID, IngredientName FROM `ShoppingListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
-                        parameters=[
-                            {'name': 'ProfileID', 'value': {'longValue': profileid}}]
-                    )
-
-                    print(pantry_item_list)
+                        parameters=[{'name': 'ProfileID', 'value': {'longValue': profile_id}}])
 
                     result = []
                     for record in pantry_item_list['records']:
@@ -66,50 +62,33 @@ def lambda_handler(event, context):
                 print("Exception:" + str(e))
                 return {
                     'statusCode': 500,
-                    'headers': {
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*"
-                    },
+                    'headers': headers,
                     'body': str(e)
                 }
 
-    elif event['httpMethod'] == 'DELETE':
-        print("Delete shoppinglist for profile:" + event['pathParameters']['profileId'])
-
-        try:
-            profileid = int(event['pathParameters']['profileId'])
-            userid = int(u.get_id())
-            print("Getting shoppinglist for profile:" + profileid + "user:" + userid)
-
-            if checkUserProfile(profileid, userid):
-                db.execute(
-                    sql="DELETE FROM `ShoppingListItem` WHERE UserProfile=:ProfileID",
-                    parameters=[
-                        {'name': 'ProfileID', 'value': {'longValue': profileid}}
-                    ]
-                )
-        except Exception as e:
-            print("Exception:" + str(e))
-            return {
-                'statusCode': 500,
-                'headers': {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*"
-                },
-                'body': str(e)
-            }
+        elif event['httpMethod'] == 'DELETE':
+            try:
+                if check_user_profile(profile_id, user_id):
+                    db.execute(
+                        sql="DELETE FROM `ShoppingListItem` WHERE UserProfile=:ProfileID",
+                        parameters=[{'name': 'ProfileID', 'value': {'longValue': profile_id}}]
+                    )
+            except Exception as e:
+                print("Exception:" + str(e))
+                return {
+                    'statusCode': 500,
+                    'headers': headers,
+                    'body': str(e)
+                }
 
     return {
         'statusCode': status_code,
-        'headers': {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-        },
+        'headers': headers,
         'body': json.dumps(result)
     }
 
 
-def checkUserProfile(profileid, userid):
+def check_user_profile(profileid, userid):
     is_profile_for_user = db.execute(
         sql="SELECT * FROM `UserProfile` WHERE UserID=:userId AND ID=:profileId",
         parameters=[
