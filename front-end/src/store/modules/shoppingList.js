@@ -16,9 +16,6 @@ const actions = {
 		api.shoppinglist.getShoppingList().then(response => {
 			commit('SET_SHOPPING', response.data)
 		})
-
-		
-		console.log(this.shopping)
 	}
 }
 

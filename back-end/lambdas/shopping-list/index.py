@@ -49,19 +49,19 @@ def lambda_handler(event, context):
                     sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                     parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
                 )
-
+                
                 shopping_item_list = db.execute(
                     sql="SELECT IL.ID as ItemID, IngredientName FROM `ShoppingListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
                     parameters=[{'name': 'ProfileID', 'value': {'longValue': int(active_profile['records'][0][0]['longValue'])}}]
                 )
-
+                
                 print(shopping_item_list)
 
                 result = []
                 for record in shopping_item_list['records']:
                     result.append({
                         'id': record[0]['longValue'],
-                        'ingredient_name': record[1]['longValue']
+                        'ingredient_name': record[1]['stringValue']
                 })
             except Exception as e:
                 print(str(e))
