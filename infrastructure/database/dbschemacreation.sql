@@ -57,7 +57,7 @@ CREATE TABLE ShoppingListItem (
 CREATE TABLE Recipe (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeName VARCHAR(255),
-    CookTime INT,
+    CookTime INT DEFAULT 0,
     DietType VARCHAR(10),
     IngredientCount INT DEFAULT 0
     PRIMARY KEY (ID)
