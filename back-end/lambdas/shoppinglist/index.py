@@ -37,46 +37,15 @@ def lambda_handler(event, context):
             'body': json.dumps(result)
         }
 
-    if event['resource'] == '/pantry':
+    ###
+    # Actual Routing
+    ###
+    if event['resource'] == '/shoppingList':
         if event['httpMethod'] == 'GET':
-            ## Get user information, and the pantryListID
             print("Getting pantryList")
 
             try:
-                active_profile = db.execute(
-                    sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
-                    parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
-                )
                 
-                pantry_item_list = db.execute(
-                    sql="SELECT IL.ID as ItemID, IngredientName FROM `IngredientListItem` IL INNER JOIN `Ingredient` I ON I.ID = IL.IngredientID WHERE UserProfile=:ProfileID",
-                    parameters=[{'name': 'ProfileID', 'value': {'longValue': int(active_profile['records'][0][0]['longValue'])}}]
-                )
-                
-                print(pantry_item_list)
-
-                result = []
-                for record in pantry_item_list['records']:
-                    result.append({
-                        'id': record[0]['longValue'],
-                        'ingredient_name': record[1]['stringValue']
-                })
-            except Exception as e:
-                print("Exception:" + str(e))
-                return {
-                    'statusCode': 500,
-                    'headers': {
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*"
-                    },
-                    'body': str(e)
-                }
-
-    elif event['resource'] == '/shopping':
-        if event['httpMethod'] == 'GET':
-            print("Getting shoppingList")
-
-            try:
                 active_profile = db.execute(
                     sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                     parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
