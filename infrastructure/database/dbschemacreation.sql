@@ -59,7 +59,8 @@ CREATE TABLE Recipe (
     RecipeName VARCHAR(255),
     CookTime INT DEFAULT 0,
     DietType VARCHAR(10),
-    IngredientCount INT DEFAULT 0
+    IngredientCount INT DEFAULT 0,
+    ImgURL VARCHAR(25) DEFAULT ''
     PRIMARY KEY (ID)
 );
 
