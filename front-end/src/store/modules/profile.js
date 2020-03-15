@@ -8,6 +8,9 @@ const state = {
 const getters = {
 	profiles(state) {
 		return state.profiles
+	},
+	activeProfile(state) {
+		return state.active_profile
 	}
 }
 

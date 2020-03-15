@@ -99,7 +99,8 @@ export default {
 			userId: 'userId'
 		}),
 		...mapGetters('profile', {
-			profiles: 'profiles'
+			profiles: 'profiles',
+			activeProfile: 'activeProfile'
 		}),
 	},
 	watch: {
