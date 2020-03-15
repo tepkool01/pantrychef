@@ -135,10 +135,9 @@ def lambda_handler(event, context):
 
     elif event['resource'] == '/shoppingList':
         if event['httpMethod'] == 'GET':
-            print("Getting pantryList")
+            print("Getting shoppingList")
 
             try:
-                
                 active_profile = db.execute(
                     sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                     parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
