@@ -104,13 +104,9 @@ export default {
 		}),
 		activeProfile: {
 			get: function() {
-				console.log("Getting profile", this.aProfile)
-				console.log(this.profiles)
 				return this.aProfile
-
 			},
 			set: function(newProfile) {
-				console.log("Setting profile", newProfile)
 				this.activateProfile(newProfile)
 			}
 		}

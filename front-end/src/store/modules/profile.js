@@ -27,12 +27,10 @@ const actions = {
 		})
 	},
 	getProfiles({ commit }) {
-		console.log("Getting profiles")
 		api.profile.getProfiles().then(response => {
 			commit('SET_PROFILES', response.data)
 
 			response.data.forEach(profile => {
-				console.log(profile)
 				if (profile.isActive) {
 					commit('SET_ACTIVE', profile.id)
 				}

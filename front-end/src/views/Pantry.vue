@@ -63,15 +63,21 @@ export default {
 			getIngredients: 'getIngredients'
 		}),
 		...mapActions('profile', {
-			getProfiles: 'getProfiles'
+			getProfiles: 'getProfiles',
+			activeProfile: 'activeProfile'
 		}),
 
 		addIngredientToPantry (ingredient) {
-			console.log("Adding:", ingredient)
-			this.addIngredient(ingredient, this.activeProfile)
+			this.addIngredient({
+				ingredient_id: ingredient.id,
+				profile_id: this.activeProfile
+			})
 		},
 		handleIngredientRemove (ingredient) {
-			this.removeIngredient(ingredient, this.activeProfile)
+			this.removeIngredient({
+				ingredient_id: ingredient.id,
+				profile_id: this.activeProfile
+			})
 		}
 	},
 	data() {
