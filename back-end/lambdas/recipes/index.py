@@ -34,6 +34,7 @@ def lambda_handler(event, context):
         limit = 25
         offset = 0
         if event['httpMethod'] == 'GET':
+
             active_profile = db.execute(
                 sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
                 parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
@@ -43,11 +44,40 @@ def lambda_handler(event, context):
                 parameters=[{'name': 'ProfileID', 'value': {'longValue': int(active_profile['records'][0][0]['longValue'])}}]
             )
 
+            # Ranking logic
             if len(pantry_item_list['records']) > 0:
-                # Ranking logic
-                ingredients = (14, 28, 50)
+                # Grab user's ingredients they have in their pantry, and place them into a MySQL readable format
+                ingredient_ids = []
+                for ingredient_id in pantry_item_list['records']:
+                    ingredient_ids.append(ingredient_id[0]['longValue'])
+                my_ingredient_ids = ','.join(map(str, ingredient_ids))
+                print(my_ingredient_ids)
 
-                # Gather all items in shopping list
+                recipes = db.execute(
+                    sql="SELECT RecipeID, RecipeName, CookTime, DietType, IngredientCount, count(*) as grp_count, round((count(*) / IngredientCount), 2) as pct_match \
+                        FROM `RecipeListItem` ri \
+                        LEFT JOIN Recipe r \
+                        ON r.ID=ri.RecipeID \
+                        WHERE ri.IngredientID IN (:my_ingredient_ids) \
+                        GROUP BY ri.RecipeID \
+                        ORDER BY pct_match DESC LIMIT :offset, :limit",
+                    parameters=[
+                        {'name': 'myIngredients', 'value': {'stringValue': str(my_ingredient_ids)}},
+                        {'name': 'limit', 'value': {'longValue': int(limit)}},
+                        {'name': 'offset', 'value': {'longValue': int(offset)}},
+                    ]
+
+                )
+                print(recipes)
+                result = []
+                for record in recipes['records']:
+                    result.append({
+                        'id': record[0]['longValue'],
+                        'recipe_name': record[1]['stringValue'],
+                        'cook_time': record[2]['longValue'],
+                        'diet_type': record[3]['stringValue'],
+                        'ingredient_count': record[4]['longValue']
+                    })
 
                 # Parse records into python object
                 print("I have stuff in my pantry!")
