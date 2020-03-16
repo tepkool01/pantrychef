@@ -15,6 +15,9 @@ const actions = {
 		api.recipe.getRecipes().then(response => {
 			commit('SET_RECIPES', response.data)
 		})
+	},
+	getRecipeIngredients({ commit }, recipe_id) {
+		return api.recipe.getIngredients(recipe_id)
 	}
 }
 

@@ -127,8 +127,8 @@ def lambda_handler(event, context):
         # Placeholder for all the information needed for a recipe page
         result = []
         ingredients = db.execute(
-            sql="SELECT IngredientName FROM Recipe r LEFT JOIN RecipeListItem ri ON ri.RecipeID=r.ID JOIN Ingredient i ON i.ID=ri.IngredientID WHERE r.ID=id",
-            parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
+            sql="SELECT IngredientName FROM Recipe r LEFT JOIN RecipeListItem ri ON ri.RecipeID=r.ID JOIN Ingredient i ON i.ID=ri.IngredientID WHERE r.ID=:recipeId",
+            parameters=[{'name': 'recipeId', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
         )
         for ingredient in ingredients['records']:
             result.append(ingredient[0]['stringValue'])

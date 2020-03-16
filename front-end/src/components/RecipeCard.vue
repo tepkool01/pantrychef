@@ -19,7 +19,9 @@
 				</div>
 				<div class="col-lg-9 recipe-card--body d-flex align-items-start flex-column">
 					<div class="recipe-card--description">
-						We don't have a description, possibly bold the ingredient list or grab a description?
+						<ul>
+							<li v-for="ingredient in ingredients">{{ingredient}}</li>
+						</ul>
 					</div>
 					<!--<div class="recipe-card--review mt-auto">
 						<b-icon-star-fill></b-icon-star-fill>
@@ -51,15 +53,27 @@
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
 	name: 'RecipeCard',
 	props: {
-      recipe: Object
+      	recipe: Object,
+		ingredients: []
 	},
-	methods:{
+	methods: {
+		...mapActions('recipes', {
+			getRecipeIngredients: 'getRecipeIngredients'
+		}),
 		getRecipeCard(id){
 			this.$router.replace("/recipes/" +  id);
 		}
+	},
+	created() {
+		this.getRecipeIngredients(this.recipe.id).then(result => {
+			console.log(result)
+			this.ingredients = result.data
+		})
 	}
 }
 </script>
