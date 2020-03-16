@@ -2,7 +2,7 @@
 	<div>
 		<div class="row">
 
-			<IngredientSubmissionPanel :suggestionsMstr="ingredients" @clickedItem="eventChild"></IngredientSubmissionPanel>
+			<IngredientSubmissionPanel :suggestionsMstr="ingredients" @clickedItem="addIngredientToShoppingList"></IngredientSubmissionPanel>
 
 			<div class="card m-4 text-center" style="width:50%">
 				<div class="card-header">
@@ -54,13 +54,17 @@ export default {
 			addIngredient: 'addIngredient',
 			removeIngredient: 'removeIngredient'
 		}),
-		eventChild: function(value) {
-      		console.log('submit here!') // someValue
-			  console.log(value) // someValue
+		addIngredientToShoppingList (ingredient) {
+			this.addIngredient({
+				ingredient: ingredient,
+				profile_id: this.activeProfile
+			})
 		},
-		handleIngredientRemove: function(value) {
-      		console.log('remove here!') // someValue
-			  console.log(value) // someValue
+		handleIngredientRemove (ingredient) {
+			this.removeIngredient({
+				ingredient: ingredient,
+				profile_id: this.activeProfile
+			})
 		}
 	},
 	watch: {
