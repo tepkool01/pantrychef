@@ -19,9 +19,10 @@
 				</div>
 				<div class="col-lg-9 recipe-card--body d-flex align-items-start flex-column">
 					<div class="recipe-card--description">
-						<ul>
+						<ul v-if="ingredients.length > 0">
 							<li v-for="ingredient in ingredients">{{ingredient}}</li>
 						</ul>
+						<div v-else>loading...</div>
 					</div>
 					<!--<div class="recipe-card--review mt-auto">
 						<b-icon-star-fill></b-icon-star-fill>
@@ -73,7 +74,15 @@ export default {
 			this.$router.replace("/recipes/" +  id);
 		}
 	},
+	watch: {
+		recipe: function(val) {
+			this.getRecipeIngredients(this.recipe.id).then(result => {
+				this.ingredients = result.data
+			})
+		}
+	},
 	created() {
+		this.ingredients = []
 		this.getRecipeIngredients(this.recipe.id).then(result => {
 			this.ingredients = result.data
 		})

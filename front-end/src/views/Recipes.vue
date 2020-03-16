@@ -24,18 +24,26 @@ export default {
 	computed: {
 		...mapGetters('recipes', {
 			recipes: 'recipes'
+		}),
+		...mapGetters('profile', {
+			activeProfile: 'activeProfile'
 		})
 	},
 	components: {
 		RecipeCard,
 		ViewRecipe
 	},
+	watch: {
+		activeProfile: function(val) {
+			this.getRecipes()
+		}
+	},
 	methods: {
 		...mapActions('recipes', {
 			getRecipes: 'getRecipes'
-		}),
-		  
+		})
 	},
+
 	created() {
 		this.getRecipes()
 		this.$emit('title', 'Pantry')

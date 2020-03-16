@@ -124,7 +124,6 @@ export default {
 			activateProfile: 'activateProfile'
 		}),
 		switchProfile(profile) {
-			console.log("Switching profile: ", profile.target.value)
 			this.activateProfile(profile.target.value)
 		},
 		onLogout() {
