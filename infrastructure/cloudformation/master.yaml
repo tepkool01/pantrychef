@@ -1558,7 +1558,7 @@ Resources:
                   }
                 }
               },
-              "/shopping-list/{profileId}": {
+              "/shopping-lists/{profileId}": {
                 "get": {
                   "produces": [
                     "application/json"
@@ -1766,7 +1766,7 @@ Resources:
                   }
                 }
               },
-              "/shopping-list/{profileId}/ingredients/{ingredientId}": {
+              "/shopping-lists/{profileId}/ingredients/{ingredientId}": {
                 "get": {
                   "produces": [
                     "application/json"
