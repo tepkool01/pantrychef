@@ -36,7 +36,7 @@ def lambda_handler(event, context):
         if event['httpMethod'] == 'GET':
 
             active_profile = db.execute(
-                sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId LIMIT 1",
+                sql="SELECT ID FROM `UserProfile` WHERE UserID=:userId AND IsActive=1 LIMIT 1",
                 parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
             )
             pantry_item_list = db.execute(
@@ -58,11 +58,10 @@ def lambda_handler(event, context):
                         FROM `RecipeListItem` ri \
                         LEFT JOIN Recipe r \
                         ON r.ID=ri.RecipeID \
-                        WHERE ri.IngredientID IN (:myIngredients) \
+                        WHERE ri.IngredientID IN (" + my_ingredient_ids + ") \
                         GROUP BY ri.RecipeID \
                         ORDER BY pct_match DESC LIMIT :offset, :limit",
                     parameters=[
-                        {'name': 'myIngredients', 'value': {'stringValue': str(my_ingredient_ids)}},
                         {'name': 'limit', 'value': {'longValue': int(limit)}},
                         {'name': 'offset', 'value': {'longValue': int(offset)}},
                     ]
