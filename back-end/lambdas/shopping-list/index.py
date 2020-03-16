@@ -81,6 +81,47 @@ def lambda_handler(event, context):
                     'body': str(e)
                 }
 
+    elif event['resource'] == '/shopping-lists/{profileId}/ingredients/{ingredientId}':
+        profile_id = int(event['pathParameters']['profileId'])
+        ingredient_id = int(event['pathParameters']['ingredientId'])
+        user_id = int(u.get_id())
+
+        if event['httpMethod'] == 'PUT':
+            try:
+                if check_user_profile(profile_id, user_id):
+                    db.execute(
+                        sql="INSERT IGNORE INTO `ShoppingListItem` SET UserProfile=:ProfileID, IngredientID=:IngID",
+                        parameters=[
+                            {'name': 'ProfileID', 'value': {'longValue': profile_id}},
+                            {'name': 'IngID', 'value': {'longValue': ingredient_id}}
+                        ]
+                    )
+            except Exception as e:
+                print("Exception:" + str(e))
+                return {
+                    'statusCode': 500,
+                    'headers': headers,
+                    'body': str(e)
+                }
+
+        elif event['httpMethod'] == 'DELETE':
+            try:
+                if check_user_profile(profile_id, user_id):
+                    db.execute(
+                        sql="DELETE FROM `ShoppingListItem` WHERE UserProfile=:ProfileID AND ID=:IngID",
+                        parameters=[
+                            {'name': 'ProfileID', 'value': {'longValue': profile_id}},
+                            {'name': 'IngID', 'value': {'longValue': ingredient_id}}
+                        ]
+                    )
+            except Exception as e:
+                print("Exception:" + str(e))
+                return {
+                    'statusCode': 500,
+                    'headers': headers,
+                    'body': str(e)
+                }
+
     return {
         'statusCode': status_code,
         'headers': headers,
