@@ -123,6 +123,15 @@ def lambda_handler(event, context):
                 'name': ingredient[1]['stringValue'],
                 'type': ingredient[2]['stringValue']
             })
+    elif event['resource'] == '/recipes/{recipeId}/ingredients':
+        # Placeholder for all the information needed for a recipe page
+        result = []
+        ingredients = db.execute(
+            sql="SELECT IngredientName FROM Recipe r LEFT JOIN RecipeListItem ri ON ri.RecipeID=r.ID JOIN Ingredient i ON i.ID=ri.IngredientID WHERE r.ID=id",
+            parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
+        )
+        for ingredient in ingredients['records']:
+            result.append(ingredient[0]['stringValue'])
 
     return {
         'statusCode': 200,
