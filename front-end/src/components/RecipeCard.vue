@@ -57,9 +57,13 @@ import {mapActions} from "vuex";
 
 export default {
 	name: 'RecipeCard',
+	data() {
+		return {
+			ingredients: []
+		}
+	},
 	props: {
-      	recipe: Object,
-		ingredients: []
+      	recipe: Object
 	},
 	methods: {
 		...mapActions('recipes', {
@@ -71,7 +75,6 @@ export default {
 	},
 	created() {
 		this.getRecipeIngredients(this.recipe.id).then(result => {
-			console.log(result)
 			this.ingredients = result.data
 		})
 	}
