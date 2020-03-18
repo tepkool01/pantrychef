@@ -1,15 +1,103 @@
-REPLACE INTO `Directions` SET `ID`='1', `RecipeID`='1', `SortOrder`='0', `Directions`='Clean mushrooms and remove stems. Place caps on a large rimmed baking dish. Dice stems finely and saute till cooked. Slightly soften cream cheese in a microwavable bowl. Add sauteed stems and all other ingredients except Parmesan. (If it is too liquidy- just add some more bread crumbs). Fill mushroom caps with filling, and mounded on top. Sprinkle with Parmesan. Bake at 400 degrees till browned about 12-18 minutes, depending on size of mushrooms. Enjoy!!';
-REPLACE INTO `Directions` SET `ID`='2', `RecipeID`='2', `SortOrder`='0', `Directions`='Preheat oven to 350. Combine all ingredients and mix well. Pour into greased baking dish and bake for 20 to 30 minutes. Serve with fresh veggies, chips, or crackers.';
-REPLACE INTO `Directions` SET `ID`='3', `RecipeID`='3', `SortOrder`='0', `Directions`='Mix together and bake for 25 minutes at 350 degrees F.';
-REPLACE INTO `Directions` SET `ID`='4', `RecipeID`='4', `SortOrder`='0', `Directions`='Slice the jalapenos in half lengthwise. Side note- if you slice the top off just before the stem it creates a notch to allow the top to sit evenly on the filling. Scrape all the seeds and veins out of the pepper= the better you scrape the less spicy these will be, but ultimately it depends on the spice factor of your bunch of peppers. Fill the bottom of the pepper with some ground beef- dont overfill. On top of the beef, add a layer of cream cheese ( I like extra) Sprinkle your seasoning on top of all the peppers. Put the tops back on and wrap the whole thing with bacon and secure with a toothpick. Put on a hot smoker and smoke for 1 hour or so until all the ground beef is cooked through. We have made these on a grill and in the oven and the smoker gives the best flavor. I know this is an old recipe, but trust me, they are awesome!';
-REPLACE INTO `Directions` SET `ID`='5', `RecipeID`='5', `SortOrder`='0', `Directions`='Roll out cresent rolls on cookie sheet press seams together bake at temp on pkg of rolls until brown ( 10-13 min) let cool Mix cream cheese, dip and mayo together spread on bake cresent rolls Add any type of veggies you like - I use brocc, cauli, carrots, green onions sprinkle with shredded chesse';
-REPLACE INTO `Directions` SET `ID`='6', `RecipeID`='6', `SortOrder`='0', `Directions`='Preheat oven to 350 degrees F. Use a serrated knife to cut bread crosswise into 1-inch slices, cutting to but not through the bottom crust. In a small bowl, stir together cheese, butter, bacon, green onions, mustard, and lemon juice. Spread mixture between slices of bread. Wrap loaf in foil. (Make sure its tight so the toppings dont fall to the bottom) Bake for 15 to 20 minutes or until bread is heated through and cheese is melted.';
-REPLACE INTO `Directions` SET `ID`='7', `RecipeID`='7', `SortOrder`='0', `Directions`='Preheat the broiler. Cut Cheddar cheese into 12 slices long enough to fit inside the jalapeno halves. Insert cheese slices into the halves. Wrap the jalapeno halves with the bacon slices, securing with a wooden pick, if necessary. Place on a medium baking sheet. Broil 5 to 10 minutes, or until the bacon is evenly brown';
-REPLACE INTO `Directions` SET `ID`='8', `RecipeID`='8', `SortOrder`='0', `Directions`='Cook your tater tots according to directions until golden brown in color. This was in a 425 degree oven for 20-30 minutes. Once you pull them out of the oven, let cool for approximately 2-5 minutes until you can skewer them onto the skewers. I suggest 6-7 per skewer. Once on the skewers and on the pan, sprinkle ranch dressing over each of tater tots. Then sprinkle the bacon and then the cheese. Into the oven for an additional 10 minutes until the cheese is fully melted and golden in color. Remove from oven and serve.';
-REPLACE INTO `Directions` SET `ID`='9', `RecipeID`='9', `SortOrder`='0', `Directions`='1 Preheat oven to 350°F. 2 Combine cream cheese, bacon, onion and pepper in a bowl. 3 Separate crescent rolls into two rectangles. Pinch seams together. Spread half of cheese mixture on each of the rectangles. Roll up, starting at longest side, and seal. Cut each roll into 16 slices. Place slices, cut side down, on a baking sheet. 4 Bake for 15 minutes or until golden-brown. Serve warm.';
-REPLACE INTO `Directions` SET `ID`='10', `RecipeID`='10', `SortOrder`='0', `Directions`='Just a Pinch - more here!!';
-REPLACE INTO `Directions` SET `ID`='11', `RecipeID`='11', `SortOrder`='0', `Directions`='Cook French fries according to package directions. Place fries on a broiler-safe dish or platter. Sprinkle with cheese, onions and bacon. Broil for 1-2 minutes or until cheese is melted. Serve with ranch dressing.';
-REPLACE INTO `Directions` SET `ID`='12', `RecipeID`='12', `SortOrder`='0', `Directions`='DrizzleMeSkinny.com - FULL details and original recipe here!';
+REPLACE INTO `Directions` SET `ID`='1', `RecipeID`='1', `SortOrder`='1', `Directions`='Clean mushrooms and remove stems';
+REPLACE INTO `Directions` SET `ID`='2', `RecipeID`='1', `SortOrder`='2', `Directions`='Place caps on a large rimmed baking dish';
+REPLACE INTO `Directions` SET `ID`='3', `RecipeID`='1', `SortOrder`='3', `Directions`='Dice stems finely and saute till cooked';
+REPLACE INTO `Directions` SET `ID`='4', `RecipeID`='1', `SortOrder`='4', `Directions`='Slightly soften cream cheese in a microwavable bowl';
+REPLACE INTO `Directions` SET `ID`='5', `RecipeID`='1', `SortOrder`='5', `Directions`='Add sauteed stems and all other ingredients except Parmesan';
+REPLACE INTO `Directions` SET `ID`='6', `RecipeID`='1', `SortOrder`='6', `Directions`='(If it is too liquidy- just add some more bread crumbs)';
+REPLACE INTO `Directions` SET `ID`='7', `RecipeID`='1', `SortOrder`='7', `Directions`='Fill mushroom caps with filling, and mounded on top';
+REPLACE INTO `Directions` SET `ID`='8', `RecipeID`='1', `SortOrder`='8', `Directions`='Sprinkle with Parmesan';
+REPLACE INTO `Directions` SET `ID`='9', `RecipeID`='1', `SortOrder`='9', `Directions`='Bake at 400 degrees till browned about 12-18 minutes, depending on size of mushrooms';
+
+REPLACE INTO `Directions` SET `ID`='10', `RecipeID`='2', `SortOrder`='1', `Directions`='Preheat oven to 350';
+REPLACE INTO `Directions` SET `ID`='11', `RecipeID`='2', `SortOrder`='2', `Directions`='Combine all ingredients and mix well';
+REPLACE INTO `Directions` SET `ID`='12', `RecipeID`='2', `SortOrder`='3', `Directions`='Pour into greased baking dish and bake for 20 to 30 minutes';
+REPLACE INTO `Directions` SET `ID`='13', `RecipeID`='2', `SortOrder`='4', `Directions`='Serve with fresh veggies, chips, or crackers';
+
+REPLACE INTO `Directions` SET `ID`='14', `RecipeID`='3', `SortOrder`='1', `Directions`='Mix together and bake for 25 minutes at 350 degrees F';
+
+REPLACE INTO `Directions` SET `ID`='15', `RecipeID`='4', `SortOrder`='1', `Directions`='Slice the jalapenos in half lengthwise. Side note- if you slice the top off just before the stem it creates a notch to allow the top to sit evenly on the filling.';
+REPLACE INTO `Directions` SET `ID`='16', `RecipeID`='4', `SortOrder`='2', `Directions`='Scrape all the seeds and veins out of the pepper, the better you scrape the less spicy these will be, but ultimately it depends on the spice factor of your bunch of peppers!';
+REPLACE INTO `Directions` SET `ID`='17', `RecipeID`='4', `SortOrder`='3', `Directions`='Fill the bottom of the pepper with some ground beef- dont overfill';
+REPLACE INTO `Directions` SET `ID`='18', `RecipeID`='4', `SortOrder`='4', `Directions`='On top of the beef, add a layer of cream cheese';
+REPLACE INTO `Directions` SET `ID`='19', `RecipeID`='4', `SortOrder`='5', `Directions`='Sprinkle your seasoning on top of all the peppers';
+REPLACE INTO `Directions` SET `ID`='20', `RecipeID`='4', `SortOrder`='6', `Directions`='Put the tops back on and wrap the whole thing with bacon and secure with a toothpick. Put on a hot smoker and smoke for 1 hour or so until all the ground beef is cooked through. We have made these on a grill and in the oven and the smoker gives the best flavor. I know this is an old recipe, but trust me, they are awesome';
+REPLACE INTO `Directions` SET `ID`='21', `RecipeID`='4', `SortOrder`='7', `Directions`='Put on a hot smoker and smoke for 1 hour or so until all the ground beef is cooked through. We have made these on a grill and in the oven and the smoker gives the best flavor. I know this is an old recipe, but trust me, they are awesome';
+REPLACE INTO `Directions` SET `ID`='22', `RecipeID`='4', `SortOrder`='8', `Directions`='We have made these on a grill and in the oven and the smoker gives the best flavor. I know this is an old recipe, but trust me, they are awesome';
+
+REPLACE INTO `Directions` SET `ID`='23', `RecipeID`='5', `SortOrder`='1', `Directions`='Roll out cresent rolls on cookie sheet press seams together bake at temp on pkg of rolls until brown ( 10-13 min)';
+REPLACE INTO `Directions` SET `ID`='24', `RecipeID`='5', `SortOrder`='2', `Directions`='Let it cool.';
+REPLACE INTO `Directions` SET `ID`='25', `RecipeID`='5', `SortOrder`='3', `Directions`='Mix cream cheese, dip and mayo together spread on bake cresent rolls';
+REPLACE INTO `Directions` SET `ID`='26', `RecipeID`='5', `SortOrder`='4', `Directions`='Add any type of veggies you like - I use brocc, cauli, carrots, green onions sprinkle with shredded chesse';
+
+REPLACE INTO `Directions` SET `ID`='27', `RecipeID`='6', `SortOrder`='1', `Directions`='Preheat oven to 350 degrees F';
+REPLACE INTO `Directions` SET `ID`='28', `RecipeID`='6', `SortOrder`='2', `Directions`='Use a serrated knife to cut bread crosswise into 1-inch slices, cutting to but not through the bottom crust. In a small bowl, stir together cheese, butter, bacon, green onions, mustard, and lemon juice. Spread mixture between slices of bread. Wrap loaf in foil. (Make sure its tight so the toppings dont fall to the bottom) Bake for 15 to 20 minutes or until bread is heated through and cheese is melted.';
+REPLACE INTO `Directions` SET `ID`='29', `RecipeID`='6', `SortOrder`='3', `Directions`='In a small bowl, stir together cheese, butter, bacon, green onions, mustard, and lemon juice';
+REPLACE INTO `Directions` SET `ID`='30', `RecipeID`='6', `SortOrder`='4', `Directions`='Spread mixture between slices of bread. Wrap loaf in foil';
+REPLACE INTO `Directions` SET `ID`='31', `RecipeID`='6', `SortOrder`='5', `Directions`='Bake for 15 to 20 minutes or until bread is heated through and cheese is melted.';
+
+REPLACE INTO `Directions` SET `ID`='32', `RecipeID`='7', `SortOrder`='1', `Directions`='Preheat the broiler';
+REPLACE INTO `Directions` SET `ID`='33', `RecipeID`='7', `SortOrder`='2', `Directions`='Cut Cheddar cheese into 12 slices long enough to fit inside the jalapeno halves';
+REPLACE INTO `Directions` SET `ID`='34', `RecipeID`='7', `SortOrder`='3', `Directions`='Insert cheese slices into the halves';
+REPLACE INTO `Directions` SET `ID`='35', `RecipeID`='7', `SortOrder`='4', `Directions`='Wrap the jalapeno halves with the bacon slices, securing with a wooden pick, if necessary';
+REPLACE INTO `Directions` SET `ID`='36', `RecipeID`='7', `SortOrder`='5', `Directions`='Place on a medium baking sheet';
+REPLACE INTO `Directions` SET `ID`='37', `RecipeID`='7', `SortOrder`='6', `Directions`='Broil 5 to 10 minutes, or until the bacon is evenly brown';
+
+REPLACE INTO `Directions` SET `ID`='38', `RecipeID`='8', `SortOrder`='1', `Directions`='Cook your tater tots according to directions until golden brown in color';
+REPLACE INTO `Directions` SET `ID`='39', `RecipeID`='8', `SortOrder`='2', `Directions`='This was in a 425 degree oven for 20-30 minutes';
+REPLACE INTO `Directions` SET `ID`='40', `RecipeID`='8', `SortOrder`='3', `Directions`='Once you pull them out of the oven, let cool for approximately 2-5 minutes until you can skewer them onto the skewers. I suggest 6-7 per skewer';
+REPLACE INTO `Directions` SET `ID`='41', `RecipeID`='8', `SortOrder`='4', `Directions`='Once on the skewers and on the pan, sprinkle ranch dressing over each of tater tots';
+REPLACE INTO `Directions` SET `ID`='42', `RecipeID`='8', `SortOrder`='5', `Directions`='Then sprinkle the bacon and then the cheese';
+REPLACE INTO `Directions` SET `ID`='43', `RecipeID`='8', `SortOrder`='6', `Directions`='Into the oven for an additional 10 minutes until the cheese is fully melted and golden in color. Remove from oven and serve.';
+REPLACE INTO `Directions` SET `ID`='44', `RecipeID`='8', `SortOrder`='7', `Directions`='Remove from oven and serve';
+
+REPLACE INTO `Directions` SET `ID`='45', `RecipeID`='9', `SortOrder`='1', `Directions`='Preheat oven to 350°F. 2 Combine cream cheese, bacon, onion and pepper in a bowl. 3 Separate crescent rolls into two rectangles. Pinch seams together. Spread half of cheese mixture on each of the rectangles. Roll up, starting at longest side, and seal. Cut each roll into 16 slices. Place slices, cut side down, on a baking sheet. 4 Bake for 15 minutes or until golden-brown. Serve warm.';
+REPLACE INTO `Directions` SET `ID`='46', `RecipeID`='9', `SortOrder`='2', `Directions`='Combine cream cheese, bacon, onion and pepper in a bowl';
+REPLACE INTO `Directions` SET `ID`='47', `RecipeID`='9', `SortOrder`='3', `Directions`='Separate crescent rolls into two rectangles';
+REPLACE INTO `Directions` SET `ID`='48', `RecipeID`='9', `SortOrder`='4', `Directions`='Pinch seams together';
+REPLACE INTO `Directions` SET `ID`='49', `RecipeID`='9', `SortOrder`='5', `Directions`='Spread half of cheese mixture on each of the rectangles';
+REPLACE INTO `Directions` SET `ID`='50', `RecipeID`='9', `SortOrder`='6', `Directions`='Roll up, starting at longest side, and seal';
+REPLACE INTO `Directions` SET `ID`='51', `RecipeID`='9', `SortOrder`='7', `Directions`='Cut each roll into 16 slices';
+REPLACE INTO `Directions` SET `ID`='52', `RecipeID`='9', `SortOrder`='8', `Directions`='Place slices, cut side down, on a baking sheet';
+REPLACE INTO `Directions` SET `ID`='50', `RecipeID`='9', `SortOrder`='9', `Directions`='Bake for 15 minutes or until golden-brown. Serve warm.';
+
+REPLACE INTO `Directions` SET `ID`='51', `RecipeID`='10', `SortOrder`='1', `Directions`='Cut Brussels sprouts length wise & bring a pot of water to a boil. Boil Brussels sprouts cut side down for about 2 minutes remove from water let them cool this will help when coring them out';
+REPLACE INTO `Directions` SET `ID`='52', `RecipeID`='10', `SortOrder`='2', `Directions`='Once cooled, core out the middle of the sprout using a pairing knife';
+REPLACE INTO `Directions` SET `ID`='53', `RecipeID`='10', `SortOrder`='3', `Directions`='Once all are cored, chop up the cored out pieces of brussels sprout very tiny and saute with garlic in fry pan w/olive oil on Med high heat (if making w Bacon I add bacon pieces at this time also)';
+REPLACE INTO `Directions` SET `ID`='54', `RecipeID`='10', `SortOrder`='4', `Directions`='Saute until brussel sprout is tender & bacon crisp';
+REPLACE INTO `Directions` SET `ID`='55', `RecipeID`='10', `SortOrder`='5', `Directions`='In a separate bowl Mix the Parmesan, Mozzarella, Bread Crumbs, Basil, Thyme, and Pepper.';
+REPLACE INTO `Directions` SET `ID`='56', `RecipeID`='10', `SortOrder`='6', `Directions`='Once all mixed, combine cooked Brussels sprout pieces, garlic (bacon) mixture to the bowl of cheese & breadcrumb mixture';
+REPLACE INTO `Directions` SET `ID`='57', `RecipeID`='10', `SortOrder`='7', `Directions`='Toss and mix all well to create your stuffing. You may need to add more Panko use your judgement.';
+REPLACE INTO `Directions` SET `ID`='58', `RecipeID`='10', `SortOrder`='8', `Directions`='With a spoon stuff the Brussels Sprout 1/2s w/stuffing mixture';
+REPLACE INTO `Directions` SET `ID`='59', `RecipeID`='10', `SortOrder`='9', `Directions`='Bake at 400 degrees for about 20 minutes or so (I like them crispier so I cook a little longer) or put on broil last 2-3 minutes to crisp up the tops. (just watch carefully)';
+
+REPLACE INTO `Directions` SET `ID`='60', `RecipeID`='11', `SortOrder`='1', `Directions`='Cook French fries according to package directions. Place fries on a broiler-safe dish or platter. Sprinkle with cheese, onions and bacon. Broil for 1-2 minutes or until cheese is melted. Serve with ranch dressing.';
+REPLACE INTO `Directions` SET `ID`='61', `RecipeID`='11', `SortOrder`='2', `Directions`='Sprinkle with cheese, onions and bacon';
+REPLACE INTO `Directions` SET `ID`='62', `RecipeID`='11', `SortOrder`='3', `Directions`='Broil for 1-2 minutes or until cheese is melted';
+REPLACE INTO `Directions` SET `ID`='63', `RecipeID`='11', `SortOrder`='4', `Directions`='Serve with ranch dressing.';
+
+REPLACE INTO `Directions` SET `ID`='64', `RecipeID`='12', `SortOrder`='1', `Directions`='Cook bacon until crisp. Drain and crumble';
+REPLACE INTO `Directions` SET `ID`='65', `RecipeID`='12', `SortOrder`='2', `Directions`='Place oil in skillet and sauté onions and peppers until tender';
+REPLACE INTO `Directions` SET `ID`='66', `RecipeID`='12', `SortOrder`='3', `Directions`='Cut each biscuit into fourths and place in bowl. Mix in peppers, onions, bacon, cheese and margarine';
+REPLACE INTO `Directions` SET `ID`='67', `RecipeID`='12', `SortOrder`='4', `Directions`='Put into 10 inch tube pan (sprayed)';
+REPLACE INTO `Directions` SET `ID`='68', `RecipeID`='12', `SortOrder`='5', `Directions`='Bake at 350°F for 30 minutes';
+REPLACE INTO `Directions` SET `ID`='69', `RecipeID`='12', `SortOrder`='6', `Directions`='Remove from pan immediately';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 REPLACE INTO `Directions` SET `ID`='13', `RecipeID`='13', `SortOrder`='0', `Directions`='Separate dough into 8 biscuits. Cut each biscuit in half; press with hands into circle about 3 inches in diameter. In center of each biscuit round, place 2 tablespoons cooked ground beef (or 1 meatball) and 1 cube of cheese. Wrap dough to completely enclose beef and cheese; pinch seams to seal. Fried Version: Wrap each stuffed bomb with 1 bacon slice; gently secure loose bacon with toothpick by inserting it through bacon and halfway into “bomb.” In 3-quart heavy saucepan or deep fryer, heat oil to 350°F. Fry stuffed “bombs” 4 to 5 minutes or until dough is golden brown on all sides. Place on paper towels to cool. Repeat with remaining bombs. Serve warm with ketchup and mustard, if desired. Baked Version: Heat oven to 400°F. Place bacon on foil-lined cookie sheet with sides. Bake about 8 minutes to partially cook bacon. Wrap each stuffed bomb with 1 slice partially cooked bacon slice. Place bacon wrapped dough 2-inches apart on two foil-lined cookie sheets with dough seam side down. Bake 13 to 15 minutes or until golden brown. Serve warm with ketchup and mustard, if desired submitted by Pillsbury.com - Check out more here!';
 REPLACE INTO `Directions` SET `ID`='14', `RecipeID`='14', `SortOrder`='0', `Directions`='Preheat oven to 400 degrees. In a skillet, cook and crumble ground beef until no longer pink; drain. In a bowl, combine biscuit mix, bacon and cheese; stir in cooked beef. Add buttermilk and toss with a fork until just moistened. Shape into 1-1/2-in. balls. (I used a medium cookie scoop) Place 2 inches apart on ungreased baking sheets. Bake for 12-15 minutes or until puffed and golden brown. Cool on wire racks. Baked puffs may be frozen; reheat at 400 degrees F for 7-9 minutes or until heated through (they do not need to thawed first).';
 REPLACE INTO `Directions` SET `ID`='15', `RecipeID`='15', `SortOrder`='0', `Directions`='Preheat oven to 250 degrees. Lay crackers face up (as many as you want) on a cookie sheet. Scoop about 1 tsp. of grated Parmesan cheese onto each cracker. Cut your package of bacon in half and carefully (so cheese does not fall off), wrap each cracker with a slice of bacon, completely covering the cracker (it should fit snugly around the cracker). Place the bacon-wrapped crackers on to a baking sheet that has a rack on it. Place in 250 degree oven for about 2 hours.';
