@@ -79,32 +79,60 @@ with open(strPath, 'r') as f:
         ingredients = " ".join(ingredients.split())
 
         # retrieve steps
-        steps = content.findAll('p', attrs={"style": "margin-bottom: 10px;"})
-        steps = str(steps).replace("</p>"," ")
-        steps = str(steps).replace(">\n"," ")
-        steps = str(steps).replace("\n"," ")
-        steps = str(steps).replace("["," ")
-        steps = str(steps).replace("]"," ")
-        steps = str(steps).replace("</span>"," ")
-        steps = str(steps).replace("</ul"," ")
-        steps = str(steps).replace("<span>"," ")
-        steps = str(steps).replace("\u00e2\u20ac\u2122","")
-        steps = str(steps).replace("\2019","")
-        steps = str(steps).replace("<ol"," ")
-        steps = str(steps).replace("</ol"," ")
-        steps = str(steps).replace("<li>"," ")
-        steps = str(steps).replace("</li"," ")
-        steps = str(steps).replace("<br/>"," ")
-        steps = str(steps).replace("<br/"," ")
-        steps = str(steps).replace("<br>"," ")
-        steps = str(steps).replace("\xa0"," ")
-        steps = str(steps).replace("<p>"," ")
-        steps = str(steps).replace("</div"," ")
-        steps = str(steps).replace("\'","")
-        steps = str(steps).replace("<li class=\"instruction\">"," ")
-        steps = re.sub(r'<.+?>',"", steps)
-        steps = str(steps).replace("<p style=\"margin-bottom: 10px;\""," ")
-        steps = " ".join(steps.split())
+        steps = []
+
+        # First find <ol> lists
+        ol_step_locator = content.find('ol')
+        if ol_step_locator is not None:
+            ordered_children = ol_step_locator.findChildren('li', recursive=False)
+        else:
+            ordered_children = []
+
+        # Try <p>
+        p_locator = content.find('p', attrs={"style": "margin-bottom: 10px;"})
+        if p_locator is not None:
+            p_children = p_locator.findChildren('p', recursive=False)
+        else:
+            p_children = []
+
+        # Try <br>
+
+        if len(ordered_children) > 0:
+            for child in ordered_children:
+                print("Found you bitch")
+                steps.append(child.contents[0])
+
+        if len(p_children) > 0:
+            for child in p_locator:
+                if 'a' not in child and 'href' not in child:
+                    steps.append(child.contents[0])
+                    print(child.contents[0])
+
+        # steps = str(steps).replace("</p>"," ")
+        # steps = str(steps).replace(">\n"," ")
+        # steps = str(steps).replace("\n"," ")
+        # steps = str(steps).replace("["," ")
+        # steps = str(steps).replace("]"," ")
+        # steps = str(steps).replace("</span>"," ")
+        # steps = str(steps).replace("</ul"," ")
+        # steps = str(steps).replace("<span>"," ")
+        # steps = str(steps).replace("\u00e2\u20ac\u2122","")
+        # steps = str(steps).replace("\2019","")
+        # steps = str(steps).replace("<ol"," ")
+        # steps = str(steps).replace("</ol"," ")
+        # steps = str(steps).replace("<li>"," ")
+        # steps = str(steps).replace("</li"," ")
+        # steps = str(steps).replace("<br/>"," ")
+        # steps = str(steps).replace("<br/"," ")
+        # steps = str(steps).replace("<br>"," ")
+        # steps = str(steps).replace("\xa0"," ")
+        # steps = str(steps).replace("<p>"," ")
+        # steps = str(steps).replace("</div"," ")
+        # steps = str(steps).replace("\'","")
+        # steps = str(steps).replace("<li class=\"instruction\">"," ")
+        # steps = re.sub(r'<.+?>',"", steps)
+        # steps = str(steps).replace("<p style=\"margin-bottom: 10px;\""," ")
+        # steps = " ".join(steps.split())
 
         # retrieve duration
         try:
@@ -125,21 +153,21 @@ with open(strPath, 'r') as f:
         duration = " ".join(duration.split())
 
         # retrieve the image
-        img = content.findAll('img', class_="recipe-img", limit=1)
-        img_url = ''
-        if len(img) > 0:
-            img_url = "https://myfridgefood.com" + img[0]['src']
-            img_data = requests.get(img_url).content
-            recipe_id = None
-            for recipe in recipes:
-                if recipe['recipe_name'] == title:
-                    recipe_id = recipe['id']
-
-            if recipe_id is None:
-                print("Could not find image! Shit!")
-            else:
-                with open('img/' + recipe_id + '.jpg', 'wb') as handler:
-                    handler.write(img_data)
+        # img = content.findAll('img', class_="recipe-img", limit=1)
+        # img_url = ''
+        # if len(img) > 0:
+        #     img_url = "https://myfridgefood.com" + img[0]['src']
+        #     img_data = requests.get(img_url).content
+        #     recipe_id = None
+        #     for recipe in recipes:
+        #         if recipe['recipe_name'] == title:
+        #             recipe_id = recipe['id']
+        #
+        #     if recipe_id is None:
+        #         print("Could not find image! Shit!")
+        #     else:
+        #         with open('img/' + recipe_id + '.jpg', 'wb') as handler:
+        #             handler.write(img_data)
 
         # create json object
         recipe_object = {
@@ -147,7 +175,7 @@ with open(strPath, 'r') as f:
             "Ingredients": ingredients,
             "Cooking_Steps": steps,
             "Cooking_Duration": duration,
-            "Recipe_Image_URL": img_url
+            # "Recipe_Image_URL": img_url
         }
         print(recipe_object)
         out_list.append(recipe_object)
