@@ -82,30 +82,83 @@ REPLACE INTO `Directions` SET `ID`='67', `RecipeID`='12', `SortOrder`='4', `Dire
 REPLACE INTO `Directions` SET `ID`='68', `RecipeID`='12', `SortOrder`='5', `Directions`='Bake at 350°F for 30 minutes';
 REPLACE INTO `Directions` SET `ID`='69', `RecipeID`='12', `SortOrder`='6', `Directions`='Remove from pan immediately';
 
+REPLACE INTO `Directions` SET `ID`='70', `RecipeID`='13', `SortOrder`='1', `Directions`='Separate dough into 8 biscuits';
+REPLACE INTO `Directions` SET `ID`='71', `RecipeID`='13', `SortOrder`='2', `Directions`='Cut each biscuit in half; press with hands into circle about 3 inches in diameter';
+REPLACE INTO `Directions` SET `ID`='72', `RecipeID`='13', `SortOrder`='3', `Directions`='In center of each biscuit round, place 2 tablespoons cooked ground beef (or 1 meatball) and 1 cube of cheese';
+REPLACE INTO `Directions` SET `ID`='73', `RecipeID`='13', `SortOrder`='4', `Directions`='Wrap dough to completely enclose beef and cheese; pinch seams to seal. Fried Version: Wrap each stuffed bomb with 1 bacon slice; gently secure loose bacon with toothpick by inserting it through bacon and halfway into bomb';
+REPLACE INTO `Directions` SET `ID`='74', `RecipeID`='13', `SortOrder`='5', `Directions`='In 3-quart heavy saucepan or deep fryer, heat oil to 350°F';
+REPLACE INTO `Directions` SET `ID`='75', `RecipeID`='13', `SortOrder`='6', `Directions`='Fry stuffed bombs 4 to 5 minutes or until dough is golden brown on all sides';
+REPLACE INTO `Directions` SET `ID`='76', `RecipeID`='13', `SortOrder`='7', `Directions`='Place on paper towels to cool';
+REPLACE INTO `Directions` SET `ID`='77', `RecipeID`='13', `SortOrder`='8', `Directions`='Repeat with remaining bombs';
+REPLACE INTO `Directions` SET `ID`='78', `RecipeID`='13', `SortOrder`='9', `Directions`='Serve warm with ketchup and mustard, if desired';
+REPLACE INTO `Directions` SET `ID`='79', `RecipeID`='13', `SortOrder`='10', `Directions`='Baked Version: Heat oven to 400°F. Place bacon on foil-lined cookie sheet with sides. Bake about 8 minutes to partially cook bacon. Wrap each stuffed bomb with 1 slice partially cooked bacon slice';
+REPLACE INTO `Directions` SET `ID`='80', `RecipeID`='13', `SortOrder`='11', `Directions`='Place bacon wrapped dough 2-inches apart on two foil-lined cookie sheets with dough seam side down';
+REPLACE INTO `Directions` SET `ID`='81', `RecipeID`='13', `SortOrder`='12', `Directions`='Bake 13 to 15 minutes or until golden brown. Serve warm with ketchup and mustard, if submitted';
+
+REPLACE INTO `Directions` SET `ID`='82', `RecipeID`='14', `SortOrder`='1', `Directions`='Preheat oven to 400 degrees';
+REPLACE INTO `Directions` SET `ID`='83', `RecipeID`='14', `SortOrder`='2', `Directions`='In a skillet, cook and crumble ground beef until no longer pink; drain';
+REPLACE INTO `Directions` SET `ID`='84', `RecipeID`='14', `SortOrder`='3', `Directions`='In a bowl, combine biscuit mix, bacon and cheese; stir in cooked beef';
+REPLACE INTO `Directions` SET `ID`='85', `RecipeID`='14', `SortOrder`='4', `Directions`='Add buttermilk and toss with a fork until just moistened';
+REPLACE INTO `Directions` SET `ID`='86', `RecipeID`='14', `SortOrder`='5', `Directions`='Shape into 1-1/2-in. balls. (I used a medium cookie scoop)';
+REPLACE INTO `Directions` SET `ID`='87', `RecipeID`='14', `SortOrder`='6', `Directions`='Place 2 inches apart on ungreased baking sheets';
+REPLACE INTO `Directions` SET `ID`='88', `RecipeID`='14', `SortOrder`='7', `Directions`='Bake for 12-15 minutes or until puffed and golden brown';
+REPLACE INTO `Directions` SET `ID`='89', `RecipeID`='14', `SortOrder`='8', `Directions`='Cool on wire racks';
+REPLACE INTO `Directions` SET `ID`='90', `RecipeID`='14', `SortOrder`='9', `Directions`='Baked puffs may be frozen';
+REPLACE INTO `Directions` SET `ID`='91', `RecipeID`='14', `SortOrder`='10', `Directions`='Reheat at 400 degrees F for 7-9 minutes or until heated through (they do not need to thawed first).';
+
+REPLACE INTO `Directions` SET `ID`='92', `RecipeID`='15', `SortOrder`='1', `Directions`='Preheat oven to 250 degrees';
+REPLACE INTO `Directions` SET `ID`='93', `RecipeID`='15', `SortOrder`='2', `Directions`='Lay crackers face up (as many as you want) on a cookie sheet';
+REPLACE INTO `Directions` SET `ID`='94', `RecipeID`='15', `SortOrder`='3', `Directions`='Scoop about 1 tsp. of grated Parmesan cheese onto each cracker';
+REPLACE INTO `Directions` SET `ID`='95', `RecipeID`='15', `SortOrder`='4', `Directions`='Place the bacon-wrapped crackers on to a baking sheet that has a rack on it';
+REPLACE INTO `Directions` SET `ID`='96', `RecipeID`='15', `SortOrder`='5', `Directions`='Place in 250 degree oven for about 2 hours.';
+
+REPLACE INTO `Directions` SET `ID`='97', `RecipeID`='16', `SortOrder`='1', `Directions`='Slice hotdogs lengthwise down the middle';
+REPLACE INTO `Directions` SET `ID`='98', `RecipeID`='16', `SortOrder`='2', `Directions`='Place bacon and cheese on top and broil for 3-5 minutes, or until cheese is fully melted.';
+
+REPLACE INTO `Directions` SET `ID`='99', `RecipeID`='17', `SortOrder`='1', `Directions`='Dab 1/2 teaspoon (more or less) of cream cheese on top of each chicken tender';
+REPLACE INTO `Directions` SET `ID`='100', `RecipeID`='17', `SortOrder`='2', `Directions`='Sprinkle a scant 1/4 teaspoon of peppers over cream cheese';
+REPLACE INTO `Directions` SET `ID`='101', `RecipeID`='17', `SortOrder`='3', `Directions`='Fold or roll chicken to enclose cream cheese mixture';
+REPLACE INTO `Directions` SET `ID`='102', `RecipeID`='17', `SortOrder`='4', `Directions`='Wrap each roll with one piece of bacon and secure with a toothpick';
+REPLACE INTO `Directions` SET `ID`='103', `RecipeID`='17', `SortOrder`='5', `Directions`='Grill until bacon is brown and crispy on both sides';
+REPLACE INTO `Directions` SET `ID`='104', `RecipeID`='18', `SortOrder`='1', `Directions`='Heat oven to 350°F';
+REPLACE INTO `Directions` SET `ID`='105', `RecipeID`='18', `SortOrder`='2', `Directions`='Place two (24-inch) pieces aluminum foil, crossing one over the other, on flat surface';
+REPLACE INTO `Directions` SET `ID`='106', `RecipeID`='18', `SortOrder`='3', `Directions`='Cut bread, using serrated knife, in grid pattern, spacing about 1-inch between rows';
+REPLACE INTO `Directions` SET `ID`='107', `RecipeID`='18', `SortOrder`='4', `Directions`='Do not cut through bottom crust';
+REPLACE INTO `Directions` SET `ID`='108', `RecipeID`='18', `SortOrder`='5', `Directions`='Set aside';
+REPLACE INTO `Directions` SET `ID`='109', `RecipeID`='18', `SortOrder`='6', `Directions`='Place loaf in the center of the foil pieces';
+REPLACE INTO `Directions` SET `ID`='110', `RecipeID`='18', `SortOrder`='7', `Directions`='Mix together cream cheese, jalapeño pepper juice and garlic powder';
+REPLACE INTO `Directions` SET `ID`='111', `RecipeID`='18', `SortOrder`='8', `Directions`='Spread cream cheese mixture in between cuts';
+REPLACE INTO `Directions` SET `ID`='112', `RecipeID`='18', `SortOrder`='9', `Directions`='Top bread with cheese, getting in between cuts';
+REPLACE INTO `Directions` SET `ID`='113', `RecipeID`='18', `SortOrder`='10', `Directions`='Wrap foil loosely around bread';
+REPLACE INTO `Directions` SET `ID`='114', `RecipeID`='18', `SortOrder`='11', `Directions`='Place onto ungreased baking sheet';
+REPLACE INTO `Directions` SET `ID`='115', `RecipeID`='18', `SortOrder`='12', `Directions`='Bake 15 - 30 minutes';
+REPLACE INTO `Directions` SET `ID`='116', `RecipeID`='18', `SortOrder`='13', `Directions`='Depending on how done you want everything. Check it at 15 then decide if you want to move onto step 6.';
+REPLACE INTO `Directions` SET `ID`='117', `RecipeID`='18', `SortOrder`='14', `Directions`='Pull back foil; continue baking 5-10 minutes or until loaf is golden brown and cheese is melted';
+REPLACE INTO `Directions` SET `ID`='118', `RecipeID`='18', `SortOrder`='15', `Directions`='Serve immediately. Pull out individual bread pieces, using tongs or 2 forks and reaching down into loaf to include filling and bread.';
+
+REPLACE INTO `Directions` SET `ID`='119', `RecipeID`='19', `SortOrder`='1', `Directions`='Oven pre-heated to 350 degrees F';
+REPLACE INTO `Directions` SET `ID`='120', `RecipeID`='19', `SortOrder`='2', `Directions`='Chop the jalape±os into small pieces';
+REPLACE INTO `Directions` SET `ID`='121', `RecipeID`='19', `SortOrder`='3', `Directions`='Cut the bacon into pieces and then cook it up';
+REPLACE INTO `Directions` SET `ID`='122', `RecipeID`='19', `SortOrder`='4', `Directions`='I usually cut it up first cuz then you have nice, neat pieces and it doesnt get too crumbly';
+REPLACE INTO `Directions` SET `ID`='123', `RecipeID`='19', `SortOrder`='5', `Directions`='Roll out your dough. Its perforated into triangles, but I cut each triangle in half with a pizza cutter and do one popper on each half';
+REPLACE INTO `Directions` SET `ID`='124', `RecipeID`='19', `SortOrder`='6', `Directions`='You can do it without cutting the crescents in half, and theyll just be a little bigger than bite size (and then the recipe will yield 8 larger poppers)';
+REPLACE INTO `Directions` SET `ID`='125', `RecipeID`='19', `SortOrder`='7', `Directions`='Layer a small dollop of cream cheese, a piece or two of jalape±o, and bacon';
+REPLACE INTO `Directions` SET `ID`='126', `RecipeID`='19', `SortOrder`='8', `Directions`='Bring the corners of the dough together and twist them together at the top';
+REPLACE INTO `Directions` SET `ID`='127', `RecipeID`='19', `SortOrder`='9', `Directions`='Bake 10-15 minutes at 350 and munch away!';
+
+REPLACE INTO `Directions` SET `ID`='128', `RecipeID`='20', `SortOrder`='1', `Directions`='Peel and cut the large onion into 1/3 inch slices';
+REPLACE INTO `Directions` SET `ID`='129', `RecipeID`='20', `SortOrder`='2', `Directions`='Open the can of pineapple slices, drain the juice and set aside 8 slices';
+REPLACE INTO `Directions` SET `ID`='130', `RecipeID`='20', `SortOrder`='3', `Directions`='Match the onion rings to the size of the pineapple slices—choose rings that have more of a bowl shape to help hold the string cheese in place';
+REPLACE INTO `Directions` SET `ID`='131', `RecipeID`='20', `SortOrder`='4', `Directions`='Tear Mozzarella string cheese in half';
+REPLACE INTO `Directions` SET `ID`='132', `RecipeID`='20', `SortOrder`='5', `Directions`='Place one half of the mozzarella in the onion ring and cut the other half to fill in the remaining gap. Place the cut piece filling in the gap';
+REPLACE INTO `Directions` SET `ID`='133', `RecipeID`='20', `SortOrder`='6', `Directions`='Stack the mozzarella lined onion ring on the pineapple and start wrapping with bacon slices. Use two to three slices of bacon per ring. Just take it slow and keep it all in place and it will eventually wrap—sometimes it takes some re-positioning or re-stuffing of string cheese into ring';
+REPLACE INTO `Directions` SET `ID`='134', `RecipeID`='20', `SortOrder`='7', `Directions`='Once all wrapped, sprinkle on some seasonings to your liking';
+REPLACE INTO `Directions` SET `ID`='135', `RecipeID`='20', `SortOrder`='8', `Directions`='Start up your grill of choice (or oven) and cook indirect at 400F for 30 minutes';
+REPLACE INTO `Directions` SET `ID`='136', `RecipeID`='20', `SortOrder`='9', `Directions`='Serve with whatever sauce you like';
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-REPLACE INTO `Directions` SET `ID`='13', `RecipeID`='13', `SortOrder`='0', `Directions`='Separate dough into 8 biscuits. Cut each biscuit in half; press with hands into circle about 3 inches in diameter. In center of each biscuit round, place 2 tablespoons cooked ground beef (or 1 meatball) and 1 cube of cheese. Wrap dough to completely enclose beef and cheese; pinch seams to seal. Fried Version: Wrap each stuffed bomb with 1 bacon slice; gently secure loose bacon with toothpick by inserting it through bacon and halfway into “bomb.” In 3-quart heavy saucepan or deep fryer, heat oil to 350°F. Fry stuffed “bombs” 4 to 5 minutes or until dough is golden brown on all sides. Place on paper towels to cool. Repeat with remaining bombs. Serve warm with ketchup and mustard, if desired. Baked Version: Heat oven to 400°F. Place bacon on foil-lined cookie sheet with sides. Bake about 8 minutes to partially cook bacon. Wrap each stuffed bomb with 1 slice partially cooked bacon slice. Place bacon wrapped dough 2-inches apart on two foil-lined cookie sheets with dough seam side down. Bake 13 to 15 minutes or until golden brown. Serve warm with ketchup and mustard, if desired submitted by Pillsbury.com - Check out more here!';
-REPLACE INTO `Directions` SET `ID`='14', `RecipeID`='14', `SortOrder`='0', `Directions`='Preheat oven to 400 degrees. In a skillet, cook and crumble ground beef until no longer pink; drain. In a bowl, combine biscuit mix, bacon and cheese; stir in cooked beef. Add buttermilk and toss with a fork until just moistened. Shape into 1-1/2-in. balls. (I used a medium cookie scoop) Place 2 inches apart on ungreased baking sheets. Bake for 12-15 minutes or until puffed and golden brown. Cool on wire racks. Baked puffs may be frozen; reheat at 400 degrees F for 7-9 minutes or until heated through (they do not need to thawed first).';
-REPLACE INTO `Directions` SET `ID`='15', `RecipeID`='15', `SortOrder`='0', `Directions`='Preheat oven to 250 degrees. Lay crackers face up (as many as you want) on a cookie sheet. Scoop about 1 tsp. of grated Parmesan cheese onto each cracker. Cut your package of bacon in half and carefully (so cheese does not fall off), wrap each cracker with a slice of bacon, completely covering the cracker (it should fit snugly around the cracker). Place the bacon-wrapped crackers on to a baking sheet that has a rack on it. Place in 250 degree oven for about 2 hours.';
-REPLACE INTO `Directions` SET `ID`='16', `RecipeID`='16', `SortOrder`='0', `Directions`='Slice hotdogs lengthwise down the middle, place bacon and cheese on top and broil for 3-5 minutes, or until cheese is fully melted.';
-REPLACE INTO `Directions` SET `ID`='17', `RecipeID`='17', `SortOrder`='0', `Directions`='Salad-in-a-jar.com - much more here!';
-REPLACE INTO `Directions` SET `ID`='18', `RecipeID`='18', `SortOrder`='0', `Directions`='Heat oven to 350°F. Place two (24-inch) pieces aluminum foil, crossing one over the other, on flat surface. Cut bread, using serrated knife, in grid pattern, spacing about 1-inch between rows. Do not cut through bottom crust. Set aside. Place loaf in the center of the foil pieces. Mix together cream cheese, jalapeño pepper juice and garlic powder. Spread cream cheese mixture in between cuts. Sprinkle diced jalapeño peppers and bacon bits on bread, making sure to get in between cuts. Top bread with cheese, getting in between cuts. Wrap foil loosely around bread. Place onto ungreased baking sheet. Bake 15 - 30 minutes. Depending on how done you want everything. Check it at 15 then decide if you want to move onto step 6. Pull back foil; continue baking 5-10 minutes or until loaf is golden brown and cheese is melted. Serve immediately. Pull out individual bread pieces, using tongs or 2 forks and reaching down into loaf to include filling and bread.';
-REPLACE INTO `Directions` SET `ID`='19', `RecipeID`='19', `SortOrder`='0', `Directions`='Oven pre-heated to 350 degrees F. Chop the jalape±os into small pieces. Clean out the seeds. dont stick your fingers in your eyes or mouth for the rest of the day. Cut the bacon into pieces and then cook it up. I usually cut it up first cuz then you have nice, neat pieces and it doesnt get too crumbly. Just watch it so it doesnt burn. Unless you like burnt bacon. But thats weird. Roll out your dough. Its perforated into triangles, but I cut each triangle in half with a pizza cutter and do one popper on each half. Does that make sense? Sorry I didnt take pictures of that part. You can do it without cutting the crescents in half, and theyll just be a little bigger than bite size (and then the recipe will yield 8 larger poppers). Layer a small dollop of cream cheese, a piece or two of jalape±o, and bacon. Bring the corners of the dough together and twist them together at the top. Press the edges of the dough together so the insides dont gush out. Bake 10-15 minutes at 350 and munch away!';
-REPLACE INTO `Directions` SET `ID`='20', `RecipeID`='20', `SortOrder`='0', `Directions`='SlapYoDaddyBBQ.com - much more here!!';
 REPLACE INTO `Directions` SET `ID`='21', `RecipeID`='21', `SortOrder`='0', `Directions`='Frying Instructions: Gather your ingredients and preheat your oil for deep-frying. Seed and chop the jalapenos. In a medium bowl mix together the cream cheese, shredded cheddar, chopped jalapeños and salt and pepper until well combined. Pop open the biscuits and cut each one into fourths. Roll out each piece of dough into a small disk and place a teaspoon of cheese and jalapeno filling into the center. Seal it up tightly, making sure that the seam is completely closed. Wrap the stuffed dough ball with a half strip of bacon and secure with a toothpick. Deep fry until bacon is crispy. Allow to cool slightly and enjoy while still melty. Baking Instructions Pre heat the oven to 350 Pre cook your Bacon about 1/4 of the way done. (so the Bacon Crisps up nicely) Follow steps 2-6 from above Bake for 12-15 minutes adapted recipe submitted by Stepables.com - full details and original recipe here!';
 REPLACE INTO `Directions` SET `ID`='22', `RecipeID`='22', `SortOrder`='0', `Directions`='In the oven: Preheat the broiler. Cut the loaf of bread in half lengthwise. Line a baking sheet with non-stick foil. Combine the mayonnaise, ranch, shredded cheese, and bacon in a small bowl. Use a spatula to equally spread the cheese on each half of the bread. Place under the broiler until golden brown, about 7 to 9 minutes. Let cool slightly before cutting into pieces and serving. On the grill: Preheat the grill. You are going to want to cook this over indirect heat. Cut the loaf of bread in half lengthwise. Place the halves on a large piece of heavy-duty foil. You can double up on the foil if youd like. Combine the mayonnaise, ranch, shredded cheese, and bacon in a small bowl. Use a spatula to equally spread the cheese on each half of the bread. Place on the grill over indirect heat for about 10 to 12 minutes or until the cheese is melted and bubbling. Let cool slightly before cutting into pieces and serving.';
 REPLACE INTO `Directions` SET `ID`='23', `RecipeID`='23', `SortOrder`='0', `Directions`='Preheat oven to 375 degrees F (190 degrees C). Grease a baking sheet. Cut the crusts off of the bread slices, then cut each piece of bread into three equal rectangles. In a small bowl, combine cream cheese, garlic powder, and parsley. Spread a layer of the cream cheese mixture on each bread rectangle, and roll it up. Wrap a slice of bacon around each of the bread rolls and secure them with wooden picks. Arrange the roll ups on the prepared baking sheet. Bake until the bacon is crisp, approximately 10 minutes.';
@@ -3694,4 +3747,4 @@ REPLACE INTO `Directions` SET `ID`='3605', `RecipeID`='3605', `SortOrder`='0', `
 REPLACE INTO `Directions` SET `ID`='3606', `RecipeID`='3606', `SortOrder`='0', `Directions`='MyEdibleMemories.net - much more here!';
 REPLACE INTO `Directions` SET `ID`='3607', `RecipeID`='3607', `SortOrder`='0', `Directions`='In a zip lock bag add 1 cup flour seasoned with a teaspoon of salt, pepper, garlic powder, pinch of cayenne pepper. Rinse wings under cold water. Drain. Shake in the season flour. Heat canola oil on medium heat. Fry seasoned wings in heated oil 5 minutes on each side. Remove from oil, place on foil lined and oil sprayed cookie sheet. Brush each wing with melted butter and bake for on 400 degrees for around 45 minutes or until browned and crispy. In a medium size bowl add 4 tablespoons melted butter, 1/4 cup olive oil, 3 tablespoons lemon juice, 3 tablespoons white wine (Chablis) or more to taste, 1/2 teaspoon garlic powder, 1 tablespoon dried parsley, 1/4 teaspoon each salt, pepper and cayenne pepper mix all together. Pour over crispy hot wings and serve. submitted by Pegasuslegend-whatscookin: much more here!';
 REPLACE INTO `Directions` SET `ID`='3608', `RecipeID`='3608', `SortOrder`='0', `Directions`='Chow.com - much more here!';
-REPLACE INTO `Directions` SET `ID`='3609', `RecipeID`='3609', `SortOrder`='0', `Directions`='SteamyKitchen - much more here!';
+REPLACE INTO `Directions` SET `ID`='3609', `RecipeID`='3609', `SortOrder`='0', `Directions`='SteamyKitchen - much more here!';
