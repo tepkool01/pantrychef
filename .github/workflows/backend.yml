@@ -62,3 +62,10 @@ jobs:
 
       - name: Deploy Shopping List Lambda
         run: cd back-end/lambdas/shopping-list && zip -r shopping-list.zip * && aws lambda update-function-code --function-name pc-shopping-list --zip-file fileb://shopping-list.zip
+
+      # User Lambda
+      - name: Upload User Lambda to s3 artifact bucket
+        run: cd back-end/lambdas/user && pip install $(grep -ivE "boto3|botocore" requirements.txt) -t . && zip -r user.zip * && aws s3 cp user.zip s3://lepantrychefartifacts
+
+      - name: Deploy User Lambda
+        run: cd back-end/lambdas/user && zip -r user.zip * && aws lambda update-function-code --function-name pc-user --zip-file fileb://user.zip
