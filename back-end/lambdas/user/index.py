@@ -73,16 +73,14 @@ def lambda_handler(event, context):
         elif event['httpMethod'] == 'PATCH':
             try:
                 body = json.loads(event['body'])
-                print(json.dumps(body))
                 if 'meal_preference' in body:
-                    if isinstance(body['meal_preference']['id'], int):
-                        db.execute(
-                            sql="UPDATE `User` SET MealPreferenceID=:mID WHERE ID=:UserID",
-                            parameters=[
-                                {'name': 'mID', 'value': {'longValue': body['meal_preference']['id']}},
-                                {'name': 'UserID', 'value': {'longValue': user_id}}
-                            ]
-                        )
+                    db.execute(
+                        sql="UPDATE `User` SET MealPreferenceID=:mID WHERE ID=:UserID",
+                        parameters=[
+                            {'name': 'mID', 'value': {'longValue': int(body['meal_preference']['id'])}},
+                            {'name': 'UserID', 'value': {'longValue': user_id}}
+                        ]
+                    )
             except Exception as e:
                 print("Exception:" + str(e))
                 return {
