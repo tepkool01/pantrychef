@@ -5,8 +5,16 @@ CREATE TABLE User (
     Username VARCHAR(50),
     CognitoID VARCHAR(255),
     IsValidated BOOLEAN,
-    PRIMARY KEY (ID)
+    MealPreferenceID INT DEFAULT 1,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (MealPreferenceID) REFERENCES MealPreferenceType(ID)
 );
+
+CREATE TABLE MealPreferenceType (
+    ID INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(50),
+    PRIMARY KEY (ID)
+)
 
 CREATE TABLE UserProfile (
     ID INT NOT NULL AUTO_INCREMENT,

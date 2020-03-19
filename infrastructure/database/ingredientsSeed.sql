@@ -323,3 +323,4 @@ REPLACE INTO `Ingredient` SET `ID`='322', `IngredientName`='lemon juice', `Ingre
 REPLACE INTO `Ingredient` SET `ID`='323', `IngredientName`='tater tots', `IngredientType`='healthy';
 REPLACE INTO `Ingredient` SET `ID`='324', `IngredientName`='minced onions', `IngredientType`='healthy';
 REPLACE INTO `Ingredient` SET `ID`='325', `IngredientName`='ground black pepper', `IngredientType`='healthy';
+REPLACE INTO `Ingredient` SET `ID`='326', `IngredientName`='whiskey', `IngredientType`='healthy';
