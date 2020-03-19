@@ -1,5 +1,6 @@
 import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
+import axios from "axios";
 
 //TODO: move this to a better place
 const UserPoolId = 'us-east-1_FfJ4ffeia'
@@ -21,6 +22,12 @@ function setupCongnitoUser(username) {
 }
 
 export default {
+	getUserInfo() {
+		return axios.get('/user')
+	},
+	updateUser(payload) {
+		return axios.patch('/user', payload)
+	},
 	logout() {
 		this.getUser().signOut()
 	},
