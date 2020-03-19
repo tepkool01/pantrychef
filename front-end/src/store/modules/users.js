@@ -8,11 +8,16 @@ const state = {
 		accessToken: '',
 		idToken: '',
 		refreshToken: '',
-		userId: ''
-	}
+		userId: '',
+		mealPreference: {}
+	},
+	availableMealPreferences: []
 }
 
 const getters = {
+	mealPreference(state) {
+		return state.mealPreference
+	},
 	isAuthenticated(state) {
 		return state.isAuthenticated
 	},
@@ -36,6 +41,17 @@ const getters = {
 }
 
 const actions = {
+	getUserInfo({commit}) {
+		api.users.getUserInfo().then(result => {
+			commit("SET_MEAL_PREFERENCE", result.data.meal_preference)
+			commit('SET_AVAILABLE_MEAL_PREFERENCES', result.data.available_meal_preferences)
+		})
+	},
+	updateUserInfo({commit}, payload) {
+		api.users.updateUser(payload).then(() => {
+			commit("SET_MEAL_PREFERENCE", payload.mealPreference)
+		})
+	},
 	login({ commit }, payload) {
 		return new Promise((resolve, reject) => {
 			api.users
@@ -117,6 +133,12 @@ const actions = {
 }
 
 const mutations = {
+	SET_AVAILABLE_MEAL_PREFERENCES(state, availableMealPreferences) {
+		state.user.availableMealPreferences = availableMealPreferences
+	},
+	SET_MEAL_PREFERENCE(state, mealPreference) {
+		state.user.mealPreference = mealPreference
+	},
 	AUTHENTICATE(state, returnedUser) {
 		// eslint-disable-next-line no-console
 		console.log('User Authentication - Succeeded!')

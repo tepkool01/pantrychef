@@ -39,15 +39,29 @@ def lambda_handler(event, context):
                     sql="SELECT u.Username, m.ID, m.Name FROM `User` u JOIN `MealPreferenceType` m ON m.ID=u.MealPreferenceID WHERE u.ID=:UserID",
                     parameters=[{'name': 'UserID', 'value': {'longValue': user_id}}]
                 )
-
                 print(raw_user_info)
+
+                raw_meal_preferences = db.execute(
+                    sql="SELECT * FROM MealPreferenceType",
+                    parameters=[]
+                )
+
+                print(raw_meal_preferences)
+
+                available_meal_preferences = []
+                for record in raw_meal_preferences['records']:
+                    available_meal_preferences.append({
+                        'id': record[0]['longValue'],
+                        'name': record[1]['stringValue']
+                    })
 
                 result = {
                     'username': raw_user_info['records'][0][0]['stringValue'],
                     'meal_preference': {
                         'id': raw_user_info['records'][0][1]['longValue'],
                         'name': raw_user_info['records'][0][2]['stringValue']
-                    }
+                    },
+                    'available_meal_preferences': available_meal_preferences
                 }
             except Exception as e:
                 print("Exception:" + str(e))
