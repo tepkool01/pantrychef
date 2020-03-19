@@ -51,9 +51,7 @@ const actions = {
 		})
 	},
 	updateUserInfo({commit}, payload) {
-		api.users.updateUser(payload).then(() => {
-			commit("SET_MEAL_PREFERENCE", payload.mealPreference)
-		})
+		api.users.updateUser(payload)
 	},
 	login({ commit }, payload) {
 		return new Promise((resolve, reject) => {

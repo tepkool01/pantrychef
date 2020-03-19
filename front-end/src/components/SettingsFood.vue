@@ -68,10 +68,10 @@ export default {
 			updateUserInfo: 'updateUserInfo'
 		}),
 		switchMealPreference(preference) {
+			console.log(preference)
 			this.updateUserInfo({
 				meal_preference: {
-					id: preference.target.value,
-					name: preference.target.text
+					id: preference.target.value
 				}
 			})
 		}
