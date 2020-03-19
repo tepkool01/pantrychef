@@ -8,9 +8,9 @@ const state = {
 		accessToken: '',
 		idToken: '',
 		refreshToken: '',
-		userId: '',
-		mealPreference: {}
+		userId: ''
 	},
+	mealPreference: {},
 	availableMealPreferences: []
 }
 
@@ -18,7 +18,7 @@ const getters = {
 	availableMealPreferences(state) {
 		return state.availableMealPreferences
 	},
-	mealPreference(state) {
+	userMealPreference(state) {
 		return state.mealPreference
 	},
 	isAuthenticated(state) {
@@ -46,8 +46,8 @@ const getters = {
 const actions = {
 	getUserInfo({commit}) {
 		api.users.getUserInfo().then(result => {
-			commit("SET_MEAL_PREFERENCE", result.data.meal_preference)
-			commit('SET_AVAILABLE_MEAL_PREFERENCES', result.data.available_meal_preferences)
+			commit("SET_MEAL_PREFERENCE", result['data']['meal_preference'])
+			commit('SET_AVAILABLE_MEAL_PREFERENCES', result['data']['available_meal_preferences'])
 		})
 	},
 	updateUserInfo({commit}, payload) {
@@ -137,10 +137,10 @@ const actions = {
 
 const mutations = {
 	SET_AVAILABLE_MEAL_PREFERENCES(state, availableMealPreferences) {
-		state.user.availableMealPreferences = availableMealPreferences
+		state.availableMealPreferences = availableMealPreferences
 	},
 	SET_MEAL_PREFERENCE(state, mealPreference) {
-		state.user.mealPreference = mealPreference
+		state.mealPreference = mealPreference
 	},
 	AUTHENTICATE(state, returnedUser) {
 		// eslint-disable-next-line no-console
