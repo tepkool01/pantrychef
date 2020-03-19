@@ -15,6 +15,9 @@ const state = {
 }
 
 const getters = {
+	availableMealPreferences(state) {
+		return state.availableMealPreferences
+	},
 	mealPreference(state) {
 		return state.mealPreference
 	},

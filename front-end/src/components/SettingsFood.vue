@@ -21,12 +21,8 @@
 					</div>
 				</div>
 				<div>
-					<b-form-select class="form-control" aria-label="Diet Type">
-						<option>No Preference</option>
-						<option>Vegetarian</option>
-						<option>Vegan</option>
-						<option>Gluten Free</option>
-						<option>Paleo</option>
+					<b-form-select class="form-control" aria-label="Diet Type" @change="switchMealPreference">
+						<option v-for="preference in availableMealPreferences" :selected="preference.id == mealPreference.id">{{preference.name}}</option>
 					</b-form-select>
 				</div>
 			</div>
@@ -56,8 +52,33 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from "vuex";
+
 export default {
 	name: 'SettingsFood'
+	computed: {
+		...mapGetters('users', {
+			availableMealPreferences: 'availableMealPreferences',
+			mealPreference: 'mealPreference'
+		})
+	},
+	methods: {
+		...mapActions('users', {
+			getUserInfo: 'getUserInfo',
+			updateUser: 'updateUser'
+		}),
+		switchMealPreference(preference) {
+			this.updateUser({
+				meal_preference: {
+					id: preference.target.value,
+					name: preference.target.text
+				}
+			})
+		}
+	},
+	created() {
+		this.getUserInfo()
+	}
 }
 </script>
 
