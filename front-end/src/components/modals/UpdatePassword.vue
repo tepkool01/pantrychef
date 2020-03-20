@@ -1,5 +1,5 @@
 <template>
-	<b-modal id="update-password" title="Update your password">
+	<b-modal id="update-password" title="Update your password" @ok="handleOk">
 		<div>
 			<div class="form-group">
 				<label for="verify-password">Verify current password</label>
@@ -42,7 +42,23 @@
 
 <script>
 export default {
-	name: 'UpdatePassword'
+	name: 'UpdatePassword',
+	methods: {
+		// need to handle Ok first, THEN do all your submit actions
+		handleOk(bvModalEvt) {
+			// Prevent modal from closing
+			bvModalEvt.preventDefault()
+			// Trigger submit handler
+			this.handleSubmit()
+		},
+		handleSubmit() {
+			console.log('Do some validation, post/patch new password, etc...')
+			// Manually hide modal
+			this.$nextTick(() => {
+				this.$bvModal.hide('update-password')
+			})
+		}
+	}
 }
 </script>
 
