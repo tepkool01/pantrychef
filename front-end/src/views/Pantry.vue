@@ -1,5 +1,6 @@
 <template>
 	<div>
+	<ErrorBar :errorList='errors' v-if="this.errors.length > 0"></ErrorBar>
 		<div class="row">
 			<IngredientSubmissionPanel
 				:suggestionsMstr="ingredients"
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import ErrorBar from '@/components/ErrorBar.vue'
 import Ingredient from '@/components/Ingredient.vue'
 import IngredientSubmissionPanel from '@/components/IngredientSubmissionPanel.vue'
 //import Profile from "../store/modules/profile";
@@ -51,11 +53,12 @@ export default {
 	components: {
 		IngredientSubmissionPanel,
 		Ingredient,
+		ErrorBar
 		//Profile
 	},
 	methods: {
 		...mapActions('pantry', {
-			getPantryList: 'getPantryList',
+			getPantry: 'getPantry',
 			addIngredient: 'addIngredient',
 			removeIngredient: 'removeIngredient'
 		}),
@@ -81,21 +84,37 @@ export default {
 	},
 	watch: {
 		activeProfile: function(val) {
-			this.getPantryList(this.activeProfile)
+			this.getPantry(this.activeProfile)	
+
+			this.errors=""
+
+			if(this.pantryList == null || this.pantryList.length == 0){
+				this.errors+="ERROR: Pantry List did not load or is empty."
+			}	
+
+			if(this.ingredients == null){
+				this.errors+="ERROR: Add Ingredient Module not loaded."
+			}	
+
+			if(this.activeProfile == null){
+				this.errors+="ERROR:  Active profile not loaded."
+			}	
 		}
 	},
 	data() {
 		return {
-			pantryType: 'pantry'
+			pantryType: 'pantry',
+			errors:""
 		}
 	},
 	created() {
-		if (this.activeProfile) {
-			this.getPantryList(this.activeProfile)
-		}
-
 		this.getIngredients()
 		this.$emit('title', 'Pantry')
+	},
+	mounted() {
+		if(this.activeProfile == null){
+			this.errors="ERROR: Active profile not loaded. Potential Internet connection issue."
+		}
 	}
 }
 </script>

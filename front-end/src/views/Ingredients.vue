@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<ErrorBar :errorList='errors' v-if="this.errors.length > 0"></ErrorBar>
 		<div class="row">
 
 			<IngredientSubmissionPanel :suggestionsMstr="ingredients" @clickedItem="addIngredientToShoppingList"></IngredientSubmissionPanel>
@@ -24,6 +25,7 @@
 <script>
 import Ingredient from '@/components/Ingredient.vue'
 import IngredientSubmissionPanel from '@/components/IngredientSubmissionPanel.vue'
+import ErrorBar from '@/components/ErrorBar.vue'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -43,7 +45,8 @@ export default {
 	},
 	components: {
 		IngredientSubmissionPanel,
-		Ingredient
+		Ingredient,
+		ErrorBar
 	},
 	methods: {
 		...mapActions('ingredients', {
@@ -70,6 +73,20 @@ export default {
 	watch: {
 		activeProfile: function(val) {
 			this.getShoppingList(this.activeProfile)
+
+			this.errors=""
+
+			if(this.shoppingList == null || this.shoppingList.length == 0){
+				this.errors+="ERROR: Shopping List did not load or is empty."
+			}	
+
+			if(this.ingredients == null){
+				this.errors+="ERROR: Add Ingredient Module not loaded."
+			}	
+
+			if(this.activeProfile == null){
+				this.errors+="ERROR:  Active profile not loaded."
+			}	
 		}
 	},
 	created() {
@@ -83,7 +100,13 @@ export default {
 	},
 	data() {
 		return {
-			pantryType: "shopping"
+			pantryType: "shopping",
+			errors:""
+		}
+	},
+	mounted() {
+		if(this.activeProfile == null){
+			this.errors="ERROR: Active profile not loaded. Potential Internet connection issue."
 		}
 	}
 }
