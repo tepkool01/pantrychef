@@ -10,8 +10,9 @@ today = date.today()
 date_filename = today.strftime("%Y%m%d")
 
 # CHANGE THESE NUMBERS!!!
-start = 2219
-end = 2369  # max for free tier is 150 a day, so I incremented by 130, to be safe
+inc = 150
+start = 2819
+end = start + inc  # max for free tier is 150 a day, so I incremented by 130, to be safe
 
 # api_key = 'c1de684c34644eb29f056d11a35d94b0'  # MY's key
 # api_key = '43bb834225f844749aefe3a2a870add5' # MR's key
@@ -37,6 +38,6 @@ for key in api_keys:
         except:
             pass
     start = end
-    end += 150
+    end += inc
 
 print(f"New Start: {start}")
