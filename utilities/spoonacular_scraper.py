@@ -10,34 +10,53 @@ today = date.today()
 date_filename = today.strftime("%Y%m%d")
 
 # CHANGE THESE NUMBERS!!!
-inc = 150
-start = 2819
-end = start + inc  # max for free tier is 150 a day, so I incremented by 130, to be safe
+threshold = 5000
+i_start = 7984
+end = i_start + threshold
 
-# api_key = 'c1de684c34644eb29f056d11a35d94b0'  # MY's key
-# api_key = '43bb834225f844749aefe3a2a870add5' # MR's key
-# api_key = '5275184a86f94466b97dddb31f766d7c' # Eric's key
-# api_key = 'c9a75a2d0140472981d0318f318d9481' # MR2's key
+headers = {
+    'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+    'x-rapidapi-key': "c1b6b44f32msh46215ad950d6ccdp19de70jsnc0f3dc6ce799"
+}
 
-api_keys = [
-    'c1de684c34644eb29f056d11a35d94b0',
-    '43bb834225f844749aefe3a2a870add5',
-    '5275184a86f94466b97dddb31f766d7c',
-    'c9a75a2d0140472981d0318f318d9481'
-]
+querystring = {
+    "ids": "",
+    "includeNutrition": "true"
+}
 
-# Loop through keys
-for key in api_keys:
-    for i in range(start, end, 1):
-        print(f"Scraping ID: {i} with api key: {key}")
-        try:
-            data = requests.get(f"https://api.spoonacular.com/recipes/informationBulk?ids={i}&includeNutrition=true&apiKey={key}")
-            f = open(f"./spoonacular_recipes/{date_filename}_{key}_{i}.json", "w")
-            json.dump(data.json(), f)
-            f.close()
-        except:
-            pass
-    start = end
-    end += inc
+url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk"
 
-print(f"New Start: {start}")
+while i_start < end:
+
+    try:
+        querystring['ids'] = str(i_start)
+        response = requests.request("GET", url, headers=headers, params=querystring)
+
+        # Continue on failures, as they don't cost us money. Keep going
+        if response.status_code != 200:
+            print(f"\nFAIL: {i_start} failed to parse")
+            i_start += 1
+            continue
+
+        # Write contents to file
+        f = open(f"./spoonacular_recipes/{date_filename}_student_{i_start}.json", "w")
+        json.dump(response.json(), f)
+        f.close()
+
+        # Exit so I'm not over-charged
+        if 'X-RateLimit-requests-Remaining' in response.headers:
+            if int(response.headers['X-RateLimit-requests-Remaining']) <= 1:
+                print(f"\n\nMet plan quota threshold of {threshold}, exiting")
+                i_start += 1
+                break
+            if int(response.headers['X-RateLimit-requests-Remaining']) % 250 == 0:
+                print(f"\n\nQuota used: {response.headers['X-RateLimit-requests-Remaining']}")
+
+        print(f"Scraped ID: {i_start} with, {response.headers['X-RateLimit-requests-Remaining']} requests remaining")
+    except:
+        pass
+
+    # Increment tracker
+    i_start += 1
+
+print(f"\n====\nNew Start: {i_start}")
