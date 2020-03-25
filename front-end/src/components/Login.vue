@@ -19,6 +19,7 @@
 		<form id="login" @submit="loginUser" method="post" :novalidate="true">
 			<div class="input-group mb-3">
 				<input
+				    id="login_user_input_box"
 					v-model="login.username"
 					type="text"
 					class="form-control"
@@ -30,6 +31,7 @@
 			</div>
 			<div class="input-group mb-3">
 				<input
+					id="login_password_input_box"
 					v-model="login.password"
 					type="password"
 					class="form-control"
@@ -42,6 +44,7 @@
 
 			<div class="mt-2 mb-5">
 				<button
+					id="login_submission_button"
 					@click="loginUser"
 					class="btn btn-primary btn-block button--login"
 				>
