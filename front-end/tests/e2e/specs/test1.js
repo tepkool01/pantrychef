@@ -6,7 +6,7 @@ fixture `Getting Started`
 
 test('My first test', async t => {
     await t
-        .expect('ok').notOk('ok')
+
 	.typeText('#login_user_input_box','anthrwrld')
         .typeText('#login_password_input_box','Testing123');
 

@@ -47,7 +47,9 @@
 				>
 			</div>
 			<div class="recipe-card--view">
-				<button @click = "getRecipeCard(recipe.id)" class="btn btn-sm btn-primary">View Recipe</button>
+
+				<button @click = "getRecipeCard(recipe.id)" class="btn btn-sm btn-primary"
+				id="view_recipe_submission_button">View Recipe</button>
 			</div>
 		</div>
 	</div>
