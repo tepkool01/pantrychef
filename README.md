@@ -40,6 +40,16 @@ or autofix using
 ## Testing
 - Highly recommend install the chai, mocha, sinon, and etc libraries for easier autocompletion (jetbrains settings)
 - do `npm run tester` to get code coverage reports
+##GUI Testing
+- TestCafe, is being used. This application utilizes google chrome and tests the GUI End2End (E2E) Functionality.
+1. To install Testcafe type in the terminal "npm install -g testcafe"
+2. Then open another terminal in webstorm, press the "+" and make sure you are in the .../pantryChef/front-end directory.
+3. Type "npm run serve", inorder to make sure a local instance of the application is running.
+4. Then in another terminal cd into the .../pantryChef/front-end/tests/e2e/specs directory.
+5. Then to run the testcafe GUI test type in the terminal "testcafe chrome test1.js"
+6. This will launch the testcafe script for the *.js test.
+
+
 ### Python (backend) Unit Testing
 - In JetBrain's PyCharm (I'm using the 2019 latest version), go to bottom right and configure the interpreter. This will create your virtual environment.
 - Before launching the pycharm application make sure the environement variable is set for PYTHONPATH.
