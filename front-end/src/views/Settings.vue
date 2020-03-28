@@ -8,19 +8,19 @@
 		<div class="container settings--page-content">
 			<b-tabs content-class="mt-3">
 				<!-- START: Account Settings tab -->
-				<b-tab title="Account" active>
+				<b-tab title="Account" active id="settings_account_tab">
 					<settings-account></settings-account>
 				</b-tab>
 				<!-- END: Account settings tab-->
 
 				<!-- START: Profile settings tab -->
-				<b-tab title="Profiles">
+				<b-tab title="Profiles" id="settings_profile_tab">
 					<settings-profiles></settings-profiles>
 				</b-tab>
 				<!-- END: Profile settings tab -->
 
 				<!-- START: Food Preferences Tab -->
-				<b-tab title="Food Preferences">
+				<b-tab title="Food Preferences" id="settings_preferences_tab">
 					<settings-food></settings-food>
 				</b-tab>
 				<!-- END: Food preferences tab -->

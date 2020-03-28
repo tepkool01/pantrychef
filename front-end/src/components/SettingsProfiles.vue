@@ -11,12 +11,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div v-for="p in profiles" v-bind:key="p.name">
-				<profile :profile="p"></profile>
-			</div>
-		</div>
-		<div class="row">
-			<b-list-group class="col-lg-8">
+			<b-list-group class="col-lg-8" id="profile_list">
 				<b-list-group-item
 					class="d-flex justify-content-between align-items-center"
 					v-for="p in profiles"

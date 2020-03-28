@@ -48,6 +48,7 @@ or autofix using
 4. Then in another terminal cd into the .../pantryChef/front-end/tests/e2e/specs directory.
 5. Then to run the testcafe GUI test type in the terminal "testcafe chrome test1.js"
 6. This will launch the testcafe script for the *.js test.
+7. Credentials for the testing account are Username:'TestUsername' Password:'TestPassword'
 
 
 ### Python (backend) Unit Testing

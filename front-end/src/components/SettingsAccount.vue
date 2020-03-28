@@ -37,6 +37,7 @@
 				<div>
 					<b-button
 						variant="outline-secondary"
+						id="update_password_button"
 						class="ml-3"
 						v-b-modal="'update-password'"
 						>Update</b-button
