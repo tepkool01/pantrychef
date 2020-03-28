@@ -100,17 +100,20 @@ def lambda_handler(event, context):
     elif event['resource'] == '/profiles/{profileId}/activate':
         if event['httpMethod'] == 'PUT':
             # Reset all to 0
-            db.execute(
-                sql="UPDATE UserProfile SET IsActive=0 WHERE UserId=:userId",
-                parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
-            )
-            db.execute(
-                sql="UPDATE UserProfile SET IsActive=1 WHERE UserId=:userId and ID=:id",
-                parameters=[
-                    {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
-                    {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
-                ]
-            )
+            try:
+                db.execute(
+                    sql="UPDATE UserProfile SET IsActive=0 WHERE UserId=:userId",
+                    parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
+                )
+                db.execute(
+                    sql="UPDATE UserProfile SET IsActive=1 WHERE UserId=:userId and ID=:id",
+                    parameters=[
+                        {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
+                        {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
+                    ]
+                )
+            except Exception as e:
+                print(str(e))
 
     return {
         'statusCode': status_code,
