@@ -11,23 +11,25 @@
 			</div>
 		</div>
 		<div class="row">
-			<div v-for="p in profiles" v-bind:key="p.name">
-				<profile :profile="p"></profile>
-			</div>
-		</div>
-		<div class="row">
-			<b-list-group class="col-lg-8">
+			<b-list-group class="col-lg-8" id="profile_list">
 				<b-list-group-item
 					class="d-flex justify-content-between align-items-center"
 					v-for="p in profiles"
 					v-bind:key="p.id"
+					:id="'profile_item_' + p.profile_name"
 				>
 					{{ p.profile_name }}
 					<b-button-group>
-						<b-button variant="outline-secondary">
+						<b-button 
+							:id="'profile_edit_' + p.profile_name"  
+							variant="outline-secondary"
+						>
 							<b-icon-pencil></b-icon-pencil>
 						</b-button>
-						<b-button variant="outline-secondary">
+						<b-button 
+							:id="'profile_delete_' + p.profile_name"
+							variant="outline-secondary"
+						>
 							<b-icon-trash
 								@click="onDelete(p.id)"
 							></b-icon-trash>

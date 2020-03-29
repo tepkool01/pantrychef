@@ -2,6 +2,7 @@
 	<div class="chef-ingredient">
 		{{ ingredient.ingredient_name }}
 		<button
+			id="ingredient_found_submission_button"
 			type="button"
 			class="btn btn-outline-success btn-sm close"
 			v-if="listType === 'search'"

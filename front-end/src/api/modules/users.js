@@ -88,7 +88,8 @@ export default {
 		})
 	},
 
-	updatePassword(cognitoUser, newPassword, oldPassword) {
+	updatePassword(username, newPassword, oldPassword) {
+		let cognitoUser = setupCongnitoUser(username)
 		return new Promise((resolve, reject) => {
 			cognitoUser.changePassword(oldPassword, newPassword, function(
 				err,

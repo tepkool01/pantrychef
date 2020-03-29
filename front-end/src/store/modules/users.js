@@ -124,9 +124,9 @@ const actions = {
 		api.users.logout()
 		commit('LOGOUT')
 	},
-	UpdatePassword({ commit }, newPassword, oldPassword) {
+	UpdatePassword({ commit }, username, newPassword, oldPassword) {
 		api.users
-			.updatePassword(state.user, newPassword, oldPassword)
+			.updatePassword(username, newPassword, oldPassword)
 			.then(() => {
 				commit('CHANGEPASSWORD')
 			})
@@ -168,6 +168,11 @@ const mutations = {
 	FORGOTPASSWORD(state, username) {
 		// eslint-disable-next-line no-console
 		console.log('FORGOTPASSWORD: Users password is updated...' + username)
+		state.username = username
+	},
+	UPDATEPASSWORD(state, username) {
+		// eslint-disable-next-line no-console
+		console.log('UPDATEPASSWORD: Users password is updated...' + username)
 		state.username = username
 	},
 	// eslint-disable-next-line no-unused-vars

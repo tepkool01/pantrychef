@@ -20,21 +20,25 @@
 				<div class="list-group list-group-flush">
 					<a
 						href="/pantry"
+						id="pantry_sidepanel_button"
 						class="list-group-item list-group-item-action"
 						><b-icon icon="house"></b-icon> Pantry</a
 					>
 					<a
 						href="/ingredients"
+						id="ingredients_sidepanel_button"
 						class="list-group-item list-group-item-action"
 						><b-icon icon="list-check"></b-icon> Ingredients</a
 					>
 					<a
 						href="/recipes"
+						id="recipe_sidepanel_button"
 						class="list-group-item list-group-item-action"
 						><b-icon icon="book"></b-icon> Recipes</a
 					>
 					<a
 						href="/settings"
+						id="settings_sidepanel_button"
 						class="list-group-item list-group-item-action"
 						><b-icon icon="gear"></b-icon> Settings</a
 					>

@@ -2,13 +2,14 @@
 	<div class="create-profile d-flex justify-content-between">
 		Name:
 		<input
+			id="profile_create_name"
 			type="text"
 			name="profile-name"
 			class="form-control"
 			v-model="profile.name"
 		/>
 
-		<b-button variant="outline-secondary" class="ml-3" @click="onSubmit"
+		<b-button variant="outline-secondary" class="ml-3" @click="onSubmit" id="profile_create_button"
 			>Create</b-button
 		>
 	</div>
