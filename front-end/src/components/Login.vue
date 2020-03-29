@@ -47,7 +47,7 @@
 					id="login_submission_button"
 					:disabled="!this.canSubmit"
 					@click="loginUser"
-					v-bind:class="{ 'btn-success btn-block': canSubmit, 'btn-primary btn-block button--login': !canSubmit }"
+					v-bind:class="{ 'btn btn-success btn-block': canSubmit, 'btn btn-primary btn-block button--login': !canSubmit }"
 				>
 					Login
 				</button>
