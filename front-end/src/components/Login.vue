@@ -45,8 +45,9 @@
 			<div class="mt-2 mb-5">
 				<button
 					id="login_submission_button"
+					:disabled="!this.canSubmit"
 					@click="loginUser"
-					class="btn btn-primary btn-block button--login"
+					v-bind:class="{ 'btn-success btn-block': canSubmit, 'btn-primary btn-block button--login': !canSubmit }"
 				>
 					Login
 				</button>
@@ -81,10 +82,28 @@ export default {
 				errors: [],
 				username: false,
 				password: false
-			}
+			},
+			canSubmit: false
 		}
 	},
+    watch: {
+        'login.username' () {
+			this.submitEnable()
+		},
+        'login.password' () {
+			this.submitEnable()
+		}
+    },
 	methods: {
+		submitEnable(){
+			if (this.login.username.length === 0) {
+				this.canSubmit = false;
+			}else if (this.login.password.length === 0) {
+				this.canSubmit = false;
+			}else{
+				this.canSubmit = true;
+			}	
+		},
 		// Validates the user name and password, and provides error messaging if needed
 		validateForm(e) {
 			// Return the status of the form to the submission handler
