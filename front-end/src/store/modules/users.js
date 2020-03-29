@@ -125,11 +125,17 @@ const actions = {
 		commit('LOGOUT')
 	},
 	UpdatePassword({ commit }, username, newPassword, oldPassword) {
-		api.users
-			.updatePassword(username, newPassword, oldPassword)
-			.then(() => {
-				commit('CHANGEPASSWORD')
-			})
+		return new Promise((resolve, reject) => {
+			api.users
+				.updatePassword(username, newPassword, oldPassword)
+				.then(() => {
+					commit('CHANGEPASSWORD')
+					resolve(true)
+				})
+				.catch(err => {
+					reject(err)
+				})
+		})
 	}
 }
 
