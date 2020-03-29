@@ -4,17 +4,19 @@ import { Selector } from 'testcafe';
 fixture `Getting Started`
     .page `http://localhost:8080`;
 
-test('Find Recipe test', async t => {
-    await t
+const nameInput = Selector('#login_user_input_box');
+const pwInput   = Selector('#login_password_input_box');
 
-	.typeText('#login_user_input_box','ecortez1')
-        .typeText('#login_password_input_box','Ericdean1!');
-
+test('Add Ingredient', async t => {
     await t
+	.typeText(nameInput,'ecortez1')
+        .typeText(pwInput,'Ericdean1!')
+        .expect(nameInput.value).eql('ecortez1')
+
+   await t
         .click('#login_submission_button');
     await t
-        .typeText('#ingredient_search_Ingredient');
-
+        .click('#pantry_sidepanel_button');
 
 
 });
