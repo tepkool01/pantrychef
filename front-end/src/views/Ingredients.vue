@@ -72,30 +72,25 @@ export default {
 	},
 	watch: {
 		activeProfile: function(val) {
-			this.getShoppingList(this.activeProfile)
-
-			this.errors=""
-
+			this.getShoppingList(this.activeProfile)	
+			this.getIngredients()
+			
+			if(this.activeProfile){
+				this.errors=""
+			}
+		},
+		shoppingList: function(val) {
 			if(this.shoppingList == null || this.shoppingList.length == 0){
 				this.errors+="ERROR: Shopping List did not load or is empty."
 			}	
-
+		},
+		ingredients: function(val) {
 			if(this.ingredients == null){
 				this.errors+="ERROR: Add Ingredient Module not loaded."
-			}	
-
-			if(this.activeProfile == null){
-				this.errors+="ERROR:  Active profile not loaded."
 			}	
 		}
 	},
 	created() {
-		this.getIngredients()
-
-		if (this.activeProfile) {
-			this.getShoppingList(this.activeProfile)
-		}
-
 		this.$emit('title', 'Pantry')
 	},
 	data() {
@@ -106,8 +101,8 @@ export default {
 	},
 	mounted() {
 		if(this.activeProfile == null){
-			this.errors="ERROR: Active profile not loaded. Potential Internet connection issue."
-		}
+			this.errors+="ERROR:  Active profile not loaded."
+		}	
 	}
 }
 
