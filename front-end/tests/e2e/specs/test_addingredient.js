@@ -1,7 +1,7 @@
 import { Selector } from 'testcafe';
 
 
-fixture `Getting Started`
+fixture `Pantry Chef`
     .page `http://localhost:8080`;
 
 const nameInput = Selector('#login_user_input_box');

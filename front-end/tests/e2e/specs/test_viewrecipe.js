@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe'
 
-fixture`Getting Started`.page`http://localhost:8080`
+fixture`Pantry Chef`.page`http://localhost:8080`
 
 test('View Recipe Test', async t => {
 	await t
