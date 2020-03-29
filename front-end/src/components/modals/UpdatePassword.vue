@@ -5,7 +5,7 @@
 		@ok="UpdatePassword"
 	>
 		<div>
-			<label>{{user.username}}</label>
+			<label>{{userId}}</label>
 			<div class="form-group">
 				<label for="verify-password">Verify current password</label>
 				<input
@@ -48,23 +48,14 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
 	name: 'UpdatePassword',
-	methods: {
-		// need to handle Ok first, THEN do all your submit actions
-		handleOk(bvModalEvt) {
-			// Prevent modal from closing
-			bvModalEvt.preventDefault()
-			// Trigger submit handler
-			this.handleSubmit()
-		},
-		handleSubmit() {
-			console.log('Do some validation, post/patch new password, etc...')
-			// Manually hide modal
-			this.$nextTick(() => {
-				this.$bvModal.hide('update-password')
-			})
-		}
+	computed: {
+		...mapGetters('users', {
+			userId: 'userId'
+		})
 	},
 	data() {
 		return {
@@ -84,7 +75,8 @@ export default {
 				oldpassword: false,
 				password: false,
 				repassword: false
-			}
+			},
+			users: 'userid'
 		}
 	},
 	methods: {
@@ -92,14 +84,13 @@ export default {
 		validateForm(e) {
 			// Return the status of the form to the submission handler
 			let isValid = true
-			console.log("Continue Here.")
+
 			// Prevents the form from doing its normal action of submitting it via HTML, we will handle submission
 			e.preventDefault()
-			console.log("prevent Closing")
 
 			// Reset the form and do a check, in case they fixed anything in a previous submission
 			this.resetForm()
-			console.log("Reset Form")
+
 			if (this.user.oldpassword.length < 8) {
 				this.validation.oldpassword = true
 				this.validation.errors.push({
@@ -108,7 +99,7 @@ export default {
 				})
 				isValid = false
 			}
-			console.log("First Test:"+isValid)
+
 			if (this.user.password.length < 8) {
 				this.validation.password = true
 				this.validation.errors.push({
@@ -117,7 +108,7 @@ export default {
 				})
 				isValid = false
 			}
-			console.log("Second Test:"+isValid)
+
 			// Verify that password matches password check
 			if (this.user.password !== this.user.repassword) {
 				this.validation.password = true
@@ -128,7 +119,6 @@ export default {
 				})
 				isValid = false
 			}
-			console.log("Third Test:"+isValid)
 
 			if (
 				!this.regex.passwordLowercase.test(this.user.password) ||
@@ -153,11 +143,9 @@ export default {
 			this.validation.repassword = false
 		},
 		UpdatePassword(e) {
-			console.log("Start here.")
 			if (this.validateForm(e)) {
-				console.log("Form Validated")
 				this.$store
-					.dispatch('users/updatePassword', this.user)
+					.dispatch('users/UpdatePassword', this.userId)
 					.then(() => {
 						// This is a really cool method, it allows you to talk back to the parent view or component, in this case
 						// Register.vue, it will send back data to the parent (in this case, just a true value), and then the parent

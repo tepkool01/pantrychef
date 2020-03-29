@@ -3,7 +3,7 @@
     <div class="about flex flex-col">
         <label v-b-tooltip.hover.left v-bind:title="toolTip"
                for="lfname">{{componentTitle}}: </label>
-        <input type="text" class="bg-gray-300 px-4 py-2" autocomplete="off"
+        <input :id="'ingredient_search_' + componentTitle"   type="text" class="bg-gray-300 px-4 py-2" autocomplete="off"
                v-model="queryStr" @focus="modal = true">
         <div class="itemView" v-if="suggestions && modal">
             <ul class="bg-gray-40 px-4 py-2" style="list-style-type:none">

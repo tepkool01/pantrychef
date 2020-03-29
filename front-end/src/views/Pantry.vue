@@ -85,19 +85,20 @@ export default {
 	watch: {
 		activeProfile: function(val) {
 			this.getPantry(this.activeProfile)	
-
-			this.errors=""
-
+			this.getIngredients()
+			
+			if(this.activeProfile){
+				this.errors=""
+			}	
+		},
+		pantryList: function(val) {
 			if(this.pantryList == null || this.pantryList.length == 0){
 				this.errors+="ERROR: Pantry List did not load or is empty."
 			}	
-
+		},
+		ingredients: function(val) {
 			if(this.ingredients == null){
 				this.errors+="ERROR: Add Ingredient Module not loaded."
-			}	
-
-			if(this.activeProfile == null){
-				this.errors+="ERROR:  Active profile not loaded."
 			}	
 		}
 	},
@@ -108,13 +109,12 @@ export default {
 		}
 	},
 	created() {
-		this.getIngredients()
 		this.$emit('title', 'Pantry')
 	},
 	mounted() {
 		if(this.activeProfile == null){
-			this.errors="ERROR: Active profile not loaded. Potential Internet connection issue."
-		}
+			this.errors+="ERROR:  Active profile not loaded."
+		}	
 	}
 }
 </script>
