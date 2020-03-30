@@ -5,6 +5,7 @@ fixture `Settings`
 	.page `http://localhost:8080`;
 
 test('Change Password Test', async t => {
+	const footer = Selector('#update-password___BV_modal_footer_');
 
 	await t
 		.typeText('#login_user_input_box','TestUsername')
@@ -19,6 +20,6 @@ test('Change Password Test', async t => {
 		.typeText('#update_password_modal_repassword_input','TestPassword2');
 
 	await t
-		.click('#click_ok_button')
+		.click(footer.withText('Ok'))
 
 });
