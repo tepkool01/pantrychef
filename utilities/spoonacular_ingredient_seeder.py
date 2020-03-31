@@ -1,15 +1,15 @@
 import json
 import os
 import requests
+import unicodedata
 
 # Some quick hacks
 def parse_str(stuff):
-    stuff = stuff.replace("\u0097", "-")
-    stuff = stuff.replace("\u0144", "n")
-    stuff = stuff.replace("\u010d", "c")
-    stuff = stuff.replace("\u00b5", "")
     stuff = stuff.replace("\u00bd", "1/2")
+    stuff = stuff.replace(";", ".")
     stuff = stuff.replace("'", "''")
+    stuff = unicodedata.normalize('NFKD', stuff).encode('ASCII', 'ignore')
+    stuff = stuff.decode()
     return stuff
 
 
@@ -42,14 +42,17 @@ for root, directory, files in os.walk(path):
             #
             # Grab Ingredients (for 2 reasons, first our ingredient list, and the ingredients for this recipe)
             #
-            # for ingredient in recipe[0]['extendedIngredients']:
+            for ingredient in recipe[0]['extendedIngredients']:
                 # Seed recipe ingredients table
-                # recipe_ingredients.append({
-                #     'recipe_id': recipe[0]['id'],
-                #     'ingredient_id': ingredient['id'],
-                #     'amount': ingredient['measures']['us']['amount'],
-                #     'unit': ingredient['measures']['us']['unitLong']
-                # })
+                if ingredient['id'] is None:
+                    continue
+
+                recipe_ingredients.append({
+                    'recipe_id': recipe[0]['id'],
+                    'ingredient_id': ingredient['id'],
+                    'amount': ingredient['measures']['us']['amount'],
+                    'unit': ingredient['measures']['us']['unitLong']
+                })
 
                 # Search to see if this ingredient is already in our 'Ingredients' table
                 # found = False
@@ -92,29 +95,29 @@ for root, directory, files in os.walk(path):
             #
             # Process Recipe
             #
-            # vegetarian = 1 if recipe[0]['vegetarian'] is True else 0
-            # vegan = 1 if recipe[0]['vegan'] is True else 0
-            # glutenFree = 1 if recipe[0]['glutenFree'] is True else 0
-            # dairyFree = 1 if recipe[0]['dairyFree'] is True else 0
-            # healthy = 1 if recipe[0]['veryHealthy'] is True else 0
-            # sustainable = 1 if recipe[0]['sustainable'] is True else 0
-            # recipes.append({
-            #     'id': recipe[0]['id'],
-            #     'name': recipe[0]['title'],
-            #     'cook_time': recipe[0]['readyInMinutes'],
-            #     'servings': recipe[0]['servings'],
-            #     'summary': recipe[0]['summary'],
-            #     'image_url': imgUrl,
-            #     'health_score': recipe[0]['healthScore'],
-            #     'ww_points': recipe[0]['weightWatcherSmartPoints'],
-            #     'ingredient_count': len(recipe[0]['extendedIngredients']),
-            #     'vegetarian': vegetarian,
-            #     'vegan': vegan,
-            #     'gluten_free': glutenFree,
-            #     'dairy_free': dairyFree,
-            #     'healthy': healthy,
-            #     'sustainable': sustainable
-            # })
+            vegetarian = 1 if recipe[0]['vegetarian'] is True else 0
+            vegan = 1 if recipe[0]['vegan'] is True else 0
+            glutenFree = 1 if recipe[0]['glutenFree'] is True else 0
+            dairyFree = 1 if recipe[0]['dairyFree'] is True else 0
+            healthy = 1 if recipe[0]['veryHealthy'] is True else 0
+            sustainable = 1 if recipe[0]['sustainable'] is True else 0
+            recipes.append({
+                'id': recipe[0]['id'],
+                'name': recipe[0]['title'],
+                'cook_time': recipe[0]['readyInMinutes'],
+                'servings': recipe[0]['servings'],
+                'summary': recipe[0]['summary'],
+                'image_url': imgUrl,
+                'health_score': recipe[0]['healthScore'],
+                'ww_points': recipe[0]['weightWatcherSmartPoints'],
+                'ingredient_count': len(recipe[0]['extendedIngredients']),
+                'vegetarian': vegetarian,
+                'vegan': vegan,
+                'gluten_free': glutenFree,
+                'dairy_free': dairyFree,
+                'healthy': healthy,
+                'sustainable': sustainable
+            })
 
             #
             # Grab Instructions
@@ -155,89 +158,89 @@ print("Completed gathering")
 # fw.close()
 
 # Create recipe SQL
-# characters = 0
-# file_count = 1
-#
-# try:
-#     fw = open("../infrastructure/database/spoonacular/recipes_1.sql", "w+", encoding="utf-8")
-#     fw.write("INSERT INTO `Recipe` (ID, RecipeName, CookTime, IngredientCount, ImgURL, Servings, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable) VALUES ")
-#     for recipe in recipes:
-#         try:
-#             data = "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}'),\n".format(
-#                 recipe['id'],
-#                 parse_str(recipe['name']),
-#                 recipe['cook_time'],
-#                 recipe['ingredient_count'],
-#                 parse_str(recipe['image_url']),
-#                 recipe['servings'],
-#                 parse_str(recipe['summary']),
-#                 recipe['health_score'],
-#                 recipe['ww_points'],
-#                 recipe['vegetarian'],
-#                 recipe['vegan'],
-#                 recipe['gluten_free'],
-#                 recipe['dairy_free'],
-#                 recipe['healthy'],
-#                 recipe['sustainable']
-#             )
-#
-#             fw.write(data)
-#             characters += len(data)
-#
-#             if characters > 60000:
-#                 characters = 0
-#                 fw.close()
-#                 file_count += 1
-#                 fw = open("../infrastructure/database/spoonacular/recipes_" + str(file_count) + ".sql", "w+")
-#                 fw.write("INSERT INTO `Recipe` (ID, RecipeName, CookTime, IngredientCount, ImgURL, Servings, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable) VALUES ")
-#         except Exception as e:
-#             print(str(e))
-#             print(recipe['id'])
-#
-#     fw.close()
-# except Exception as e:
-#     print(str(e))
+characters = 0
+file_count = 1
+
+try:
+    fw = open("../infrastructure/database/spoonacular/recipes_1.sql", "w+")
+    fw.write("INSERT INTO `Recipe` (ID, RecipeName, CookTime, IngredientCount, ImgURL, Servings, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable) VALUES ")
+    for recipe in recipes:
+        try:
+            data = "('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}'),\n".format(
+                recipe['id'],
+                parse_str(recipe['name']),
+                recipe['cook_time'],
+                recipe['ingredient_count'],
+                parse_str(recipe['image_url']),
+                recipe['servings'],
+                parse_str(recipe['summary']),
+                recipe['health_score'],
+                recipe['ww_points'],
+                recipe['vegetarian'],
+                recipe['vegan'],
+                recipe['gluten_free'],
+                recipe['dairy_free'],
+                recipe['healthy'],
+                recipe['sustainable']
+            )
+
+            fw.write(data)
+            characters += len(data)
+
+            if characters > 60000:
+                characters = 0
+                fw.close()
+                file_count += 1
+                fw = open("../infrastructure/database/spoonacular/recipes_" + str(file_count) + ".sql", "w+")
+                fw.write("INSERT INTO `Recipe` (ID, RecipeName, CookTime, IngredientCount, ImgURL, Servings, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable) VALUES ")
+        except Exception as e:
+            print(str(e))
+            print(recipe['id'])
+
+    fw.close()
+except Exception as e:
+    print(str(e))
 
 
 # # Create recipe ingredients SQL
-# characters = 0
-# file_count = 1
-#
-# try:
-#     fw = open("../infrastructure/database/spoonacular/recipes_list_item_1.sql", "w+", encoding="utf-8")
-#     fw.write("INSERT INTO `RecipeListItem` (RecipeID, IngredientID, Amount, AmountUnitID) VALUES ")
-#     for ingredient in recipe_ingredients:
-#         try:
-#             data = "('{0}', '{1}', '{2}', '{3}'),\n".format(
-#                 ingredient['recipe_id'],
-#                 ingredient['ingredient_id'],
-#                 ingredient['amount'],
-#                 ingredient['unit'],
-#             )
-#
-#             fw.write(data)
-#             characters += len(data)
-#
-#             if characters > 60000:
-#                 characters = 0
-#                 fw.close()
-#                 file_count += 1
-#                 fw = open("../infrastructure/database/spoonacular/recipes_list_item_" + str(file_count) + ".sql", "w+")
-#                 fw.write("INSERT INTO `RecipeListItem` (ID, RecipeID, IngredientID, Amount, AmountUnitID) VALUES ")
-#         except Exception as e:
-#             print(str(e))
-#             print(recipe['id'])
-#
-#     fw.close()
-# except Exception as e:
-#     print(str(e))
+characters = 0
+file_count = 1
+
+try:
+    fw = open("../infrastructure/database/spoonacular/recipes_list_item_1.sql", "w+")
+    fw.write("INSERT INTO `RecipeListItem` (RecipeID, IngredientID, Amount, AmountUnitID) VALUES ")
+    for ingredient in recipe_ingredients:
+        try:
+            data = "('{0}', '{1}', '{2}', '{3}'),\n".format(
+                ingredient['recipe_id'],
+                ingredient['ingredient_id'],
+                ingredient['amount'],
+                ingredient['unit'],
+            )
+
+            fw.write(data)
+            characters += len(data)
+
+            if characters > 60000:
+                characters = 0
+                fw.close()
+                file_count += 1
+                fw = open("../infrastructure/database/spoonacular/recipes_list_item_" + str(file_count) + ".sql", "w+")
+                fw.write("INSERT INTO `RecipeListItem` (ID, RecipeID, IngredientID, Amount, AmountUnitID) VALUES ")
+        except Exception as e:
+            print(str(e))
+            print(recipe['id'])
+
+    fw.close()
+except Exception as e:
+    print(str(e))
 
 # Create recipe instructions SQL
 characters = 0
 file_count = 1
 
 try:
-    fw = open("../infrastructure/database/spoonacular/directions_1.sql", "w+", encoding="utf-8")
+    fw = open("../infrastructure/database/spoonacular/directions_1.sql", "w+")
     fw.write("INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ")
     for instruction in instructions:
         try:
