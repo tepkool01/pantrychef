@@ -1,4 +1,4 @@
-INSERT INTO `Ingredient` (ID, IngredientName, ImageURL) VALUES ('9328', 'maraschino cherries', 'maraschino.jpg'),
+INSERT INTO `Ingredient` (ID, IngredientName, IngredientImgURL) VALUES ('9328', 'maraschino cherries', 'maraschino.jpg'),
 ('93838', 'havarti cheese', 'taleggio-cheese.jpg'),
 ('20409', 'wide egg noodles', 'egg-noodles.jpg'),
 ('99029', 'curacao', 'curacao.jpg'),
@@ -69,7 +69,7 @@ INSERT INTO `Ingredient` (ID, IngredientName, ImageURL) VALUES ('9328', 'marasch
 ('93835', 'skate wings', 'skate-wings.jpg'),
 ('93660', 'quick cooking tapioca', 'tapioca-pearls.png'),
 ('1421111', 'blue food coloring', 'food-coloring.png'),
-('19157', 'candy coated chocolate pieces', 'candy-coated-chocolate-pieces-or-M&M's.jpg'),
+('19157', 'candy coated chocolate pieces', 'candy-coated-chocolate-pieces-or-M&M%27s.jpg'),
 ('98881', 'decorating gel', 'food-coloring.png'),
 ('98886', 'graham flour', 'flour.png'),
 ('18271', 'ice cream cones', 'ice-cream-cone.jpg'),
@@ -715,4 +715,4 @@ INSERT INTO `Ingredient` (ID, IngredientName, ImageURL) VALUES ('9328', 'marasch
 ('10011001', 'broccoli sprouts', 'alfalfa-sprouts.png'),
 ('20113', 'crispy chow mein noodles', 'crispy-chow-mein-noodles.png'),
 ('10098966', 'cooked udon noodles', 'cooked-chinese-noodles.png'),
-('20115', 'cooked soba noodles', 'cooked-soba-noodles.png'),
+('20115', 'cooked soba noodles', 'cooked-soba-noodles.png');
