@@ -40,8 +40,9 @@ CREATE TABLE AmountUnits (
 
 CREATE TABLE Ingredient (
     ID INT NOT NULL AUTO_INCREMENT,
-    IngredientName VARCHAR(50),
-    IngredientType VARCHAR(50),
+    IngredientName VARCHAR(200),
+    IngredientImgURL VARCHAR(255),
+    -- IngredientType VARCHAR(50), -- Remove, who cares if an ingredient is healthy
     PRIMARY KEY (ID)
 );
 
@@ -56,7 +57,7 @@ CREATE TABLE IngredientListItem (
 
 CREATE TABLE ShoppingListItem (
     ID INT NOT NULL AUTO_INCREMENT,
-    UserProfile INT,  
+    UserProfile INT,
     IngredientID INT,
     PRIMARY KEY (ID),
     FOREIGN KEY (UserProfile) REFERENCES UserProfile(ID),
@@ -67,9 +68,19 @@ CREATE TABLE Recipe (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeName VARCHAR(255),
     CookTime INT DEFAULT 0,
-    DietType VARCHAR(10),
+    --DietType VARCHAR(10),
     IngredientCount INT DEFAULT 0,
-    ImgURL VARCHAR(25) DEFAULT ''
+    ImgURL VARCHAR(25) DEFAULT '',
+    Servings INT DEFAULT 0,
+    Summary TEXT DEFAULT '',
+    HealthScore FLOAT,
+    WeightWatcherPoints INT DEFAULT NULL,
+    Vegetarian TINYINT(1) DEFAULT 0,
+    Vegan TINYINT(1) DEFAULT 0,
+    GlutenFree TINYINT(1) DEFAULT 0,
+    DairyFree TINYINT(1) DEFAULT 0,
+    Healthy TINYINT(1) DEFAULT 0,
+    Sustainable TINYINT(1) DEFAULT 0,
     PRIMARY KEY (ID)
 );
 
@@ -77,8 +88,8 @@ CREATE TABLE RecipeListItem (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeID INT,
     IngredientID INT
-    --Amount FLOAT DEFAULT NULL,
-    --AmountUnitID INT DEFAULT NULL,
+    Amount FLOAT DEFAULT NULL,
+    AmountUnitID VARCHAR(255) DEFAULT NULL, -- TODO: Change back to INT after database seed
     PRIMARY KEY (ID),
     FOREIGN KEY (RecipeID) REFERENCES Recipe(ID),
     FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID),
@@ -89,7 +100,7 @@ CREATE TABLE Directions (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeID INT,
     SortOrder INT,
-    Directions VARCHAR(4850),
+    Direction TEXT DEFAULT '',
     PRIMARY KEY (ID),
     FOREIGN KEY (RecipeID) REFERENCES Recipe(ID)
 );
