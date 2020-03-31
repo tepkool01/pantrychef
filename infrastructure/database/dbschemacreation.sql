@@ -26,12 +26,14 @@ CREATE TABLE UserProfile (
     FOREIGN KEY (UserID) REFERENCES User(ID)
 );
 
+-- TODO: Unused
 CREATE TABLE IngredientCategories (
     ID INT NOT NULL AUTO_INCREMENT,
     CategoryName VARCHAR(50),
     PRIMARY KEY (ID)
 );
 
+-- TODO: Unused
 CREATE TABLE AmountUnits (
     ID INT NOT NULL AUTO_INCREMENT,
     UnitName VARCHAR(50),
@@ -42,7 +44,6 @@ CREATE TABLE Ingredient (
     ID INT NOT NULL AUTO_INCREMENT,
     IngredientName VARCHAR(200),
     IngredientImgURL VARCHAR(255),
-    -- IngredientType VARCHAR(50), -- Remove, who cares if an ingredient is healthy
     PRIMARY KEY (ID)
 );
 
@@ -68,11 +69,10 @@ CREATE TABLE Recipe (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeName VARCHAR(255),
     CookTime INT DEFAULT 0,
-    --DietType VARCHAR(10),
     IngredientCount INT DEFAULT 0,
     ImgURL VARCHAR(25) DEFAULT '',
     Servings INT DEFAULT 0,
-    Summary TEXT DEFAULT '',
+    Summary TEXT,
     HealthScore FLOAT,
     WeightWatcherPoints INT DEFAULT NULL,
     Vegetarian TINYINT(1) DEFAULT 0,
@@ -87,20 +87,19 @@ CREATE TABLE Recipe (
 CREATE TABLE RecipeListItem (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeID INT,
-    IngredientID INT
-    Amount FLOAT DEFAULT NULL,
-    AmountUnitID VARCHAR(255) DEFAULT NULL, -- TODO: Change back to INT after database seed
+    IngredientID INT,
+    Amount FLOAT,
+    AmountUnitID VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (ID),
     FOREIGN KEY (RecipeID) REFERENCES Recipe(ID),
-    FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID),
-    --FOREIGN KEY (AmountUnitID) REFERENCES AmountUnits(ID)
+    FOREIGN KEY (IngredientID) REFERENCES Ingredient(ID)
 );
 
 CREATE TABLE Directions (
     ID INT NOT NULL AUTO_INCREMENT,
     RecipeID INT,
     SortOrder INT,
-    Direction TEXT DEFAULT '',
+    Direction TEXT,
     PRIMARY KEY (ID),
     FOREIGN KEY (RecipeID) REFERENCES Recipe(ID)
 );
