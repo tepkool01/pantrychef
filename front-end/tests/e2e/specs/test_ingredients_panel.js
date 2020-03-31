@@ -7,8 +7,8 @@ fixture `Getting Started`
 test('View Recipe test', async t => {
     await t
 
-	.typeText('#login_user_input_box','ecortez1')
-        .typeText('#login_password_input_box','Ericdean1!');
+	.typeText('#login_user_input_box','TestUsername')
+        .typeText('#login_password_input_box','TestPassword1');
 
     await t
         .click('#login_submission_button');
