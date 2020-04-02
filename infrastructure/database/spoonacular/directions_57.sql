@@ -401,4 +401,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6431', '5', '
 ('6533', '4', 'Bake in preheated oven.Fish are done when they flake with a fork, about 30 minutes (watch closely. if your fillets are a little smaller or they are rolled a little bigger, the cooking time will vary).'),
 ('6533', '5', 'Serves 4- 8, depending on the size of your fillets- we serve 2 per person.'),
 ('6534', '1', 'Rinse the rice in a fine strainer.'),
-('6534', '2', 'Combine rice and cooking liquid in a large pan, bring to a boil, reduce heat and simmer for about 30-45 minutes. Be careful not to overcook the rice, you want it to be a little chewy because it will soak up the dressing later. After rice is done cooking, use a fine strainer to rinse rice under cold water.'),
+('6534', '2', 'Combine rice and cooking liquid in a large pan, bring to a boil, reduce heat and simmer for about 30-45 minutes. Be careful not to overcook the rice, you want it to be a little chewy because it will soak up the dressing later. After rice is done cooking, use a fine strainer to rinse rice under cold water.');

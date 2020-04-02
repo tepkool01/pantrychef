@@ -497,4 +497,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('16493', '6', 
 ('16743', '4', 'Cut steak diagonally across the grain into thin slices.'),
 ('16743', '5', 'Combine juice, fish sauce, sugar, and jalapeo in a medium bowl, stirring with a whisk. Reserve 4 teaspoons juice mixture in a small serving bowl.'),
 ('16743', '6', 'Pour remaining juice mixture in a large bowl. add steak, tossing to coat.'),
-('16743', '7', 'Place 1 1/2 ounces beef in center of each lettuce leaf. top each with 2 tablespoons onion, 2 tablespoons mint, 1 tablespoon cucumber, and 1 tablespoon cilantro. Sprinkle evenly with peanuts. roll up.'),
+('16743', '7', 'Place 1 1/2 ounces beef in center of each lettuce leaf. top each with 2 tablespoons onion, 2 tablespoons mint, 1 tablespoon cucumber, and 1 tablespoon cilantro. Sprinkle evenly with peanuts. roll up.');

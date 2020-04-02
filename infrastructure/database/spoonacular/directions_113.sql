@@ -477,4 +477,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('16086', '8', 
 ('16197', '1', 'Preheat oven to 450 degrees.'),
 ('16199', '1', 'Preheat oven to 400F.'),
 ('16199', '2', 'In roasting pan, combine onions, celery, and garlic cloves.'),
-('16199', '3', 'Drizzle with 1 tablespoon oil, toss well to coat, and mound in center of pan. Set lamb atop mixture.'),
+('16199', '3', 'Drizzle with 1 tablespoon oil, toss well to coat, and mound in center of pan. Set lamb atop mixture.');

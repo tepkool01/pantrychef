@@ -486,4 +486,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('28113', '5', 
 ('28385', '2', 'Add zucchini to pan. saut 5 minutes or until tender and golden.'),
 ('28385', '3', 'Remove from pan. cool.'),
 ('28385', '4', 'Place 1/4 cup cooked zucchini, basil, 1/4 cup cheese, pine nuts, and garlic in a food processor. process until finely chopped. (Keep mixture in processor.)'),
-('28385', '5', 'Heat remaining 2 teaspoons oil in a large skillet over medium-high heat.'),
+('28385', '5', 'Heat remaining 2 teaspoons oil in a large skillet over medium-high heat.');

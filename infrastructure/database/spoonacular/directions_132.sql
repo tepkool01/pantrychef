@@ -445,4 +445,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('20413', '12',
 ('20533', '1', 'Bring the water to a boil in a large soup pot and add 5 teaspoons of salt.'),
 ('20533', '2', 'Whisk in the cornmeal in a thin, slow stream. Stir continuously for 2 minutes. Cover and reduce heat to a lively simmer. Stir one minute out of every minutes for a total of forty minutes, then uncover and cook for five more minutes. It should be creamy and thick at this point. Keep it hot until you are ready to assemble the dish, otherwise it will set up.Meanwhile, in a large skillet, heat 2 tablespoons of the olive oil over a medium high flame. Fry the onion and garlic for 1 minute.'),
 ('20533', '3', 'Add the thinly sliced chard stems and saute for 3 minutes.'),
-('20533', '4', 'Add the leaves. It is ok if they are still wet. You may have to add them in batches to get them all in the pot, waiting til the first bunch "melts" a little.'),
+('20533', '4', 'Add the leaves. It is ok if they are still wet. You may have to add them in batches to get them all in the pot, waiting til the first bunch "melts" a little.');

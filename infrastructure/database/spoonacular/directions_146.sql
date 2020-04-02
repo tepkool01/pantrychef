@@ -465,4 +465,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('23805', '1', 
 ('23936', '6', 'Add spice mixture, onion, and pepper. cook 5 minutes or until onion is tender, stirring frequently.'),
 ('23936', '7', 'Add flour. cook 2 minutes, stirring constantly.'),
 ('23936', '8', 'Add water and vegetable broth, scraping pan to loosen browned bits. Cool 5 minutes.'),
-('23936', '9', 'Combine eggplant pulp, garlic pulp, and broth mixture in a blender, and process until smooth. Return the pureed mixture to pan. Bring to a simmer over medium-high heat, and cook 3 minutes, stirring frequently. Stir in balsamic vinegar. Ladle 1 1/2 cups soup into each of 2 bowls. Top each serving with 1 tablespoon yogurt and 1 teaspoon cilantro.'),
+('23936', '9', 'Combine eggplant pulp, garlic pulp, and broth mixture in a blender, and process until smooth. Return the pureed mixture to pan. Bring to a simmer over medium-high heat, and cook 3 minutes, stirring frequently. Stir in balsamic vinegar. Ladle 1 1/2 cups soup into each of 2 bowls. Top each serving with 1 tablespoon yogurt and 1 teaspoon cilantro.');

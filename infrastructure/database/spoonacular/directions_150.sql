@@ -483,4 +483,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('24742', '7', 
 ('25069', '2', 'Place a piece of feta cheese inside each blossom and twist lightly to close.'),
 ('25069', '3', 'Beat the eggs in a bowl.'),
 ('25069', '4', 'Spread the bread crumbs in a shallow bowl. Dip each zucchini in the beaten eggs, then dredge in the bread crumbs.'),
-('25069', '5', 'Set a large rack over a rimmed baking sheet. In each of 2 large skillets, heat 1/3 cup of the olive oil until shimmering. Carefully lay half of the zucchini in each skillet and fry over moderately high heat until crisp and golden, about 1 1/2 minutes per side.'),
+('25069', '5', 'Set a large rack over a rimmed baking sheet. In each of 2 large skillets, heat 1/3 cup of the olive oil until shimmering. Carefully lay half of the zucchini in each skillet and fry over moderately high heat until crisp and golden, about 1 1/2 minutes per side.');

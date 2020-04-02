@@ -498,4 +498,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('34125', '8', 
 ('34275', '6', 'In a medium saucepan of lightly salted boiling water, blanch the lima beans until almost tender, 3 to 5 minutes. Cool under cold running water.'),
 ('34275', '7', 'Drain and reserve.'),
 ('34275', '8', 'In a large heavy nonreactive saucepan, melt the butter over medium heat.'),
-('34275', '9', 'Add the cream. When it begins to steam, add the corn and its pulp and cook for 10 minutes, stirring often until the liquid thickens slightly.'),
+('34275', '9', 'Add the cream. When it begins to steam, add the corn and its pulp and cook for 10 minutes, stirring often until the liquid thickens slightly.');

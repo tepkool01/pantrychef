@@ -481,4 +481,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('20727', '4', 
 ('20866', '8', 'Garnish with remaining sprig of rosemary and serve warm or at room temperature.'),
 ('20872', '1', 'Position 1 rack in top third and 1 rack in bottom third of oven and preheat to 375F. Spray 2 large rimmed baking sheets with nonstick spray. Melt butter with olive oil in small saucepan over medium-low heat.'),
 ('20872', '2', 'Combine red beets, large pinch of thyme, large pinch of savory, and 1 tablespoon melted butter mixture in medium bowl. Sprinkle with salt and pepper and toss to coat. Turn beets out onto 1 side of 1 prepared sheet.'),
-('20872', '3', 'Combine all remaining vegetables and herbs, garlic, and remaining butter mixture in large bowl. Sprinkle generously with salt and pepper and toss to coat. Divide vegetable mixture between prepared baking sheets.'),
+('20872', '3', 'Combine all remaining vegetables and herbs, garlic, and remaining butter mixture in large bowl. Sprinkle generously with salt and pepper and toss to coat. Divide vegetable mixture between prepared baking sheets.');

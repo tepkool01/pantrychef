@@ -451,4 +451,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('15726', '2', 
 ('15875', '2', 'Place each bulb on a piece of aluminum foil. drizzle evenly with 2 tablespoons olive oil, and sprinkle evenly with 1/2 teaspoon salt and 1/2 teaspoon pepper. Fold foil to seal.'),
 ('15875', '3', 'Bake at 425 for 30 minutes. cool. Squeeze pulp from garlic cloves. mash and set aside.'),
 ('15875', '4', 'Whisk together 1/4 cup olive oil, lemon juice, and shallots. brush inside of lamb with half of oil mixture, and sprinkle with 1 teaspoon salt and 1 teaspoon pepper.'),
-('15875', '5', 'Spread inside with mashed garlic, and sprinkle with rosemary, thyme, and lemon rind.'),
+('15875', '5', 'Spread inside with mashed garlic, and sprinkle with rosemary, thyme, and lemon rind.');

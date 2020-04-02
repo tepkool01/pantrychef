@@ -460,4 +460,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('3915', '2', '
 ('4015', '1', 'Whisk yogurt, 2 teaspoons ginger, garlic, curry powder, cumin, and cayenne pepper in medium bowl to blend.'),
 ('4015', '2', 'Add fish and turn to coat evenly. Cover and refrigerate at least 4 hours or overnight, turning fish occasionally.'),
 ('4015', '3', 'Mix cucumber, vinegar, chopped cilantro, and remaining 2 teaspoons ginger in small bowl. Season lightly to taste with pepper. DO AHEAD Relish can be made 4 hours ahead. Cover and refrigerate, stirring occasionally.Prepare barbecue (medium-high heat).'),
-('4015', '4', 'Brush grill rack with olive oil. Scrape off excess yogurt marinade from fish. sprinkle fish with salt and pepper. Grill fish until just opaque in center, about 6 minutes per side.'),
+('4015', '4', 'Brush grill rack with olive oil. Scrape off excess yogurt marinade from fish. sprinkle fish with salt and pepper. Grill fish until just opaque in center, about 6 minutes per side.');

@@ -478,4 +478,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('26015', '1', 
 ('26337', '4', 'Return the water to a boil and add the lobster. Cook over high heat for 13 minutes, just until the lobster turns red. Immediately plunge the lobster into the ice water to cool. Twist off the tail and claws. Crack the shells and remove the meat.'),
 ('26337', '5', 'Cut four  1/2-inch-thick slices from the tail and another 4 from a claw and reserve for garnish. Coarsely chop the remaining lobster.'),
 ('26337', '6', 'In a medium bowl, using the back of a spoon, mash the garlic to a paste with a pinch of salt.'),
-('26337', '7', 'Add the mayonnaise, basil, chives, onion, lemon zest and a generous pinch of pepper. Fold in the chopped lobster and the corn and refrigerate until chilled, about 1 hour.'),
+('26337', '7', 'Add the mayonnaise, basil, chives, onion, lemon zest and a generous pinch of pepper. Fold in the chopped lobster and the corn and refrigerate until chilled, about 1 hour.');

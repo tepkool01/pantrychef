@@ -542,4 +542,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('36877', '6', 
 ('37176', '8', 'b'Bon App\xc3\xa9tit''),
 ('37179', '1', 'b'Shell fresh peas if using. Diagonally cut sugar snaps and/or snow peas into thirds. Finely chop pancetta and shallots separately.''),
 ('37179', '2', 'b'Fill a 6-quart pasta pot three fourths full with salted water and bring to a boil for peas and pasta. Have ready a bowl of ice and cold water.''),
-('37179', '3', 'b'Cook fresh or frozen peas in boiling water until tender, about 2 minutes, and with a slotted spoon transfer to ice water to stop cooking. Cook sugar snaps and/ or snow peas in boiling water until crisp-tender, about 2 minutes, and with slotted spoon transfer to ice water. Reserve water in pot over low heat, covered.''),
+('37179', '3', 'b'Cook fresh or frozen peas in boiling water until tender, about 2 minutes, and with a slotted spoon transfer to ice water to stop cooking. Cook sugar snaps and/ or snow peas in boiling water until crisp-tender, about 2 minutes, and with slotted spoon transfer to ice water. Reserve water in pot over low heat, covered.'');

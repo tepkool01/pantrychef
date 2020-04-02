@@ -435,4 +435,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('3573', '8', '
 ('3662', '1', 'Stir the saffron into the mayonnaise. season with salt and pepper. Toss the watercress, fennel, shallot and lemon juice. season.'),
 ('3662', '2', 'Melt the butter in the oil in a skillet. Season the fish with salt and pepper. cook over high heat for 3 minutes per side.'),
 ('3662', '3', 'Spread the bread with the saffron mayonnaise. sprinkle with paprika. Fill the sandwiches with the fish, peppers, tomato and watercress salad, and serve.'),
-('3663', '1', 'Combine fish and 1/2 cup lime juice in a stainless steel or glass bowl. Cover and refrigerate 30 minutes. (The fish will overcure and have a mushy texture if you exceed 30 minutes.)'),
+('3663', '1', 'Combine fish and 1/2 cup lime juice in a stainless steel or glass bowl. Cover and refrigerate 30 minutes. (The fish will overcure and have a mushy texture if you exceed 30 minutes.)');

@@ -451,4 +451,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('17238', '2', 
 ('17453', '6', 'Brush all over with 1/2 cup oil.'),
 ('17453', '7', 'Grill tomatoes, covered, turning once, until grill marks appear, 2 to 3 minutes per side.'),
 ('17453', '8', 'Transfer to a plate and set aside.'),
-('17453', '9', 'Grill eggplant (in batches if necessary), covered, turning occasionally, until browned all over and tender to the bite, 5 to 8 minutes. Arrange on a large platter.'),
+('17453', '9', 'Grill eggplant (in batches if necessary), covered, turning occasionally, until browned all over and tender to the bite, 5 to 8 minutes. Arrange on a large platter.');

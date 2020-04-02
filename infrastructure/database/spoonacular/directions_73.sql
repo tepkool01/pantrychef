@@ -487,4 +487,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('10172', '6', 
 ('10368', '2', 'Spread the pistachios in a pie plate and toast for about 10 minutes, until fragrant and golden.'),
 ('10368', '3', 'Let cool to room temperature.'),
 ('10368', '4', 'Meanwhile, bring a large saucepan of salted water to a boil.'),
-('10368', '5', 'Add the broccoli rabe and cook until crisp-tender, 2 minutes. Rinse under cold water. Squeeze dry, then transfer to a cutting board and coarsely chop.'),
+('10368', '5', 'Add the broccoli rabe and cook until crisp-tender, 2 minutes. Rinse under cold water. Squeeze dry, then transfer to a cutting board and coarsely chop.');

@@ -423,4 +423,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('1844', '4', '
 ('1940', '1', 'Season the fish fillets with salt and pepper.'),
 ('1940', '2', 'Drizzle them lightly with olive oil, rub them with the sage and thyme, and spread with the lemon zest. Lay a sage leaf and a sprig of thyme on each fillet. Cover with plastic wrap and refrigerate for up to an hour.'),
 ('1940', '3', 'Heat the oven to 400F. In a wide, heavy saut pan, heat the butter and olive oil until very hot.'),
-('1940', '4', 'Add the diced leeks, stir to coat well, and reduce the heat to medium low. Salt them lightly, stir again, and continue to cook slowly until the leeks are soft, about 15 minutes, stirring occasionally and adding a few tablespoons of water if the pan gets too dry or the leeks are browning too much.'),
+('1940', '4', 'Add the diced leeks, stir to coat well, and reduce the heat to medium low. Salt them lightly, stir again, and continue to cook slowly until the leeks are soft, about 15 minutes, stirring occasionally and adding a few tablespoons of water if the pan gets too dry or the leeks are browning too much.');

@@ -495,4 +495,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('31686', '7', 
 ('32005', '10', 'Season the chicken drumettes with salt and pepper and dust generously with flour. Set a rack over a rimmed baking sheet near the stove. Working in batches, fry the drumettes until browned and crisp, about 7 minutes.'),
 ('32005', '11', 'Drain the drumettes on the rack and keep warm on a platter in the oven while you fry the rest. Sprinkle with the chopped peanuts and serve with the kung pao sauce.'),
 ('32006', '1', 'Preheat oven to 400F.'),
-('32006', '2', 'Combine mushrooms, carrots, red peppers and cheese.   Pull away the skin from each drumstick to form a pocket.  Spoon the mushroom mixture evenly into pockets.  Secure with toothpicks.'),
+('32006', '2', 'Combine mushrooms, carrots, red peppers and cheese.   Pull away the skin from each drumstick to form a pocket.  Spoon the mushroom mixture evenly into pockets.  Secure with toothpicks.');

@@ -532,4 +532,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('36640', '9', 
 ('36864', '2', 'Add 2 tablespoons of the oil and heat for 30 seconds.'),
 ('36864', '3', 'Add the steak and stir-fry until cooked through, 3 to 4 minutes.'),
 ('36864', '4', 'Transfer to a plate. Wipe out the pan. Reduce heat to medium-high, add the remaining oil, and heat for 30 seconds.'),
-('36864', '5', 'Add the bell pepper and cook, stirring constantly, for 10 seconds.'),
+('36864', '5', 'Add the bell pepper and cook, stirring constantly, for 10 seconds.');

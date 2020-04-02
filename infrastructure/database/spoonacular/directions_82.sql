@@ -432,4 +432,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('12445', '3', 
 ('12709', '13', 'Bake in a 375 regular or convection oven until fennel is just tender when pierced, about 40 minutes.'),
 ('12709', '14', 'Uncover, dot with remaining cheese, and bake until browned, about 20 minutes. Chop 1/2 cup reserved fennel leaves and sprinkle over casserole.'),
 ('12709', '15', 'Serve hot.'),
-('12719', '1', 'Heat oven to 500 F. Line a baking sheet with 2 layers of foil. In a small bowl, combine the red pepper flakes, olive oil, 1 tablespoon of the honey, and salt and pepper to taste.'),
+('12719', '1', 'Heat oven to 500 F. Line a baking sheet with 2 layers of foil. In a small bowl, combine the red pepper flakes, olive oil, 1 tablespoon of the honey, and salt and pepper to taste.');

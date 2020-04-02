@@ -533,4 +533,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('21984', '9', 
 ('22227', '6', '4 to 5 minutes on each side or until done.'),
 ('22227', '7', 'Serve on buns with bell pepper ketchup and desired toppings.'),
 ('22228', '1', 'Heat the oil in a large nonstick skillet coated with cooking spray over medium heat.'),
-('22228', '2', 'Add the onion, bell pepper, and thyme. cook for 25 minutes or until golden brown, stirring frequently.'),
+('22228', '2', 'Add the onion, bell pepper, and thyme. cook for 25 minutes or until golden brown, stirring frequently.');

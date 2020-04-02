@@ -411,4 +411,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('2584', '5', '
 ('2241', '1', 'Heat oil in a 10 inch cast iron skillet to 350F.'),
 ('2241', '2', 'Combine all (DRY) ingredients in a large bowl.Dip cat fish in cold water, then coat with Dry mix.'),
 ('2241', '3', 'Place Cat fish in hot oil carefully not to burn your self, (do not over crowd fish).Fry till golden brown (about 5 to 10 minutes), remove to drain on paper towels.'),
-('2241', '4', 'Serve with TarTar sauce and lemon wedges on the side.Suggested side dishes, Fried Potatoes& Onions,and Golden Hominy and Hush Puppies.'),
+('2241', '4', 'Serve with TarTar sauce and lemon wedges on the side.Suggested side dishes, Fried Potatoes& Onions,and Golden Hominy and Hush Puppies.');

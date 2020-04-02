@@ -412,4 +412,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('4893', '3', '
 ('4986', '3', 'Add raspberries to pan. cook over medium heat 1 minute, stirring gently.'),
 ('4986', '4', 'Sprinkle fish evenly with salt.'),
 ('4986', '5', 'Place fish, skin sides up, on grill rack coated with cooking spray. grill 4 minutes. Turn fish over. grill 4 minutes or until fish flakes easily when tested with a fork, basting with reserved 2 tablespoons sauce. Spoon raspberry sauce evenly over fillets.'),
-('4987', '1', 'Position a rack in the center of the oven and heat the oven to 450F.'),
+('4987', '1', 'Position a rack in the center of the oven and heat the oven to 450F.');

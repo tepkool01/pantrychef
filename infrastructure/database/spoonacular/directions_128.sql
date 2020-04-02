@@ -512,4 +512,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('19329', '3', 
 ('19617', '1', 'Special equipment: a silpat mat, a muffin tin, and a small drinking glass'),
 ('19617', '2', 'Preheat the oven to 375 degrees F.'),
 ('19635', '1', 'Combine first 8 ingredients in a large Dutch oven over medium-high heat. bring to a boil.'),
-('19635', '2', 'Add chicken. return to a boil. Cover, reduce heat, and simmer 10 minutes, stirring occasionally.'),
+('19635', '2', 'Add chicken. return to a boil. Cover, reduce heat, and simmer 10 minutes, stirring occasionally.');

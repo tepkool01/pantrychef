@@ -482,4 +482,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('23588', '1', 
 ('23804', '8', 'Place basil leaves on bread rounds. Top evenly with cheese, eggplant, and tomato.'),
 ('23804', '9', 'Drizzle with vinegar, and sprinkle with pepper.'),
 ('23804', '10', 'Roll up, and cut diagonally in half.'),
-('23804', '11', 'Serve with salad greens, if desired.'),
+('23804', '11', 'Serve with salad greens, if desired.');

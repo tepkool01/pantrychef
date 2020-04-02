@@ -565,4 +565,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('32831', '9', 
 ('33067', '1', 'Heat oven to 400F.'),
 ('33067', '2', 'Toss vegetables with dressing in large roasting pan.'),
 ('33067', '3', 'Bake 30 min. or until vegetables are tender, stirring after 15 min.'),
-('33067', '4', 'Sprinkle with cheese. bake 2 to 3 min. or until melted.'),
+('33067', '4', 'Sprinkle with cheese. bake 2 to 3 min. or until melted.');

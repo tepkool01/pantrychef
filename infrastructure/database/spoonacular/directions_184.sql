@@ -469,4 +469,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('33518', '2', 
 ('33859', '3', 'Toss hot lentils with tomatoes, scallions, dill, basil, vinegar, oil, pepper, and remaining 1/2 teaspoon salt, or to taste.'),
 ('33863', '1', 'Combine yogurt and cilantro in beaker of an immersion blender. blend until cilantro is finely chopped. Cover yogurt sauce, and chill.'),
 ('33863', '2', 'Heat oil in a large saucepan over medium heat.'),
-('33863', '3', 'Add onion, bell pepper, and garlic. saut 8 minutes or until tender.'),
+('33863', '3', 'Add onion, bell pepper, and garlic. saut 8 minutes or until tender.');

@@ -510,4 +510,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('27865', '8', 
 ('28113', '1', 'Watch how to make this recipe.'),
 ('28113', '2', 'Special equipment: Deep-fryer'),
 ('28113', '3', 'Preheat oil in a deep-fryer to 350 degrees F.'),
-('28113', '4', 'Measure flour into a pie plate. In another pie plate combine panko, Parmesan, parsley, red pepper flakes and salt and pepper, to taste. In a third plate add eggs and water. Dredge the zucchini in the flour, followed by the egg and finally in the panko.'),
+('28113', '4', 'Measure flour into a pie plate. In another pie plate combine panko, Parmesan, parsley, red pepper flakes and salt and pepper, to taste. In a third plate add eggs and water. Dredge the zucchini in the flour, followed by the egg and finally in the panko.');

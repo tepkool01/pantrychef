@@ -478,4 +478,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('34275', '10',
 ('34491', '2', 'Drop noodles into a bowl of very hot water.'),
 ('34491', '3', 'Let sit, stirring occasionally, until soft and clear, about 4 minutes.'),
 ('34491', '4', 'Drain, cut up a bit with scissors, and set aside.'),
-('34491', '5', 'Heat sesame oil and 1 1/2 tsp. vegetable oil in a large frying pan over medium-high heat.'),
+('34491', '5', 'Heat sesame oil and 1 1/2 tsp. vegetable oil in a large frying pan over medium-high heat.');

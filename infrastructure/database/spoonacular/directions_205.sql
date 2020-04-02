@@ -482,4 +482,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('37418', '5', 
 ('37596', '10', 'b'Brush duck with remaining glaze, then broil 3 to 4 inches from heat until skin is bubbling and lightly charred around edges, about 2 minutes more. Keep warm, covered.''),
 ('37596', '11', 'b'Drain noodles, then cook in boiling water 30 seconds. Reserve 1 cup cooking water and drain noodles again.''),
 ('37596', '12', 'b'Add hot noodles, sauce, and scallions to carrots and beans and toss with tongs until well coated with sauce, adding some of reserved cooking liquid to moisten if necessary''),
-('37596', '13', 'b'Add hot noodles, sauce, and scallions to carrots and beans and toss with tongs until well coated with sauce, adding some of reserved cooking liquid to moisten if necessary''),
+('37596', '13', 'b'Add hot noodles, sauce, and scallions to carrots and beans and toss with tongs until well coated with sauce, adding some of reserved cooking liquid to moisten if necessary'');

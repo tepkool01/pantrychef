@@ -472,4 +472,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('12719', '2', 
 ('12932', '6', 'Remove the pork from the oven and transfer the meat to a plate to rest.'),
 ('12932', '7', 'Add the vinegar to the skillet and boil, scraping up brown bits, for about 30 seconds.'),
 ('12932', '8', 'Pour into a heatproof measuring cup, adding the olive oil so that the mixture makes 3/4 cup liquid.  Slowly add the mixture to the food processor with the motor running to make the vinaigrette.'),
-('12932', '9', 'Toss the arugula and endive with dressing to coat, top with the pork and additional dressing, then crumble remaining walnuts on top.'),
+('12932', '9', 'Toss the arugula and endive with dressing to coat, top with the pork and additional dressing, then crumble remaining walnuts on top.');

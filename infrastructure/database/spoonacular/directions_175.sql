@@ -467,4 +467,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('31453', '1', 
 ('31686', '3', 'Add the finely chopped chickpeas and remaining whole chickpeas to the pan and heat through. Stir in the stock and tomatoes. Break up the whole tomatoes and simmer the sauce to thicken a little. Cool and store for make-ahead meal.'),
 ('31686', '4', 'Reheat over moderate heat and stir occasionally.'),
 ('31686', '5', 'Bring water to boil for pasta, salt the water and cook to al dente. Reserve a cup of starchy pasta water just before draining.'),
-('31686', '6', 'Drain the pasta and place back in the hot pot and toss with the sauce and as much starchy water as you need to combine.'),
+('31686', '6', 'Drain the pasta and place back in the hot pot and toss with the sauce and as much starchy water as you need to combine.');

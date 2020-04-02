@@ -452,4 +452,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('20872', '4', 
 ('21001', '21', 'Type_27_data = {}.'),
 ('21001', '22', 'article'),
 ('21001', '23', 'Type_27_data.init_step_by_step_images = 0.'),
-('21002', '1', 'Preheat the oven to 400F. Cook the honey in a large heavy skillet over medium heat until it is thick and dark with large bubbles, about 10 minutes. Stir in the carrots, parsnips, turnips, rutabagas, and onions and cook until the vegetables are deeply glazed, 8 to 10 minutes.'),
+('21002', '1', 'Preheat the oven to 400F. Cook the honey in a large heavy skillet over medium heat until it is thick and dark with large bubbles, about 10 minutes. Stir in the carrots, parsnips, turnips, rutabagas, and onions and cook until the vegetables are deeply glazed, 8 to 10 minutes.');

@@ -758,4 +758,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('7898', '4', '
 ('7975', '516', 'Voss - 1407 South Voss RdWestchase - 11041 Westheimer Rd.Wilcrest - 11145 Westheimer RdKaty - 6601 S. Fry Road'),
 ('7975', '517', 'Plano - 2201 Preston RdCityline - 1411 E. Renner Road'),
 ('7975', '518', 'Alamo Quarry - 255 E. Basse Rd, Ste. 130Vineyard - 18403 Blanco Road'),
-('7975', '519', 'Sugar Land - 15900 Southwest Freeway'),
+('7975', '519', 'Sugar Land - 15900 Southwest Freeway');

@@ -500,4 +500,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('10822', '6', 
 ('11043', '4', 'Place into the refrigerator for about 2 to 3 hours.'),
 ('11043', '5', 'Remove and rinse under cool water. pat dry with paper towels.'),
 ('11043', '6', 'Preheat the oven to 350 degrees F.'),
-('11043', '7', 'On a steady cutting board (place a couple of damp paper towels under it to keep it from moving around), stand the roast up with the bones up and the loin down. With a sharp, thin knife, slice carefully along the bones, separating the eye of the loin from the bones, but leaving the loin still attached on the bottom. Continue butterflying and slowly roll out, creating a large flat surface for the pesto to easily spread on.'),
+('11043', '7', 'On a steady cutting board (place a couple of damp paper towels under it to keep it from moving around), stand the roast up with the bones up and the loin down. With a sharp, thin knife, slice carefully along the bones, separating the eye of the loin from the bones, but leaving the loin still attached on the bottom. Continue butterflying and slowly roll out, creating a large flat surface for the pesto to easily spread on.');

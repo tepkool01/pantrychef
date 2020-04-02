@@ -561,4 +561,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('36864', '6', 
 ('37176', '6', 'Transfer to bowl. Sprinklewith remaining green onions and cilantro.'),
 ('37176', '7', 'Per serving: 331 calories, 14 g fat, 5 g fiber'),
 ('37176', '8', 'Bon Appetit'),
-('37179', '1', 'Shell fresh peas if using. Diagonally cut sugar snaps and/or snow peas into thirds. Finely chop pancetta and shallots separately.'),
+('37179', '1', 'Shell fresh peas if using. Diagonally cut sugar snaps and/or snow peas into thirds. Finely chop pancetta and shallots separately.');

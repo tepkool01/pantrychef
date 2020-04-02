@@ -485,4 +485,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('18693', '9', 
 ('18887', '4', 'Add remaining ingredients. stir to blend. Season with salt and pepper. (Can be made 2 days ahead. Cover and chill.)'),
 ('18889', '1', 'Combine first 6 ingredients in a large bowl, stirring with a whisk.'),
 ('18889', '2', 'Add radicchio, radishes, and apples to bowl. toss gently to coat.'),
-('18889', '3', 'Place about 3/4 cup salad on each of 8 plates. sprinkle each serving with 1 1/2 teaspoons nuts.'),
+('18889', '3', 'Place about 3/4 cup salad on each of 8 plates. sprinkle each serving with 1 1/2 teaspoons nuts.');

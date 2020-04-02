@@ -699,4 +699,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('7336', '10', 
 ('7408', '477', 'Rocky River - 19607 Detroit Road'),
 ('7408', '478', 'Cedar Center - 13998 Cedar Rd.Upper Arlington - 1555 W. Lane AveChagrin - 27249 Chagrin Blvd'),
 ('7408', '479', 'Oklahoma City - 6001 N. Western Ave.Brookside - 1401 E. 41st St.Yale - 9136 South Yale Avenue'),
-('7408', '480', 'Unionville - 3997 Highway 7Square One Mississauga - 155 Square One Drive'),
+('7408', '480', 'Unionville - 3997 Highway 7Square One Mississauga - 155 Square One Drive');

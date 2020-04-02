@@ -368,4 +368,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('3663', '2', '
 ('3775', '2', 'Drain them well, rinse under cold running water and pat them dry with paper towels.'),
 ('3775', '3', 'Remove and discard any bones.For the marinade, combine the vinegar, water, BRUISED WITH A MORTAR AND PESTLE OR WRAPPED IN A TOWEL AND BRUISED WITH A ROLLING PIN the spices, juniper berries, allspice, cloves, peppercorns and bay leaf and place in a 2 to 3 quart saucepan and bring them to a boil over high heat.Reduce the heat to low and simmer uncovered for 5 minutes.Then cool to room temperature.Lay the herring fillets, skin side down, on a board or table.'),
 ('3775', '4', 'Spread 1 teaspoon of mustard evenly on each fillet and scatter 1/2 teaspoon of capers and several onion rings over the mustard.'),
-('3775', '5', 'Cut the dill pickles lengthwise into quarters. if they are much longer than the width of the herring fillets, cut them crosswise into halves.'),
+('3775', '5', 'Cut the dill pickles lengthwise into quarters. if they are much longer than the width of the herring fillets, cut them crosswise into halves.');

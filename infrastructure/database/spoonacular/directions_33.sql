@@ -428,4 +428,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('4015', '5', '
 ('4116', '10', 'Transfer the monkfish to warm plates. Stir the basil into the sauce, taste for salt and pepper and spoon it around the fish on each plate.'),
 ('4116', '11', 'Serve and enjoy!Tags: braising, fish, Molly Stevens'),
 ('4116', '12', 'Categories: Recipes, Seafood'),
-('4117', '1', 'Heat peanut oil in a large sauce pan over medium heat. Stir in chopped onion, and cook until softened and translucent, 3 to 5 minutes.'),
+('4117', '1', 'Heat peanut oil in a large sauce pan over medium heat. Stir in chopped onion, and cook until softened and translucent, 3 to 5 minutes.');

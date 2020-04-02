@@ -464,4 +464,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('23938', '1', 
 ('24150', '4', 'Remove from heat.'),
 ('24150', '5', 'Puree pumpkin mixture in batches (use caution when blending hot liquids) and return to pot. Stir in lemongrass mixture, lime leaves, lime juice, fish sauce, and sugar. Simmer, uncovered, 20 minutes.'),
 ('24150', '6', 'Pour soup through a sieve, discarding solids, and season well with salt and pepper.'),
-('24164', '1', 'Melt margarine in a Dutch oven over medium heat.'),
+('24164', '1', 'Melt margarine in a Dutch oven over medium heat.');

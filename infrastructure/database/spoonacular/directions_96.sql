@@ -484,4 +484,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('9490', '2', '
 ('9663', '5', 'Transfer rounds to lightly floured baking sheet. cover with plastic wrap. Repeat with remaining dough for total of 56 rounds.'),
 ('9663', '6', 'Sprinkle 2 smooth kitchen towels with flour.'),
 ('9663', '7', 'Place 8 pasta rounds on work surface, keeping remaining dough covered with plastic.'),
-('9663', '8', 'Place small bowl of water next to work surface. Spoon 1 teaspoon beet filling onto half of each round. Dip fingertip into water and dampen edge of 1 round. Fold dough over filling, pushing out as much air as possible and pressing edges firmly to seal.'),
+('9663', '8', 'Place small bowl of water next to work surface. Spoon 1 teaspoon beet filling onto half of each round. Dip fingertip into water and dampen edge of 1 round. Fold dough over filling, pushing out as much air as possible and pressing edges firmly to seal.');

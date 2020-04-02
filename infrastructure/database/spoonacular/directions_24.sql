@@ -424,4 +424,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('3017', '4', '
 ('3148', '6', 'Mix soup and water. pour over broccoli.  Sprinkle with half of the cheese.  Top with fish. sprinkle with remaining cheese.'),
 ('3148', '7', 'Bake 30 min. or until fish flakes easily with fork.'),
 ('3149', '1', 'Whisk together the salt, ancho and chili de arbol powders in a bowl. Set aside.'),
-('3149', '2', 'Cut potatoes into 1/4-inch thick slices then cut each slice into 1/4-inch thick fries.'),
+('3149', '2', 'Cut potatoes into 1/4-inch thick slices then cut each slice into 1/4-inch thick fries.');

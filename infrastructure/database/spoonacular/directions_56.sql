@@ -430,4 +430,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6353', '1', '
 ('6431', '1', 'Coarsely grind the leeks, celery, garlic, parsley, cilantro and pepper in a food processor.'),
 ('6431', '2', 'Heat the oil in a wide heavy pot over medium high.'),
 ('6431', '3', 'Add the ground mixture to the pot and saute until all liquids evaporate.'),
-('6431', '4', 'Add to the pot the fish parts wrapped in cheesecloth, canned tomatoes, potatoes, wine, cayenne, cloves, bay leaves, paprika, saffron, salt, and water. Bring to a boil. Reduce the heat to medium and cook, covered for 45 minutes.'),
+('6431', '4', 'Add to the pot the fish parts wrapped in cheesecloth, canned tomatoes, potatoes, wine, cayenne, cloves, bay leaves, paprika, saffron, salt, and water. Bring to a boil. Reduce the heat to medium and cook, covered for 45 minutes.');

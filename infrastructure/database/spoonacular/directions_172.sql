@@ -463,4 +463,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('30672', '3', 
 ('30940', '7', 'Place stuffed blossoms in a 13 x 9-inch baking dish coated with cooking spray.'),
 ('30940', '8', 'Bake at 350 for 15 minutes or until thoroughly heated. Top each bread slice with 1 squash blossom. serve immediately.'),
 ('30942', '1', 'Remove the blossoms from the squash.  In a medium kettle or saucepan, melt the butter.  Saut the scallions until wilted.'),
-('30942', '2', 'Add the reduced stock and bring to a simmer. A dd the blossoms and squash to the stock. Simmer for 10 minutes.'),
+('30942', '2', 'Add the reduced stock and bring to a simmer. A dd the blossoms and squash to the stock. Simmer for 10 minutes.');

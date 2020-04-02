@@ -453,4 +453,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('4117', '2', '
 ('4197', '13', 'Newsletter'),
 ('4197', '14', 'Want to stay up to date? Subscribe to the RSS Feed using the RSS reader of your choice. Might we suggest: amazon   barnes & noble quirk books   buy local amazon   barnes & noble quirk books   buy local'),
 ('4197', '15', 'Featured & Favorites'),
-('4197', '16', 'Strawberry Kiwi Tartletsposted on April 23, 2012 inDesserts'),
+('4197', '16', 'Strawberry Kiwi Tartletsposted on April 23, 2012 inDesserts');

@@ -574,4 +574,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('29348', '3', 
 ('29690', '3', 'Add the onion, and saute until softened, 4 to 5 minutes.'),
 ('29690', '4', 'Add the garlic and broccoli to the skillet, and saute for2 minutes, until the garlic is fragrant and the broccoli haswarmed through. In a medium bowl, stir together the cornbreadmix, milk, cottage cheese, eggs, salt, and 1 cup of thecheddar cheese until smooth, then pour the batter into theskillet over the vegetables and stir to blend. Sprinkle the topof the batter with the remaining cheese.'),
 ('29690', '5', 'Bake the cornbreadin the skillet for about 30 minutes, until it is lightly goldenand a toothpick inserted in the center comes out clean. Cool for5 to 10 minutes, then serve.'),
-('29690', '6', 'Reprinted with permission from Down Home with the Neelys by Patrick and Gina Neely, (C) 2009 Knopf'),
+('29690', '6', 'Reprinted with permission from Down Home with the Neelys by Patrick and Gina Neely, (C) 2009 Knopf');

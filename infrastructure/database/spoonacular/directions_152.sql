@@ -484,4 +484,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('25440', '2', 
 ('25793', '2', 'Whisk in the cornstarch, sugar and pinch of salt and put the pot over medium heat. Slowly stir until the mixture is very thick, about 10 to 15 minutes. Taste for sweetness and salt and adjust, as necessary.'),
 ('25793', '3', 'Pour into small individual serving dishes or 1large serving dish and sprinkle with cinnamon. Cool to room temperature and refrigerate to set up for at least 1 hour.'),
 ('25793', '4', 'Serve cold or at room temperature.'),
-('25794', '1', 'Preheat the oven to 375 degrees F. Butter the bottom and sides of a 3-quart baking dish, and sprinkle the breadcrumbs evenly to coat the bottom and side of the dish.'),
+('25794', '1', 'Preheat the oven to 375 degrees F. Butter the bottom and sides of a 3-quart baking dish, and sprinkle the breadcrumbs evenly to coat the bottom and side of the dish.');

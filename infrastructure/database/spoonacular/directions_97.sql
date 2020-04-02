@@ -506,4 +506,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('9663', '9', '
 ('9906', '4', 'Transfer the chicken to a plate and pour off the fat in the wok.'),
 ('9906', '5', 'Add the remaining 2 tablespoons of oil to the wok.'),
 ('9906', '6', 'Add the ginger and stir-fry  until fragrant, about 30 seconds.'),
-('9906', '7', 'Add the bok choy and snow peas and stir-fry until bright green and crisp-tender, 2 to 3 minutes. Return the chicken and any accumulated juices to the wok. Stir the sauce, then add it to the wok and simmer, stirring, until thickened, about 5 minutes.'),
+('9906', '7', 'Add the bok choy and snow peas and stir-fry until bright green and crisp-tender, 2 to 3 minutes. Return the chicken and any accumulated juices to the wok. Stir the sauce, then add it to the wok and simmer, stirring, until thickened, about 5 minutes.');

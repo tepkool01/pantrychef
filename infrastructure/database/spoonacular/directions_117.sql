@@ -450,4 +450,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('16743', '8', 
 ('16985', '9', 'Remove from oven. let stand 5 minutes before slicing. Spoon sauce over steak, and top with toasted pecans and blue cheese.'),
 ('16992', '1', 'Sprinkle chops evenly with salt and pepper, and place on a wire rack in an aluminum foil-lined broiler pan.'),
 ('16992', '2', 'Stir together butter and next 3 ingredients in a small bowl until blended. Top each chop with 1 rounded Tbsp. butter mixture.'),
-('16992', '3', 'Broil 5 inches from heat 8 to 10 minutes or until a meat thermometer inserted into thickest portion registers 155.'),
+('16992', '3', 'Broil 5 inches from heat 8 to 10 minutes or until a meat thermometer inserted into thickest portion registers 155.');

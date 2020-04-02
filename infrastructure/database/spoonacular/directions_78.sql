@@ -506,4 +506,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('11350', '4', 
 ('11579', '6', 'Add cabbage and 1/2 teaspoon salt and cook, stirring and turning occasionally with tongs, until cabbage is slightly wilted, about 5 minutes.'),
 ('11579', '7', 'Add wine and cook, stirring, until evaporated, about 2 minutes.'),
 ('11579', '8', 'Add chicken broth and simmer, covered, stirring occasionally, until cabbage is very tender, 25 to 30 minutes.'),
-('11579', '9', 'While cabbage simmers, cook pasta in a 6- to 8-quart pot of boiling salted water until al dente. Reserve 1 cup pasta-cooking water, then drain pasta in a colander.'),
+('11579', '9', 'While cabbage simmers, cook pasta in a 6- to 8-quart pot of boiling salted water until al dente. Reserve 1 cup pasta-cooking water, then drain pasta in a colander.');

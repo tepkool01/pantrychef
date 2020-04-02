@@ -550,4 +550,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('32560', '2', 
 ('32831', '5', 'Heat a large skillet over medium-high heat.'),
 ('32831', '6', 'Add oil to pan. swirl to coat.'),
 ('32831', '7', 'Add onion and thyme to pan. saut 4 minutes or until onion is tender, stirring occasionally.'),
-('32831', '8', 'Add mushrooms. saut 10 minutes or until liquid almost evaporates, stirring frequently. Stir in wine, salt, and pepper. cook 2 minutes or until liquid almost evaporates. Stir in flour. cook 1 minute, stirring constantly. Gradually stir in chicken broth. bring to a boil. Cook 1 minute or until thick, stirring constantly.'),
+('32831', '8', 'Add mushrooms. saut 10 minutes or until liquid almost evaporates, stirring frequently. Stir in wine, salt, and pepper. cook 2 minutes or until liquid almost evaporates. Stir in flour. cook 1 minute, stirring constantly. Gradually stir in chicken broth. bring to a boil. Cook 1 minute or until thick, stirring constantly.');

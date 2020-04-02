@@ -447,4 +447,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('8796', '2', '
 ('8947', '1', 'Mix red peppers, olives, thyme, and vinegar in small bowl for relish. (Can be made 1 day ahead. Cover and refrigerate.) Reserve 2 tablespoons goat cheese for garnish.'),
 ('8947', '2', 'Spread remaining goat cheese on toasted baguette slices. Divide arugula among toasts. Fold roast beef slices to fit toasts. place atop arugula. Sprinkle beef slices lightly with salt and pepper. Top each with 1/3 teaspoon reserved goat cheese and small dollop of relish. Arrange crostini on platter and serve.'),
 ('8948', '1', 'Place onions in large resealable plastic bag.'),
-('8948', '2', 'Add vinegar, 1 1/2 cups water, sugar and salt. Seal bag. shake until sugar dissolves. Chill onions in marinade at least 1 day and up to 3 days, turning often.'),
+('8948', '2', 'Add vinegar, 1 1/2 cups water, sugar and salt. Seal bag. shake until sugar dissolves. Chill onions in marinade at least 1 day and up to 3 days, turning often.');

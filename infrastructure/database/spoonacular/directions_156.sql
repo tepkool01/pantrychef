@@ -418,4 +418,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('26481', '4', 
 ('26605', '21', 'Drizzle with crema and garnish with redonion slices and additional chopped cilantro,if desired.'),
 ('26605', '22', '* Available in the produce section of somesupermarkets and at Latin markets.'),
 ('26608', '1', 'In a food processor, puree the tomatillos with the jalapeos, scallions, rosemary, one-fourth of the garlic, 2 tablespoons of the olive oil and 1 tablespoon of the honey.'),
-('26608', '2', 'Pour the puree into a sturdy resealable plastic bag.'),
+('26608', '2', 'Pour the puree into a sturdy resealable plastic bag.');

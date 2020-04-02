@@ -495,4 +495,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('30156', '1', 
 ('30446', '3', 'Add the cream and mash by hand until smooth. Season with salt and pepper and serve.'),
 ('30448', '1', 'Bring a large pot of water to a boil. In a large, deep skillet, heat 2 tablespoons of the olive oil.'),
 ('30448', '2', 'Add the panko and toast until golden, about 1 minute.'),
-('30448', '3', 'Transfer to a plate. Wipe out the skillet and heat the remaining 3 tablespoons of oil.'),
+('30448', '3', 'Transfer to a plate. Wipe out the skillet and heat the remaining 3 tablespoons of oil.');

@@ -469,4 +469,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6258', '1', '
 ('6351', '2', 'Combine buttermilk and hot sauce in a medium bowl. place flour in a shallow dish. Dredge 1 fillet in flour. Dip in buttermilk mixture. dredge in breadcrumb mixture. Repeat procedure with remaining fillets, flour, buttermilk mixture, and breadcrumb mixture.'),
 ('6351', '3', 'Heat 1 1/2 teaspoons oil in a large nonstick skillet over medium-high heat.'),
 ('6351', '4', 'Add 2 fillets. cook 3 minutes on each side or until fish flakes easily when tested with a fork. Repeat procedure with remaining oil and fillets.'),
-('6351', '5', 'Serve with lemon wedges.'),
+('6351', '5', 'Serve with lemon wedges.');

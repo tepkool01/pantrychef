@@ -464,4 +464,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('21163', '11',
 ('21625', '1', 'Combine ingredients.'),
 ('21626', '1', 'Peel and seed papayas. cut lengthwise into 1/2-inch-thick slices. Peel and rinse jicama. cut into matchstick- size strips about 1/8 inch thick and 3 inches long. Pit and peel avocados. cut lengthwise into thin slices.'),
 ('21626', '2', 'In a small pitcher or bowl, mix orange juice, lime juice, rice vinegar, and salt.'),
-('21626', '3', 'Arrange papaya and avocado slices on a rimmed platter. Top with jicama and drizzle with sour orange dressing.'),
+('21626', '3', 'Arrange papaya and avocado slices on a rimmed platter. Top with jicama and drizzle with sour orange dressing.');

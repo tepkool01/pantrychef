@@ -456,4 +456,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('14262', '4', 
 ('14500', '3', 'Add stock and bring to a boil. Reduce heat to a simmer and cook 18 minutes, fluff with fork and stir in Camembert to melt.'),
 ('14500', '4', 'While the rice cooks, heat 2 tablespoons extra-virgin olive oil in a large skillet over medium high heat. Season the chicken with salt and pepper and dredge chicken lightly in flour and shake off any excess. Brown chicken 3 to 4 minutes on each side.'),
 ('14500', '5', 'Remove chicken and reduce heat a little and melt in remaining 2 tablespoons butter.'),
-('14500', '6', 'Saute the shallots 3 minutes until soft but not browned.'),
+('14500', '6', 'Saute the shallots 3 minutes until soft but not browned.');

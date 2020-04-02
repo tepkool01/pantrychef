@@ -409,4 +409,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('9234', '4', '
 ('9389', '1', 'Peel the beets. grate them coarsely (or chop into small dice).'),
 ('9389', '2', 'Heat the oil in a large pan. saute the onion a few minutes, until soft.'),
 ('9389', '3', 'Add the beets and the stock. bring to a boil.'),
-('9389', '4', 'Season lightly with salt and pepper. gently simmer 7 to 10 minutes, until beets are tender. Stir in the tomato sauce, transfer to a blender, and process until smooth. Taste and adjust seasoning if need be.'),
+('9389', '4', 'Season lightly with salt and pepper. gently simmer 7 to 10 minutes, until beets are tender. Stir in the tomato sauce, transfer to a blender, and process until smooth. Taste and adjust seasoning if need be.');

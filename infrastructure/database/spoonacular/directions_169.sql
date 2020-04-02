@@ -477,4 +477,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('29909', '2', 
 ('30154', '3', 'Add the chicken and cook over moderately high heat, turning once, until golden and crispy, about 3 minutes per side.'),
 ('30154', '4', 'Transfer the chicken to a paper towel-lined baking sheet and sprinkle with salt, then transfer to plate.'),
 ('30154', '5', 'Meanwhile, in a small saucepan, melt the butter and cook over moderately high heat until browned and nutty, about 4 minutes. Stir in the capers, lemon juice and parsley. spoon over the chicken and serve.'),
-('30155', '1', 'Combine all of the ingredients in a medium bowl, stir well and serve right away.'),
+('30155', '1', 'Combine all of the ingredients in a medium bowl, stir well and serve right away.');

@@ -488,4 +488,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('25069', '6', 
 ('25435', '4', 'Meanwhile, heat the remaining oil in a small skillet over medium heat.'),
 ('25435', '5', 'Add the mushrooms, onion, and remaining salt and cook until lightly golden, 4 to 5 minutes. Set aside.'),
 ('25435', '6', 'Cut the pizza and serve it topped with the mushrooms and onion, and Parmesan.'),
-('25440', '1', 'Preheat the oven to 400F (200C). Arrange the zucchini, cut sides up, in an ovenproof dish large enough to hold them in a single layer. Lightly brush with the olive oil. Season with the salt and pepper.'),
+('25440', '1', 'Preheat the oven to 400F (200C). Arrange the zucchini, cut sides up, in an ovenproof dish large enough to hold them in a single layer. Lightly brush with the olive oil. Season with the salt and pepper.');

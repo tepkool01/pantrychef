@@ -387,4 +387,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('2368', '5', '
 ('2765', '1', 'In a large skillet, heat the olive oil.'),
 ('2765', '2', 'Add the garlic and chile and cook over moderately low heat until fragrant, about 3 minutes.'),
 ('2765', '3', 'Add the tomatoes and cook over moderate heat until thickened, about 10 minutes. Stir in the tomato paste and water and simmer for 2 minutes longer.'),
-('2765', '4', 'Add the tarragon and season with salt.'),
+('2765', '4', 'Add the tarragon and season with salt.');

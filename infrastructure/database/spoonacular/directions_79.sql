@@ -424,4 +424,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('11579', '10',
 ('11866', '2', 'Cut 1/2" off the top. trim dark greenparts around stem and heart. Slice lengthwise very thinly andtoss in dressing. Repeat with remaining artichokes.'),
 ('11866', '3', 'Mix in celeryand remaining ingredients. Season with salt and pepper.'),
 ('11866', '4', 'Transfer toa platter and top with cheese.'),
-('11868', '1', 'Peel celery roots and cut into 1-in. pieces. Put in a large pot. Scrub potatoes and cut into 2-in. pieces. add them to pot with celery roots. Cover vegetables with cold water and bring to a boil.'),
+('11868', '1', 'Peel celery roots and cut into 1-in. pieces. Put in a large pot. Scrub potatoes and cut into 2-in. pieces. add them to pot with celery roots. Cover vegetables with cold water and bring to a boil.');

@@ -401,4 +401,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('3387', '1', '
 ('3466', '1', 'Preheat oven to 40'),
 ('3466', '2', 'In a small bowl, whisk curry paste, gradually adding coconut milk.'),
 ('3466', '3', 'Transfer 1/2 cup sauce to another bowl. set bowls aside.'),
-('3466', '4', 'Toast almonds in a small saucepan over medium heat until golden, 3 minutes. Stir in rice, reserved 1/2 cup sauce, 1/2 cup water, the coconut, and 1/2 tsp. salt. Bring to a boil, then reduce heat and simmer, covered, until rice is tender, 16 to 18 minutes.'),
+('3466', '4', 'Toast almonds in a small saucepan over medium heat until golden, 3 minutes. Stir in rice, reserved 1/2 cup sauce, 1/2 cup water, the coconut, and 1/2 tsp. salt. Bring to a boil, then reduce heat and simmer, covered, until rice is tender, 16 to 18 minutes.');

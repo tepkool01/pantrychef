@@ -782,4 +782,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('4858', '4', '
 ('4892', '4', 'Cut meat into long, thin slices, discarding skin.'),
 ('4892', '5', 'Serve with dark pumpernickel bread slices, flatbread crackers, crme frache, chopped red onion, fresh dill, and cracked black pepper.'),
 ('4893', '1', 'Put the water into a straight sided skillet or pot with a lid.'),
-('4893', '2', 'Add 3 of the lime halves (squeezing the juice into the water before adding), 5 tablespoons of the honey, the ginger, salt and peppercorns and bring to a boil over medium-high heat. Reduce the heat to a simmer, cover, and cook for 10 minutes to infuse the water with flavors.'),
+('4893', '2', 'Add 3 of the lime halves (squeezing the juice into the water before adding), 5 tablespoons of the honey, the ginger, salt and peppercorns and bring to a boil over medium-high heat. Reduce the heat to a simmer, cover, and cook for 10 minutes to infuse the water with flavors.');

@@ -512,4 +512,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('29693', '1', 
 ('29908', '5', 'Position rack 6 inches below broiler and preheat broiler.'),
 ('29908', '6', 'Brush 2 baking sheets with oil. Arrange crab cakes on baking sheets, spacing evenly. Broil until golden brown and cooked through, about 3 minutes per side. (Can be cooked 30 minutes before serving. Keep warm in 300F. oven.)'),
 ('29908', '7', 'Transfer crab cakes to platter. Top each with dollop of sauce and basil sprig.'),
-('29909', '1', 'Watch how to make this recipe.'),
+('29909', '1', 'Watch how to make this recipe.');

@@ -505,4 +505,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('13520', '2', 
 ('13867', '4', 'Add salt, then add the fusilli and cook until al dente. drain.'),
 ('13867', '5', 'Add the fusilli to the sauce along with the Asiago and watercress. Toss the pasta with the sauce and serve.'),
 ('13868', '1', 'Watch how to make this recipe.'),
-('13868', '2', 'Remove the steaks from the refrigerator 30 minutes before cooking and let sit at room temperature.'),
+('13868', '2', 'Remove the steaks from the refrigerator 30 minutes before cooking and let sit at room temperature.');

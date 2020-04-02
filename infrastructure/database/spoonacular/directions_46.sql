@@ -441,4 +441,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('5277', '5', '
 ('5398', '1', 'In a large pot, warm oil over medium heat.'),
 ('5398', '2', 'Add onion and celery and cook, stirring, until soft, about 5 minutes. Sprinkle flour over vegetables and saut for 1 minute.'),
 ('5398', '3', 'Stir in potatoes, clam juice, broth and 2 cups of water. Bring just to a boil, reduce heat to medium-low and cook until potatoes are tender, about 12 minutes.'),
-('5398', '4', 'Stir in half-and-half and shrimp and cook until heated through, about 5 minutes. Season with salt and pepper and serve hot.'),
+('5398', '4', 'Stir in half-and-half and shrimp and cook until heated through, about 5 minutes. Season with salt and pepper and serve hot.');

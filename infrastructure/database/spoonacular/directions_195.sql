@@ -481,4 +481,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('36295', '4', 
 ('36453', '8', 'Add rice. saut 1 minute. Stir in squash, broth mixture, wine, chopped thyme, salt, and pepper. cook 5 minutes, stirring occasionally.'),
 ('36453', '9', 'Place rice mixture in a 13 x 9-inch baking dish coated with cooking spray.'),
 ('36453', '10', 'Bake at 400 for 30 minutes. Stir mixture gently. Sprinkle with cheese. bake an additional 5 minutes or until cheese melts.'),
-('36453', '11', 'Garnish with fresh thyme sprigs, if desired.'),
+('36453', '11', 'Garnish with fresh thyme sprigs, if desired.');

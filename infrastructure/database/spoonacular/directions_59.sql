@@ -413,4 +413,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6639', '9', '
 ('6739', '3', 'Transfer to a plate and top with the vegetable salsa and garnish with the mint.Vegetable-Mint Salsa'),
 ('6739', '4', 'Makes 1-2 cups'),
 ('6739', '5', 'Ingredients large cucumber, seeds removed, cut into -inch dice (about 1 cup)4 radishes, trimmed and cut into -inch dice (1/2 cup) red pepper, cut into -inch dice (1/2 cup) cup packed fresh mint leaves, plus more for garnish1/2 teaspoon sugarred pepper flakes1 clove garlic, pureed with salt2 scallions, white and green parts thinly sliced teaspoon neutral oil, such as grapeseed or safflower teaspoon sesame oil (optional)1  tablespoons lime juice.'),
-('6739', '6', 'Combine all the salsa ingredients in a bowl (except the mint for garnish) and mix well. Cover and place in the refrigerator for at least 1 hour and up to 2.'),
+('6739', '6', 'Combine all the salsa ingredients in a bowl (except the mint for garnish) and mix well. Cover and place in the refrigerator for at least 1 hour and up to 2.');

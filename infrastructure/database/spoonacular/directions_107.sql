@@ -499,4 +499,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('14820', '6', 
 ('15188', '6', 'Serve soup with hunks of crusty bread and butter.'),
 ('15188', '7', 'Cook''s Note: If you are in Mystic, ask for cherise (phonetic pronunciation), if you want to sample the chourico.'),
 ('15195', '1', 'Heat a large saucepan over medium-high heat.'),
-('15195', '2', 'Add smoked sausage to pan. cook 2 minutes, stirring occasionally.'),
+('15195', '2', 'Add smoked sausage to pan. cook 2 minutes, stirring occasionally.');

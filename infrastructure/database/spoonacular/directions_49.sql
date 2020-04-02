@@ -500,4 +500,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('5647', '6', '
 ('5771', '4', 'Heat a large frying pan over medium high heat.'),
 ('5771', '5', 'Add oil. Once hot, toss in shrimp.Cook 4 to 5 minutes until pink, turning once or twice.'),
 ('5771', '6', 'Remove from pan and set aside.'),
-('5771', '7', 'Add 1 teaspoon of chili oil and garlic, ginger and scallion whites. Cook, stirring constantly, for 20 seconds. Toss in mango, tomato, coconut milk and salt. Squeeze lime juice in and stir. Cook, stirring occasionally and scrapping bottom of frying pan for 5 to 7 minutes.'),
+('5771', '7', 'Add 1 teaspoon of chili oil and garlic, ginger and scallion whites. Cook, stirring constantly, for 20 seconds. Toss in mango, tomato, coconut milk and salt. Squeeze lime juice in and stir. Cook, stirring occasionally and scrapping bottom of frying pan for 5 to 7 minutes.');

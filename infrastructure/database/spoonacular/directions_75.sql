@@ -527,4 +527,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('10594', '6', 
 ('10822', '2', 'Quarter or mince the Brussels sprouts, unless they are very small, in which case leave them whole.'),
 ('10822', '3', 'Melt the butter in a large skillet.'),
 ('10822', '4', 'Add the Brussels sprouts and sprinkle lightly with salt. Stir, cover, and cook over medium heat until quite tender (8 to 10 minutes).'),
-('10822', '5', 'When they are done to your liking, transfer them to a serving bowl or small platter, and pour the sauce over the top.'),
+('10822', '5', 'When they are done to your liking, transfer them to a serving bowl or small platter, and pour the sauce over the top.');
