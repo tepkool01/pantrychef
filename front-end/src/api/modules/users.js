@@ -2,24 +2,11 @@ import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 import axios from "axios";
 
-//TODO: move this to a better place
-const UserPoolId = 'us-east-1_FfJ4ffeia'
-const ClientId = '2lk7bjr0akm1ncuo8i8piqv33g'
-
 const poolData = {
-	UserPoolId: UserPoolId,
-	ClientId: ClientId
-}
-
-let userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData)
-
-//TODO: Fix this location
-function setupCongnitoUser(username) {
-	return new AmazonCognitoIdentity.CognitoUser({
-		Username: username,
-		Pool: userPool
-	})
-}
+	UserPoolId: 'us-east-1_FfJ4ffeia',
+	ClientId: '2lk7bjr0akm1ncuo8i8piqv33g'
+};
+const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 export default {
 	getUserInfo() {
@@ -31,11 +18,9 @@ export default {
 	logout() {
 		this.getUser().signOut()
 	},
-	//TODO: Fix this location
 	getUser() {
 		return userPool.getCurrentUser()
 	},
-
 	getUserSession() {
 		return new Promise((resolve, reject) => {
 			this.getUser().getSession((err, session) => {
@@ -59,7 +44,7 @@ export default {
 	},
 
 	forgotPassword(username) {
-		let cognitoUser = setupCongnitoUser(username)
+		let cognitoUser = this.setupCognitoUser(username)
 		return new Promise((resolve, reject) => {
 			cognitoUser.forgotPassword( {
 				onSuccess: function (data) {
@@ -75,7 +60,7 @@ export default {
 		})
 	},
 	forgotPasswordVerification(username, code, newPassword) {
-		let cognitoUser = setupCongnitoUser(username)
+		let cognitoUser = this.setupCognitoUser(username)
 		return new Promise((resolve, reject) => {
 			cognitoUser.confirmPassword(code, newPassword, {
 				onSuccess: function (data) {
@@ -89,7 +74,7 @@ export default {
 	},
 
 	updatePassword(username, newPassword, oldPassword) {
-		let cognitoUser = setupCongnitoUser(username)
+		let cognitoUser = this.setupCognitoUser(username)
 		return new Promise((resolve, reject) => {
 			cognitoUser.changePassword(oldPassword, newPassword, function(
 				err,
@@ -134,36 +119,12 @@ export default {
 		let authenticationData = {
 			Username: username,
 			Password: password
-		}
-		let authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
-			authenticationData
-		)
-		let cognitoUser = setupCongnitoUser(username)
+		};
+		let authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+		let cognitoUser = this.setupCognitoUser(username);
 		return new Promise((resolve, reject) => {
 			cognitoUser.authenticateUser(authenticationDetails, {
-				onSuccess: function(result) {
-					// eslint-disable-next-line no-unused-vars
-					AWS.config.region = 'us-east-1'
-					AWS.config.credentials = new AWS.CognitoIdentityCredentials(
-						{
-							IdentityPoolId:
-								'us-east-1:d7ab3904-42a7-4f17-967d-0877b9ff6fed', // your identity pool id here
-							Logins: {
-								// Change the key below according to the specific region your user pool is in.
-								'cognito-idp.us-east-1.amazonaws.com/us-east-1_DEgBJUPlO': result
-									.getIdToken()
-									.getJwtToken()
-							}
-						}
-					)
-
-					//refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
-					// todo: actually needed?
-					AWS.config.credentials.refresh(error => {
-						if (error) {
-							reject(error)
-						}
-					})
+				onSuccess (result) {
 					resolve({
 						userId: cognitoUser.getUsername(),
 						accessToken: result.getAccessToken().getJwtToken(),
@@ -172,17 +133,17 @@ export default {
 					})
 				},
 
-				onFailure: function(err) {
+				onFailure (err) {
 					reject(err.message)
 				},
 
-				newPasswordRequired: function(userAttributes) {
+				newPasswordRequired (userAttributes) {
 					// User was signed up by an admin and must provide new
 					// password and required attributes, if any, to complete
 					// authentication.
 
 					// the api doesn't accept this field back
-					delete userAttributes.email_verified
+					delete userAttributes.email_verified;
 
 					//TODO: write code here for actual use case.
 					// store userAttributes on global letiable
@@ -193,6 +154,12 @@ export default {
 					)
 				}
 			})
+		})
+	},
+	setupCognitoUser(username) {
+		return new AmazonCognitoIdentity.CognitoUser({
+			Username: username,
+			Pool: userPool
 		})
 	}
 }

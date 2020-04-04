@@ -54,23 +54,23 @@ const actions = {
 		api.users.updateUser(payload)
 	},
 	login({ commit }, payload) {
+		console.log(">>login()");
 		return new Promise((resolve, reject) => {
-			api.users
-				.authenticate(payload.username, payload.password)
+			api.users.authenticate(payload.username, payload.password)
 				.then(result => {
-					commit('AUTHENTICATE', result)
-					resolve(true)
+					commit('AUTHENTICATE', result);
+					resolve(true);
 				})
 				.catch(err => {
-					reject(err)
+					reject(err);
 				})
 		})
 	},
 
 	getSession({ commit }) {
+		console.log(">>getSession()");
 		return new Promise((resolve, reject) => {
-			api.users
-				.getUserSession()
+			api.users.getUserSession()
 				.then(response => {
 					commit('AUTHENTICATE', response)
 					resolve(response)
