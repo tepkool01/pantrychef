@@ -32,7 +32,6 @@ const routes = [
 		name: 'pantry',
 		component: () => import('../views/Pantry.vue'),
 		beforeEnter(to, from, next) {
-			console.log(from);
 			if (from.name !== 'home') {
 				// Performed a login, don't do a getSession
 				// Get session in case they refreshed the page

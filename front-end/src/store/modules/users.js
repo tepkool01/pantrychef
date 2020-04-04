@@ -67,7 +67,6 @@ const actions = {
 	},
 
 	getSession({ commit }) {
-		console.log(">>getSession()");
 		return new Promise((resolve, reject) => {
 			api.users.getUserSession()
 				.then(response => {
@@ -121,7 +120,6 @@ const actions = {
 	},
 	logout({ commit, state }) {
 		if (state.user.cognitoUser) {
-			console.log("Signing out.....");
 			state.user.cognitoUser.signOut();
 			commit('LOGOUT');
 		}
