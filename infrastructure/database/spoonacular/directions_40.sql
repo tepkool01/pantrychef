@@ -459,4 +459,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('4753', '2', '
 ('4856', '7', 'Drain and immediately rinse with cold water. Using a sharp knife slice the snap peas lengthwise into thin strips. Mince the mint and add it to the slaw along with the peanuts. When you''re ready to serve it dress the slaw with the fish sauce and vinegar (if you do it too early the vinegar will discolor the peas and mint).When the salmon is done just plate each fillet and cover with the sauce. It goes nicely with some jasmine rice.'),
 ('4858', '1', 'Roasted Salmon Stuffed with Spinach, Feta and Ricotta | Whole Foods Market'),
 ('4858', '2', 'Skip to main content'),
-('4858', '3', 'Whole Foods Market'),
+('4858', '3', 'Whole Foods Market');

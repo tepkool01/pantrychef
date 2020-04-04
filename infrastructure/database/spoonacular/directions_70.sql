@@ -471,4 +471,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('7743', '5', '
 ('7894', '1', 'In a bowl combine celery, tomatoes, chick peas, onions, parsley and olives. Flake tuna and add to the salad. Dress salad with juice of 2 lemons and about 1/3 cup olive oil. Season the salad with salt and pepper and toss.'),
 ('7898', '1', 'Add the tuna in a food processor and pulse to grind.'),
 ('7898', '2', 'Put the tuna in bowl and stir in the chives, tamari, garlic, and black pepper, to taste.'),
-('7898', '3', 'Add the panko crumbs and sesame seeds to a shallow dish. Form the tuna mixture into 8 small patties and roll in the bread crumbs.'),
+('7898', '3', 'Add the panko crumbs and sesame seeds to a shallow dish. Form the tuna mixture into 8 small patties and roll in the bread crumbs.');

@@ -24,4 +24,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('37969', '4', 
 ('37979', '2', 'b'Preheat the oven to 400 degrees F.''),
 ('37979', '3', 'b'If the stalks of the asparagus are thick, peel the bottom 1/2 of each. Lay them in a single layer on a sheet pan and drizzle with olive oil. Sprinkle with salt and pepper. Roast for 15 to 20 minutes, until tender. Sprinkle with the Parmesan and return to the oven for another minute.''),
 ('37979', '4', 'b'Serve with lemon wedges.''),
-('37982', '1', 'b'Heat the oil in a pan and lightly toast the tortillas.Divide the tortillas between two plates and top with the beans followed by the asparagus, salsa verde, eggs, queso fresco, avocado and cilantro.''),
+('37982', '1', 'b'Heat the oil in a pan and lightly toast the tortillas.Divide the tortillas between two plates and top with the beans followed by the asparagus, salsa verde, eggs, queso fresco, avocado and cilantro.'');

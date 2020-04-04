@@ -480,4 +480,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('400', '10', '
 ('499', '1', 'To make dressing, process first 10 ingredients in a blender until smooth.'),
 ('499', '2', 'Arrange greens and tomatoes on a platter.'),
 ('499', '3', 'Serve with dressing.'),
-('504', '1', 'Pre heat the oven to 450Lay the pastry sheet onto some parchment and roll out to get rid of the creases. Score a border around the edge and prick the pastry in the middle with a fork.'),
+('504', '1', 'Pre heat the oven to 450Lay the pastry sheet onto some parchment and roll out to get rid of the creases. Score a border around the edge and prick the pastry in the middle with a fork.');

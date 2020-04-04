@@ -481,4 +481,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('22403', '1', 
 ('22659', '1', 'Pierce mirlitons with a fork.'),
 ('22659', '2', 'Place in a Dutch oven. cover with water. Bring to a boil over high heat. reduce heat, and simmer 30 minutes or until tender.'),
 ('22659', '3', 'Drain and cool.'),
-('22659', '4', 'Cut mirlitons in half lengthwise. discard seeds. Scoop out pulp, leaving a 1/4-inch-thick shell. Chop pulp. place in a large bowl.'),
+('22659', '4', 'Cut mirlitons in half lengthwise. discard seeds. Scoop out pulp, leaving a 1/4-inch-thick shell. Chop pulp. place in a large bowl.');

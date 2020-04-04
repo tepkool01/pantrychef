@@ -668,4 +668,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6858', '1', '
 ('6929', '401', 'DePaul - 959 West Fullerton Avenue'),
 ('6929', '402', 'Gold Coast - 30 West Huron StHalsted and Waveland - 3640 N Halsted StLakeview - 3300 N. Ashland AveLincoln Park - 1550 N. Kingsbury Street'),
 ('6929', '403', 'Sauganash - 6020 N Cicero AveSouth Loop - 1101 S. Canal StStreeterville - 255 E. Grand AveWest Loop - 1 N. Halsted Street'),
-('6929', '404', 'Deerfield - 760 Waukegan RdElmhurst - 215 S. IL Rte 83Downtown Evanston - 1640 Chicago AveEvanston South - 1111 Chicago Ave.Green Bay Road - 2748 Green Bay Road'),
+('6929', '404', 'Deerfield - 760 Waukegan RdElmhurst - 215 S. IL Rte 83Downtown Evanston - 1640 Chicago AveEvanston South - 1111 Chicago Ave.Green Bay Road - 2748 Green Bay Road');

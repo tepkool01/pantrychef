@@ -535,4 +535,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('7975', '520',
 ('10172', '2', 'Cut the chicken into 1/2-inch pieces and season all over with salt, to taste, and the five-spice powder.'),
 ('10172', '3', 'In a large saute pan with high sides over medium-high heat, add the peanut oil.'),
 ('10172', '4', 'When the oil is hot, add the whole garlic cloves and chile and saute until they are just starting to blacken.'),
-('10172', '5', 'Remove and discard the garlic and chile, leaving the flavored oil.'),
+('10172', '5', 'Remove and discard the garlic and chile, leaving the flavored oil.');

@@ -445,4 +445,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6534', '3', '
 ('6639', '5', 'Remove fish from marinade, discarding marinade. Sprinkle fish with salt, cumin, and black pepper. place fish on a broiler pan coated with cooking spray. Broil 5 minutes on each side or until fish flakes easily when tested with a fork.'),
 ('6639', '6', 'To prepare rice, heat oil in a medium saucepan over medium-high heat.'),
 ('6639', '7', 'Add onion. saut until tender.'),
-('6639', '8', 'Add rice. cook 2 minutes, stirring frequently.'),
+('6639', '8', 'Add rice. cook 2 minutes, stirring frequently.');

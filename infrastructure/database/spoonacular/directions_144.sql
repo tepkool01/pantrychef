@@ -469,4 +469,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('23384', '4', 
 ('23586', '1', 'Using a whisk, combine the soy sauce, honey, sesame oil, sherry, ginger, and crushed red pepper.'),
 ('23586', '2', 'Light a charcoal grill and allow the coals to burn until covered with gray ash or heat a gas grill to medium.'),
 ('23586', '3', 'Brush the cut sides of the eggplant wedges with the marinade and place on grill. Grill 5 minutes.'),
-('23586', '4', 'Brush the romaine and tomatoes and place on grill. Baste the eggplant and turn and cook until all the vegetables are fork-tender, about 10 minutes more.'),
+('23586', '4', 'Brush the romaine and tomatoes and place on grill. Baste the eggplant and turn and cook until all the vegetables are fork-tender, about 10 minutes more.');

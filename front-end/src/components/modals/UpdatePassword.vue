@@ -7,7 +7,7 @@
 		<div>
 			<label>{{userId}}</label>
 			<div class="form-group">
-				<label for="verify-password">Verify current password</label>
+				<label id="update_password_modal_verify_input" for="verify-password">Verify current password</label>
 				<input
 						v-model="user.oldpassword"
 					class="form-check"
@@ -17,7 +17,7 @@
 				/>
 			</div>
 			<div class="form-group">
-				<label for="new-password">New password</label>
+				<label id="update_password_modal_password_input" for="new-password">New password</label>
 				<input
 						v-model="user.password"
 					class="form-check"
@@ -27,7 +27,7 @@
 				/>
 			</div>
 			<div class="form-group">
-				<label for="new-repassword">Confirm password</label>
+				<label id="update_password_modal_repassword_input" for="new-repassword">Confirm password</label>
 				<input
 						v-model="user.repassword"
 					class="form-check"

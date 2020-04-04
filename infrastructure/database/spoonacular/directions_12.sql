@@ -489,4 +489,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('2076', '4', '
 ('2181', '7', 'Fry the garlic in the hot skillet, but do not burn.'),
 ('2181', '8', 'Add the coated catfish filets and cook for 5 to 7 minutes on each side, sprinkling salt on the fish after each turn. Cook until golden brown and fish flakes easily with a fork.'),
 ('2181', '9', 'Drain on paper towels.'),
-('2182', '1', 'Preheat oven to 45'),
+('2182', '1', 'Preheat oven to 45');

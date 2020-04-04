@@ -389,4 +389,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('3775', '6', '
 ('3913', '1', 'In the large skillet, heat the olive oil and cook the onions over medium-high heat for about 2 minutes.'),
 ('3913', '2', 'Add the garlic and the remaining vegetables and cook for about 2 minutes, just until the vegetables start to glisten.'),
 ('3913', '3', 'Add the wine and lemon juice and stir.Pat the mahi-mahi fillets dry with paper towels and lay on top of the vegetables. Salt and pepper the top side of the fillets to taste.Cover and cook 4 to 5 minutes. Turn the fillets over and salt and pepper side to taste. Cook another 4 to 5 minutes or until the fish flakes easily. Squeeze some more lemon juice on top and serve immediately.'),
-('3915', '1', 'Combine herbs, walnuts and breadcrumbs in the food processor and pulse until finely chopped and well mixed.'),
+('3915', '1', 'Combine herbs, walnuts and breadcrumbs in the food processor and pulse until finely chopped and well mixed.');

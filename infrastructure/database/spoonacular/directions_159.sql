@@ -464,4 +464,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('27194', '6', 
 ('27553', '4', 'Add the curry powder and cook for another 5 minutes.'),
 ('27553', '5', 'Halve the melons and seed them.'),
 ('27553', '6', 'Cut each half into 1/2-inch-wide strips and remove the rinds with a paring knife.'),
-('27553', '7', 'Place the melon in a non-aluminum saucepan and add the cinnamon sticks, sugar, and lemon juice. Cover over moderate heat, stirring gently until all of the sugar melts, about 5 minutes.'),
+('27553', '7', 'Place the melon in a non-aluminum saucepan and add the cinnamon sticks, sugar, and lemon juice. Cover over moderate heat, stirring gently until all of the sugar melts, about 5 minutes.');

@@ -451,4 +451,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('2916', '1', '
 ('3016', '8', 'Note: We tested with Weber Mango Lime Seafood Seasoning.'),
 ('3017', '1', 'In large skillet melt butter.'),
 ('3017', '2', 'Add garlic salt and pepper'),
-('3017', '3', 'Let this cook over medium heat for 1 minute, then add grouper or whatever fish you like.'),
+('3017', '3', 'Let this cook over medium heat for 1 minute, then add grouper or whatever fish you like.');

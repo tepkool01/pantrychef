@@ -667,4 +667,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('2440', '2', '
 ('2519', '335', 'Westwood - 1050 S. Gayley AveLos Gatos - 15980 Los Gatos Blvd'),
 ('2519', '336', 'Blithedale - 731 East Blithedale'),
 ('2519', '337', 'Mill Valley - 414 Miller AveMonterey - 800 Del Monte Center'),
-('2519', '338', 'Napa - 3682 Bel Aire Plaza'),
+('2519', '338', 'Napa - 3682 Bel Aire Plaza');

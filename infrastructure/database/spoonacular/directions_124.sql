@@ -520,4 +520,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('18481', '9', 
 ('18693', '5', 'Add leek and shallots to pan. cook 7 minutes or until tender, stirring frequently.'),
 ('18693', '6', 'Add rice. cook 1 minute, stirring constantly.'),
 ('18693', '7', 'Add wine. cook 30 seconds or until the liquid is nearly absorbed, stirring constantly. Stir in 1 cup stock. cook 4 minutes or until the liquid is nearly absorbed, stirring constantly.'),
-('18693', '8', 'Add remaining stock, 1/2 cup at a time, stirring constantly until each portion of stock is absorbed before adding the next (about 25 minutes total). Stir in peas. cook 1 minute. Stir in cheese, rind, juice, salt, and pepper.'),
+('18693', '8', 'Add remaining stock, 1/2 cup at a time, stirring constantly until each portion of stock is absorbed before adding the next (about 25 minutes total). Stir in peas. cook 1 minute. Stir in cheese, rind, juice, salt, and pepper.');

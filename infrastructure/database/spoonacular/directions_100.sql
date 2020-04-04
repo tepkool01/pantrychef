@@ -460,4 +460,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('13277', '1', 
 ('13518', '7', 'Serve with lime wedges.'),
 ('13519', '1', 'Prepare rice according to package directions. Stir in cilantro, if desired.'),
 ('13519', '2', 'Layer rice mixture, chips, chili, next 5 ingredients, and if desired, black olives and jalapeo peppers in individual serving bowls.'),
-('13520', '1', 'In a large pot of boiling salted water, cook the corn until tender, about 5 minutes.'),
+('13520', '1', 'In a large pot of boiling salted water, cook the corn until tender, about 5 minutes.');

@@ -459,4 +459,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('5400', '1', '
 ('5527', '4', 'Serve sprinkled with scallion.'),
 ('5528', '1', 'In a food processor, finely chop the ginger.'),
 ('5528', '2', 'Transfer to a saucepan, add the salt and water and bring to a boil. Simmer over moderate heat for 10 minutes. Strain the ginger broth through a fine sieve, discarding the ginger. Return the broth to the saucepan and bring to a boil.'),
-('5528', '3', 'Add the shrimp and cook over high heat just until opaque, about 1 minute.'),
+('5528', '3', 'Add the shrimp and cook over high heat just until opaque, about 1 minute.');

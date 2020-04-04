@@ -446,4 +446,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('398', '2', 'A
 ('400', '6', 'Roast the cauliflower in the lower third of the over for about 20-25 minutes, until golden and carmelized. I usually flip after 15 minutes'),
 ('400', '7', 'While the cauliflower is roasting, place a small fry pan over low heat.'),
 ('400', '8', 'Add 1 TB olive oil, the cream, the anchovies and red pepper flakes.'),
-('400', '9', 'Let cook from 5 minutes, pressing on the anchovies with the back of a wooden spoon until they dissolve and infuse the cream and oil.'),
+('400', '9', 'Let cook from 5 minutes, pressing on the anchovies with the back of a wooden spoon until they dissolve and infuse the cream and oil.');

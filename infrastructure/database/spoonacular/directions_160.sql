@@ -501,4 +501,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('27553', '8', 
 ('27865', '4', 'Remove from the heat and allow the syrup to cool.'),
 ('27865', '5', 'Add the Lime Juice and Freeze'),
 ('27865', '6', 'Pour the simple syrup and lime juice in a 9 by 11-inch nonreactive baking pan and stir in the lime zest. Cover the pan with plastic wrap and place in the freezer.'),
-('27865', '7', 'After 1 hour, stir the mixture well, using a fork. Return to the freezer for another hour, then stir again. Allow the mixture to freeze for at least 6 hours or overnight (it is not necessary to continue stirring after you have done it twice).'),
+('27865', '7', 'After 1 hour, stir the mixture well, using a fork. Return to the freezer for another hour, then stir again. Allow the mixture to freeze for at least 6 hours or overnight (it is not necessary to continue stirring after you have done it twice).');

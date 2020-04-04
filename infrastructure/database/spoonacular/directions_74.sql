@@ -476,4 +476,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('10368', '6', 
 ('10594', '2', 'Place Brussels sprouts in a 15- x 10-inch jelly-roll pan. drizzle with 1 tablespoon oil, tossing to coat. Arrange sprouts on pan, cut sides down, and bake 30 minutes or until tender and browned.'),
 ('10594', '3', 'Meanwhile, bring sugar and water to a boil in a small saucepan over medium-high heat, stirring constantly to dissolve sugar.'),
 ('10594', '4', 'Remove from heat. Stir in cranberries, and let stand 10 minutes.'),
-('10594', '5', 'Whisk together fish sauce, chili-garlic sauce, and 1 teaspoon canola oil in a large bowl. Stir in cranberry mixture.'),
+('10594', '5', 'Whisk together fish sauce, chili-garlic sauce, and 1 teaspoon canola oil in a large bowl. Stir in cranberry mixture.');

@@ -525,4 +525,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('18182', '5', 
 ('18481', '5', 'Add leek to pan. cook 5 minutes or until tender, stirring frequently.'),
 ('18481', '6', 'Add garlic. cook 30 seconds. Stir in rice. cook 1 minute.'),
 ('18481', '7', 'Add wine. cook 2 minutes or until liquid is nearly absorbed, stirring constantly.'),
-('18481', '8', 'Add broth, 1/2 cup at a time, stirring constantly until each portion of broth is absorbed before adding the next (about 20 minutes total).'),
+('18481', '8', 'Add broth, 1/2 cup at a time, stirring constantly until each portion of broth is absorbed before adding the next (about 20 minutes total).');

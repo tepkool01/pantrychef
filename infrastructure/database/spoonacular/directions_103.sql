@@ -500,4 +500,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('14093', '7', 
 ('14257', '8', 'Add shrimp to remaining dressing. toss to coat. Arrange shrimp on top of salad.'),
 ('14262', '1', 'Preheat the oven to 350F (180C).'),
 ('14262', '2', 'Spread the walnuts in a single layer on a baking sheet.'),
-('14262', '3', 'Bake, stirring occasionally, for 10 minutes, or until nicely browned, watching closely so they don''t burn.'),
+('14262', '3', 'Bake, stirring occasionally, for 10 minutes, or until nicely browned, watching closely so they don''t burn.');

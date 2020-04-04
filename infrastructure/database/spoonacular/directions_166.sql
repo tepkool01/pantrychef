@@ -487,4 +487,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('29045', '2', 
 ('29341', '4', 'On 2 large, rimmed baking sheets, toss the broccoli florets with the remaining 2 tablespoons of olive oil and spread in an even layer. Season with salt and pepper. Roast the broccoli in the center of the oven for 8 minutes. Switch the baking sheets and continue to roast for about 8 minutes longer, or until the broccoli is browned and crisp-tender.'),
 ('29341', '5', 'Transfer the broccoli to a platter, drizzle the pesto on top and serve.'),
 ('29348', '1', 'Watch how to make this recipe.'),
-('29348', '2', 'Preheat the oven to 425 degrees F.'),
+('29348', '2', 'Preheat the oven to 425 degrees F.');

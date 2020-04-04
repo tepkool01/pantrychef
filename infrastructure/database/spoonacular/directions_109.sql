@@ -410,4 +410,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('15480', '5', 
 ('15719', '8', 'Pour into a small bowl or pitcher.'),
 ('15719', '9', 'Slice lamb and serve meat and fruit with pan juices.'),
 ('15719', '10', 'Add salt to taste.'),
-('15726', '1', 'Prepare a charcoal or gas grill for high heat (450 to 550. you can hold your hand 5 in. above cooking grate only 2 to 4 seconds). In a small bowl, combine harissa, garlic, and 1/4 cup oil. set some aside for serving.'),
+('15726', '1', 'Prepare a charcoal or gas grill for high heat (450 to 550. you can hold your hand 5 in. above cooking grate only 2 to 4 seconds). In a small bowl, combine harissa, garlic, and 1/4 cup oil. set some aside for serving.');

@@ -446,4 +446,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('3501', '9', '
 ('3295', '8', 'In each of 2 large nonstick skillets, heat 1 tablespoon of the remaining oil until shimmering. Season the halibut with salt and pepper and cook over high heat, turning once, until browned and just cooked, about 4 minutes.'),
 ('3295', '9', 'Transfer the halibut to plates.'),
 ('3295', '10', 'Serve with the parsley sauce.'),
-('3296', '1', 'Bring a large pot of water to a boil over high heat. prepare an ice-water bath.'),
+('3296', '1', 'Bring a large pot of water to a boil over high heat. prepare an ice-water bath.');

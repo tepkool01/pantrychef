@@ -510,4 +510,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('15875', '6', 
 ('15979', '4', 'Season the lamb with salt and pepper and brush on both sides with 2/3 cup of the chimichurri. Set the lamb, fat side up, on a large rimmed baking sheet and roast in the upper third of the oven for about 25 minutes, or until an instant-read thermometer inserted in the thickest part of the meat registers 130 for medium rare.'),
 ('15979', '5', 'Transfer the lamb to a cutting board, cover with foil and let rest for 10 minutes.'),
 ('15979', '6', 'Meanwhile, divide the butter between 2 large skillets, preferably cast iron.'),
-('15979', '7', 'Add one-quarter of the potatoes to each skillet and cook over low heat until browned on the bottom, about 15 minutes. Turn the slices with tongs and fry until browned on the other side, about 5 minutes longer.'),
+('15979', '7', 'Add one-quarter of the potatoes to each skillet and cook over low heat until browned on the bottom, about 15 minutes. Turn the slices with tongs and fry until browned on the other side, about 5 minutes longer.');

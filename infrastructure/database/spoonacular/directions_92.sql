@@ -421,4 +421,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('8948', '3', '
 ('9089', '8', 'Combine ground beef, 1 teaspoon salt, 1/2 teaspoon black pepper, and 6 tablespoons spinach-arugula pesto in large bowl. mix lightly with fingertips or fork just until incorporated. Form meat mixture into six 3/4-inch-thick patties.'),
 ('9089', '9', 'Place patties on platter.'),
 ('9089', '10', 'Do ahead: Beef patties can be made 6 hours ahead. Cover and refrigerate.'),
-('9089', '11', 'Prepare barbecue (medium-high heat). Grill burgers to desired doneness, about 4 minutes per side for medium-rare. Grill buns, cut side down, just until lightly toasted, about 1 minute. Build burgers with pesto, patties, mozzarella cheese, tomatoes, and arugula. Cover with bun tops.'),
+('9089', '11', 'Prepare barbecue (medium-high heat). Grill burgers to desired doneness, about 4 minutes per side for medium-rare. Grill buns, cut side down, just until lightly toasted, about 1 minute. Build burgers with pesto, patties, mozzarella cheese, tomatoes, and arugula. Cover with bun tops.');

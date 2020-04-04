@@ -436,4 +436,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('7111', '2', '
 ('7219', '3', 'Rinse trout and pat dry.'),
 ('7219', '4', 'Brush with melted butter inside and out and season with 3/4 teaspoon salt (total for both fish). Mound flour on a sheet of wax paper, then dredge each fish in flour to coat completely, shaking off excess.'),
 ('7219', '5', 'Add oil and 2 tablespoons butter to skillet and heat over moderately high heat until foam subsides, then saute both trout, gently turning over once using 2 spatulas, until golden brown and almost cooked through, about 8 minutes total (fish will continue to cook as it stands).'),
-('7219', '6', 'Transfer each trout to a plate and keep warm in oven.'),
+('7219', '6', 'Transfer each trout to a plate and keep warm in oven.');

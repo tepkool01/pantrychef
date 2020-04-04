@@ -436,4 +436,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6998', '1', '
 ('7110', '3', 'Add salt, pepper, Basil, garlic salt and place in a flat bowl.With each filet, cover in flour, shake off excess, dip in egg/lime mix, and coat both sides with the breadcrumbs/coconut.'),
 ('7110', '4', 'Place on a cookie sheet that has been sprayed with cooking spray.'),
 ('7110', '5', 'Bake @ 375 for 15 min (or until it flakes).I served with a Broccoli & Rice dish, and steamed zucchini.'),
-('7111', '1', 'Preheat oven to 350 degrees F.Arrange the Tilapia side by side in a lightly oiled roasting tin or ovenproof dish.'),
+('7111', '1', 'Preheat oven to 350 degrees F.Arrange the Tilapia side by side in a lightly oiled roasting tin or ovenproof dish.');

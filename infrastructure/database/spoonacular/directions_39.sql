@@ -478,4 +478,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('4634', '2', '
 ('4752', '8', 'Transfer packet to a platter and unwrap to serve. or, if desired, with two wide spatulas, carefully transfer leaf and fish from foil to platter.'),
 ('4752', '9', 'Add salt and pepper to taste.'),
 ('4752', '10', 'Cut fish into portions. slip a spatula between skin and fillet and lift off portions, leaving skin behind.'),
-('4753', '1', 'In a medium bowl, toss the bok choy and pineapple with the cilantro, 3 tablespoons of the oil,  teaspoon salt, and  teaspoon pepper.'),
+('4753', '1', 'In a medium bowl, toss the bok choy and pineapple with the cilantro, 3 tablespoons of the oil,  teaspoon salt, and  teaspoon pepper.');

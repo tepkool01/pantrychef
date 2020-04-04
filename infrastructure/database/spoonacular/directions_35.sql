@@ -418,4 +418,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('4197', '17', 
 ('4308', '10', 'Remove from heat. set aside.'),
 ('4308', '11', 'Prepare grill to medium-high heat.'),
 ('4308', '12', 'Arrange fish on grill rack coated with cooking spray. grill 4 minutes or until skin is crisp. Turn. grill 3 minutes or until desired degree of doneness.'),
-('4308', '13', 'Remove from grill. Sprinkle with remaining 1/4 teaspoon salt. drizzle with juice.'),
+('4308', '13', 'Remove from grill. Sprinkle with remaining 1/4 teaspoon salt. drizzle with juice.');

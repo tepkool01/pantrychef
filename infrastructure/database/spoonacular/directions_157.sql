@@ -449,4 +449,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('26608', '3', 
 ('26901', '2', 'Transfer to a bowl, season with salt and pepper and refrigerate until chilled, about 2 hours.'),
 ('26901', '3', 'In a small bowl, mix the crme frache with the chopped tarragon and season with pepper. Ladle the soup into bowls. Top with a dollop of the crme frache, garnish with the tarragon leaves and serve.'),
 ('26903', '1', 'Cut tomatoes in half lengthwise, and place, cut sides up, on a baking sheet. Sprinkle evenly with salt and pepper to taste, Italian seasoning, and feta cheese.'),
-('26903', '2', 'Drizzle evenly with 1/4 cup Italian dressing.'),
+('26903', '2', 'Drizzle evenly with 1/4 cup Italian dressing.');

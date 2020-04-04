@@ -443,4 +443,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('1940', '5', '
 ('2056', '7', 'Note: For testing purposes only, we used The Spice Hunter Cajun Creole Seasoning Salt Free.'),
 ('2058', '1', 'Whisk together buttermilk and hot sauce.'),
 ('2058', '2', 'Place catfish in a single layer in a 13- x 9-inch baking dish. pour buttermilk mixture over fish. Cover and chill 8 hours, turning once.'),
-('2058', '3', 'Combine cornmeal and next 6 ingredients in a shallow dish.'),
+('2058', '3', 'Combine cornmeal and next 6 ingredients in a shallow dish.');

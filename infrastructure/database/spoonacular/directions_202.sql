@@ -516,4 +516,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('36659', '6', 
 ('36877', '2', 'b'In a shallow dish, whisk together soy sauce, honey, molasses, ginger, garlic, liquid smoke seasoning, and black pepper.''),
 ('36877', '3', 'b'Add chicken strips and turn to coat.''),
 ('36877', '4', 'b'Place chicken on hot grill and cook 5 to 7 minutes, until cooked through, turning once during cooking.''),
-('36877', '5', 'b'Remove chicken from grill pan and roll in toasted sesame seeds.''),
+('36877', '5', 'b'Remove chicken from grill pan and roll in toasted sesame seeds.'');

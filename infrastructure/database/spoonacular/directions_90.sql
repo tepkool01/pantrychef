@@ -451,4 +451,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('8683', '3', '
 ('8795', '2', 'To prepare salad, combine arugula and three-fourths of dressing in a large bowl. toss gently to coat. Arrange about 1/2 cup arugula mixture on each of 10 salad plates. arrange orange slices evenly over salads.'),
 ('8795', '3', 'Drizzle remaining one-fourth of dressing evenly over salads. top each salad with 3 olives. Sprinkle evenly with 1/2 teaspoon salt and additional black pepper, if desired.'),
 ('8795', '4', 'Serve immediately.'),
-('8796', '1', 'Preheat broiler.'),
+('8796', '1', 'Preheat broiler.');

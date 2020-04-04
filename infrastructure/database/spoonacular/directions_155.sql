@@ -444,4 +444,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('26337', '8', 
 ('26478', '3', 'Drain scallops and gently toss with marinade. Marinate scallops, covered and chilled, 3 hours.'),
 ('26481', '1', 'Set the pumpkin seeds in a large skillet over medium.  Toast for about 3, shaking the pan from time to time.  They should be very fragrant.'),
 ('26481', '2', 'Remove.'),
-('26481', '3', 'Add the sesame seeds to the now empty skillet and toast for about 4 minutes, shaking the pan from time to time, again.'),
+('26481', '3', 'Add the sesame seeds to the now empty skillet and toast for about 4 minutes, shaking the pan from time to time, again.');

@@ -430,4 +430,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('32166', '1', 
 ('32388', '7', 'Combine the 1 cup reserved pasta water, ricotta cheese, Parmesan cheese, chopped mint, and pepper.'),
 ('32388', '8', 'Add beans and cheese mixture to pasta mixture. toss to combine.'),
 ('32388', '9', 'Garnish with mint sprigs, if desired.'),
-('32393', '1', 'Bring two pots of water to boil, both salted.  In the meantime, split the fava bean pods and remove the beans within.  Prepare a bowl filled with ice water, then blanch the beans for about 2 minutes.'),
+('32393', '1', 'Bring two pots of water to boil, both salted.  In the meantime, split the fava bean pods and remove the beans within.  Prepare a bowl filled with ice water, then blanch the beans for about 2 minutes.');

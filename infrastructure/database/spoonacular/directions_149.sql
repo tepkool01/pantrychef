@@ -426,4 +426,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('24490', '5', 
 ('24742', '3', 'In large bowl, beat cream cheese until fluffy. Gradually beat in sweetened condensed milk until smooth.'),
 ('24742', '4', 'Add pumpkin, eggs, maple syrup, cinnamon, nutmeg and salt. mix well.'),
 ('24742', '5', 'Pour into prepared pan.'),
-('24742', '6', 'Bake 1 hour and 15 minutes or until center appears nearly set when shaken. Cool 1 hour. Cover and chill at least 4 hours.'),
+('24742', '6', 'Bake 1 hour and 15 minutes or until center appears nearly set when shaken. Cool 1 hour. Cover and chill at least 4 hours.');

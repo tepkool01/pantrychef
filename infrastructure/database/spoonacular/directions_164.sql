@@ -509,4 +509,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('28633', '15',
 ('28867', '1', 'Combine spelt and 2 1/2 cups water in a medium saucepan. bring to a boil. Cover, reduce heat, and simmer 30 minutes or until tender and liquid is absorbed.'),
 ('28867', '2', 'Combine cooked spelt, mint, and the remaining ingredients in a large bowl, stirring well. Cover and store in the refrigerator.'),
 ('28869', '1', 'Combine 2 cups water and 1 tablespoon juice in a large bowl.'),
-('28869', '2', 'Cut off stem of each artichoke to within 1 inch of base. peel stem.'),
+('28869', '2', 'Cut off stem of each artichoke to within 1 inch of base. peel stem.');

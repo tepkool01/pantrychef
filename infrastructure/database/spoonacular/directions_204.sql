@@ -530,4 +530,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('37179', '4', 
 ('37418', '1', 'b'Cook edamame in a 3-quart pot of boiling salted water5 minutes.''),
 ('37418', '2', 'b'Drain in a sieve and rinse under cold running water to stop cooking.''),
 ('37418', '3', 'b'Drain edamame again and pat dry.''),
-('37418', '4', 'b'Whisk together vinegar, sugar, salt, and pepper in a small bowl until sugar and salt are dissolved.''),
+('37418', '4', 'b'Whisk together vinegar, sugar, salt, and pepper in a small bowl until sugar and salt are dissolved.'');

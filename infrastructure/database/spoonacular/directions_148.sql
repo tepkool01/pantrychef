@@ -496,4 +496,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('24164', '2', 
 ('24490', '1', 'Cook onions in butter in a wide 6-quart heavy pot over moderately low heat, stirring occasionally, until softened, 3 to 5 minutes.'),
 ('24490', '2', 'Add garlic and ginger and cook, stirring, 1 minute.'),
 ('24490', '3', 'Add cumin, coriander, and cardamom and cook, stirring, 1 minute. Stir in salt, red pepper flakes, pumpkin, water, broth, and coconut milk and simmer, uncovered, stirring occasionally, 30 minutes. Puree soup in batches in a blender until smooth (use caution when blending hot liquids), transferring to a large bowl, and return soup to pot. Keep soup warm over low heat.'),
-('24490', '4', 'Heat oil in a small heavy skillet over moderately high heat until hot but not smoking, then cook mustard seeds until they begin to pop, about 15 seconds.'),
+('24490', '4', 'Heat oil in a small heavy skillet over moderately high heat until hot but not smoking, then cook mustard seeds until they begin to pop, about 15 seconds.');

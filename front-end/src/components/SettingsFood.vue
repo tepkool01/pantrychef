@@ -21,7 +21,7 @@
 					</div>
 				</div>
 				<div>
-					<select class="form-control" aria-label="Diet Type" @change="switchMealPreference">
+					<select id="change_diet_dropdown" class="form-control" aria-label="Diet Type" @change="switchMealPreference">
 						<option v-for="p in availableMealPreferences" :value="p.id" :selected="userMealPreference.id === p.id">{{p.name}}</option>
 					</select>
 				</div>

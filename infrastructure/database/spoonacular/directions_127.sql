@@ -473,4 +473,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('19071', '5', 
 ('19327', '2', 'Add the spinach and stir until wilted. Season with salt and pepper, if needed.'),
 ('19327', '3', 'Transfer to a serving bowl and serve.'),
 ('19329', '1', 'Heat 1 teaspoon vegetable oil in a large nonstick skillet over medium heat.'),
-('19329', '2', 'Add chopped spinach, and stir-fry for 1 minute or until wilted.'),
+('19329', '2', 'Add chopped spinach, and stir-fry for 1 minute or until wilted.');

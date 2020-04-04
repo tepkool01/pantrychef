@@ -503,4 +503,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('30448', '4', 
 ('30670', '4', 'Drizzle cauliflower and tomatoes evenly with melted butter, and top with cheese.'),
 ('30670', '5', 'Bake 40 minutes in the preheated oven, until cheese is bubbly.'),
 ('30672', '1', 'Bring 6 quarts of water to a boil and add 2 tablespoons salt.'),
-('30672', '2', 'In a separate stockpot, heat the olive oil over medium-high heat, and add the cauliflower. Stir over high heat for 5 minutes, seasoning until the cauliflower is just beginning to get tender.'),
+('30672', '2', 'In a separate stockpot, heat the olive oil over medium-high heat, and add the cauliflower. Stir over high heat for 5 minutes, seasoning until the cauliflower is just beginning to get tender.');

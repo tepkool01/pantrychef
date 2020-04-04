@@ -396,4 +396,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('4440', '6', '
 ('4549', '1', 'Line rimmed baking sheet with foil. Coat with nonstick spray.'),
 ('4549', '2', 'Whisk chili sauce,  2 tablespoons soy sauce, and 1 tablespoon ginger in small bowl.'),
 ('4549', '3', 'Place salmon fillets, skin side down, on prepared sheet. Spoon chili sauce marinade over and let stand at room temperature 30 minutes. Preheat broiler. Spoon any marinade remaining on baking sheet over salmon fillets. Broil salmon without turning until browned in spots and almost opaque in center, 6 to 10 minutes, depending on thickness of fillet. Meanwhile, heat vegetable oil in wok or heavy large skillet over medium-high heat.'),
-('4549', '4', 'Add remaining 1 tablespoon ginger and minced garlic. stir until aromatic, about 30 seconds.'),
+('4549', '4', 'Add remaining 1 tablespoon ginger and minced garlic. stir until aromatic, about 30 seconds.');

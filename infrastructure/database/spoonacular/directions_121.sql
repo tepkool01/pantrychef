@@ -455,4 +455,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('17731', '2', 
 ('17860', '2', 'Boil several cups of water.'),
 ('17860', '3', 'Pour half over the deep-fried tofu, if using, to rid it of the extra oil.'),
 ('17860', '4', 'Pour just enough to cover the dried mushrooms and let steep for 15 minutes. Squeeze them dry, remove and discard the stems, and thinly slice the caps.'),
-('17860', '5', 'Cut the fried tofu into slivers and the fresh tofu into tiny cubes. Bring 1 quart water to a boil in a 10 to 12 inch skillet, add 1 teaspoon salt, then lower the heat to a simmer. Carefully add the fresh tofu and cook for 2 minutes.'),
+('17860', '5', 'Cut the fried tofu into slivers and the fresh tofu into tiny cubes. Bring 1 quart water to a boil in a 10 to 12 inch skillet, add 1 teaspoon salt, then lower the heat to a simmer. Carefully add the fresh tofu and cook for 2 minutes.');

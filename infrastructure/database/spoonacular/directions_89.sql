@@ -464,4 +464,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('8553', '2', '
 ('8682', '5', 'Let cool 10 minutes. split rolls.'),
 ('8682', '6', 'Spread cut sides of rolls with mayonnaise mixture. Layer bottom roll halves with beef, folding slices as needed to fit rolls. Top each with cheese, arugula, and remaining roll halves, mayonnaise mixture sides down.'),
 ('8683', '1', 'Butter one side only of the sliced bread according to your personal preference. On the non-buttered side of both of the slices of bread, place 1 -2 slices of cheese. ('),
-('8683', '2', 'Add additional cheese if desired or if your bread slices are large)'),
+('8683', '2', 'Add additional cheese if desired or if your bread slices are large)');

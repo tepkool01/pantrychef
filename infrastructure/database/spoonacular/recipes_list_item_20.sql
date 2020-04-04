@@ -1683,4 +1683,4 @@ INSERT INTO `RecipeListItem` (ID, RecipeID, IngredientID, Amount, AmountUnitID) 
 ('5581', '11216', '2.0', 'Tbsps'),
 ('5581', '11215', '4.0', ''),
 ('5581', '10111529', '1.0', 'cup'),
-('5581', '6175', '0.25', 'cups'),
+('5581', '6175', '0.25', 'cups');

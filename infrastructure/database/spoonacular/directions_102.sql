@@ -472,4 +472,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('13868', '3', 
 ('14093', '3', 'Add the chopped eggs and celery and season with salt and pepper. Refrigerate the egg salad.'),
 ('14093', '4', 'Meanwhile, light a grill.'),
 ('14093', '5', 'Brush the steaks and pita bread with oil. Grill the pita for 30 seconds per side, just until heated and lightly toasted. Immediately wrap in foil to keep soft. Season the steaks with salt and pepper and grill over moderately high heat for about 10 minutes, turning once, for medium-rare meat.'),
-('14093', '6', 'Transfer the steaks to a board and let rest for 10 minutes. Thinly slice the steaks across the grain.'),
+('14093', '6', 'Transfer the steaks to a board and let rest for 10 minutes. Thinly slice the steaks across the grain.');

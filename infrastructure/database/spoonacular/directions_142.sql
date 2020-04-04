@@ -463,4 +463,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('22659', '5', 
 ('23000', '11', 'Transfer the breads to a work surface and cut into wedges.'),
 ('23000', '12', 'Serve with the cucumber yogurt.'),
 ('23008', '1', 'Using a peeler, create stripes on the outside of the cucumber by peeling along length of cucumber, leaving every other section intact.'),
-('23008', '2', 'Cut off ends of cucumber and slice into 1-inch rounds. Using a melon baller, scoop out the seeds and inner flesh from the top 2/3''s of each cucumber slice. Do not scoop all of the way through. Set aside. In a bowl, combine equal parts cream cheese and sour cream.'),
+('23008', '2', 'Cut off ends of cucumber and slice into 1-inch rounds. Using a melon baller, scoop out the seeds and inner flesh from the top 2/3''s of each cucumber slice. Do not scoop all of the way through. Set aside. In a bowl, combine equal parts cream cheese and sour cream.');

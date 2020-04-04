@@ -626,4 +626,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6197', '264',
 ('6257', '6', 'Drizzle the fillets with the white wine and season with salt.'),
 ('6257', '7', 'Spread the scallion-miso paste on the fillets and top with the mushrooms and edamame, if using. Fold up the sides of the foil and seal the packets.'),
 ('6257', '8', 'Place the packets on the grill and steam over medium heat for about 15 minutes, until the packets puff up and the juices within are bubbling vigorously.'),
-('6257', '9', 'Transfer the fish and the vegetables to plates. Spoon the cooking juices on top and serve with Fragrant Sticky Rice.'),
+('6257', '9', 'Transfer the fish and the vegetables to plates. Spoon the cooking juices on top and serve with Fragrant Sticky Rice.');

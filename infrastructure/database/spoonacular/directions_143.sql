@@ -490,4 +490,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('23008', '3', 
 ('23378', '10', 'Bon Appetit'),
 ('23384', '1', 'Soak 8 wooden skewers in water overnight.'),
 ('23384', '2', 'To make the marinade, combine all the ingredients in a nonreactive bowl.'),
-('23384', '3', 'Cut the pork into 1-inch cubes.'),
+('23384', '3', 'Cut the pork into 1-inch cubes.');

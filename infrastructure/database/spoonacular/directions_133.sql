@@ -473,4 +473,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('20533', '5', 
 ('20726', '2', 'Combine garlic and the remaining ingredients in a Dutch oven. bring to a boil. Reduce heat, and simmer 50 minutes. Strain through a fine sieve over a bowl. discard solids. Store in an airtight container in the refrigerator up to 1 week.'),
 ('20727', '1', 'Peel potatoes and turnips, then cut into 2-inch pieces. Cover potatoes, turnips, and 2 teaspoons salt by 2 inches cold water in a 6-quart pot. Bring to a boil, then reduce heat and simmer, uncovered, until potatoes are tender, 15 to 18 minutes.'),
 ('20727', '2', 'While vegetables cook, melt 3 tablespoons butter in a 10-inch heavy skillet (preferably cast-iron), then toast bread crumbs with remaining 1/4 teaspoon salt, stirring frequently, until golden brown, 3 to 5 minutes.'),
-('20727', '3', 'Add horseradish and toss until combined well, then transfer to a small bowl.'),
+('20727', '3', 'Add horseradish and toss until combined well, then transfer to a small bowl.');

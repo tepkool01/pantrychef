@@ -432,4 +432,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('3296', '2', '
 ('2915', '3', 'Remove the pin bones from the yellowtail flounder and cut a "v" at the top of the fish.'),
 ('2915', '4', 'Place all of the seafood in a 9-inch pie plate.'),
 ('2915', '5', 'Add the butter, white wine, and paprika.'),
-('2915', '6', 'Bake for 12 minutes. Arrange on a serving plate and serve with a lemon wedge and tartar sauce, if desired.'),
+('2915', '6', 'Bake for 12 minutes. Arrange on a serving plate and serve with a lemon wedge and tartar sauce, if desired.');

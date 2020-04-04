@@ -453,4 +453,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('34491', '6', 
 ('34646', '1', 'Preheat the oven to 225 degrees.'),
 ('34646', '2', 'Heat the oil in a 12-inch cast-iron skillet or a 3-quart enameled cast-iron casserole until the temperature on a candy thermometer reads 375 degrees.'),
 ('34646', '3', 'In a large bowl, whisk together the eggs and milk until they are well combined, about 1 minute. In a medium bowl, sift the cornmeal, flour, salt, and pepper together twice.'),
-('34646', '4', 'Add the okra to the egg mixture and toss until it is evenly coated. Scatter half the dredge over the okra and toss to coat. Scatter the remaining dredge over the okra and toss again.'),
+('34646', '4', 'Add the okra to the egg mixture and toss until it is evenly coated. Scatter half the dredge over the okra and toss to coat. Scatter the remaining dredge over the okra and toss again.');

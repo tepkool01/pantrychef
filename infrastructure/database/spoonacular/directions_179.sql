@@ -459,4 +459,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('32393', '2', 
 ('32557', '4', 'Veggie'),
 ('32557', '5', 'Mix1 lemon, juiced2 Tbsp olive oil1 Tbsp cumin2 cups white button mushrooms, sliced2 cups chopped carrots4 scallions, chopped1 1/2 cups green peas, frozen1/2 cup parsley, chopped2 Tbsp vegan buttery spread1 cup plain full-fat soy milk3 Tbsp vegenaise or sour cream2 Tbsp flaxseed meal2 Tbsp maple syrup3 Tbsp Arrowroot powder (natural substitute for corn starch)1 bay leaf1/4 cup whole wheat flour1 Tbsp peppersalt to taste*optional a dash of liquid smoke.Directions:*preheat oven to 350.'),
 ('32557', '6', 'I like to start by cooking the tofu.'),
-('32560', '1', 'Remove the seeds from the pepper, and chop into strips about 1 to 2 inches long.'),
+('32560', '1', 'Remove the seeds from the pepper, and chop into strips about 1 to 2 inches long.');

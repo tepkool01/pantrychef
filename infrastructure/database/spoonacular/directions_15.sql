@@ -588,4 +588,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('2519', '339',
 ('2584', '1', 'Watch how to make this recipe.'),
 ('2584', '2', 'Put the eggs, beer, mustard, chili powder, 1 tablespoon salt and sugar in a medium bowl and mix until smooth.'),
 ('2584', '3', 'Add the flour and continue mixing until it is a little thinner than pancake batter.'),
-('2584', '4', 'In a deep-fryer or heavy-bottomed pot, heat enough vegetable oil to come halfway up the sides of the pot, to 375 degrees F. Dredge the fish pieces in flour and then into the batter and fry until golden brown.'),
+('2584', '4', 'In a deep-fryer or heavy-bottomed pot, heat enough vegetable oil to come halfway up the sides of the pot, to 375 degrees F. Dredge the fish pieces in flour and then into the batter and fry until golden brown.');

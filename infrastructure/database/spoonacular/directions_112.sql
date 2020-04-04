@@ -475,4 +475,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('15979', '8', 
 ('16086', '4', 'Add the lamb, onions, cinnamon sticks, ginger, pepper, turmeric and 2 teaspoons of salt. Cook over moderate heat, stirring a few times, until fragrant, 5 minutes.'),
 ('16086', '5', 'Add the cilantro, the saffron water and 2 cups of fresh water to the casserole and bring to a simmer. Cover with a round of parchment paper and a lid. simmer, turning the lamb once, until tender, 1 hour.'),
 ('16086', '6', 'Transfer the lamb and all but 1/2 cup of the cooking liquid to a bowl. Discard the cilantro and cinnamon sticks.'),
-('16086', '7', 'Add the remaining 2 tablespoons of butter to the casserole. cook over moderate heat, stirring a few times, until the liquid has evaporated, about 15 minutes. Return the lamb and cooking liquid to the casserole and season with salt. Cover and let stand.'),
+('16086', '7', 'Add the remaining 2 tablespoons of butter to the casserole. cook over moderate heat, stirring a few times, until the liquid has evaporated, about 15 minutes. Return the lamb and cooking liquid to the casserole and season with salt. Cover and let stand.');

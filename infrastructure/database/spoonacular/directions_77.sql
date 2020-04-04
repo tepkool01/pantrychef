@@ -486,4 +486,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('11043', '8', 
 ('11345', '2', 'Add remaining dressing. cook 5 to 10 min. or until cabbage is tender, stirring occasionally.'),
 ('11350', '1', 'Combine fennel seeds, 1 tsp. caraway seeds, salt, and pepper in a mortar (see Notes) and coarsely crush with pestle. Sprinkle mixture over pork chops and set chops aside.'),
 ('11350', '2', 'In a large frying pan over medium-high heat, cook bacon until browned and crisp, about 7 minutes. With a slotted spoon, transfer bacon to paper towels to drain.'),
-('11350', '3', 'Add pork chops to pan and cook, turning once, until browned on both sides and cooked through (cut into center to check), about 8 minutes total.'),
+('11350', '3', 'Add pork chops to pan and cook, turning once, until browned on both sides and cooked through (cut into center to check), about 8 minutes total.');

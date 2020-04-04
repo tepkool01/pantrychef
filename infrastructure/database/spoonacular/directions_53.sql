@@ -593,4 +593,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6103', '7', '
 ('6197', '260', 'Whole Planet Foundation'),
 ('6197', '261', 'Whole Kids Foundation'),
 ('6197', '262', 'Whole Cities Foundation365 by Whole Foods Market'),
-('6197', '263', 'User Login'),
+('6197', '263', 'User Login');

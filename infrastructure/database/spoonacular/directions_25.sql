@@ -427,4 +427,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('3149', '3', '
 ('3271', '6', 'Add 2 tablespoons oil and garlic to same saucepan. saut over medium heat 1 minute.'),
 ('3271', '7', 'Add drained pasta, spinach, and tomatoes. stir to coat. Season with salt and pepper.'),
 ('3271', '8', 'Remove from heat. Cover. let stand 1 minute (spinach will wilt). Divide pasta between 2 plates. Top with halibut and remaining dressing.'),
-('3276', '1', 'Heat oven to 400 F. Tear off four 15-inch squares of parchment paper or aluminum foil and arrange on 2 baking sheets. Divide the bok choy and bell pepper evenly among the squares.'),
+('3276', '1', 'Heat oven to 400 F. Tear off four 15-inch squares of parchment paper or aluminum foil and arrange on 2 baking sheets. Divide the bok choy and bell pepper evenly among the squares.');

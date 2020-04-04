@@ -449,4 +449,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('34646', '5', 
 ('34776', '1', 'In a large skillet, heat the oil over medium heat.'),
 ('34776', '2', 'Add bacon, butter, onion, green pepper and garlic.'),
 ('34776', '3', 'Saute until the vegetables are soft and the onions are translucent.'),
-('34776', '4', 'Add seasoned salt, garlic powder, tomatoes, water, chicken base and okra. Bring to a boil. Reduce the heat and let simmer for 30 minutes stirring occasionally. Season, to taste, with salt and pepper.'),
+('34776', '4', 'Add seasoned salt, garlic powder, tomatoes, water, chicken base and okra. Bring to a boil. Reduce the heat and let simmer for 30 minutes stirring occasionally. Season, to taste, with salt and pepper.');

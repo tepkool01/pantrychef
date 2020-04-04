@@ -408,4 +408,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('8073', '1', '
 ('8212', '1', 'Put wine, shallots, and crushed garlic in a large pot. Set a steamer basket in pot, add clams, and cover. Bring to a boil, then simmer briskly over medium-high heat until clams open, 5 to 10 minutes.'),
 ('8212', '2', 'Transfer clams to a plate and let cool. Strain broth from pot. set aside 3/4 cup plus 2 tbsp. and chill.'),
 ('8212', '3', 'Remove meat from clams, saving 8 shells. chill meat and shells.'),
-('8212', '4', 'Meanwhile, in a large frying pan over medium heat, saut poblano chile, corn, and pepper in oil until chile is tender-crisp, 7 to 8 minutes.'),
+('8212', '4', 'Meanwhile, in a large frying pan over medium heat, saut poblano chile, corn, and pepper in oil until chile is tender-crisp, 7 to 8 minutes.');

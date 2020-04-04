@@ -496,4 +496,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('36454', '1', 
 ('36640', '5', 'Add steak, stir-fry for 2 minutes.'),
 ('36640', '6', 'Transfer to a plate.'),
 ('36640', '7', 'Add remaining 2 Tbsp. oil to skillet. Stir fry ginger, garlic and scallions for 1 minute.'),
-('36640', '8', 'Whisk together broth, soy sauce and cornstarch.'),
+('36640', '8', 'Whisk together broth, soy sauce and cornstarch.');

@@ -455,4 +455,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('21627', '1', 
 ('21984', '5', 'through a fine strainer into a bowl, pressing down on the solids with the back of a small ladle. Refrigerate for at least 30 minutes, or until beginning to set.'),
 ('21984', '6', 'Whip the cream in another bowl, only just until soft peaks form. Now transfer the whisk to the pepper mixture and give this a brief whisking to loosen it.'),
 ('21984', '7', 'Carefully fold the cream into the pepper puree until well combined and without any white streaks. Decant into ramekins, smooth over the surface, and stretch a piece of plastic wrap over the top of each one. place in the refrigerator to set, for at least 2 hours.'),
-('21984', '8', 'For the garlic toasts, toast the baguette slices until nicely burnished. Rub the cut garlic clove over each one, season lightly, and brush with olive oil.'),
+('21984', '8', 'For the garlic toasts, toast the baguette slices until nicely burnished. Rub the cut garlic clove over each one, season lightly, and brush with olive oil.');

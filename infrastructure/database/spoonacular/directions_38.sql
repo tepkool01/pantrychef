@@ -417,4 +417,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('4549', '5', '
 ('4633', '7', 'In each of 2 large skillets, heat 1 1/2 tablespoons of the vegetable oil until shimmering. Season the salmon fillets with salt and pepper and add 4 to each skillet. Cook over moderately high heat until browned and just cooked, about 3 minutes per side.'),
 ('4633', '8', 'Transfer the salmon to plates and spoon some of the citrus vinaigrette on top.'),
 ('4633', '9', 'Serve the salmon with the asparagus, passing the extra vinaigrette at the table.'),
-('4634', '1', 'Light a grill. In a small skillet, warm the 1/4 cup of olive oil with the garlic and rosemary over moderate heat until fragrant, about 1 minute.'),
+('4634', '1', 'Light a grill. In a small skillet, warm the 1/4 cup of olive oil with the garlic and rosemary over moderate heat until fragrant, about 1 minute.');

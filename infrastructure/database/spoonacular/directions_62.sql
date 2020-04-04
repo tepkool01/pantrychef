@@ -598,4 +598,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6929', '405',
 ('6995', '2', 'Add fish to pan. cook 10 to 12 minutes, turning once, until fish flakes easily with a fork.'),
 ('6995', '3', 'Combine yogurt and next 5 ingredients (through honey) in a small bowl, stirring with a whisk.'),
 ('6995', '4', 'Combine dressing and coleslaw mix, tossing to coat.'),
-('6995', '5', 'Place 2 ounces fish in each tortilla. Top with coleslaw.'),
+('6995', '5', 'Place 2 ounces fish in each tortilla. Top with coleslaw.');

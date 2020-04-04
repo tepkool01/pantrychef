@@ -464,4 +464,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('14500', '7', 
 ('14624', '3', 'Preheat an outdoor grill for medium heat, and lightly oil grate.'),
 ('14624', '4', 'Cook hens about 1 hour on the prepared grill, brushing occasionally with remaining marinade, until no longer pink and juices run clear.'),
 ('14627', '1', 'Preheat the oven to 35'),
-('14627', '2', 'Put the hens and carrots in a roasting pan, rub them with the olive oil and season with salt and pepper. Roast in the upper third of the oven for 1 hour, then transfer the carrots to a plate to cool. Continue roasting the hens for about 15 minutes longer, or until the cavity juices run clear.'),
+('14627', '2', 'Put the hens and carrots in a roasting pan, rub them with the olive oil and season with salt and pepper. Roast in the upper third of the oven for 1 hour, then transfer the carrots to a plate to cool. Continue roasting the hens for about 15 minutes longer, or until the cavity juices run clear.');

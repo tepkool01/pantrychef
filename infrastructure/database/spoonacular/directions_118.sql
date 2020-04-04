@@ -492,4 +492,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('16993', '1', 
 ('17235', '7', 'Per serving: 294 calories, 13g fat (4g saturated), 85mg cholesterol, 618mg sodium, 5g carbohydrates, 0g fiber, 33g protein'),
 ('17235', '8', 'Nutrition Data'),
 ('17235', '9', 'See Nutrition Data''s complete analysis of this recipe '),
-('17238', '1', 'In a bowl, blend the Dijon mustard and mustard seeds. Season the rabbit parts with salt and pepper.'),
+('17238', '1', 'In a bowl, blend the Dijon mustard and mustard seeds. Season the rabbit parts with salt and pepper.');

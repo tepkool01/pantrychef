@@ -429,4 +429,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('1652', '1', '
 ('2075', '11', 'For Creole tartar sauce:In a small bowl stir together all ingredients. Refrigerate until ready to use.'),
 ('2076', '1', 'Preheat oven to 45'),
 ('2076', '2', 'Combine first 3 ingredients in a small bowl, stirring well. set aside.'),
-('2076', '3', 'Combine mayonnaise, lemon juice, and hot sauce, stirring well.'),
+('2076', '3', 'Combine mayonnaise, lemon juice, and hot sauce, stirring well.');

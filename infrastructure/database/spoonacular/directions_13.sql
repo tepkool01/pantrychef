@@ -387,4 +387,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('2182', '2', '
 ('2438', '2', 'Meanwhile, combine all remaining ingredients except olives and eggs in large bowl.'),
 ('2438', '3', 'Remove fish from marinade. discard marinade.  Cook fish in large skillet on medium-high heat 4 to 5 min. on each side or until fish flakes easily with fork.'),
 ('2438', '4', 'Serve over bean salad. top with olives and eggs.'),
-('2440', '1', 'Cook fish until just opaque in center, about 4 minutes per side. Arrange fish on plates. Spoon 1 tablespoon vinaigrette over each. Toss salad with remaining vinaigrette.'),
+('2440', '1', 'Cook fish until just opaque in center, about 4 minutes per side. Arrange fish on plates. Spoon 1 tablespoon vinaigrette over each. Toss salad with remaining vinaigrette.');

@@ -457,4 +457,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('36112', '3', 
 ('36286', '5', 'Add rice, soy sauce, and chili-garlic sauce. stir-fry 3 to 4 minutes or until thoroughly heated. Stir in scrambled eggs. sprinkle with desired toppings.'),
 ('36295', '1', 'In a medium saucepan, combine the rice with the 1 1/2 cups of water and bring to a boil. Cover and cook over low heat for 12 minutes.'),
 ('36295', '2', 'Remove from the heat and let stand, covered, for 5 minutes. Uncover, fluff the rice and let cool completely.'),
-('36295', '3', 'Meanwhile, in a medium bowl, pour 2 cups of the boiling water over the beef jerky. Cover and let stand until pliable, about 30 minutes.'),
+('36295', '3', 'Meanwhile, in a medium bowl, pour 2 cups of the boiling water over the beef jerky. Cover and let stand until pliable, about 30 minutes.');

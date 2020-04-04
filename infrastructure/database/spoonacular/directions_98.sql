@@ -502,4 +502,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('9906', '8', '
 ('13092', '12', 'Serve, passing red chiles separately.'),
 ('13104', '1', 'Bring a very large stockpot of water to a boil. Prepare a large bowl of ice water.'),
 ('13104', '2', 'Add half of the collard greens to the boiling water, a little at a time, and push them down into the water.'),
-('13104', '3', 'Let the water return to a boil, then cook until tender, about 10 minutes. Using tongs, transfer the greens to the ice water. Repeat with the remaining greens.'),
+('13104', '3', 'Let the water return to a boil, then cook until tender, about 10 minutes. Using tongs, transfer the greens to the ice water. Repeat with the remaining greens.');

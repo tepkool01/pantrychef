@@ -1635,4 +1635,4 @@ INSERT INTO `RecipeListItem` (ID, RecipeID, IngredientID, Amount, AmountUnitID) 
 ('14126', '1002030', '0.125', 'teaspoons'),
 ('14126', '9152', '2.0', 'teaspoons'),
 ('14126', '4053', '1.0', 'teaspoon'),
-('14126', '15076', '24.0', 'ounces'),
+('14126', '15076', '24.0', 'ounces');

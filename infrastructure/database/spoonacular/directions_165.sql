@@ -478,4 +478,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('28869', '3', 
 ('29044', '23', 'Add parsley. toss to combine.'),
 ('29044', '24', 'Serve chicken with artichokes and sauce. Top with breadcrumbs.'),
 ('29044', '25', 'Serve immediately.'),
-('29045', '1', 'Rinse artichokes under cold water, and use a sharp knife to cut the top 1/3 off of each one. Trim the stems to about 1 inch, and remove the smaller leaves from around the base. Use scissors to remove any remaining leaf tips.'),
+('29045', '1', 'Rinse artichokes under cold water, and use a sharp knife to cut the top 1/3 off of each one. Trim the stems to about 1 inch, and remove the smaller leaves from around the base. Use scissors to remove any remaining leaf tips.');

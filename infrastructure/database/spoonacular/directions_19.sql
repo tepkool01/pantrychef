@@ -388,4 +388,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('2765', '5', '
 ('3145', '1', 'Preheat the oven''s broiler and set the oven rack about 6 inches from the heat source.'),
 ('3145', '2', 'Place the orange roughy filets on the broiler pan and squeeze the lemon over the top of the fish.  Broil the filets in the preheated oven for about 6 to 8 minutes.'),
 ('3145', '3', 'Combine parmesan, butter, dijionnaise, garlic, and salt in a small bowl.'),
-('3145', '4', 'Remove the fish from the oven and spread the cheese mixture on top of the filets.  Sprinkle with paprika.  Broil until the topping is lightly browned and the fish flakes easily with a fork, about 3 minutes.'),
+('3145', '4', 'Remove the fish from the oven and spread the cheese mixture on top of the filets.  Sprinkle with paprika.  Broil until the topping is lightly browned and the fish flakes easily with a fork, about 3 minutes.');

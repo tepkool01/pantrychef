@@ -497,4 +497,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('37599', '1', 
 ('37966', '6', 'b'Place grilled asparagus on a platter and drizzle the vinaigrette over the top.''),
 ('37969', '1', 'b'Watch how to make this recipe.''),
 ('37969', '2', 'b'Preheat your oven to 425 degrees F.''),
-('37969', '3', 'b"Clean and trim the asparagus by breaking off 1 asparagus end at its natural breaking point and lining up the tip end next to the remaining stalks. Trim them to the broken asparagus'' length. Compost the woody ends. Lay the asparagus out on a rimmed sheet pan."'),
+('37969', '3', 'b"Clean and trim the asparagus by breaking off 1 asparagus end at its natural breaking point and lining up the tip end next to the remaining stalks. Trim them to the broken asparagus'' length. Compost the woody ends. Lay the asparagus out on a rimmed sheet pan."');

@@ -431,4 +431,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('7620', '1', '
 ('7743', '1', 'In a large skillet, heat 1 tablespoon of the safflower oil until shimmering.'),
 ('7743', '2', 'Add the sliced ginger, shallots and garlic and cook them over moderate heat until softened, about 3 minutes.'),
 ('7743', '3', 'Add the red grapefruit, orange and lemon juices along with the wine, light soy sauce and stock and bring to a boil over high heat. Cook until the sauce is reduced to 1/2 cup and is slightly syrupy, about 40 minutes.'),
-('7743', '4', 'Set a fine-mesh sieve over the jar of a blender. Strain the sauce, pressing on the solids to extract the liquid. With the blender on, slowly pour in the remaining 3/4 cup of oil until combined.'),
+('7743', '4', 'Set a fine-mesh sieve over the jar of a blender. Strain the sauce, pressing on the solids to extract the liquid. With the blender on, slowly pour in the remaining 3/4 cup of oil until combined.');

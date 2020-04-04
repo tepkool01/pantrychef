@@ -429,4 +429,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('14627', '3', 
 ('14820', '2', 'Place sandy slices of leeks into a large bowl filled with cold water. Separating the layers of each slice to free the grains of sand. Allow the sand to settle to the bottom of the bowl. With your hands, gently lift the leeks out of the water leaving the sand and dirt behind.'),
 ('14820', '3', 'Place the leeks within arm''s reach of the stovetop.'),
 ('14820', '4', 'Heat a large nonstick skillet over medium high heat. Season chicken breasts with salt and pepper.'),
-('14820', '5', 'Add olive oil to skillet to coat the pan, then add chicken breasts. Brown chicken breasts 3 to 4 minutes on each side, then transfer to a plate.'),
+('14820', '5', 'Add olive oil to skillet to coat the pan, then add chicken breasts. Brown chicken breasts 3 to 4 minutes on each side, then transfer to a plate.');

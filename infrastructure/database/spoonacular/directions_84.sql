@@ -425,4 +425,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('12934', '1', 
 ('8072', '5', 'Combine remaining 1/4 teaspoon salt, remaining 2 tablespoons lemon juice, and oil, stirring well with a whisk.'),
 ('8072', '6', 'Drizzle over barley mixture. toss gently to coat. Set aside.'),
 ('8072', '7', 'Prepare grill or broiler.'),
-('8072', '8', 'Place tuna steaks on a grill rack or broiler pan coated with cooking spray. cook 2 minutes on each side until tuna steaks are medium-rare or until desired degree of doneness. Spoon about 1 1/2 cups barley mixture onto each of 4 plates. top each serving with 1 tuna steak.'),
+('8072', '8', 'Place tuna steaks on a grill rack or broiler pan coated with cooking spray. cook 2 minutes on each side until tuna steaks are medium-rare or until desired degree of doneness. Spoon about 1 1/2 cups barley mixture onto each of 4 plates. top each serving with 1 tuna steak.');

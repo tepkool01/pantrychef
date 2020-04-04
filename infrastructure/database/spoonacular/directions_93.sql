@@ -409,4 +409,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('9091', '1', '
 ('9232', '6', 'In a large bowl, toss the lettuce with the beets and vinaigrette. Mound the salad on plates, set the goat cheese toasts alongside and serve.'),
 ('9234', '1', 'Preheat oven to 400F.'),
 ('9234', '2', 'Place all beets in 9x9x2-inch metal pan.'),
-('9234', '3', 'Drizzle 3 tablespoons oil over. sprinkle with salt and pepper and toss to coat. Cover pan with foil and roast beets until tender, about 1 1/2 hours. Uncover and cool completely. Peel beets, cut into 1/2-inch cubes, and place in large bowl, each color on opposite side. sprinkle with salt and pepper. DO AHEAD:Can be made 1 day ahead. Cover and chill. Bring to room temperature before using.'),
+('9234', '3', 'Drizzle 3 tablespoons oil over. sprinkle with salt and pepper and toss to coat. Cover pan with foil and roast beets until tender, about 1 1/2 hours. Uncover and cool completely. Peel beets, cut into 1/2-inch cubes, and place in large bowl, each color on opposite side. sprinkle with salt and pepper. DO AHEAD:Can be made 1 day ahead. Cover and chill. Bring to room temperature before using.');

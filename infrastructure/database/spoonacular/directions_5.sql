@@ -442,4 +442,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('504', '2', 'M
 ('548', '4', 'Drizzle in the olive oil while whisking to create an emulsion. Adjust the seasonings with and salt and black pepper, to taste.'),
 ('548', '5', 'Add the escarole, green onions and olives to the bowl and gently toss to coat the leaves with the dressing.'),
 ('548', '6', 'Serve immediately.'),
-('549', '1', 'Whisk together the mayonnaise, 1/4 cup of the oil, the anchovies, garlic, lemon zest and juice and 1/2 teaspoon freshly ground black pepper in a mixing bowl.'),
+('549', '1', 'Whisk together the mayonnaise, 1/4 cup of the oil, the anchovies, garlic, lemon zest and juice and 1/2 teaspoon freshly ground black pepper in a mixing bowl.');

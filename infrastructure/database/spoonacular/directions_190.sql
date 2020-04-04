@@ -449,4 +449,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('34777', '1', 
 ('34960', '2', 'Let cool 10 minutes.'),
 ('34960', '3', 'Beat chocolate mixture at medium speed with an electric mixer 1 to 2 minutes or until whipped and smooth. Cover and chill 2 hours or until firm.'),
 ('34960', '4', 'Shape chocolate mixture into 1-inch balls, using a small ice-cream scoop.'),
-('34960', '5', 'Roll in chopped peanuts. (If chocolate mixture becomes too soft to shape, refrigerate until firm.)'),
+('34960', '5', 'Roll in chopped peanuts. (If chocolate mixture becomes too soft to shape, refrigerate until firm.)');

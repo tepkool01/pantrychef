@@ -523,4 +523,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('5528', '4', '
 ('5647', '2', 'Place bread in a food processor. pulse until fine crumbs measure 1 cup.'),
 ('5647', '3', 'Combine breadcrumbs, parsley, and garlic.'),
 ('5647', '4', 'Heat 2 teaspoons butter and 2 teaspoons oil in a large skillet over medium-high heat.'),
-('5647', '5', 'Add breadcrumb mixture. cook 3 minutes or until golden brown and garlic is fragrant, stirring frequently.'),
+('5647', '5', 'Add breadcrumb mixture. cook 3 minutes or until golden brown and garlic is fragrant, stirring frequently.');

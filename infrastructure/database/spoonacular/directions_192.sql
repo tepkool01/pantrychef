@@ -443,4 +443,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('35427', '2', 
 ('35826', '2', 'Bake at 350 degrees for 10 to 12 minutes or until lightly browned. This recipe should yield 40 to 48 cookies.As for the results, the cookies turned out pretty well. Nothing spectacular or unique, but very good and very simple.cookies1 Comment'),
 ('35827', '1', 'Heat olive oil in an 8-inch stainless skillet over medium heat until shimmering.'),
 ('35827', '2', 'Add the annatto seeds. Stir occasionally until most of the seeds start to sizzle steadily. Immediately turn off the heat.'),
-('35827', '3', 'Let skillet sit off heat until seeds stop sizzling. Strain seeds and pour infused oil into a large dutch oven.'),
+('35827', '3', 'Let skillet sit off heat until seeds stop sizzling. Strain seeds and pour infused oil into a large dutch oven.');

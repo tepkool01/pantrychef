@@ -477,4 +477,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('30942', '3', 
 ('31144', '5', 'Add garlic. stir 30 seconds.'),
 ('31144', '6', 'Add broth and peas. cover and cook until peas are almost tender, about 12 minutes.'),
 ('31144', '7', 'Add beans. cover and simmer until beans are almost tender, about 4 minutes.'),
-('31144', '8', 'Add tomatoes. cook uncovered until tomatoes begin to burst, about 2 minutes.'),
+('31144', '8', 'Add tomatoes. cook uncovered until tomatoes begin to burst, about 2 minutes.');

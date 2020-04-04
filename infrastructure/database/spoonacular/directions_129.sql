@@ -528,4 +528,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('19635', '3', 
 ('19985', '1', 'Preheat oven to 375F.'),
 ('19985', '2', 'Split pita loaves and toast on a baking sheet in middle of oven until golden, 10 to 15 minutes. Cool pitas on a rack and break into bite-size pieces.'),
 ('19985', '3', 'While pitas are toasting, whisk together lemon juice, pomegranate molasses, and salt to taste in a serving bowl, then whisk in oil until emulsified.'),
-('19985', '4', 'Add pitas to dressing with remaining ingredients and toss to combine.'),
+('19985', '4', 'Add pitas to dressing with remaining ingredients and toss to combine.');

@@ -474,4 +474,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('17860', '6', 
 ('18182', '1', 'If using freshly shelled peas, cook in a 4- to 5-quart saucepan of boiling water (not salted), uncovered, until tender, 3 to 5 minutes, then drain in a colander.'),
 ('18182', '2', 'Briskly simmer cream with 1/4 cup mint in a 1- to 1 1/2-quart heavy saucepan until slightly thickened and reduced to about 1/2 cup, 4 to 5 minutes.'),
 ('18182', '3', 'Pour through a fine-mesh sieve into a bowl, pressing on and discarding mint.'),
-('18182', '4', 'Cook celery and onion in butter in 4- to 5-quart heavy saucepan over moderate heat, stirring, until softened, about 4 minutes.'),
+('18182', '4', 'Cook celery and onion in butter in 4- to 5-quart heavy saucepan over moderate heat, stirring, until softened, about 4 minutes.');

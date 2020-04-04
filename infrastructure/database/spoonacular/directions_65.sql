@@ -491,4 +491,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('7219', '7', '
 ('7336', '6', 'Pour 2 cups water in pan. Coat grill rack with cooking spray. place on grill.'),
 ('7336', '7', 'Remove fillets from bag. discard marinade. Sprinkle fillets with 1/4 teaspoon salt and 1/4 teaspoon pepper.'),
 ('7336', '8', 'Place fillets on grill rack over foil pan on unheated side. Close lid. cook 30 minutes or until fish flakes easily when tested with a fork or until desired degree of doneness.'),
-('7336', '9', 'Combine remaining 1/4 teaspoon salt, remaining 1/4 teaspoon pepper, vinegar, oil, and chili powder, stirring with a whisk.'),
+('7336', '9', 'Combine remaining 1/4 teaspoon salt, remaining 1/4 teaspoon pepper, vinegar, oil, and chili powder, stirring with a whisk.');

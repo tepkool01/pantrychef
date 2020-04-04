@@ -484,4 +484,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('33071', '1', 
 ('33320', '9', 'Type_27_data = {}.'),
 ('33320', '10', 'article'),
 ('33320', '11', 'Type_27_data.init_step_by_step_images = 0.'),
-('33323', '1', 'Peel potatoes and cut into 1/2-inch cubes. Put in a medium saucepan with 1 teaspoon salt and enough water to cover by 1 inch. Simmer until tender, about 15 minutes, then drain in a colander.'),
+('33323', '1', 'Peel potatoes and cut into 1/2-inch cubes. Put in a medium saucepan with 1 teaspoon salt and enough water to cover by 1 inch. Simmer until tender, about 15 minutes, then drain in a colander.');

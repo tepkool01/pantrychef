@@ -443,4 +443,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('6740', '1', '
 ('6857', '3', 'Place fillets in skillet and sprinkle with half of the lemon over. Cook for 3 minutes per side, or until fish flakes easily with a fork.'),
 ('6857', '4', 'Transfer fillets to a plate, and keep warm.'),
 ('6857', '5', 'Add wine, remaining 1/2 lemon, tomatoes, capers, and salt and pepper to the skillet. Increase heat to medium high and boil for 2 minutes to burn off alcohol. Reduce heat to low and return fillets to the pan along with the asparagus. Cover and simmer 2 minutes more, then transfer fish and asparagus to a serving dish and keep warm.'),
-('6857', '6', 'Again, increase heat to medium high and whisk in butter, and boil to desired consistency. Spoon sauce over fish, and serve.'),
+('6857', '6', 'Again, increase heat to medium high and whisk in butter, and boil to desired consistency. Spoon sauce over fish, and serve.');

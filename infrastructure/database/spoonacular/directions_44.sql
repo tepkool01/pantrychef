@@ -429,4 +429,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('5021', '4', '
 ('5149', '4', 'Place salmon skin side down in skillet and cook until skin is crisp and golden, about 3 to 4 minutes. Turn fillets over and cook until medium rare, about 3 more minutes.'),
 ('5149', '5', 'Serve salmon with salad.'),
 ('5152', '1', 'Preheat the oven to 400 degrees F (200 degrees C). Fill a large skillet with about 1 inch of water and bring to a boil. Poach fish just until cooked on the outside, about 2 minutes per side.'),
-('5152', '2', 'Transfer fillets to a broiler pan.'),
+('5152', '2', 'Transfer fillets to a broiler pan.');

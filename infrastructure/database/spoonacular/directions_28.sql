@@ -457,4 +457,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('3466', '5', '
 ('3573', '4', 'Add the broth and 1 Tbs. of the lemon juice. Cover and bring to a simmer over high heat. Arrange the fish lemon-ginger side up in a single layer on top of the leeks. If necessary, add more broth until the fillets are almost but not completely submerged. Cover and turn the heat to low. Gently simmer until the fish is just cooked through, 8 to 10 minutes. With a slotted spatula, transfer the fish to 4 shallow bowls.'),
 ('3573', '5', 'Add the spinach, mint, and scallions to the broth and stir until slightly wilted, about 1 minute. Season to taste with more lemon juice, salt, and pepper. Ladle the vegetables and broth around the fish and serve.'),
 ('3573', '6', 'Serving Suggestions'),
-('3573', '7', 'Serve with boiled soba noodles and'),
+('3573', '7', 'Serve with boiled soba noodles and');

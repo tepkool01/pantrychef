@@ -490,4 +490,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('37419', '9', 
 ('37605', '5', 'Add the asparagus, toss with the vegetables then add the other T of soy sauce and the pinches of sugar and salt. Stirfy until the asparagus is done to your liking (probably about 5 minutes if you didn''t steam it first. less if you did).'),
 ('37605', '6', 'Add the meat and its drippings and the chicken broth. Stir to make a sauce, then serve.'),
 ('37607', '1', 'Trim eggplants and cut into 1-inch wedges (do this just before heating oil to avoid discoloration).'),
-('37607', '2', 'Heat oil (see above) in wok over moderate heat until warm, about 30 seconds.'),
+('37607', '2', 'Heat oil (see above) in wok over moderate heat until warm, about 30 seconds.');

@@ -632,4 +632,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('8212', '5', '
 ('8314', '403', 'Deerfield - 760 Waukegan RdElmhurst - 215 S. IL Rte 83Downtown Evanston - 1640 Chicago AveEvanston South - 1111 Chicago Ave.Green Bay Road - 2748 Green Bay Road'),
 ('8314', '404', 'Hinsdale - 500 E. Ogden Ave.Kildeer - 20281 N Rand Road'),
 ('8314', '405', 'Naperville - 2607 W. 75th Street'),
-('8314', '406', 'Northbrook - 840 Willow Road'),
+('8314', '406', 'Northbrook - 840 Willow Road');

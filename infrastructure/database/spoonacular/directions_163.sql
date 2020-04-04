@@ -478,4 +478,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('28385', '6', 
 ('28633', '11', 'Remove lid and reduce heat to low.'),
 ('28633', '12', 'Remove chicken from pan.'),
 ('28633', '13', 'Pour in cream and shake/stir to distribute.'),
-('28633', '14', 'Add chives, then add chicken back to pan. Put lid on pan again and cook for an additional 10 minutes to thicken sauce. Stir and check for seasonings. add salt and pepper to taste.'),
+('28633', '14', 'Add chives, then add chicken back to pan. Put lid on pan again and cook for an additional 10 minutes to thicken sauce. Stir and check for seasonings. add salt and pepper to taste.');

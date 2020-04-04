@@ -447,4 +447,4 @@ INSERT INTO `Directions` (RecipeID, SortOrder, Direction) VALUES ('33863', '4', 
 ('34125', '4', 'Add the diced carrot and onion and the minced garlic and cook, stirring occasionally, until softened, about 5 minutes.'),
 ('34125', '5', 'Add the herb bundle, chicken stock, and green lentils and bring to a simmer. Cover and cook over moderate heat until the lentils are tender, about 30 minutes.'),
 ('34125', '6', 'Drain the lentils, transfer them to a large bowl and discard the herb bundle. keep warm.'),
-('34125', '7', 'Meanwhile, in a small bowl, whisk the hazelnut oil with the sherry vinegar and season with salt and pepper.'),
+('34125', '7', 'Meanwhile, in a small bowl, whisk the hazelnut oil with the sherry vinegar and season with salt and pepper.');
