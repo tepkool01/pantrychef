@@ -32,25 +32,31 @@ const routes = [
 		name: 'pantry',
 		component: () => import('../views/Pantry.vue'),
 		beforeEnter(to, from, next) {
-			// Get session in case they refreshed the page
-			store
-				.dispatch('users/getSession')
-				.then(() => {
-					// todo: dry
-					// If we can get a token, then they can proceed, otherwise redirect them to the sign-in page
-					if (store.state.users.user.idToken != null) {
-						axios.defaults.headers.common['Authorization'] = store.state.users.user.idToken
+			console.log(from);
+			if (from.name !== 'home') {
+				// Performed a login, don't do a getSession
+				// Get session in case they refreshed the page
+				store
+					.dispatch('users/getSession')
+					.then(() => {
+						// todo: dry
+						// If we can get a token, then they can proceed, otherwise redirect them to the sign-in page
+						if (store.state.users.user.idToken != null) {
+							axios.defaults.headers.common['Authorization'] = store.state.users.user.idToken
 
-						// Grab profiles
-						store.dispatch('profile/getProfiles')
-						next()
-					} else {
+							// Grab profiles
+							store.dispatch('profile/getProfiles')
+							next()
+						} else {
+							next('/')
+						}
+					})
+					.catch(() => {
 						next('/')
-					}
-				})
-				.catch(() => {
-					next('/')
-				})
+					})
+			} else {
+				next()
+			}
 		}
 	},
 	{
