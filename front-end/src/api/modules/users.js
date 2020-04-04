@@ -33,7 +33,8 @@ export default {
 						idToken: session.getIdToken().getJwtToken(),
 						refreshToken: session.getRefreshToken().getToken(),
 						accessToken: session.getAccessToken().getJwtToken(),
-						userId: this.getUser().getUsername()
+						userId: this.getUser().getUsername(),
+						cognitoUser: this.getUser()
 					})
 				} else {
 					// do something
@@ -129,7 +130,8 @@ export default {
 						userId: cognitoUser.getUsername(),
 						accessToken: result.getAccessToken().getJwtToken(),
 						refreshToken: result.getRefreshToken().getToken(),
-						idToken: result.getIdToken().getJwtToken()
+						idToken: result.getIdToken().getJwtToken(),
+						cognitoUser: cognitoUser
 					})
 				},
 

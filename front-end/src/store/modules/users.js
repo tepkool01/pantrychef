@@ -1,5 +1,4 @@
 import api from '../../api'
-//import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js'
 
 const state = {
 	isAuthenticated: false,
@@ -8,7 +7,8 @@ const state = {
 		accessToken: '',
 		idToken: '',
 		refreshToken: '',
-		userId: ''
+		userId: '',
+		cognitoUser: null,
 	},
 	mealPreference: {},
 	availableMealPreferences: []
@@ -54,7 +54,6 @@ const actions = {
 		api.users.updateUser(payload)
 	},
 	login({ commit }, payload) {
-		console.log(">>login()");
 		return new Promise((resolve, reject) => {
 			api.users.authenticate(payload.username, payload.password)
 				.then(result => {
@@ -72,7 +71,7 @@ const actions = {
 		return new Promise((resolve, reject) => {
 			api.users.getUserSession()
 				.then(response => {
-					commit('AUTHENTICATE', response)
+					commit('AUTHENTICATE', response);
 					resolve(response)
 				})
 				.catch(err => {
@@ -120,9 +119,12 @@ const actions = {
 				})
 		})
 	},
-	logout({ commit }) {
-		api.users.logout()
-		commit('LOGOUT')
+	logout({ commit, state }) {
+		if (state.user.cognitoUser) {
+			console.log("Signing out.....");
+			state.user.cognitoUser.signOut();
+			commit('LOGOUT');
+		}
 	},
 	UpdatePassword({ commit }, username, newPassword, oldPassword) {
 		return new Promise((resolve, reject) => {
@@ -147,11 +149,9 @@ const mutations = {
 		state.mealPreference = mealPreference
 	},
 	AUTHENTICATE(state, returnedUser) {
-		// eslint-disable-next-line no-console
-		console.log('User Authentication - Succeeded!')
 		if (returnedUser != null) {
-			state.isAuthenticated = true
-			state.user = returnedUser
+			state.isAuthenticated = true;
+			state.user = returnedUser;
 		}
 	},
 	REGISTER(state, returnedUser) {
@@ -160,10 +160,12 @@ const mutations = {
 		state.user = returnedUser
 	},
 	LOGOUT(state) {
-		// eslint-disable-next-line no-console
-		console.log('User has been logged out!')
-		state.user = null
-		state.isAuthenticated = false
+		state.user.accessToken = '';
+		state.user.idToken = '';
+		state.user.refreshToken = '';
+		state.user.userId = '';
+		state.user.cognitoUser = null;
+		state.isAuthenticated = false;
 	},
 	// eslint-disable-next-line no-unused-vars
 	CHANGEPASSWORD(state) {
