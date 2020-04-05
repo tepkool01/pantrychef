@@ -1,5 +1,5 @@
 <template>
-	<div class="test">
+	<div class="inner-modal">
 		<div class="row">
 			<div class="card m-4 text-center">
 				<div class="card-header">
@@ -84,7 +84,9 @@ export default {
 .star-icon {
 	float: left;
 }
-.test {
+.inner-modal {
     background-color: #2c3e50;
+    width: 75%;
+    margin: auto auto;
 }
 </style>
