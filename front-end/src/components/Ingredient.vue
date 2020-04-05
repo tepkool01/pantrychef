@@ -2,20 +2,10 @@
 	<div class="chef-ingredient">
 		{{ ingredient.ingredient_name }}
 		<button
-			:id="'ingredient_add_' + ingredient.ingredient_name"
-			type="button"
-			class="add_button btn btn-outline-success btn-sm close"
-			v-if="listType === 'search'"
-			@click="handleAddIngredient"
-		>
-			Add
-		</button>
-		<button
 			:id="'ingredient_remove_' + ingredient.ingredient_name"
 			type="button"
 			class="remove_button btn btn-outline-danger btn-sm"
 			@click="handleRemoveIngredient"
-			v-else
 		>
 			Remove
 		</button>
