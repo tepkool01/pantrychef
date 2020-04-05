@@ -4,7 +4,7 @@
 		<button
 			:id="'ingredient_add_' + ingredient.ingredient_name"
 			type="button"
-			class="btn btn-outline-success btn-sm close"
+			class="add_button btn btn-outline-success btn-sm close"
 			v-if="listType === 'search'"
 			@click="handleAddIngredient"
 		>
@@ -13,7 +13,7 @@
 		<button
 			:id="'ingredient_remove_' + ingredient.ingredient_name"
 			type="button"
-			class="btn btn-outline-danger btn-sm"
+			class="remove_button btn btn-outline-danger btn-sm"
 			@click="handleRemoveIngredient"
 			v-else
 		>
@@ -33,10 +33,10 @@ export default {
 		listType: {
 			type: String,
 			required: true,
-			validator(value) {
-				return ['shopping', 'pantry', 'search'].indexOf(value) !== -1;
-			},
-		},
+			validator: function (value) {
+        		return ['shopping', 'pantry', 'search'].indexOf(value) !== -1
+			}
+		}
 	},
 	methods: {
 		handleAddIngredient() {
