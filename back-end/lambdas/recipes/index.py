@@ -54,7 +54,7 @@ def lambda_handler(event, context):
                 print(my_ingredient_ids)
 
                 recipes = db.execute(
-                    sql="SELECT RecipeID, RecipeName, CookTime, DietType, IngredientCount, count(*) as grp_count, round((count(*) / IngredientCount), 2) as pct_match, ImgURL \
+                    sql="SELECT RecipeID, RecipeName, CookTime, Servings, IngredientCount, count(*) as grp_count, round((count(*) / IngredientCount), 2) as pct_match, ImgURL, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable \
                         FROM `RecipeListItem` ri \
                         LEFT JOIN Recipe r \
                         ON r.ID=ri.RecipeID \
@@ -65,7 +65,6 @@ def lambda_handler(event, context):
                         {'name': 'limit', 'value': {'longValue': int(limit)}},
                         {'name': 'offset', 'value': {'longValue': int(offset)}},
                     ]
-
                 )
 
                 result = []
@@ -74,11 +73,20 @@ def lambda_handler(event, context):
                         'id': record[0]['longValue'],
                         'recipe_name': record[1]['stringValue'],
                         'cook_time': record[2]['longValue'],
-                        'diet_type': record[3]['stringValue'],
+                        'servings': record[3]['longValue'],
                         'ingredient_count': record[4]['longValue'],
                         'ingredients_in_pantry': record[5]['longValue'],
                         'match_percent': record[6]['stringValue'],
-                        'img_url': record[7]['stringValue']
+                        'img_url': record[7]['stringValue'],
+                        'summary': record[8]['stringValue'],
+                        'health_score': record[9]['doubleValue'],
+                        'weight_watcher_points': record[10]['longValue'],
+                        'vegetarian': record[11]['booleanValue'],
+                        'vegan': record[12]['booleanValue'],
+                        'gluten_free': record[13]['booleanValue'],
+                        'dairy_free': record[14]['booleanValue'],
+                        'healthy': record[15]['booleanValue'],
+                        'sustainable': record[16]['booleanValue'],
                     })
 
                 # Parse records into python object
@@ -86,7 +94,7 @@ def lambda_handler(event, context):
             else:
                 # They have no items in their pantry, show them everything
                 recipe = db.execute(
-                    sql="SELECT * FROM Recipe LIMIT :offset, :limit",
+                    sql="SELECT ID, RecipeName, CookTime, ImgURL, Servings, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable FROM Recipe LIMIT :offset, :limit",
                     parameters=[
                         {'name': 'limit', 'value': {'longValue': int(limit)}},
                         {'name': 'offset', 'value': {'longValue': int(offset)}},
@@ -96,33 +104,58 @@ def lambda_handler(event, context):
                 for record in recipe['records']:
                     result.append({
                         'id': record[0]['longValue'],
-                        'recipe_name': record[1]['stringValue'],
+                        'name': record[1]['stringValue'],
                         'cook_time': record[2]['longValue'],
-                        'diet_type': record[3]['stringValue'],
-                        'ingredient_count': record[4]['longValue'],
-                        'ingredients_in_pantry': 0,
-                        'match_percent': 0,
-                        'img_url': record[5]['stringValue']
+                        'img_url': record[3]['stringValue'],
+                        'servings': record[4]['longValue'],
+                        'summary': record[5]['stringValue'],
+                        'health_score': record[6]['doubleValue'],
+                        'weight_watcher_points': record[7]['longValue'],
+                        'vegetarian': record[8]['booleanValue'],
+                        'vegan': record[9]['booleanValue'],
+                        'gluten_free': record[10]['booleanValue'],
+                        'dairy_free': record[11]['booleanValue'],
+                        'healthy': record[12]['booleanValue'],
+                        'sustainable': record[13]['booleanValue'],
                     })
     elif event['resource'] == '/recipes/{recipeId}':
-        # Placeholder for all the information needed for a recipe page
-        result = {
-            "img": "",
-            "ingredients": [],
-            "directions": [],
-        }
-
-        # Grab ingredients first, and then parse them into readable format for the front end
-        ingredients = db.execute(
-            sql="SELECT IngredientID, IngredientName, IngredientType FROM `RecipeListItem` r JOIN `Ingredient` i ON i.ID=r.IngredientID WHERE r.RecipeID=:id",
+        # First grab high-level recipe information
+        recipe_query = db.execute(
+            sql="SELECT ID, RecipeName, CookTime, ImgURL, Servings, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable FROM Recipe WHERE ID=:id",
             parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
         )
-        for ingredient in ingredients['records']:
-            result['ingredients'].append({
-                'id': ingredient[0]['longValue'],
-                'name': ingredient[1]['stringValue'],
-                'type': ingredient[2]['stringValue']
-            })
+        # Set recipe
+        for recipe in recipe_query['records']:
+            result = {
+                'id': recipe[0]['longValue'],
+                'name': recipe[1]['stringValue'],
+                'cook_time': recipe[2]['longValue'],
+                'img_url': recipe[3]['stringValue'],
+                'servings': recipe[4]['longValue'],
+                'summary': recipe[5]['stringValue'],
+                'health_score': recipe[6]['doubleValue'],
+                'weight_watcher_points': recipe[7]['longValue'],
+                'vegetarian': recipe[8]['booleanValue'],
+                'vegan': recipe[9]['booleanValue'],
+                'gluten_free': recipe[10]['booleanValue'],
+                'dairy_free': recipe[11]['booleanValue'],
+                'healthy': recipe[12]['booleanValue'],
+                'sustainable': recipe[13]['booleanValue'],
+                'directions': [],
+                'ingredients': []
+            }
+
+        # Grab ingredients first, and then parse them into readable format for the front end
+        # ingredients = db.execute(
+        #     sql="SELECT IngredientID, IngredientName, IngredientType FROM `RecipeListItem` r JOIN `Ingredient` i ON i.ID=r.IngredientID WHERE r.RecipeID=:id",
+        #     parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
+        # )
+        # for ingredient in ingredients['records']:
+        #     result['ingredients'].append({
+        #         'id': ingredient[0]['longValue'],
+        #         'name': ingredient[1]['stringValue'],
+        #         'type': ingredient[2]['stringValue']
+        #     })
     elif event['resource'] == '/recipes/{recipeId}/ingredients':
         # Placeholder for all the information needed for a recipe page
         result = []
