@@ -1,6 +1,5 @@
 <template>
 	<div>
-	<ErrorBar :errorList='errors' v-if="this.errors.length > 0"></ErrorBar>
 		<div class="row">
 			<IngredientSubmissionPanel
 				:suggestionsMstr="ingredients"
@@ -29,15 +28,18 @@
 </template>
 
 <script>
-import ErrorBar from '@/components/ErrorBar.vue'
-import Ingredient from '@/components/Ingredient.vue'
-import IngredientSubmissionPanel from '@/components/IngredientSubmissionPanel.vue'
-//import Profile from "../store/modules/profile";
-
-import { mapGetters, mapActions } from 'vuex'
+import { EventBus } from '../eventBus'; // used for Errors
+import Ingredient from '../components/Ingredient.vue';
+import IngredientSubmissionPanel from '../components/IngredientSubmissionPanel.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
 	name: 'Pantry',
+	data() {
+		return {
+			pantryType: 'pantry',
+		}
+	},
 	computed: {
 		...mapGetters('pantry', {
 			pantryList: 'pantry'
@@ -48,13 +50,11 @@ export default {
 		...mapGetters('profile', {
 			profiles: 'profiles',
 			activeProfile: 'activeProfile'
-		})
+		}),
 	},
 	components: {
 		IngredientSubmissionPanel,
 		Ingredient,
-		ErrorBar
-		//Profile
 	},
 	methods: {
 		...mapActions('pantry', {
@@ -68,54 +68,51 @@ export default {
 		...mapActions('profile', {
 			getProfiles: 'getProfiles'
 		}),
-
 		addIngredientToPantry (ingredient) {
 			this.addIngredient({
 				ingredient: ingredient,
 				profile_id: this.activeProfile
-			})
+			});
 		},
 		handleIngredientRemove (ingredient) {
 			this.removeIngredient({
 				ingredient: ingredient,
 				profile_id: this.activeProfile
-			})
-		}
+			});
+		},
 	},
 	watch: {
-		activeProfile: function(val) {
-			this.getPantry(this.activeProfile)	
-			this.getIngredients()
-			
-			if(this.activeProfile){
-				this.errors=""
+		activeProfile (profile_id) {
+			if (!profile_id) {
+				EventBus.setAlert('Error', 1, 'Could not load active profile');
+			} else {
+				this.getPantry(profile_id);
+            }
+		},
+		pantryList (val) {
+			if (val.length === 0) {
+				EventBus.setAlert('Warning', 2, 'Pantry List did not load or is empty.');
 			}	
 		},
-		pantryList: function(val) {
-			if(this.pantryList == null || this.pantryList.length == 0){
-				this.errors+="ERROR: Pantry List did not load or is empty."
-			}	
-		},
-		ingredients: function(val) {
-			if(this.ingredients == null){
-				this.errors+="ERROR: Add Ingredient Module not loaded."
-			}	
-		}
-	},
-	data() {
-		return {
-			pantryType: 'pantry',
-			errors:""
+		ingredients(val) {
+			if (val.length === 0) {
+				EventBus.setAlert('Error', 1, 'Could not retrieve ingredient list');
+			}
 		}
 	},
 	created() {
 		this.$emit('title', 'Pantry');
 
+		// Retrieve ingredients
+        if (this.ingredients.length === 0) {
+        	this.getIngredients();
+        }
+
 		// No active profile, retrieve it
 		if (!this.activeProfile) {
-			this.getProfiles()
+			this.getProfiles();
         }
-	}
+	},
 }
 </script>
 

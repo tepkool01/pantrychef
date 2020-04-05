@@ -1,6 +1,12 @@
 <template>
 	<div id="app">
-		<!-- Todo, rethink this aside from pageTitle -->
+        <!-- Error messaging -->
+        <Error v-if="Object.keys(alertObj).length !== 0"
+               :msg="alertObj.message"
+               :severity="alertObj.severity"
+               :type="alertObj.type"
+        />
+
 		<div
 			class="login d-flex"
 			id="wrapper"
@@ -87,14 +93,21 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex';
+import { EventBus } from './eventBus';
+import Error from './components/Error.vue';
 
 export default {
 	name: 'app',
+    components: {
+		Error,
+    },
 	data() {
 		return {
 			pageTitle: '',
-			toggle: false
+			toggle: false,
+			alertObj: {},
+			alertTimeout: null,
 		}
 	},
 	computed: {
@@ -113,12 +126,21 @@ export default {
 			set: function(newProfile) {
 				this.activateProfile(newProfile)
 			}
-		}
+		},
 	},
 	watch: {
 		pageTitle(val) {
 			document.title = 'Pantry Chef - ' + val
-		}
+		},
+		// Close out alert component after 8 seconds
+		alertObj(val) {
+			if (val.message !== undefined) {
+				clearTimeout(this.alertTimeout);
+				this.alertTimeout = setTimeout(() => {
+					this.alertObj = {};
+				}, 8000);
+			}
+		},
 	},
 	methods: {
 		...mapActions('users', {
@@ -136,8 +158,14 @@ export default {
 
 			// Navigate back to home page
 			this.$router.replace('/')
-		}
-	}
+		},
+	},
+    created() {
+		// Message bus across all components/views that handles all of the error information
+		EventBus.$on('alert', (alertObj) => {
+			this.alertObj = alertObj;
+		});
+    }
 }
 </script>
 
