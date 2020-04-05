@@ -1,3 +1,5 @@
 .DS_Store
 .idea
 front-end/.nyc_output
+front-end/tests/reports/**/*
+front-end/coverage
