@@ -29,12 +29,9 @@ export default {
 		}
 	},
 	methods: {
-		handleAddIngredient() {
-			this.$emit('addCall', this.ingredient);
-		},
 		handleRemoveIngredient() {
 			this.$emit('removeCall', this.ingredient);
-		},
+		}
 	},
 };
 </script>
