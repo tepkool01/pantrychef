@@ -249,4 +249,7 @@ export default {
 .border-between > [class*='col-']:first-child:before {
 	display: none;
 }
+#nprogress .bar {
+    height: 8px !important;
+}
 </style>
