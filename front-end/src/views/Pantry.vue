@@ -13,10 +13,10 @@
 					</h5>
 				</div>
 				<div class="card-body m-4 text-center" style="width: 50%">
-					<div v-for="i in pantryList" v-bind:key="i.name">
+                    <a href="#" @click="sortOrder = (sortOrder === 'A-Z' ? 'Z-A' : 'A-Z')">SORT</a>
+					<div v-for="ingredient in sort(sortOrder)" :key="ingredient.id">
 						<ingredient
-							:ingredient="i"
-							:key="i.id"
+							:ingredient="ingredient"
 							:listType="pantryType"
 							@removeCall="handleIngredientRemove"
 						></ingredient>
@@ -32,12 +32,14 @@ import { EventBus } from '../eventBus'; // used for Errors
 import Ingredient from '../components/Ingredient.vue';
 import IngredientSubmissionPanel from '../components/IngredientSubmissionPanel.vue';
 import { mapGetters, mapActions } from 'vuex';
+import _ from 'lodash';
 
 export default {
 	name: 'Pantry',
 	data() {
 		return {
 			pantryType: 'pantry',
+            sortOrder: 'default',
 		}
 	},
 	computed: {
@@ -51,6 +53,20 @@ export default {
 			profiles: 'profiles',
 			activeProfile: 'activeProfile'
 		}),
+		orderedListOptions () {
+			let list = this.pantryList;
+			return {
+				"default": () => {
+					return list;
+				},
+				"A-Z": () => {
+					return _.orderBy(list, 'ingredient_name', ['asc']);
+				},
+				"Z-A": () => {
+					return _.orderBy(list, 'ingredient_name', ['desc']);
+				},
+			}
+		},
 	},
 	components: {
 		IngredientSubmissionPanel,
@@ -79,6 +95,9 @@ export default {
 				ingredient: ingredient,
 				profile_id: this.activeProfile
 			});
+		},
+		sort (sortOrder) {
+			return this.orderedListOptions[sortOrder]();
 		},
 	},
 	watch: {
