@@ -8,9 +8,9 @@
 export default {
 	name: 'Pantry',
 	props: {
-		pantryItem: Object
-	}
-}
+		pantryItem: Object,
+	},
+};
 </script>
 
 <style scoped></style>

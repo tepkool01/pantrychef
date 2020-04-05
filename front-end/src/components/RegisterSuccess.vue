@@ -10,8 +10,8 @@
 
 <script>
 export default {
-	name: 'register-success'
-}
+	name: 'register-success',
+};
 </script>
 
 <style scoped></style>

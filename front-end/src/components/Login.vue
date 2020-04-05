@@ -17,17 +17,17 @@
 		<div class="login--separator my-4"><span>or</span></div>
 
 		<form id="login" @submit="loginUser" method="post" :novalidate="true">
-			<div class="input-group mb-3">
-				<input
-				    id="login_user_input_box"
-					v-model="login.username"
-					type="text"
-					class="form-control"
-					:class="{ 'input--error': validation.username }"
-					placeholder="Username"
-					aria-label="Username"
-					autocomplete="username"
-				/>
+            <div class="input-group mb-3">
+                <input
+                        id="login_user_input_box"
+                        v-model="login.username"
+                        type="text"
+                        class="form-control"
+                        :class="{ 'input--error': validation.username }"
+                        placeholder="Username"
+                        aria-label="Username"
+                        autocomplete="username"
+                />
 			</div>
 			<div class="input-group mb-3">
 				<input
@@ -47,7 +47,10 @@
 					id="login_submission_button"
 					:disabled="!this.canSubmit"
 					@click="loginUser"
-					v-bind:class="{ 'btn btn-success btn-block': canSubmit, 'btn btn-primary btn-block button--login': !canSubmit }"
+					v-bind:class="{
+						'btn btn-success btn-block': canSubmit,
+						'btn btn-primary btn-block button--login': !canSubmit
+					}"
 				>
 					Login
 				</button>
@@ -76,90 +79,88 @@ export default {
 		return {
 			login: {
 				username: '',
-				password: ''
+				password: '',
 			},
 			validation: {
 				errors: [],
 				username: false,
-				password: false
+				password: false,
 			},
-			canSubmit: false
-		}
+			canSubmit: false,
+		};
 	},
-    watch: {
-        'login.username' () {
-			this.submitEnable()
+	watch: {
+		'login.username': function () {
+			this.submitEnable();
 		},
-        'login.password' () {
-			this.submitEnable()
-		}
-    },
+		'login.password': function () {
+			this.submitEnable();
+		},
+	},
 	methods: {
-		submitEnable(){
+		submitEnable() {
 			if (this.login.username.length === 0) {
 				this.canSubmit = false;
-			}else if (this.login.password.length === 0) {
+			} else if (this.login.password.length === 0) {
 				this.canSubmit = false;
-			}else{
+			} else {
 				this.canSubmit = true;
-			}	
+			}
 		},
 		// Validates the user name and password, and provides error messaging if needed
 		validateForm(e) {
 			// Return the status of the form to the submission handler
-			let isValid = true
+			let isValid = true;
 
-			// Prevents the form from doing its normal action of submitting it via HTML, we will handle submission
-			e.preventDefault()
+			// Prevents the form from doing its normal action of submitting it via HTML
+			e.preventDefault();
 
 			// Reset the form and do a check, in case they fixed anything in a previous submission
-			this.resetForm()
+			this.resetForm();
 
 			// Validate that they actually input something
 			if (this.login.username.length === 0) {
 				// Makes the 'input--error' class active, so we will get a red border
-				this.validation.username = true
+				this.validation.username = true;
 				this.validation.errors.push({
 					id: 1,
-					msg: 'Username is required'
-				})
-				isValid = false
+					msg: 'Username is required',
+				});
+				isValid = false;
 			}
 			if (this.login.password.length === 0) {
-				this.validation.password = true
+				this.validation.password = true;
 				this.validation.errors.push({
 					id: 2,
-					msg: 'Password is required'
-				})
-				isValid = false
+					msg: 'Password is required',
+				});
+				isValid = false;
 			}
-			return isValid
+			return isValid;
 		},
 		resetForm() {
-			this.validation.errors = []
-			this.validation.username = false
-			this.validation.password = false
+			this.validation.errors = [];
+			this.validation.username = false;
+			this.validation.password = false;
 		},
-		// The parameter (e) is the event of the form, which is secretly passed in, and we capture it here to pass to
-		// validate form
 		loginUser(e) {
 			if (this.validateForm(e)) {
 				// initiate call to the store module for state changes/api request to validate user
 				this.$store
 					.dispatch('users/login', this.login)
 					.then(() => {
-						this.$router.replace('/pantry')
+						this.$router.replace('/pantry');
 					})
-					.catch(err => {
+					.catch((err) => {
 						this.validation.errors.push({
 							id: 3,
-							msg: err
-						})
-					})
+							msg: err,
+						});
+					});
 			}
-		}
-	}
-}
+		},
+	},
+};
 </script>
 
 <style scoped>

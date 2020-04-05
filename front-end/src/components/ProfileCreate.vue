@@ -22,20 +22,20 @@ export default {
 		return {
 			profile: {
 				name: '',
-				ingredients: []
-			}
-		}
+				ingredients: [],
+			},
+		};
 	},
 	methods: {
 		onSubmit() {
-			this.$store.dispatch('profile/createProfile', this.profile)
+			this.$store.dispatch('profile/createProfile', this.profile);
 			this.profile = {
 				name: '',
-				ingredients: []
-			}
-		}
-	}
-}
+				ingredients: [],
+			};
+		},
+	},
+};
 </script>
 
 <style scoped></style>

@@ -92,7 +92,7 @@ export default {
 				email: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
 				passwordLowercase: /[a-z]/,
 				passwordUppercase: /[A-Z]/,
-				passwordNumbers: /[0-9]/
+				passwordNumbers: /[0-9]/,
 			},
 			user: {
 				fullName: '',
@@ -100,7 +100,7 @@ export default {
 				email: '',
 				password: '',
 				repassword: '',
-				dietType: ''
+				dietType: '',
 			},
 			validation: {
 				errors: [],
@@ -108,121 +108,118 @@ export default {
 				password: false,
 				repassword: false,
 				email: false,
-				fullName: false
-			}
-		}
+				fullName: false,
+			},
+		};
 	},
 	methods: {
-		// Validates the username, password, password confirmation, etc, and provides error messaging if needed
+		// Validates the form, and provides error messaging if needed
 		validateForm(e) {
 			// Return the status of the form to the submission handler
-			let isValid = true
+			let isValid = true;
 
-			// Prevents the form from doing its normal action of submitting it via HTML, we will handle submission
-			e.preventDefault()
+			// Prevents the form from doing its normal action of submitting it via HTML
+			e.preventDefault();
 
 			// Reset the form and do a check, in case they fixed anything in a previous submission
-			this.resetForm()
+			this.resetForm();
 
 			// Validate that they actually input something
 			if (this.user.username.length === 0) {
 				// Makes the 'input--error' class active, so we will get a red border
-				this.validation.username = true
+				this.validation.username = true;
 				this.validation.errors.push({
 					id: 1,
-					msg: 'Username is required'
-				})
-				isValid = false
+					msg: 'Username is required',
+				});
+				isValid = false;
 			}
 			if (this.user.password.length < 8) {
-				this.validation.password = true
+				this.validation.password = true;
 				this.validation.errors.push({
 					id: 2,
-					msg: 'Password needs to be greater than 8 characters'
-				})
-				isValid = false
+					msg: 'Password needs to be greater than 8 characters',
+				});
+				isValid = false;
 			}
 			if (this.user.email.length === 0) {
-				this.validation.email = true
+				this.validation.email = true;
 				this.validation.errors.push({
 					id: 3,
-					msg: 'Email is required'
-				})
-				isValid = false
+					msg: 'Email is required',
+				});
+				isValid = false;
 			}
 			if (this.user.fullName.length === 0) {
-				this.validation.email = true
+				this.validation.email = true;
 				this.validation.errors.push({
 					id: 4,
-					msg: 'Full Name is required'
-				})
-				isValid = false
+					msg: 'Full Name is required',
+				});
+				isValid = false;
 			}
 
 			// Verify that password matches password check
 			if (this.user.password !== this.user.repassword) {
-				this.validation.password = true
-				this.validation.repassword = true
+				this.validation.password = true;
+				this.validation.repassword = true;
 				this.validation.errors.push({
 					id: 5,
-					msg: 'Passwords do not match'
-				})
-				isValid = false
+					msg: 'Passwords do not match',
+				});
+				isValid = false;
 			}
 
 			if (
-				!this.regex.passwordLowercase.test(this.user.password) ||
-				!this.regex.passwordUppercase.test(this.user.password) ||
-				!this.regex.passwordNumbers.test(this.user.password)
+				!this.regex.passwordLowercase.test(this.user.password)
+				|| !this.regex.passwordUppercase.test(this.user.password)
+				|| !this.regex.passwordNumbers.test(this.user.password)
 			) {
-				this.validation.password = true
+				this.validation.password = true;
 				this.validation.errors.push({
 					id: 6,
 					msg:
-						'Password must have at least 1 upper case character, lower case character, and number'
-				})
-				isValid = false
+						'Password must have at least 1 upper case character, lower case character, and number',
+				});
+				isValid = false;
 			}
 
 			if (!this.regex.email.test(this.user.email)) {
-				this.validation.email = true
+				this.validation.email = true;
 				this.validation.errors.push({
 					id: 7,
-					msg: 'Email must be a valid address'
-				})
-				isValid = false
+					msg: 'Email must be a valid address',
+				});
+				isValid = false;
 			}
 
-			return isValid
+			return isValid;
 		},
 		resetForm() {
-			this.validation.errors = []
-			this.validation.username = false
-			this.validation.password = false
-			this.validation.repassword = false
-			this.validation.email = false
-			this.validation.fullName = false
+			this.validation.errors = [];
+			this.validation.username = false;
+			this.validation.password = false;
+			this.validation.repassword = false;
+			this.validation.email = false;
+			this.validation.fullName = false;
 		},
 		registerUser(e) {
 			if (this.validateForm(e)) {
 				this.$store
 					.dispatch('users/createAccount', this.user)
 					.then(() => {
-						// This is a really cool method, it allows you to talk back to the parent view or component, in this case
-						// Register.vue, it will send back data to the parent (in this case, just a true value), and then the parent
-						// can make a decision on what to do. This is similar to 'props' (passing data from parent to child), just reversed
-						this.$emit('successfulRegister', true)
+						this.$emit('successfulRegister', true);
 					})
-					.catch(err => {
+					.catch((err) => {
 						this.validation.errors.push({
 							id: 0,
-							msg: err
-						})
-					})
+							msg: err,
+						});
+					});
 			}
-		}
-	}
-}
+		},
+	},
+};
 </script>
 
 <style scoped>

@@ -41,44 +41,44 @@ export default {
 				email: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
 				passwordLowercase: /[a-z]/,
 				passwordUppercase: /[A-Z]/,
-				passwordNumbers: /[0-9]/
+				passwordNumbers: /[0-9]/,
 			},
 			user: {
-				username: ''
+				username: '',
 			},
 			validation: {
 				errors: [],
-				username: false
-			}
-		}
+				username: false,
+			},
+		};
 	},
 	methods: {
 		// Validates the username and provides error messaging if needed
 		validateForm(e) {
 			// Return the status of the form to the submission handler
-			let isValid = true
+			let isValid = true;
 
-			// Prevents the form from doing its normal action of submitting it via HTML, we will handle submission
-			e.preventDefault()
+			// Prevents the form from doing its normal action of submitting it via HTML
+			e.preventDefault();
 
 			// Reset the form and do a check, in case they fixed anything in a previous submission
-			this.resetForm()
+			this.resetForm();
 
 			// Validate that they actually input something
 			if (this.user.username.length === 0) {
 				// Makes the 'input--error' class active, so we will get a red border
-				this.validation.username = true
+				this.validation.username = true;
 				this.validation.errors.push({
 					id: 1,
-					msg: 'Username is required'
-				})
-				isValid = false
+					msg: 'Username is required',
+				});
+				isValid = false;
 			}
-			return isValid
+			return isValid;
 		},
 		resetForm() {
-			this.validation.errors = []
-			this.validation.username = false
+			this.validation.errors = [];
+			this.validation.username = false;
 		},
 		forgotPasswordSubmit(e) {
 			if (this.validateForm(e)) {
@@ -87,18 +87,18 @@ export default {
 					.then(() => {
 						// See Micheal Young's notes on this method under register
 						// Hint: he likes it.
-						this.$emit('passwordVerification', true)
+						this.$emit('passwordVerification', true);
 					})
-					.catch(err => {
+					.catch((err) => {
 						this.validation.errors.push({
 							id: 0,
-							msg: err
-						})
-					})
+							msg: err,
+						});
+					});
 			}
-		}
-	}
-}
+		},
+	},
+};
 </script>
 
 <style scoped>

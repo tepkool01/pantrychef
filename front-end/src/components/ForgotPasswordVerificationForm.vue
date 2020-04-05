@@ -52,55 +52,55 @@ export default {
 				email: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/,
 				passwordLowercase: /[a-z]/,
 				passwordUppercase: /[A-Z]/,
-				passwordNumbers: /[0-9]/
+				passwordNumbers: /[0-9]/,
 			},
 			user: {
 				code: '',
 				newPassword: '',
-				username: ''
+				username: '',
 			},
 			validation: {
 				errors: [],
 				code: false,
-				newPassword: false
-			}
-		}
+				newPassword: false,
+			},
+		};
 	},
 	methods: {
-		// Validates the username, password, password confirmation, etc, and provides error messaging if needed
+		// Validates the username, password, password confirmation, etc
 		validateForm(e) {
 			// Return the status of the form to the submission handler
-			let isValid = true
+			let isValid = true;
 
-			// Prevents the form from doing its normal action of submitting it via HTML, we will handle submission
-			e.preventDefault()
+			// Prevents the form from doing its normal action of submitting it via HTML
+			e.preventDefault();
 
 			// Reset the form and do a check, in case they fixed anything in a previous submission
-			this.resetForm()
+			this.resetForm();
 
 			// Validate that they actually input something
 			if (this.user.code.length === 0) {
 				// Makes the 'input--error' class active, so we will get a red border
-				this.validation.code = true
+				this.validation.code = true;
 				this.validation.errors.push({
 					id: 1,
-					msg: 'Verification Code is required'
-				})
+					msg: 'Verification Code is required',
+				});
 			}
 			if (this.user.newPassword.length < 8) {
-				this.validation.newPassword = true
+				this.validation.newPassword = true;
 				this.validation.errors.push({
 					id: 2,
-					msg: 'You new Password needs to be greater than 8 characters'
-				})
-				isValid = false
+					msg: 'You new Password needs to be greater than 8 characters',
+				});
+				isValid = false;
 			}
-			return isValid
+			return isValid;
 		},
 		resetForm() {
-			this.validation.errors = []
-			this.validation.code = false
-			this.validation.newPassword = false
+			this.validation.errors = [];
+			this.validation.code = false;
+			this.validation.newPassword = false;
 		},
 		forgotPasswordVerificationSubmit(e) {
 			if (this.validateForm(e)) {
@@ -108,18 +108,18 @@ export default {
 					.dispatch('users/forgotPasswordVerification', this.user)
 					.then(() => {
 						// See Micheal Young's notes on this method under register. Hint: he likes it.
-						this.$emit('successfulVerification', true)
+						this.$emit('successfulVerification', true);
 					})
-					.catch(err => {
+					.catch((err) => {
 						this.validation.errors.push({
 							id: 0,
-							msg: err
-						})
-					})
+							msg: err,
+						});
+					});
 			}
-		}
-	}
-}
+		},
+	},
+};
 </script>
 
 <style scoped>

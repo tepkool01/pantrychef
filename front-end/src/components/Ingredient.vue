@@ -2,7 +2,7 @@
 	<div class="chef-ingredient">
 		{{ ingredient.ingredient_name }}
 		<button
-			:id="'ingredient_add_' + ingredient.ingredient_name"  
+			:id="'ingredient_add_' + ingredient.ingredient_name"
 			type="button"
 			class="btn btn-outline-success btn-sm close"
 			v-if="listType === 'search'"
@@ -11,7 +11,7 @@
 			Add
 		</button>
 		<button
-			:id="'ingredient_remove_' + ingredient.ingredient_name"  
+			:id="'ingredient_remove_' + ingredient.ingredient_name"
 			type="button"
 			class="btn btn-outline-danger btn-sm"
 			@click="handleRemoveIngredient"
@@ -28,25 +28,25 @@ export default {
 	props: {
 		ingredient: {
 			type: Object,
-			required: true
+			required: true,
 		},
 		listType: {
 			type: String,
 			required: true,
-			validator: function(value) {
-				return ['shopping', 'pantry', 'search'].indexOf(value) !== -1
-			}
-		}
+			validator(value) {
+				return ['shopping', 'pantry', 'search'].indexOf(value) !== -1;
+			},
+		},
 	},
 	methods: {
-		handleAddIngredient: function() {
-			this.$emit('addCall', this.ingredient)
+		handleAddIngredient() {
+			this.$emit('addCall', this.ingredient);
 		},
-		handleRemoveIngredient: function() {
-			this.$emit('removeCall', this.ingredient)
-		}
-	}
-}
+		handleRemoveIngredient() {
+			this.$emit('removeCall', this.ingredient);
+		},
+	},
+};
 </script>
 
 <style scoped></style>

@@ -21,8 +21,16 @@
 					</div>
 				</div>
 				<div>
-					<select id="change_diet_dropdown" class="form-control" aria-label="Diet Type" @change="switchMealPreference">
-						<option v-for="p in availableMealPreferences" :value="p.id" :selected="userMealPreference.id === p.id">{{p.name}}</option>
+					<select id="change_diet_dropdown"
+                            class="form-control"
+                            aria-label="Diet Type"
+                            @change="switchMealPreference">
+						<option v-for="p in availableMealPreferences"
+                                :value="p.id"
+                                :key="p.id"
+                                :selected="userMealPreference.id === p.id">
+                            {{p.name}}
+                        </option>
 					</select>
 				</div>
 			</div>
@@ -52,34 +60,34 @@
 </template>
 
 <script>
-import {mapGetters, mapActions} from "vuex";
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
 	name: 'SettingsFood',
 	computed: {
 		...mapGetters('users', {
 			availableMealPreferences: 'availableMealPreferences',
-			userMealPreference: 'userMealPreference'
-		})
+			userMealPreference: 'userMealPreference',
+		}),
 	},
 	methods: {
 		...mapActions('users', {
 			getUserInfo: 'getUserInfo',
-			updateUserInfo: 'updateUserInfo'
+			updateUserInfo: 'updateUserInfo',
 		}),
 		switchMealPreference(preference) {
-			console.log(preference)
+			console.log(preference);
 			this.updateUserInfo({
 				meal_preference: {
-					id: preference.target.value
-				}
-			})
-		}
+					id: preference.target.value,
+				},
+			});
+		},
 	},
 	created() {
-		this.getUserInfo()
-	}
-}
+		this.getUserInfo();
+	},
+};
 </script>
 
 <style scoped>

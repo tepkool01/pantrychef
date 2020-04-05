@@ -14,43 +14,50 @@
 				@selection="selectionEvent"
 			></AutoComplete>
 			<br /><br />
-			<b-button variant="outline-secondary" class="ml-3" @click="childEvent" v-if="Object.keys(this.selected_ingredient).length !== 0">Add</b-button>
+			<b-button
+                    variant="outline-secondary"
+                    class="ml-3"
+                    @click="childEvent"
+                    v-if="Object.keys(this.selected_ingredient).length !== 0"
+            >
+                Add
+            </b-button>
 		</div>
 	</div>
 </template>
 
 <script>
-import AutoComplete from '@/components/AutoComplete.vue'
+import AutoComplete from './AutoComplete.vue';
 
 export default {
 	name: 'ingredients',
 	props: {
 		suggestionsMstr: {
 			type: Array,
-			required: true
-		}
+			required: true,
+		},
 	},
 	components: {
-		AutoComplete
+		AutoComplete,
 	},
 	methods: {
-		childEvent () {
-			this.$emit('clickedItem', this.selected_ingredient)
+		childEvent() {
+			this.$emit('clickedItem', this.selected_ingredient);
 		},
-		selectionEvent (value){
-			this.selected_ingredient = value
-		}
+		selectionEvent(value) {
+			this.selected_ingredient = value;
+		},
 	},
-	data () {
+	data() {
 		return {
 			Title1: 'Ingredient',
 			Attr1: 'ingredient_name',
 			Tip1: 'Choose ingredient to add to your pantry.',
 			selected_ingredient: {},
-			currentDate: new Date().toISOString().substr(0, 10)
-		}
-	}
-}
+			currentDate: new Date().toISOString().substr(0, 10),
+		};
+	},
+};
 </script>
 
 <style scoped></style>

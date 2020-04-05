@@ -20,13 +20,13 @@
 				>
 					{{ p.profile_name }}
 					<b-button-group>
-						<b-button 
-							:id="'profile_edit_' + p.profile_name"  
+						<b-button
+							:id="'profile_edit_' + p.profile_name"
 							variant="outline-secondary"
 						>
 							<b-icon-pencil></b-icon-pencil>
 						</b-button>
-						<b-button 
+						<b-button
 							:id="'profile_delete_' + p.profile_name"
 							variant="outline-secondary"
 						>
@@ -52,30 +52,31 @@
 </template>
 
 <script>
-import ProfileCreate from '../components/ProfileCreate'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex';
+import ProfileCreate from './ProfileCreate.vue';
+
 export default {
 	name: 'SettingsProfiles',
 	computed: {
 		...mapGetters('profile', {
-			profiles: 'profiles'
-		})
+			profiles: 'profiles',
+		}),
 	},
 	components: {
-		ProfileCreate
+		ProfileCreate,
 	},
 	methods: {
 		onDelete(id) {
-			this.$store.dispatch('profile/deleteProfile', id)
+			this.$store.dispatch('profile/deleteProfile', id);
 		},
 		...mapActions('profile', {
-			getProfiles: 'getProfiles'
-		})
+			getProfiles: 'getProfiles',
+		}),
 	},
 	created() {
-		this.getProfiles()
-	}
-}
+		this.getProfiles();
+	},
+};
 </script>
 
 <style scoped>

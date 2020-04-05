@@ -64,18 +64,19 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import UpdatePassword from './modals/UpdatePassword'
-import UpdateUsername from './modals/UpdateUsername'
+import { mapGetters } from 'vuex';
+import UpdatePassword from './modals/UpdatePassword.vue';
+import UpdateUsername from './modals/UpdateUsername.vue';
+
 export default {
 	name: 'SettingsAccount',
 	components: { UpdateUsername, UpdatePassword },
 	computed: {
 		...mapGetters('users', {
-			userId: 'userId'
-		})
-	}
-}
+			userId: 'userId',
+		}),
+	},
+};
 </script>
 
 <style scoped>

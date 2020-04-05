@@ -15,10 +15,10 @@ export default {
 	props: {
 		errorList: {
 			type: String,
-			required: true
-		}
-	}
-}
+			required: true,
+		},
+	},
+};
 </script>
 
 
