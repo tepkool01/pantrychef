@@ -83,14 +83,13 @@ describe('Ingredient', () => {
         wrapper.destroy();
     });
 
-
-
-    test('(Search Type) Add Button Action', () => {
+    test('(Search Type) Remove Button Action', () => {
         const wrapper = shallowMount(Ingredient, {
             propsData: {
                 listType: 'search',
                 ingredient: { 
-                    ingredient_name: "test_ingredient"
+                    ingredient_name: "test_ingredient",
+                    ingreident_id: 1
                 }
             }
         });
@@ -101,8 +100,11 @@ describe('Ingredient', () => {
         wrapper.vm.handleRemoveIngredient = jest.fn();
 
         const removeBtn = wrapper.find('.remove_button');
-        
-
+        removeBtn.trigger('click');
+        expect(wrapper.emitted().removeCall.length).toBe(1);
+        expect(wrapper.emitted().removeCall[0]).toEqual(
+            [{"ingredient_name": "test_ingredient", "ingreident_id": 1}]
+        )
         wrapper.destroy();
     });
 
