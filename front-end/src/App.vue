@@ -125,14 +125,14 @@ export default {
 			logout: 'logout'
 		}),
 		...mapActions('profile', {
-			activateProfile: 'activateProfile'
+			activateProfile: 'activateProfile',
 		}),
 		switchProfile(profile) {
 			this.activateProfile(profile.target.value)
 		},
 		onLogout() {
 			// Invalidate the session
-			this.logout()
+			this.logout();
 
 			// Navigate back to home page
 			this.$router.replace('/')

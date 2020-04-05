@@ -1,14 +1,17 @@
-import axios from 'axios'
+import axios from 'axios';
+import store from '../../store';
 
 export default {
 	getRecipes() {
-		return axios.get('/recipes')
+		const config = { headers: { "Authorization": store.state.users.user.idToken }};
+		return axios.get('/recipes', config);
 	},
 	getIngredients(recipe_id) {
-		return axios.get('/recipes/' + recipe_id + '/ingredients')
+		const config = { headers: { "Authorization": store.state.users.user.idToken }};
+		return axios.get('/recipes/' + recipe_id + '/ingredients', config)
 	},
-	// eslint-disable-next-line no-unused-vars
-	getRecipe(recipe) {
-		return Promise.resolve()
+	getRecipe(recipe_id) {
+		const config = { headers: { "Authorization": store.state.users.user.idToken }};
+		return axios.get('/recipes/' + recipe_id, config);
 	}
 }

@@ -1,6 +1,7 @@
 import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js'
 import * as AWS from 'aws-sdk/global'
 import axios from "axios";
+import store from "../../store";
 
 const poolData = {
 	UserPoolId: 'us-east-1_FfJ4ffeia',
@@ -10,10 +11,12 @@ const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 export default {
 	getUserInfo() {
-		return axios.get('/user')
+		const config = { headers: { "Authorization": store.state.users.user.idToken }};
+		return axios.get('/user', config)
 	},
 	updateUser(payload) {
-		return axios.patch('/user', payload)
+		const config = { headers: { "Authorization": store.state.users.user.idToken }};
+		return axios.patch('/user', payload, config)
 	},
 	logout() {
 		this.getUser().signOut()

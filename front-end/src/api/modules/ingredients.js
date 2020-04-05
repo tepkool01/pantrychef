@@ -1,11 +1,13 @@
 import axios from 'axios'
+import store from '../../store';
 
 export default {
 	getIngredients() {
-		return axios.get('/ingredients')
+		const config = { headers: { "Authorization": store.state.users.user.idToken }};
+		return axios.get('/ingredients', config);
 	},
-
 	getIngredient(id) {
-		return axios.get('/ingredients/' + id)
+		const config = { headers: { "Authorization": store.state.users.user.idToken }};
+		return axios.get('/ingredients/' + id, config);
 	}
 }

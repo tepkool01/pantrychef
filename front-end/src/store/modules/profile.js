@@ -26,15 +26,21 @@ const actions = {
 		})
 	},
 	getProfiles({ commit }) {
-		api.profile.getProfiles().then(response => {
-			commit('SET_PROFILES', response.data)
+		return new Promise((resolve, reject) => {
+			api.profile.getProfiles().then(response => {
+				commit('SET_PROFILES', response.data)
 
-			response.data.forEach(profile => {
-				if (profile.isActive) {
-					commit('SET_ACTIVE', profile.id)
-				}
-			})
-		})
+				response.data.forEach(profile => {
+					if (profile.isActive) {
+						commit('SET_ACTIVE', profile.id)
+					}
+				})
+
+				resolve(1);
+			}).catch(err => {
+				reject(err);
+			});
+		});
 	},
 	deleteProfile({ commit }, id) {
 		api.profile.deleteProfile(id).then(() => {

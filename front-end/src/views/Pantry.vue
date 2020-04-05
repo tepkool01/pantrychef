@@ -109,12 +109,12 @@ export default {
 		}
 	},
 	created() {
-		this.$emit('title', 'Pantry')
-	},
-	mounted() {
-		if(this.activeProfile == null){
-			this.errors+="ERROR:  Active profile not loaded."
-		}	
+		this.$emit('title', 'Pantry');
+
+		// No active profile, retrieve it
+		if (!this.activeProfile) {
+			this.getProfiles()
+        }
 	}
 }
 </script>
