@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="card m-4 text-center">
 				<div class="card-header">
-                    <img v-if="recipe.img_url" :src="'img/recipes/' + recipe.img_url" />
+                    <img v-if="recipe.img_url" :src="'/img/recipes/' + recipe.img_url" />
 					<h1 class="card-title">
 						{{ recipe.name }}
 					</h1>
