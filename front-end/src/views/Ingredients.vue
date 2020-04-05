@@ -10,11 +10,16 @@
 						Shopping List
 					</h5>
 				</div>
-				<div class="card-body m-4 text-center" style="width: 50%">
-					<div v-for="i in shoppingList" v-bind:key="i.name">
-						<ingredient :ingredient="i" :key="i.id" :listType="pantryType" @removeCall="handleIngredientRemove"></ingredient>
-					</div>
-				</div>
+                <div class="card-body m-4 text-center" style="width: 50%">
+                    <a href="#" @click="sortOrder = (sortOrder === 'A-Z' ? 'Z-A' : 'A-Z')">SORT</a>
+                    <div v-for="ingredient in sort(sortOrder)" :key="ingredient.id">
+                        <ingredient
+                                :ingredient="ingredient"
+                                :listType="pantryType"
+                                @removeCall="handleIngredientRemove"
+                        ></ingredient>
+                    </div>
+                </div>
 			</div>
 		</div>
 	</div>
@@ -25,12 +30,14 @@ import { EventBus } from '../eventBus'; // used for Errors
 import Ingredient from '../components/Ingredient.vue';
 import IngredientSubmissionPanel from '../components/IngredientSubmissionPanel.vue';
 import { mapGetters, mapActions } from 'vuex';
+import _ from 'lodash';
 
 export default {
 	name: 'ingredients',
 	data() {
 		return {
 			pantryType: "shopping",
+			sortOrder: 'default',
 		}
 	},
 	computed: {
@@ -43,7 +50,21 @@ export default {
 		...mapGetters('profile', {
 			profiles: 'profiles',
 			activeProfile: 'activeProfile'
-		})
+		}),
+		orderedListOptions () {
+			let list = this.shoppingList;
+			return {
+				"default": () => {
+					return list;
+				},
+				"A-Z": () => {
+					return _.orderBy(list, 'ingredient_name', ['asc']);
+				},
+				"Z-A": () => {
+					return _.orderBy(list, 'ingredient_name', ['desc']);
+				},
+			}
+		},
 	},
 	components: {
 		IngredientSubmissionPanel,
@@ -72,6 +93,9 @@ export default {
 				ingredient: ingredient,
 				profile_id: this.activeProfile
 			});
+		},
+		sort (sortOrder) {
+			return this.orderedListOptions[sortOrder]();
 		},
 	},
 	watch: {
