@@ -16,6 +16,6 @@ export default {
 	},
 	setActive(profile_id) {
 		const config = { headers: { "Authorization": store.state.users.user.idToken }};
-		return axios.put('/profiles/' + profile_id + '/activate', config)
+		return axios.put('/profiles/' + profile_id + '/activate', {}, config)
 	}
 }

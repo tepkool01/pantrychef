@@ -8,7 +8,7 @@ export default {
 	},
 	addIngredient(ingredient_id, profile_id) {
 		const config = { headers: { "Authorization": store.state.users.user.idToken }};
-		return axios.put('/pantry/' + profile_id + '/ingredients/' + ingredient_id, config)
+		return axios.put('/pantry/' + profile_id + '/ingredients/' + ingredient_id, {}, config)
 	},
 	deleteIngredient(ingredient_id, profile_id) {
 		const config = { headers: { "Authorization": store.state.users.user.idToken }};
