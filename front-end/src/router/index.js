@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import ViewRecipe from "../views/ViewRecipe";
 
 import store from '../store/index'
 import axios from 'axios'
@@ -78,6 +79,13 @@ const routes = [
 		path: '/recipes',
 		name: 'recipes',
 		component: () => import('../views/Recipes.vue'),
+		children: [
+			{
+				path: ':id',
+				name: "ViewRecipe",
+				component: ViewRecipe
+			},
+		],
 		beforeEnter(to, from, next) {
 			store
 				.dispatch('users/getSession')
@@ -94,26 +102,26 @@ const routes = [
 				})
 		}
 	},
-	{
-		path: '/recipes/:id',
-		name: 'viewRecipes',
-		component: () => import('../views/ViewRecipe.vue'),
-		beforeEnter(to, from, next) {
-			store
-				.dispatch('users/getSession')
-				.then(() => {
-					if (store.state.users.user.idToken != null) {
-						store.dispatch('profile/getProfiles')
-						next()
-					} else {
-						next('/')
-					}
-				})
-				.catch(() => {
-					next('/')
-				})
-		}
-	},
+	// {
+	// 	path: '/recipes/:id',
+	// 	name: 'ViewRecipe',
+	// 	component: () => import('../views/ViewRecipe.vue'),
+	// 	beforeEnter(to, from, next) {
+	// 		store
+	// 			.dispatch('users/getSession')
+	// 			.then(() => {
+	// 				if (store.state.users.user.idToken != null) {
+	// 					store.dispatch('profile/getProfiles')
+	// 					next()
+	// 				} else {
+	// 					next('/')
+	// 				}
+	// 			})
+	// 			.catch(() => {
+	// 				next('/')
+	// 			})
+	// 	}
+	// },
 	{
 		path: '/settings',
 		name: 'settings',

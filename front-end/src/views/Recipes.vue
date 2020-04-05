@@ -6,16 +6,24 @@
 			</div>
 		</div>
 		<div class="row">
+            <!-- All the recipe cards are here-->
 			<div v-for="i in recipes" v-bind:key="i.name">
 				<recipe-card :recipe="i" v-if="i.id"></recipe-card>
 			</div>
 		</div>
+        <!-- This is the modal for view recipe -->
+        <div
+                v-if="isRecipeOpen"
+                @click.self="close"
+                class="recipe-modal"
+        >
+            <router-view />
+        </div>
 	</div>
 </template>
 
 <script>
 import RecipeCard from '../components/RecipeCard'
-import ViewRecipe from './ViewRecipe'
 
 import { mapGetters, mapActions } from 'vuex'
 
@@ -27,11 +35,13 @@ export default {
 		}),
 		...mapGetters('profile', {
 			activeProfile: 'activeProfile'
-		})
+		}),
+        isRecipeOpen() {
+			return this.$route.name === 'ViewRecipe'
+        }
 	},
 	components: {
 		RecipeCard,
-		ViewRecipe
 	},
 	watch: {
 		activeProfile: function(val) {
@@ -41,9 +51,12 @@ export default {
 	methods: {
 		...mapActions('recipes', {
 			getRecipes: 'getRecipes'
-		})
+		}),
+		close () {
+			console.log("Closing");
+			this.$router.push({ name: 'recipes' })
+		}
 	},
-
 	created() {
 		this.getRecipes()
 		this.$emit('title', 'Pantry')
@@ -51,4 +64,12 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+    .recipe-modal {
+        width: 500px;
+        height:500px;
+        position: absolute;
+        top: 0;
+        z-index: 2;
+    }
+</style>

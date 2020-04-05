@@ -1,7 +1,7 @@
 <template>
-	<div>
+	<div class="test">
 		<div class="row">
-			<div class="card m-4 text-center" style="...">
+			<div class="card m-4 text-center">
 				<div class="card-header">
 					<h1 class="card-title">
 						View Recipe
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
 export default {
 	name: 'RecipeCard',
 	methods: {
@@ -29,7 +30,10 @@ export default {
 			// todo
 			console.log(id)
 		}
-	}
+	},
+    created() {
+        console.log("CREATE");
+    }
 }
 </script>
 
@@ -37,4 +41,7 @@ export default {
 .star-icon {
 	float: left;
 }
+    .test {
+        background-color: #2c3e50;
+    }
 </style>

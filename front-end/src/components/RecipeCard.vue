@@ -100,15 +100,12 @@ export default {
 			getRecipeIngredients: 'getRecipeIngredients',
 		}),
 		getRecipeCard(id) {
-			this.$router.replace(`/recipes/${id}`);
-		},
-	},
-	watch: {
-		recipe(val) {
-			console.log(val);
-			this.getRecipeIngredients(this.recipe.id).then((result) => {
-				this.ingredients = result.data;
-			});
+			this.$router.push({
+                name: 'ViewRecipe',
+                params: {
+                	id: id
+                }
+            })
 		},
 	},
 };
