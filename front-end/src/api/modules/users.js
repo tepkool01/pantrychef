@@ -1,5 +1,4 @@
 import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js'
-import * as AWS from 'aws-sdk/global'
 import axios from "axios";
 import store from "../../store";
 
