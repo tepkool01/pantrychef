@@ -22,7 +22,9 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex';
+import { mapActions } from 'vuex';
+import api from '../api';
+
 export default {
 	name: 'RecipeCard',
 	methods: {
@@ -32,6 +34,9 @@ export default {
 		}
 	},
     created() {
+		api.recipe.getRecipe(this.$route.params.id).then(result => {
+			console.log(result);
+        });
         console.log("CREATE");
     }
 }

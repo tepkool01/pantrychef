@@ -119,6 +119,11 @@ def lambda_handler(event, context):
                         'sustainable': record[13]['booleanValue'],
                     })
     elif event['resource'] == '/recipes/{recipeId}':
+        result = {
+            'directions': [],
+            'ingredients': []
+        }
+
         # First grab high-level recipe information
         recipe_query = db.execute(
             sql="SELECT ID, RecipeName, CookTime, ImgURL, Servings, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable FROM Recipe WHERE ID=:id",
@@ -145,17 +150,32 @@ def lambda_handler(event, context):
                 'ingredients': []
             }
 
-        # Grab ingredients first, and then parse them into readable format for the front end
-        # ingredients = db.execute(
-        #     sql="SELECT IngredientID, IngredientName, IngredientType FROM `RecipeListItem` r JOIN `Ingredient` i ON i.ID=r.IngredientID WHERE r.RecipeID=:id",
-        #     parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
-        # )
-        # for ingredient in ingredients['records']:
-        #     result['ingredients'].append({
-        #         'id': ingredient[0]['longValue'],
-        #         'name': ingredient[1]['stringValue'],
-        #         'type': ingredient[2]['stringValue']
-        #     })
+        # Grab directions
+        directions_query = db.execute(
+            sql="SELECT SortOrder, Direction FROM Directions WHERE RecipeID=:id ORDER BY SortOrder ASC",
+            parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
+        )
+
+        for direction in directions_query['records']:
+            result['directions'].append({
+                'order': direction[0]['longValue'],
+                'direction': direction[1]['stringValue']
+            })
+
+        # Grab ingredients
+        ingredients_query = db.execute(
+            sql="SELECT i.ID, r.Amount, r.AmountUnitID, i.IngredientName, i.IngredientImgURL FROM RecipeListItem r LEFT JOIN Ingredient i ON r.IngredientID=i.ID WHERE RecipeID=:id",
+            parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
+        )
+
+        for ingredient in ingredients_query['records']:
+            result['ingredients'].append({
+                'id': ingredient[0]['longValue'],
+                'amount': ingredient[1]['doubleValue'],
+                'amount_unit': ingredient[2]['stringValue'],
+                'name': ingredient[3]['stringValue'],
+                'img_url': ingredient[4]['stringValue'],
+            })
     elif event['resource'] == '/recipes/{recipeId}/ingredients':
         # Placeholder for all the information needed for a recipe page
         result = []
