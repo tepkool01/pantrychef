@@ -26,8 +26,12 @@ for root, directory, files in os.walk(path):
     for file in files:
         count += 1
         print("Starting on: " + str(count))
+        print(file)
 
-        with open(path + "/" + file, encoding="utf8") as f:
+        if 'rar' in file:
+            continue
+
+        with open(path + "/" + file) as f:
             recipe = json.load(f)
 
         # Exit conditions
@@ -55,43 +59,43 @@ for root, directory, files in os.walk(path):
                 })
 
                 # Search to see if this ingredient is already in our 'Ingredients' table
-                # found = False
-                # for ing in ingredients:
-                #     if ing['id'] == ingredient['id']:
-                #         found = True
-                #         break
-                # if not found:
-                # Grab ingredient image
-                # if ingredient['image'] is not None:
-                #     with open('../front-end/public/img/ingredients/' + ingredient['image'], 'wb') as handle:
-                #         response = requests.get('https://spoonacular.com/cdn/ingredients_100x100/' + ingredient['image'], stream=True)
-                #
-                #         for block in response.iter_content(1024):
-                #             if not block:
-                #                 break
-                #             handle.write(block)
+                found = False
+                for ing in ingredients:
+                    if ing['id'] == ingredient['id']:
+                        found = True
+                        break
+                if not found:
+                    # Grab ingredient image
+                    if ingredient['image'] is not None:
+                        with open('../front-end/public/img/ingredients/' + ingredient['image'], 'wb') as handle:
+                            response = requests.get('https://spoonacular.com/cdn/ingredients_100x100/' + ingredient['image'], stream=True)
 
-                # ingredients.append({
-                #     'id': ingredient['id'],
-                #     'name': ingredient['name'],
-                #     'img': ingredient['image'],
-                # })
+                            for block in response.iter_content(1024):
+                                if not block:
+                                    break
+                                handle.write(block)
+
+                    ingredients.append({
+                        'id': ingredient['id'],
+                        'name': ingredient['name'],
+                        'img': ingredient['image'],
+                    })
             #
             # Grab Recipe Image
             #
             imgUrl = ''
             if 'image' in recipe[0] and  len(recipe[0]['image']) > 0:
                 imgUrl = recipe[0]['image'].replace('https://spoonacular.com/recipeImages/', '')
-                # with open('../front-end/public/img/recipes/' + imgUrl, 'wb') as handle:
-                #     response = requests.get(recipe[0]['image'], stream=True)
-                #
-                #     if not response.ok:
-                #         imgUrl = ''
-                #
-                #     for block in response.iter_content(1024):
-                #         if not block:
-                #             break
-                #         handle.write(block)
+                with open('../front-end/public/img/recipes/' + imgUrl, 'wb') as handle:
+                    response = requests.get(recipe[0]['image'], stream=True)
+
+                    if not response.ok:
+                        imgUrl = ''
+
+                    for block in response.iter_content(1024):
+                        if not block:
+                            break
+                        handle.write(block)
             #
             # Process Recipe
             #
@@ -137,25 +141,29 @@ for root, directory, files in os.walk(path):
 print("Completed gathering")
 
 # Create ingredient SQL
-# characters = 0
-# file_count = 1
+characters = 0
+file_count = 1
 
-# fw = open("../infrastructure/database/spoonacular/ingredients_1.sql", "w+")
+fw = open("../infrastructure/database/spoonacular/ingredients_1.sql", "w+")
 # fw.write("INSERT INTO `Ingredient` (ID, IngredientName, ImageURL) VALUES ")
-# for ingredient in ingredients:
-#     name = ingredient['name'].replace("'", "''")
-#     data = "('{0}', '{1}', '{2}'),\n".format(ingredient['id'], name, ingredient['img'])
-#
-#     fw.write(data)
-#     characters += len(data)
-#
-#     if characters > 60000:
-#         characters = 0
-#         fw.close()
-#         file_count += 1
-#         fw = open("../infrastructure/database/spoonacular/ingredients_" + str(file_count) + ".sql", "w+")
-#         fw.write("INSERT INTO `Ingredient` (ID, IngredientName, ImageURL) VALUES ")
-# fw.close()
+for ingredient in ingredients:
+    name = ingredient['name'].replace("'", "''")
+    data = "REPLACE INTO `Ingredient` SET ID='{0}', IngredientName='{1}', IngredientImgURL='{2}';\n".format(
+        ingredient['id'],
+        name,
+        ingredient['img']
+    )
+
+    fw.write(data)
+    characters += len(data)
+
+    if characters > 60000:
+        characters = 0
+        fw.close()
+        file_count += 1
+        fw = open("../infrastructure/database/spoonacular/ingredients_" + str(file_count) + ".sql", "w+")
+        # fw.write("INSERT INTO `Ingredient` (ID, IngredientName, ImageURL) VALUES ")
+fw.close()
 
 # Create recipe SQL
 characters = 0
@@ -226,7 +234,7 @@ try:
                 fw.close()
                 file_count += 1
                 fw = open("../infrastructure/database/spoonacular/recipes_list_item_" + str(file_count) + ".sql", "w+")
-                fw.write("INSERT INTO `RecipeListItem` (ID, RecipeID, IngredientID, Amount, AmountUnitID) VALUES ")
+                fw.write("INSERT INTO `RecipeListItem` (RecipeID, IngredientID, Amount, AmountUnitID) VALUES ")
         except Exception as e:
             print(str(e))
             print(recipe['id'])
