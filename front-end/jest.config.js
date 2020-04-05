@@ -6,10 +6,6 @@ module.exports = {
         "json",
         "vue"
     ],
-    transform: {
-        ".*\\.(vue)$": "vue-jest",
-        "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
-    },
     collectCoverage: true,
     collectCoverageFrom: [
         "src/components/*.{js,vue}",
@@ -21,7 +17,7 @@ module.exports = {
     coverageDirectory: "tests/reports/",
     coverageReporters: [
         "html",
-        "text-summary"
+        "text-summary",
     ],
 	"modulePaths": [
 		"./src",
