@@ -3,3 +3,4 @@
 front-end/.nyc_output
 front-end/tests/reports/**/*
 front-end/coverage
+__pycache__
