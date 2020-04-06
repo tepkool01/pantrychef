@@ -1,7 +1,7 @@
 <template>
     <b-alert :show=true dismissible :variant="variant">
         <div class="detail-block">
-            <label>{{ type }}</label>: <span class="err-msg">{{ msg }}</span>
+            <label class="err-type">{{ type }}</label>: <span class="err-msg">{{ msg }}</span>
         </div>
     </b-alert>
 </template>
