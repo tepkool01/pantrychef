@@ -33,6 +33,7 @@
 					placeholder="Username"
 					aria-label="Username"
 					autocomplete="username"
+                    id="username"
 				/>
 			</div>
 			<div class="form-group mb-3">
@@ -44,6 +45,7 @@
 					placeholder="Password"
 					aria-label="Password"
 					autocomplete="new-password"
+                    id="password"
 				/>
 			</div>
 			<div class="form-group mb-3">
@@ -55,17 +57,18 @@
 					placeholder="Re-Enter Password"
 					aria-label="Re-Enter Password"
 					autocomplete="new-password"
+                    id="repassword"
 				/>
 			</div>
 			<div class="form-group mb-3">
 				<label>Diet Type</label>
-				<select class="form-control" aria-label="Diet Type">
+				<select class="form-control" aria-label="Diet Type" id="diet-type">
 					<option hidden>-----</option>
-					<option>No Preference</option>
-					<option>Vegetarian</option>
-					<option>Vegan</option>
-					<option>Gluten Free</option>
-					<option>Paleo</option>
+					<option value="0">No Preference</option>
+					<option value="1">Vegetarian</option>
+					<option value="2">Vegan</option>
+					<option value="3">Gluten Free</option>
+					<option value="4">Paleo</option>
 				</select>
 			</div>
 		</div>
@@ -84,6 +87,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
 	name: 'register',
 	data() {
@@ -205,19 +209,21 @@ export default {
 		},
 		registerUser(e) {
 			if (this.validateForm(e)) {
-				this.$store
-					.dispatch('users/createAccount', this.user)
+				this.createAccount(this.user)
 					.then(() => {
 						this.$emit('successfulRegister', true);
 					})
 					.catch((err) => {
 						this.validation.errors.push({
-							id: 0,
+							id: 99,
 							msg: err,
 						});
 					});
 			}
 		},
+        ...mapActions('users', {
+        	'createAccount': 'createAccount',
+        }),
 	},
 };
 </script>

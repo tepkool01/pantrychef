@@ -23,4 +23,7 @@ module.exports = {
 	"modulePaths": [
 		"./src",
 	],
+	"moduleNameMapper": {
+		"amazon-cognito-identity-js": "<rootDir>/__mocks__/amazon-cognito-identity-js/index.js"
+	}
 };
