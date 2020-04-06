@@ -1,6 +1,33 @@
-.DS_Store
-.idea
+# Unit test / coverage reports
+.coverage
+.coverage.*
+.cache
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
 front-end/.nyc_output
 front-end/tests/reports/**/*
 front-end/coverage
 __pycache__
+
+# PyCharm Stuff
+.idea/
+
+# Visual Studio Code Stuff
+.vscode/
+
+# pyenv
+.python-version
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Something else
+.DS_Store
