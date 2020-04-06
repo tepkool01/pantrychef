@@ -1,36 +1,18 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import Ingredients from '../../src/views/Ingredients.vue';
+import store from '../../src/store';
+import router from '../../src/router';
 
-import { EventBus } from '../eventBus'; // used for Errors
-import Ingredient from '../components/Ingredient.vue';
-import IngredientSubmissionPanel from '../components/IngredientSubmissionPanel.vue';
+import { EventBus } from '../../src/eventBus'; // used for Errors
+import Ingredient from '../../src/components/Ingredient.vue';
+import IngredientSubmissionPanel from '../../src/components/IngredientSubmissionPanel.vue';
 import { mapGetters, mapActions } from 'vuex';
+import Component from "../../src/components/ProfileCreate";
 
-let wrapper;
-let store;
-let actions;
-let mutations;
-let state;
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-beforeEach(() => {
-    actions = {
-        someAction: jest.fn()
-    };
-    mutations = {
-        someMutation: jest.fn()
-    };
-    state = {
-        key: {}
-    };
-    store = new Vuex.Store({
-        actions,
-        mutations,
-        state,
-    });
-});
 
 afterEach(() => {
 
@@ -43,6 +25,8 @@ describe('Ingredients', () => {
                 pantryType: "shopping",
                 sortOrder: 'default',
             },
+			store,
+			router,
         });
 
         //expect(wrapper.vm.ingredient.ingredient_name).toMatch("test_ingredient");
