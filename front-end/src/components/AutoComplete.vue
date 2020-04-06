@@ -1,8 +1,6 @@
 <template>
-
     <div class="about flex flex-col">
-        <label v-b-tooltip.hover.left v-bind:title="toolTip"
-               for="lfname">{{componentTitle}}: </label>
+        <label>{{componentTitle}}: </label>
         <input
                 :id="'ingredient_search_' + componentTitle"
                 type="text"

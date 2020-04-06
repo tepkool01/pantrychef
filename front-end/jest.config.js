@@ -11,7 +11,8 @@ module.exports = {
         "src/components/*.{js,vue}",
         "src/views/*.{js,vue}",
         "src/components/modals/*.{js,vue}",
-        "src/store/*.{js}"
+        "src/store/*.{js}",
+		"src/store/modules/*.{js}",
     ],
     
     coverageDirectory: "tests/reports/",

@@ -1,7 +1,7 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import AutoComplete from '../../src/components/AutoComplete.vue';
-import { BootstrapVue } from 'bootstrap-vue';
+import { BootstrapVue } from "bootstrap-vue";
 
 let wrapper;
 let store;
