@@ -9,7 +9,7 @@ let wrapper;
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
-Vue.use(BootstrapVue);
+localVue.use(BootstrapVue);
 
 beforeEach(() => {
 	wrapper = shallowMount(Component, {
