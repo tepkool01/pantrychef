@@ -1,20 +1,19 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import Component from '../../src/components/ProfileCreate.vue';
-import { Button } from '../../node_modules/bootstrap-vue/dist/bootstrap-vue';
 import store from '../../src/store';
+import Vue from "vue";
+import {BootstrapVue} from "bootstrap-vue";
 
 let wrapper;
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+Vue.use(BootstrapVue);
 
 beforeEach(() => {
 	wrapper = shallowMount(Component, {
 		name: 'ChefProfile',
-		components: {
-			'<b-button>': Button,
-		},
 		data() {
 			return {
 				profile: {
