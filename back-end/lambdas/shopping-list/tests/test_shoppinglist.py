@@ -2,10 +2,12 @@ import unittest
 import index
 
 
-class NewUserTest(unittest.TestCase):
+class ShoppingListTest(unittest.TestCase):
 
-    def test_GetIngredients(self):
-        event = { }
+    def test_empty_event(self):
+        event = {
+            "resource": ""
+        }
         context = { }
         response = index.lambda_handler(event, context)
         print(response)

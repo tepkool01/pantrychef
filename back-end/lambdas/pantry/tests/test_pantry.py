@@ -2,9 +2,9 @@ import unittest
 import index
 
 
-class NewUserTest(unittest.TestCase):
+class PantryTest(unittest.TestCase):
 
-    def test_GetIngredients(self):
+    def test_empty_event(self):
         event = { }
         context = { }
         response = index.lambda_handler(event, context)
