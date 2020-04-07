@@ -7,7 +7,7 @@
 						<img class="mr-3 recipe--image" :src="'/img/recipes/' + recipe.img_url">
 					</div>
 					<div class="col-md-8">
-						<h5 class="mt-0 recipe--name">{{recipe.name}}</h5>
+						<h5 class="mt-0 header-title">{{recipe.name}}</h5>
 						<p class="card-text" v-html="recipe.summary"></p>
 					</div>
 				</div>
@@ -25,9 +25,9 @@
 				</div>
 				<div class="row pt-3 pb-2">
 					<div class="col-md-3 col-xs-12">
-						<h5>
+						<h4>
 							Ingredients
-						</h5>
+						</h4>
 						<ul>
 							<li v-for="ingredient in recipe.ingredients" :key="ingredient.id">
 								{{ingredient.amount}} {{ingredient.amount_unit}} {{ ingredient.name }}
@@ -35,9 +35,9 @@
 						</ul>
 					</div>
 					<div class="col-md-9 col-xs-12">
-						<h5>
+						<h4>
 							Directions
-						</h5>
+						</h4>
 						<ol>
 							<li v-for="direction in recipe.directions" :key="direction.order">{{
 								direction.direction }}
@@ -140,5 +140,13 @@ export default {
 		width: 100%;
 		max-width: 556px;
 		max-height: 370px;
+	}
+
+	.card h4 {
+		margin-bottom: .5rem;
+		text-transform: uppercase;
+		letter-spacing: .02em;
+		font-size: .9rem;
+		margin-top: 0;
 	}
 </style>

@@ -1,15 +1,12 @@
 <template>
-	<div class="chef-ingredient">
-		{{ ingredient.ingredient_name }}
 		<button
 			:id="'ingredient_remove_' + ingredient.ingredient_name"
 			type="button"
-			class="remove_button btn btn-outline-danger btn-sm"
+			class="remove_button btn btn-outline-secondary btn-sm chef-ingredient mx-2 my-1"
 			@click="handleRemoveIngredient"
 		>
-			Remove
+			<b-icon-x class="delete-ingredient"></b-icon-x> {{ ingredient.ingredient_name}}
 		</button>
-	</div>
 </template>
 
 <script>
@@ -23,17 +20,26 @@ export default {
 		listType: {
 			type: String,
 			required: true,
-			validator: function (value) {
-        		return ['shopping', 'pantry', 'search'].indexOf(value) !== -1
-			}
-		}
+			validator(value) {
+        		return ['shopping', 'pantry', 'search'].indexOf(value) !== -1;
+			},
+		},
 	},
 	methods: {
 		handleRemoveIngredient() {
 			this.$emit('removeCall', this.ingredient);
-		}
+		},
 	},
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.chef-ingredient {
+	border-radius: 30px;
+	display: inline-block;
+}
+
+.delete-ingredient {
+	color: firebrick;
+}
+</style>

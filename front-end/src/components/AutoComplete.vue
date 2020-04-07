@@ -1,17 +1,15 @@
 <template>
-    <div class="about flex flex-col">
-        <label>{{componentTitle}}: </label>
+    <div>
         <input
                 :id="'ingredient_search_' + componentTitle"
                 type="text"
-                class="bg-gray-300 px-4 py-2"
                 autocomplete="off"
                 v-model="queryStr"
                 @focus="modal = true"
         >
-        <div class="itemView" v-if="suggestions && modal">
-            <ul class="bg-gray-40 px-4 py-2" style="list-style-type:none">
-                <li v-for="suggestion in suggestions" @click="setState(suggestion)" :key="suggestion.id">
+        <div class="itemView shadow" v-if="suggestions && modal">
+            <ul class="list-group" style="list-style-type:none">
+                <li class="list-group-item list-group-item-action" v-for="suggestion in suggestions" @click="setState(suggestion)" :key="suggestion.id">
                     {{suggestion[objectAttribute]}}
                 </li>
             </ul>
@@ -77,17 +75,10 @@ export default {
 
 <style scoped>
     .itemView {
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        line-height: 30px;
-        text-transform: uppercase;
-        border-bottom: 2px solid #edeff1;
-        margin-bottom: 32px;
-        padding-bottom: 6px;
         cursor: pointer;
-        color: grey;
-        align: center;
-
+		max-height: 400px;
+		z-index: 9999;
+		overflow: scroll;
+		border-radius: .25rem;
     }
 </style>
