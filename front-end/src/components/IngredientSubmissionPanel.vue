@@ -1,25 +1,31 @@
 <template>
-	<div class="ingredient-submission-panel card my-2" style="min-height: 150px;">
+	<div class="ingredient-submission-panel card my-2">
 		<div class="card-body">
 			<h4 class="header-title text-left mb-3">
 				Stock my pantry
 			</h4>
-			<div class="input-group">
-				<AutoComplete
-					:componentTitle="Title1"
-					:suggestionsMstr="suggestionsMstr"
-					:objectAttribute="Attr1"
-					:toolTip="Tip1"
-					@selection="selectionEvent"
-				></AutoComplete>
-				<b-button
-					variant="outline-secondary"
-					@click="childEvent"
-					v-if="Object.keys(this.selected_ingredient).length !== 0"
-					class="ml-2"
-				>
-					Add
-				</b-button>
+			<div class="row">
+				<div class="col-md-9">
+					<div class="input-group">
+						<AutoComplete
+							:componentTitle="Title1"
+							:suggestionsMstr="suggestionsMstr"
+							:objectAttribute="Attr1"
+							:toolTip="Tip1"
+							@selection="selectionEvent"
+						></AutoComplete>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<b-button
+						variant="outline-secondary"
+						@click="childEvent"
+						v-if="Object.keys(this.selected_ingredient).length !== 0"
+						class="ml-1"
+					>
+						Add
+					</b-button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -66,5 +72,13 @@
 		letter-spacing: .02em;
 		font-size: .9rem;
 		margin-top: 0;
+	}
+
+	.input-group {
+		z-index: 9999;
+	}
+
+	.ingredient-submission-panel {
+		height: 151px;
 	}
 </style>
