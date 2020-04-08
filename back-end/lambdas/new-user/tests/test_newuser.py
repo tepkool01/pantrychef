@@ -1,12 +1,14 @@
 import unittest
 import index
-
+from tests.testdata import SUCCESS_PAYLOAD, NOT_IMPLEMENTED_PAYLOAD
 
 class NewUserTest(unittest.TestCase):
 
-    def test_GetIngredients(self):
-        event = { }
-        context = { }
+    def test_empty_event(self):
+        print("Test - test_empty_event")
+        event = {
+            "resource": ""
+        }
+        context = {}
         response = index.lambda_handler(event, context)
-        print(response)
-        self.assertIsNotNone(response)
+        self.assertEqual(NOT_IMPLEMENTED_PAYLOAD, response)
