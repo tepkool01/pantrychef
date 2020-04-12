@@ -3033,7 +3033,8 @@ Resources:
   CognitoClient:
     Type: AWS::Cognito::UserPoolClient
     Properties:
-      ExplicitAuthFlows: ALLOW_USER_PASSWORD_AUTH
+      ExplicitAuthFlows: 
+        - "ALLOW_USER_PASSWORD_AUTH"
       SupportedIdentityProviders:
         - COGNITO
       UserPoolId: !Ref CognitoUserPool
