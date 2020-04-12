@@ -11,8 +11,8 @@ const getters = {
 }
 
 const actions = {
-	getRecipes({ commit }) {
-		api.recipe.getRecipes().then(response => {
+	getRecipes({ commit }, payload) {
+		api.recipe.getRecipes(payload).then(response => {
 			commit('SET_RECIPES', response.data)
 		})
 	},

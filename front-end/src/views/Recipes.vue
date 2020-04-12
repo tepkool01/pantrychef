@@ -4,6 +4,12 @@
 			<div class="col-lg-12">
 				<h1 class="mt-4">Recipes</h1>
 			</div>
+            <label>Search By Name</label>
+            <input type="text" v-model="searchName" @keyup="searchByName" />
+            <label>Include Shopping List Ingredients?</label>
+            <input type="checkbox" v-model="includeShoppingList" @click="includeShoppingList = !includeShoppingList" />
+            <label>Include Pantry List Ingredients?</label>
+            <input type="checkbox" v-model="includePantryList" @click="includePantryList = !includePantryList" />
 		</div>
 		<div class="row">
             <!-- All the recipe cards are here-->
@@ -29,6 +35,14 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'recipes',
+    data() {
+	    return {
+	    	includeShoppingList: false,
+            includePantryList: true,
+            searchName: '',
+            timer: null,
+        }
+    },
 	computed: {
 		...mapGetters('recipes', {
 			recipes: 'recipes'
@@ -44,21 +58,56 @@ export default {
 		RecipeCard,
 	},
 	watch: {
-		activeProfile: function(val) {
-			this.getRecipes()
-		}
+		activeProfile (val) {
+			this.getRecipes({
+				includeShoppingList: this.includeShoppingList,
+                includePantryList: this.includePantryList,
+				searchName: this.searchName,
+			})
+		},
+        includeShoppingList(val) {
+            this.getRecipes({
+                includeShoppingList: val,
+				includePantryList: this.includePantryList,
+                searchName: this.searchName,
+            })
+        },
+		includePantryList(val) {
+			this.getRecipes({
+				includeShoppingList: this.includeShoppingList,
+				includePantryList: val,
+				searchName: this.searchName,
+			})
+		},
 	},
 	methods: {
 		...mapActions('recipes', {
 			getRecipes: 'getRecipes'
 		}),
+		searchByName() {
+			// Setting up a timer so that we don't blast the API with requests
+			if (this.timer) {
+				clearTimeout(this.timer);
+				this.timer = null;
+			}
+			this.timer = setTimeout(() => {
+				this.getRecipes({
+					includeShoppingList: this.includeShoppingList,
+					includePantryList: this.includePantryList,
+					searchName: this.searchName,
+				})
+			}, 400);
+		},
 		close () {
-			console.log("Closing");
 			this.$router.push({ name: 'recipes' })
 		}
 	},
 	created() {
-		this.getRecipes()
+		this.getRecipes({
+			includeShoppingList: this.includeShoppingList,
+			includePantryList: this.includePantryList,
+			searchName: this.searchName,
+		})
 		this.$emit('title', 'Pantry')
 	}
 }
