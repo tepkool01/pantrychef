@@ -1,14 +1,19 @@
 <template>
 	<div>
 		<div class="row mt-4">
-			<div class="col-md-4">
+			<!-- START: Add Ingredients -->
+			<div class="col-md-12">
 				<IngredientSubmissionPanel
 					:suggestionsMstr="ingredients"
 					@clickedItem="addIngredientToPantry"
 				></IngredientSubmissionPanel>
 			</div>
-			<div class="col-md-8">
-				<div class="card my-2">
+			<!-- END: Add Ingredients -->
+		</div>
+		<div class="row">
+			<!-- START: My Pantry -->
+			<div class="col-md-6 col-xs-12">
+				<div class="card">
 					<div class="card-body" style="position: relative;">
 						<a href="#" class="btn btn-light btn-sm float-right" @click="sortOrder = (sortOrder === 'A-Z' ? 'Z-A' : 'A-Z')">
 							<b-icon icon="chevron-down"></b-icon>
@@ -20,12 +25,27 @@
 							:listType="pantryType"
 							@removeCall="handleIngredientRemove"
 						></ingredient>
-					</span>
+						</span>
 					</div>
 				</div>
 			</div>
+			<!-- END: My Pantry -->
+			<!-- START: My Shopping List -->
+			<div class="col-md-6 col-xs-12">
+				<div class="card">
+					<div class="card-body" style="position: relative;">
+						<a href="#" class="btn btn-light btn-sm float-right" @click="sortOrder = (sortOrder === 'A-Z' ? 'Z-A' : 'A-Z')">
+							<b-icon icon="chevron-down"></b-icon>
+						</a>
+						<h4 class="header-title mb-3 text-left">Shopping List</h4>
+						<!-- TODO: Add Shopping List ingredients here-->
+					</div>
+				</div>
+			</div>
+			<!-- END: My Shopping List -->
 		</div>
 		<div class="row">
+			<!-- START: Suggested Recipes -->
 			<div class="col-md-12">
 				<div class="card my-2">
 					<div class="card-body">
@@ -110,6 +130,7 @@
 					</div>
 				</div>
 			</div>
+			<!-- END: Suggested Recipes -->
 		</div>
 	</div>
 </template>
@@ -233,19 +254,6 @@ export default {
 	color: inherit;
 }
 
-.border-between > [class*='col-']:before {
-	background: #e3e3e3;
-	bottom: 0;
-	content: ' ';
-	left: 0;
-	position: absolute;
-	width: 1px;
-	top: 0;
-}
-
-.border-between > [class*='col-']:first-child:before {
-	display: none;
-}
 .card {
 	border: none;
 	box-shadow: 0 0 35px 0 rgba(154,161,171,.15);

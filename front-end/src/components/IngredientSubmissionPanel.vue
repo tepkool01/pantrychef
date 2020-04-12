@@ -5,7 +5,7 @@
 				Stock my pantry
 			</h4>
 			<div class="row">
-				<div class="col-md-9">
+				<div class="col-md-12">
 					<div class="input-group">
 						<AutoComplete
 							:componentTitle="Title1"
@@ -16,14 +16,25 @@
 						></AutoComplete>
 					</div>
 				</div>
-				<div class="col-md-3">
+			</div>
+			<div class="row">
+				<div class="col-md-12">
 					<b-button
 						variant="outline-secondary"
 						@click="childEvent"
 						v-if="Object.keys(this.selected_ingredient).length !== 0"
 						class="ml-1"
 					>
-						Add
+						Add to Pantry
+					</b-button>
+					<b-button
+						variant="outline-secondary"
+						v-if="Object.keys(this.selected_ingredient).length !== 0"
+						class="ml-1"
+						disabled
+					>
+						<!--TODO: @click should add the current selected_ingredient to the shopping list-->
+						Add to Shopping List
 					</b-button>
 				</div>
 			</div>

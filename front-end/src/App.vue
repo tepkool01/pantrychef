@@ -34,7 +34,7 @@
 						href="/ingredients"
 						id="ingredients_sidepanel_button"
 						class="list-group-item list-group-item-action"
-						><b-icon icon="list-check"></b-icon> Ingredients</a
+						><b-icon icon="list-check"></b-icon> Shopping List</a
 					>
 					<a
 						href="/recipes"
