@@ -5,7 +5,6 @@
 		@ok="UpdatePassword"
 	>
 		<div>
-			<label>{{userId}}</label>
 			<div class="form-group">
 				<label id="update_password_modal_verify_input" for="verify-password">Verify current password</label>
 				<input
@@ -14,6 +13,7 @@
 					name="verify-password"
 					type="password"
 					id="verify-password"
+                        autocomplete="off"
 				/>
 			</div>
 			<div class="form-group">
@@ -24,6 +24,7 @@
 					name="password"
 					type="password"
 					id="new-password"
+                        autocomplete="off"
 				/>
 			</div>
 			<div class="form-group">
@@ -34,6 +35,7 @@
 					name="new-repassword"
 					type="password"
 					id="new-repassword"
+                        autocomplete="off"
 				/>
 			</div>
 		</div>
@@ -48,6 +50,7 @@
 </template>
 
 <script>
+import { EventBus } from '../../eventBus'; // used for Errors
 import {mapGetters} from "vuex";
 
 export default {
@@ -145,12 +148,13 @@ export default {
 		UpdatePassword(e) {
 			if (this.validateForm(e)) {
 				this.$store
-					.dispatch('users/UpdatePassword', this.userId)
+					.dispatch('users/UpdatePassword', {
+						newPassword: this.user.password,
+                        oldPassword: this.user.oldpassword
+					})
 					.then(() => {
-						// This is a really cool method, it allows you to talk back to the parent view or component, in this case
-						// Register.vue, it will send back data to the parent (in this case, just a true value), and then the parent
-						// can make a decision on what to do. This is similar to 'props' (passing data from parent to child), just reversed
-						this.$emit('successfulPasswordChange', true)
+						this.$bvModal.hide('update-password');
+						EventBus.setAlert('Info', 1, 'Password changed successfully. Please use the updated password upon next login.');
 					})
 					.catch(err => {
 						this.validation.errors.push({
@@ -160,7 +164,7 @@ export default {
 					})
 			}
 		}
-	}
+	},
 }
 </script>
 

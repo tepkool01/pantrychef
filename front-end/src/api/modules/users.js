@@ -76,17 +76,18 @@ export default {
 		})
 	},
 
-	updatePassword(username, newPassword, oldPassword) {
-		let cognitoUser = this.setupCognitoUser(username)
+	updatePassword(cognitoUserState, newPassword, oldPassword) {
 		return new Promise((resolve, reject) => {
-			cognitoUser.changePassword(oldPassword, newPassword, function(
-				err,
-				result
-			) {
-				if (err) {
-					reject(err.message)
-				}
-				resolve(result)
+			this.authenticate(cognitoUserState.username, oldPassword).then(result => {
+				result.cognitoUser.changePassword(oldPassword, newPassword, function(
+					err,
+					result
+				) {
+					if (err) {
+						reject(err.message)
+					}
+					resolve(result)
+				})
 			})
 		})
 	},

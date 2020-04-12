@@ -8,7 +8,6 @@ db = DB(database_name=os.environ['DB_Name'], cluster_arn=os.environ['RDS_ARN'], 
 
 
 def lambda_handler(event, context):
-
     print(event)
     print(context)
     result = {}
@@ -28,8 +27,10 @@ def lambda_handler(event, context):
                     'ingredient_name': record[1]['stringValue'],
                     'ingredient_type': record[2]['stringValue']
                 })
+        else:
+            return NOT_IMPLEMENTED_PAYLOAD
     elif event['resource'] == '/ingredients/{ingredientId}':
-        print("recipe ID:", event['pathParameters']['ingredientId'])
+        print("ingredient ID:", event['pathParameters']['ingredientId'])
         result = db.execute(
             sql="select * FROM `Ingredient` WHERE ID=:id",
             parameters=[
@@ -42,6 +43,8 @@ def lambda_handler(event, context):
             ]
         )
         print("Entered specific profile route")
+    else:
+        return NOT_IMPLEMENTED_PAYLOAD
 
     return {
         'statusCode': 200,
@@ -51,3 +54,13 @@ def lambda_handler(event, context):
         },
         'body': json.dumps(result)
     }
+
+
+NOT_IMPLEMENTED_PAYLOAD = {
+      'statusCode': 501,
+      'headers': {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      'body': 'Not Implemented Exception: Please specify a resource and HTTP Method'
+  }

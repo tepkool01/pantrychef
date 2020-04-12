@@ -124,12 +124,11 @@ const actions = {
 			commit('LOGOUT');
 		}
 	},
-	UpdatePassword({ commit }, username, newPassword, oldPassword) {
+	UpdatePassword({ commit, state }, payload) {
 		return new Promise((resolve, reject) => {
 			api.users
-				.updatePassword(username, newPassword, oldPassword)
+				.updatePassword(state.user.cognitoUser, payload.newPassword, payload.oldPassword)
 				.then(() => {
-					commit('CHANGEPASSWORD')
 					resolve(true)
 				})
 				.catch(err => {
