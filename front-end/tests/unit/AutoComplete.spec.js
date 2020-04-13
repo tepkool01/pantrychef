@@ -34,7 +34,7 @@ afterEach(() => {
 
 });
 
-describe('Ingredient', () => {
+describe('AutoComplete', () => {
 
 
     test('AutoComplete component with expected props data', () => {

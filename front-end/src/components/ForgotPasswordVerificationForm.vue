@@ -86,6 +86,7 @@ export default {
 					id: 1,
 					msg: 'Verification Code is required',
 				});
+				isValid = false;
 			}
 			if (this.user.newPassword.length < 8) {
 				this.validation.newPassword = true;
