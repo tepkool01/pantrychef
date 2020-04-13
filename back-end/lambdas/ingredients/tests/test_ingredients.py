@@ -1,7 +1,6 @@
 import unittest
 import index
-from tests.testdata import SUCCESS_PAYLOAD, NOT_IMPLEMENTED_PAYLOAD
-
+from index import SUCCESS_PAYLOAD, NOT_IMPLEMENTED_PAYLOAD
 
 class IngredientTest(unittest.TestCase):
 

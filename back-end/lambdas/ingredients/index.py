@@ -46,14 +46,9 @@ def lambda_handler(event, context):
     else:
         return NOT_IMPLEMENTED_PAYLOAD
 
-    return {
-        'statusCode': 200,
-        'headers': {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-        },
-        'body': json.dumps(result)
-    }
+    response = SUCCESS_PAYLOAD
+    response['body'] = json.dumps(result)
+    return response
 
 
 NOT_IMPLEMENTED_PAYLOAD = {
@@ -63,4 +58,13 @@ NOT_IMPLEMENTED_PAYLOAD = {
         "Access-Control-Allow-Origin": "*"
       },
       'body': 'Not Implemented Exception: Please specify a resource and HTTP Method'
+  }
+
+SUCCESS_PAYLOAD = {
+      'statusCode': 200,
+      'headers': {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      'body': ''
   }
