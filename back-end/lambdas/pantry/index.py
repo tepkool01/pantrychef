@@ -64,6 +64,9 @@ def lambda_handler(event, context):
                     'headers': headers,
                     'body': str(e)
                 }
+        else:
+            return NOT_IMPLEMENTED_PAYLOAD
+
     elif event['resource'] == '/pantry/{profileId}/ingredients/{ingredientId}':
         profile_id = int(event['pathParameters']['profileId'])
         ingredient_id = int(event['pathParameters']['ingredientId'])
@@ -104,6 +107,10 @@ def lambda_handler(event, context):
                     'headers': headers,
                     'body': str(e)
                 }
+        else:
+            return NOT_IMPLEMENTED_PAYLOAD
+    else:
+        return NOT_IMPLEMENTED_PAYLOAD
 
     return {
         'statusCode': status_code,
@@ -122,3 +129,14 @@ def check_user_profile(profileid, userid):
     )
     print(is_profile_for_user)
     return True
+
+
+NOT_IMPLEMENTED_PAYLOAD = {
+    'statusCode': 501,
+    'headers': {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    },
+    'body': 'Not Implemented Exception: Please specify a resource and HTTP Method'
+}
+

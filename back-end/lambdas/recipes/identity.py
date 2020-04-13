@@ -1,6 +1,6 @@
 import cognitojwt
 import os
-
+from jose import jwt
 
 class Identity:
     def __init__(self, event):
@@ -18,6 +18,11 @@ class Identity:
             )
             return self.verified_claims
         except Exception as e:
-            # Token has expired or is corrupt!
-            print(str(e))
-            return {}
+            try:
+                # try with more basic connection
+                resp = jwt.get_unverified_claims(self.id_token)
+                return resp
+            except Exception as e2:
+                print(str(e))
+                print(str(e2))
+                return {}

@@ -224,6 +224,9 @@ def lambda_handler(event, context):
                         'ingredient_count': record[14]['longValue'],
                         'ingredients_in_pantry': 0,
                     })
+        else:
+            return NOT_IMPLEMENTED_PAYLOAD
+
     elif event['resource'] == '/recipes/{recipeId}':
         result = {
             'directions': [],
@@ -291,9 +294,21 @@ def lambda_handler(event, context):
         )
         for ingredient in ingredients['records']:
             result.append(ingredient[0]['stringValue'])
+    else:
+        return NOT_IMPLEMENTED_PAYLOAD
 
     return {
         'statusCode': 200,
         'headers': headers,
         'body': json.dumps(result)
     }
+
+NOT_IMPLEMENTED_PAYLOAD = {
+    'statusCode': 501,
+    'headers': {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    },
+    'body': 'Not Implemented Exception: Please specify a resource and HTTP Method'
+}
+

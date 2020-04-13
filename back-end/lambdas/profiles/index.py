@@ -85,6 +85,8 @@ def lambda_handler(event, context):
                 status_code = 500
                 result = {'errorMessage': 'Could not save the profile.'}
                 print(str(e))
+        else:
+            return NOT_IMPLEMENTED_PAYLOAD
 
     elif event['resource'] == '/profiles/{profileId}':
         if event['httpMethod'] == 'DELETE':
@@ -97,6 +99,9 @@ def lambda_handler(event, context):
                     {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
                 ]
             )
+        else:
+            return NOT_IMPLEMENTED_PAYLOAD
+
     elif event['resource'] == '/profiles/{profileId}/activate':
         if event['httpMethod'] == 'PUT':
             # Reset all to 0
@@ -114,6 +119,10 @@ def lambda_handler(event, context):
                 )
             except Exception as e:
                 print(str(e))
+        else:
+            return NOT_IMPLEMENTED_PAYLOAD
+    else:
+        return NOT_IMPLEMENTED_PAYLOAD
 
     return {
         'statusCode': status_code,
@@ -123,3 +132,13 @@ def lambda_handler(event, context):
         },
         'body': json.dumps(result)
     }
+
+NOT_IMPLEMENTED_PAYLOAD = {
+    'statusCode': 501,
+    'headers': {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    },
+    'body': 'Not Implemented Exception: Please specify a resource and HTTP Method'
+}
+
