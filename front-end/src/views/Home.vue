@@ -30,8 +30,6 @@ export default {
 		url('../assets/landing__photo-left.jpeg') no-repeat center center /
 			cover;
 }
-
-/* Overriding the default padding from bootstrap columns and row*/
 .col-lg-7 {
 	padding: 0;
 }
