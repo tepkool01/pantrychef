@@ -1,25 +1,33 @@
 <template>
 	<div>
-		<div class="row">
+		<div class="row m-4">
+			<div class="col-md-4">
+				<IngredientSubmissionPanel :suggestionsMstr="ingredients" @clickedItem="addIngredientToShoppingList"></IngredientSubmissionPanel>
+			</div>
+			<div class="col-md-8">
+				<div class="card my-2">
+					<div class="card-body" style="position: relative;">
+						<div class="float-right">
+							<b-dropdown id="dropdown-1" right text="Actions" size="sm" class="m-md-2" variant="light">
+								<b-dropdown-item>Delete all</b-dropdown-item>
+								<b-dropdown-item>Add all to pantry</b-dropdown-item>
+								<b-dropdown-item>Email this list</b-dropdown-item>
+								<b-dropdown-item @click="sortOrder = (sortOrder === 'A-Z' ? 'Z-A' : 'A-Z')">Sort</b-dropdown-item>
+							</b-dropdown>
+						</div>
+						<h4 class="header-title mb-3 text-left">
+							Current Shopping List
+						</h4>
 
-			<IngredientSubmissionPanel :suggestionsMstr="ingredients" @clickedItem="addIngredientToShoppingList"></IngredientSubmissionPanel>
-
-			<div class="card m-4 text-center" style="width:50%">
-				<div class="card-header">
-					<h5 class="card-title">
-						Shopping List
-					</h5>
+						<span v-for="ingredient in sort(sortOrder)" :key="ingredient.id">
+							<ingredient
+								:ingredient="ingredient"
+								:listType="pantryType"
+								@removeCall="handleIngredientRemove"
+							></ingredient>
+						</span>
+					</div>
 				</div>
-                <div class="card-body m-4 text-center" style="width: 50%">
-                    <a href="#" @click="sortOrder = (sortOrder === 'A-Z' ? 'Z-A' : 'A-Z')">SORT</a>
-                    <div v-for="ingredient in sort(sortOrder)" :key="ingredient.id">
-                        <ingredient
-                                :ingredient="ingredient"
-                                :listType="pantryType"
-                                @removeCall="handleIngredientRemove"
-                        ></ingredient>
-                    </div>
-                </div>
 			</div>
 		</div>
 	</div>
@@ -134,4 +142,36 @@ export default {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+	.page-title {
+		font-size: 18px;
+		margin: 0;
+		line-height: 75px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		color: inherit;
+	}
+
+	.card {
+		border: none;
+		box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+		transition: 0.3s;
+	}
+
+	.card:hover {
+		box-shadow: 0 0 35px 0 rgba(154,161,171,.35);
+	}
+	.card .header-title {
+		margin-bottom: .5rem;
+		text-transform: uppercase;
+		letter-spacing: .02em;
+		font-size: .9rem;
+		margin-top: 0;
+	}
+
+	.float-right {
+		float: right !important;
+	}
+
+</style>

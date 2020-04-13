@@ -65,5 +65,69 @@ describe('Ingredient', () => {
         wrapper.destroy();
     });
 
+    test('AutoComplete search on item', () => {
+        const wrapper = shallowMount(AutoComplete, {
+            propsData: {
+                suggestionsMstr: 
+                    [
+                        {"ingredient_name": "test_ingredient", "ingreident_id": 1},
+                        {"ingredient_name": "test_ingredient2", "ingreident_id": 2},
+                    ],
+                objectAttribute: "ingredient_name",
+                componentTitle: "Test Title",
+                toolTip: "Test Tip"
+                }
+        });
+
+        wrapper.vm.queryStr="test_ingredient2"
+        expect(wrapper.vm.queryStr).toMatch("test_ingredient2");
+        ;
+
+        wrapper.vm.$options.watch.queryStr.call(wrapper.vm);
+
+        expect(wrapper.vm.suggestions).toEqual(
+            [{"ingredient_name": "test_ingredient2", "ingreident_id": 2}]
+        )
+
+        wrapper.destroy();
+    });
+
+
+    test('AutoComplete: setState', () => {
+        const wrapper = shallowMount(AutoComplete, {
+            propsData: {
+                suggestionsMstr: 
+                    [
+                        {"ingredient_name": "test_ingredient", "ingreident_id": 1},
+                        {"ingredient_name": "test_ingredient2", "ingreident_id": 2},
+                    ],
+                objectAttribute: "ingredient_name",
+                componentTitle: "Test Title",
+                toolTip: "Test Tip"
+                }
+        });
+
+        wrapper.vm.queryStr="test_ingredient2";
+        expect(wrapper.vm.queryStr).toMatch("test_ingredient2");
+        
+
+        wrapper.vm.$options.watch.queryStr.call(wrapper.vm);
+
+        expect(wrapper.vm.suggestions).toEqual(
+            [{"ingredient_name": "test_ingredient2", "ingreident_id": 2}]
+        )
+
+        //mimic DOM click call
+        wrapper.vm.setState(wrapper.vm.suggestions[0])
+        expect(wrapper.vm.queryStr).toMatch("test_ingredient2");
+        expect(wrapper.vm.modal).toEqual(false);
+        expect(wrapper.emitted().selection.length).toBe(1);
+        expect(wrapper.emitted("selection")[0][0]).toStrictEqual(
+            {"ingredient_name": "test_ingredient2", "ingreident_id": 2}
+        );
+
+        wrapper.destroy();
+    });
+
 
 });
