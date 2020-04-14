@@ -1,8 +1,8 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
+import { BootstrapVue } from 'bootstrap-vue';
 import Component from '../../src/components/ProfileCreate.vue';
 import store from '../../src/store';
-import { BootstrapVue } from "bootstrap-vue";
 
 let wrapper;
 

@@ -45,9 +45,3 @@ describe('Component', () => {
 		wrapper.find('#update_password_button').trigger('submit.prevent');
 	});
 });
-describe('Component', () => {
-	test('renders component with settings account to update username', async () => {
-		await wrapper.vm.$nextTick();
-		wrapper.find('#update_username_button').trigger('submit.prevent');
-	});
-});
