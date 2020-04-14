@@ -1,8 +1,9 @@
-import {shallowMount, createLocalVue} from '@vue/test-utils';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import Component from '../../src/components/RecipeCard';
+import { BootstrapVue } from 'bootstrap-vue';
+import Component from '../../src/components/RecipeCard.vue';
 import store from '../../src/store';
-import {BootstrapVue} from "bootstrap-vue";
+import router from '../../src/router';
 
 let wrapper;
 
@@ -42,6 +43,7 @@ beforeEach(() => {
 		mocks: {},
 		stubs: {},
 		store,
+		router,
 		localVue,
 	});
 });
@@ -51,13 +53,9 @@ afterEach(() => {
 });
 
 describe('Component', () => {
-	test('renders recipe card of specific recipe', async () => {
+	test('renders recipe card for a specific recipe', async () => {
 		await wrapper.vm.$nextTick();
-		wrapper.findAll('button').at(0).trigger('submit.prevent');
-		//the button below shouldve triggered getRecipeCard
-		wrapper.findAll('button').at(1).trigger('submit.prevent');
-		wrapper.find('#view_recipe_submission_button').trigger('submit.prevent');
-		//the statement below gets error "cannot read property 'push' from undefined" from this.$router.push in getRecipeCard
 		wrapper.vm.getRecipeCard(40020);
+		expect(['Butter', 'Potatoes', 'Pepper', 'Red Onion', 'Salt']).toEqual(expect.arrayContaining(wrapper.vm.ingredients));
 	});
 });
