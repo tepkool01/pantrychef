@@ -34,10 +34,49 @@ class IngredientTest(unittest.TestCase):
         response = index.lambda_handler(event, context)
         self.assertEqual(COGNITO_EXCEPTION_PAYLOAD, response)
 
-    def test_valid_authorization(self):
-        print("Test - test_valid_authorization")
+    def test_incorrect_profile_resource(self):
+        print("Test - test_incorrect_profile_resource")
         event = {
-            "resource": "/pantry",
+            "resource": "/profile",
+            "httpMethod": "PUT",
+            "headers": {
+                "Authorization": self.token
+            }
+        }
+        context = {}
+        response = index.lambda_handler(event, context)
+        self.assertEqual(NOT_IMPLEMENTED_PAYLOAD, response)
+
+    def test_incorrect_profile_resource(self):
+        print("Test - test_incorrect_profile_resource")
+        event = {
+            "resource": "/profile",
+            "httpMethod": "PUT",
+            "headers": {
+                "Authorization": self.token
+            }
+        }
+        context = {}
+        response = index.lambda_handler(event, context)
+        self.assertEqual(NOT_IMPLEMENTED_PAYLOAD, response)
+
+    def test_incorrect_profile_profileid_resource(self):
+        print("Test - test_incorrect_profile_resource")
+        event = {
+            "resource": "/profiles/{profileId}",
+            "httpMethod": "GET",
+            "headers": {
+                "Authorization": self.token
+            }
+        }
+        context = {}
+        response = index.lambda_handler(event, context)
+        self.assertEqual(NOT_IMPLEMENTED_PAYLOAD, response)
+
+    def test_incorrect_profile_active_resource(self):
+        print("Test - test_incorrect_profile_resource")
+        event = {
+            "resource": "/profiles/{profileId}/activate",
             "httpMethod": "GET",
             "headers": {
                 "Authorization": self.token
