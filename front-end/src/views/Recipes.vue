@@ -53,7 +53,7 @@
 			@click.self="close"
 			class="recipe-modal"
 		>
-			<router-view/>
+			<router-view @closeWindow="close"/>
 		</div>
 	</div>
 </template>

@@ -35,27 +35,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="row mt-4">
-			<div class="col-lg-8 settings--section-label">
-				Recipe search
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-8 d-flex justify-content-between">
-				<div>
-					<div class="settings--content-label">
-						Include ingredients not currently in my pantry
-					</div>
-					<div class="settings--content-sublabel">
-						Select to show recipe suggestions that involve more
-						ingredients than you have
-					</div>
-				</div>
-				<div>
-					<b-form-checkbox size="lg"></b-form-checkbox>
-				</div>
-			</div>
-		</div>
 	</div>
 </template>
 
@@ -76,7 +55,6 @@ export default {
 			updateUserInfo: 'updateUserInfo',
 		}),
 		switchMealPreference(preference) {
-			console.log(preference);
 			this.updateUserInfo({
 				meal_preference: {
 					id: preference.target.value,

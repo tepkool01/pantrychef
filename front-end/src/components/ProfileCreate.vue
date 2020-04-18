@@ -1,12 +1,12 @@
 <template>
 	<div class="create-profile d-flex justify-content-between">
-		Name:
 		<input
 			id="profile_create_name"
 			type="text"
 			name="profile-name"
 			class="form-control"
 			v-model="profile.name"
+            placeholder="Profile Name"
 		/>
 
 		<b-button variant="outline-secondary" class="ml-3" @click="onSubmit"
