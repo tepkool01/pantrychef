@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ViewRecipe from "../views/ViewRecipe";
+import ViewRecipe from "../components/modals/ViewRecipe";
 
 import store from '../store/index'
-import axios from 'axios'
 
 Vue.use(VueRouter)
 
@@ -102,26 +101,6 @@ const routes = [
 				})
 		}
 	},
-	// {
-	// 	path: '/recipes/:id',
-	// 	name: 'ViewRecipe',
-	// 	component: () => import('../views/ViewRecipe.vue'),
-	// 	beforeEnter(to, from, next) {
-	// 		store
-	// 			.dispatch('users/getSession')
-	// 			.then(() => {
-	// 				if (store.state.users.user.idToken != null) {
-	// 					store.dispatch('profile/getProfiles')
-	// 					next()
-	// 				} else {
-	// 					next('/')
-	// 				}
-	// 			})
-	// 			.catch(() => {
-	// 				next('/')
-	// 			})
-	// 	}
-	// },
 	{
 		path: '/settings',
 		name: 'settings',

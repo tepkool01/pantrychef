@@ -50,12 +50,10 @@ export default {
 	},
 	methods: {
 		showVerificationComponent(data) {
-			console.log('Verification:'+data)
 			this.showVerificationPage = data
 		},
 		showSuccessComponent(data) {
 			// Received success message from cognito forgot password, so hide the form component and show the success page
-			console.log('Success:'+data)
 			this.showSuccessPage = data
 		}
 	},
