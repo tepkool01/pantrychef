@@ -13,6 +13,7 @@ __pycache__
 
 # PyCharm Stuff
 .idea/
+node_modules/
 
 # Visual Studio Code Stuff
 .vscode/
