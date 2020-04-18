@@ -35,6 +35,7 @@ describe("Module-Ingredients", () => {
         "status": 200,
       })
     );
+    
     const commit = jest.fn()
 
     await ingredients.actions.getIngredients({ commit })
