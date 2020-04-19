@@ -11,6 +11,7 @@ export default {
 		queryString += 'offset=' + payload.offset + '&';
 		queryString += 'limit=' + payload.limit + '&';
 		queryString += 'ww=' + payload.ww + '&';
+		queryString += payload.smallest_ww ? 'smallest_ww=' + payload.smallest_ww + '&' : '';
 		queryString += payload.searchName.length > 0 ? 'search=' + payload.searchName : 'search=';
 
 		return axios.get('/recipes?' + queryString, config);

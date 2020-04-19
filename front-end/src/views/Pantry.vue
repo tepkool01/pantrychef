@@ -58,6 +58,7 @@
 					<div class="card-body">
 						<h4 class="header-title mb-3 text-left">Top suggested WeightWatcher recipes</h4>
                         <label>Weight Watcher Points (Daily): </label><input type="text" v-model="ww_score">
+                        <label>Smallest Meal Size in Points: </label><input type="text" v-model="smallest_ww_meal">
 						<div class="card-deck">
 							<div class="card">
 								<img class="card-img-top"style="width: 100%; height: 200px; background-color: grey;">
@@ -158,6 +159,7 @@ export default {
             sortOrder: 'default',
 			shoppingSortOrder: 'default',
             ww_score: 25,
+			smallest_ww_meal: 1,
             ww_recommendations: [],
             timer: null,
 		}
@@ -249,6 +251,7 @@ export default {
 					offset: 0,
 					searchName: '',
 					ww: this.ww_score,
+					smallest_ww: this.smallest_ww_meal,
 				});
 				this.ww_recommendations = result.data;
             } catch (e) {
