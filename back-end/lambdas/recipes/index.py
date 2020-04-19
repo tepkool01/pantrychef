@@ -31,7 +31,7 @@ def lambda_handler(event, context):
             }
 
         if event['resource'] == '/recipes':
-            limit = 25
+            limit = int(event['queryStringParameters']['limit'])
             offset = int(event['queryStringParameters']['offset'])
             if event['httpMethod'] == 'GET':
                 # Grab active profile to retrieve shopping and pantry list
