@@ -28,13 +28,13 @@ const actions = {
 	getProfiles({ commit }) {
 		return new Promise((resolve, reject) => {
 			api.profile.getProfiles().then(response => {
-				commit('SET_PROFILES', response.data)
+				commit('SET_PROFILES', response.data);
 
 				response.data.forEach(profile => {
 					if (profile.isActive) {
 						commit('SET_ACTIVE', profile.id)
 					}
-				})
+				});
 
 				resolve(1);
 			}).catch(err => {
@@ -47,7 +47,7 @@ const actions = {
 			commit('DELETE_PROFILE', id)
 		})
 	}
-}
+};
 
 const mutations = {
 	SET_ACTIVE(state, profile) {
@@ -57,19 +57,26 @@ const mutations = {
 		state.profiles.push(profile)
 	},
 	SET_PROFILES(state, profiles) {
-		state.profiles = profiles
+		let parsedArray = [];
+		profiles.forEach(profile => {
+			parsedArray.push({
+				value: profile.id,
+				text: profile.profile_name,
+			})
+		});
+		state.profiles = parsedArray
 	},
 	DELETE_PROFILE(state, id) {
-		let profiles = state.profiles
+		let profiles = state.profiles;
 		for (let i = 0, len = profiles.length; i < len; i++) {
 			if (profiles[i].id === id) {
-				profiles.splice(i, 1)
+				profiles.splice(i, 1);
 				break
 			}
 		}
 		state.profiles = profiles
 	}
-}
+};
 
 export default {
 	state,

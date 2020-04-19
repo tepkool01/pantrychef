@@ -18,10 +18,15 @@
 				<div class="sidebar-heading">Welcome back, {{ userId }}</div>
 				<div class="sidebar--diet-type mb-5">{{ userMealPreference.name }}</div>
 
-				<select @change="switchProfile">
-					<option></option>
-					<option v-for="p in profiles" :value="p.id" :selected="p.id == activeProfile">{{p.profile_name}} ({{p.id}})</option>
-				</select>
+                <b-form-select
+                        id="dropdown-1"
+                        size="sm"
+                        class="mt-0"
+                        variant="light"
+                        v-model="activeProfile"
+                        :options="profiles"
+                >
+                </b-form-select>
 				<div class="list-group list-group-flush">
 					<a
 						href="/pantry"
@@ -143,9 +148,6 @@ export default {
 		...mapActions('profile', {
 			activateProfile: 'activateProfile',
 		}),
-		switchProfile(profile) {
-			this.activateProfile(profile.target.value)
-		},
 		onLogout() {
 			// Invalidate the session
 			this.logout();
