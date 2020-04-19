@@ -4,12 +4,6 @@
 			<div class="col-lg-12">
 				<h1 class="mt-4">Recipes</h1>
 			</div>
-			<!--<label>Search By Name</label>-->
-			<!--<input type="text" v-model="searchName" @keyup="searchByName" />-->
-			<!--<label>Include Shopping List Ingredients?</label>-->
-			<!--<input type="checkbox" v-model="includeShoppingList" @click="includeShoppingList = !includeShoppingList" />-->
-			<!--<label>Include Pantry List Ingredients?</label>-->
-			<!--<input type="checkbox" v-model="includePantryList" @click="includePantryList = !includePantryList" />-->
 		</div>
 		<div class="row">
 			<div class="col-lg-12 text-left">
@@ -98,6 +92,7 @@
 					includePantryList: this.includePantryList,
 					searchName: this.searchName,
                     offset: 0,
+                    limit: 25,
 				})
 			},
 			includeShoppingList(val) {
@@ -106,6 +101,7 @@
 					includePantryList: this.includePantryList,
 					searchName: this.searchName,
 					offset: 0,
+					limit: 25,
 				})
 			},
 			includePantryList(val) {
@@ -114,6 +110,7 @@
 					includePantryList: val,
 					searchName: this.searchName,
 					offset: 0,
+					limit: 25,
 				})
 			},
 		},
@@ -133,6 +130,7 @@
 						includePantryList: this.includePantryList,
 						searchName: this.searchName,
 						offset: 0,
+						limit: 25,
 					})
 				}, 400);
 			},
@@ -149,6 +147,7 @@
 							includePantryList: this.includePantryList,
 							searchName: this.searchName,
 							offset: this.offset,
+							limit: 25,
 						});
 					}
 				};

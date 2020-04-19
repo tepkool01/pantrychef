@@ -56,7 +56,8 @@
 			<div class="col-md-12">
 				<div class="card my-2">
 					<div class="card-body">
-						<h4 class="header-title mb-3 text-left">Top suggested recipes</h4>
+						<h4 class="header-title mb-3 text-left">Top suggested WeightWatcher recipes</h4>
+                        <label>Weight Watcher Points (Daily): </label><input type="text" v-model="ww_score">
 						<div class="card-deck">
 							<div class="card">
 								<img class="card-img-top"style="width: 100%; height: 200px; background-color: grey;">
@@ -155,6 +156,7 @@ export default {
 		return {
             sortOrder: 'default',
 			shoppingSortOrder: 'default',
+            ww_score: 25,
 		}
 	},
 	computed: {
