@@ -159,12 +159,6 @@
 		},
 		created() {
 			this.$emit('title', 'Pantry');
-			this.getRecipes({
-				includeShoppingList: this.includeShoppingList,
-				includePantryList: this.includePantryList,
-				searchName: this.searchName,
-                offset: 0,
-			});
 		},
 		mounted() {
 			// Listener for reaching end of page
