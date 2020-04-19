@@ -55,26 +55,6 @@ const routes = [
 		}
 	},
 	{
-		path: '/ingredients',
-		name: 'ingredients',
-		component: () => import('../views/Ingredients.vue'),
-		beforeEnter(to, from, next) {
-			store
-				.dispatch('users/getSession')
-				.then(() => {
-					if (store.state.users.user.idToken != null) {
-						store.dispatch('profile/getProfiles')
-						next()
-					} else {
-						next('/')
-					}
-				})
-				.catch(() => {
-					next('/')
-				})
-		}
-	},
-	{
 		path: '/recipes',
 		name: 'recipes',
 		component: () => import('../views/Recipes.vue'),

@@ -31,12 +31,6 @@
 						><b-icon icon="house"></b-icon> Pantry</a
 					>
 					<a
-						href="/ingredients"
-						id="ingredients_sidepanel_button"
-						class="list-group-item list-group-item-action"
-						><b-icon icon="list-check"></b-icon> Shopping List</a
-					>
-					<a
 						href="/recipes"
 						id="recipe_sidepanel_button"
 						class="list-group-item list-group-item-action"

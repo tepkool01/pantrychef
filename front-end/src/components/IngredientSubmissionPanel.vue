@@ -31,9 +31,8 @@
 						variant="outline-secondary"
 						v-if="Object.keys(this.selected_ingredient).length !== 0"
 						class="ml-1"
-						disabled
+                        @click="addToShopping"
 					>
-						<!--TODO: @click should add the current selected_ingredient to the shopping list-->
 						Add to Shopping List
 					</b-button>
 				</div>
@@ -63,6 +62,9 @@
 			selectionEvent(value) {
 				this.selected_ingredient = value;
 			},
+			addToShopping() {
+			    this.$emit('addToShopping', this.selected_ingredient);
+            },
 		},
 		data() {
 			return {

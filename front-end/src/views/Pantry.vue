@@ -6,6 +6,7 @@
 				<IngredientSubmissionPanel
 					:suggestionsMstr="ingredients"
 					@clickedItem="addIngredientToPantry"
+                    @addToShopping="addIngredientToShoppingList"
 				></IngredientSubmissionPanel>
 			</div>
 			<!-- END: Add Ingredients -->
@@ -19,12 +20,12 @@
 							<b-icon icon="chevron-down"></b-icon>
 						</a>
 						<h4 class="header-title mb-3 text-left">Current Ingredients</h4>
-						<span v-for="ingredient in sort(sortOrder)" :key="ingredient.id">
-						<ingredient
-							:ingredient="ingredient"
-							:listType="pantryType"
-							@removeCall="handleIngredientRemove"
-						></ingredient>
+						<span v-for="ingredient in sort(pantryList, sortOrder)" :key="ingredient.id">
+                            <ingredient
+                                :ingredient="ingredient"
+                                :listType="'pantry'"
+                                @removeCall="handleIngredientRemove"
+                            ></ingredient>
 						</span>
 					</div>
 				</div>
@@ -34,11 +35,17 @@
 			<div class="col-md-6 col-xs-12">
 				<div class="card">
 					<div class="card-body" style="position: relative;">
-						<a href="#" class="btn btn-light btn-sm float-right" @click="sortOrder = (sortOrder === 'A-Z' ? 'Z-A' : 'A-Z')">
+						<a href="#" class="btn btn-light btn-sm float-right" @click="shoppingSortOrder = (shoppingSortOrder === 'A-Z' ? 'Z-A' : 'A-Z')">
 							<b-icon icon="chevron-down"></b-icon>
 						</a>
 						<h4 class="header-title mb-3 text-left">Shopping List</h4>
-						<!-- TODO: Add Shopping List ingredients here-->
+                        <span v-for="ingredient in sort(shoppingList, shoppingSortOrder)" :key="ingredient.id">
+							<ingredient
+                                    :ingredient="ingredient"
+                                    :listType="'shopping'"
+                                    @removeCall="removeIngredientFromShopping"
+                            ></ingredient>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -146,13 +153,16 @@ export default {
 	name: 'Pantry',
 	data() {
 		return {
-			pantryType: 'pantry',
             sortOrder: 'default',
+			shoppingSortOrder: 'default',
 		}
 	},
 	computed: {
 		...mapGetters('pantry', {
 			pantryList: 'pantry'
+		}),
+		...mapGetters('shoppingList', {
+			shoppingList: 'shopping'
 		}),
 		...mapGetters('ingredients', {
 			ingredients: 'ingredients'
@@ -162,15 +172,14 @@ export default {
 			activeProfile: 'activeProfile'
 		}),
 		orderedListOptions () {
-			let list = this.pantryList;
 			return {
-				"default": () => {
+				"default": (list) => {
 					return list;
 				},
-				"A-Z": () => {
+				"A-Z": (list) => {
 					return _.orderBy(list, 'ingredient_name', ['asc']);
 				},
-				"Z-A": () => {
+				"Z-A": (list) => {
 					return _.orderBy(list, 'ingredient_name', ['desc']);
 				},
 			}
@@ -181,6 +190,11 @@ export default {
 		Ingredient,
 	},
 	methods: {
+		...mapActions('shoppingList', {
+			getShoppingList: 'getShoppingList',
+			addIngredientShopping: 'addIngredient',
+			removeIngredientShopping: 'removeIngredient'
+		}),
 		...mapActions('pantry', {
 			getPantry: 'getPantry',
 			addIngredient: 'addIngredient',
@@ -192,6 +206,18 @@ export default {
 		...mapActions('profile', {
 			getProfiles: 'getProfiles'
 		}),
+		addIngredientToShoppingList (ingredient) {
+			this.addIngredientShopping({
+				ingredient: ingredient,
+				profile_id: this.activeProfile
+			});
+		},
+		removeIngredientFromShopping (ingredient) {
+			this.removeIngredientShopping({
+				ingredient: ingredient,
+				profile_id: this.activeProfile
+			});
+		},
 		addIngredientToPantry (ingredient) {
 			this.addIngredient({
 				ingredient: ingredient,
@@ -204,8 +230,8 @@ export default {
 				profile_id: this.activeProfile
 			});
 		},
-		sort (sortOrder) {
-			return this.orderedListOptions[sortOrder]();
+		sort (list, sortOrder) {
+			return this.orderedListOptions[sortOrder](list);
 		},
 	},
 	watch: {
@@ -214,6 +240,7 @@ export default {
 				EventBus.setAlert('Error', 1, 'Could not load active profile');
 			} else {
 				this.getPantry(profile_id);
+				this.getShoppingList(profile_id);
             }
 		},
 		pantryList (val) {
