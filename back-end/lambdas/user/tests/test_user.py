@@ -24,7 +24,7 @@ class UserTest(unittest.TestCase):
     def test_invalid_authorization(self):
         print("Test - test_empty_event")
         event = {
-            "resource": "/pantry",
+            "resource": "/user",
             "httpMethod": "GET",
             "headers": {
                 "Authorization": ''
@@ -34,11 +34,24 @@ class UserTest(unittest.TestCase):
         response = index.lambda_handler(event, context)
         self.assertEqual(COGNITO_EXCEPTION_PAYLOAD, response)
 
-    def test_valid_authorization(self):
-        print("Test - test_valid_authorization")
+    def test_incorrect_user_resource(self):
+        print("Test - test_incorrect_user_resource")
         event = {
-            "resource": "/pantry",
+            "resource": "/users",
             "httpMethod": "GET",
+            "headers": {
+                "Authorization": self.token
+            }
+        }
+        context = {}
+        response = index.lambda_handler(event, context)
+        self.assertEqual(NOT_IMPLEMENTED_PAYLOAD, response)
+
+    def test_incorrect_user_method(self):
+        print("Test - test_incorrect_user_resource")
+        event = {
+            "resource": "/user",
+            "httpMethod": "POST",
             "headers": {
                 "Authorization": self.token
             }

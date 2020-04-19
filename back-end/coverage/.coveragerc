@@ -10,3 +10,6 @@ omit =
 omit =
     *\venv\*
     *\tests\*
+
+exclude_lines = 
+    except Exception as e:
