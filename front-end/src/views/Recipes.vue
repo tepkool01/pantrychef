@@ -142,7 +142,6 @@
 					// First check if it is currently loading new DOM elements so multiple calls aren't
 					// Issued, then see if we are at the end of the screen (95%)
 					if (this.currentLoadingStatus === false && bottomOfWindow >= closeToBottom) {
-						console.log("Loading more.");
 						this.offset += 25;
 						this.getRecipes({
 							includeShoppingList: this.includeShoppingList,
