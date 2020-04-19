@@ -71,9 +71,13 @@
 				includePantryList: true,
 				searchName: '',
 				timer: null,
+                offset: 0,
 			}
 		},
 		computed: {
+			...mapGetters('app', {
+				currentLoadingStatus: 'currentLoadingStatus'
+			}),
 			...mapGetters('recipes', {
 				recipes: 'recipes'
 			}),
@@ -93,6 +97,7 @@
 					includeShoppingList: this.includeShoppingList,
 					includePantryList: this.includePantryList,
 					searchName: this.searchName,
+                    offset: 0,
 				})
 			},
 			includeShoppingList(val) {
@@ -100,6 +105,7 @@
 					includeShoppingList: val,
 					includePantryList: this.includePantryList,
 					searchName: this.searchName,
+					offset: 0,
 				})
 			},
 			includePantryList(val) {
@@ -107,6 +113,7 @@
 					includeShoppingList: this.includeShoppingList,
 					includePantryList: val,
 					searchName: this.searchName,
+					offset: 0,
 				})
 			},
 		},
@@ -128,18 +135,41 @@
 					})
 				}, 400);
 			},
+			loadMore() {
+				window.onscroll = () => {
+					const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight;
+					const closeToBottom = document.documentElement.offsetHeight * 0.95;
+					// First check if it is currently loading new DOM elements so multiple calls aren't
+					// Issued, then see if we are at the end of the screen (95%)
+					if (this.currentLoadingStatus === false && bottomOfWindow >= closeToBottom) {
+						console.log("Loading more.");
+						this.offset += 25;
+						this.getRecipes({
+							includeShoppingList: this.includeShoppingList,
+							includePantryList: this.includePantryList,
+							searchName: this.searchName,
+							offset: this.offset,
+						});
+					}
+				};
+			},
 			close() {
 				this.$router.push({name: 'recipes'})
 			}
 		},
 		created() {
+			this.$emit('title', 'Pantry');
 			this.getRecipes({
 				includeShoppingList: this.includeShoppingList,
 				includePantryList: this.includePantryList,
 				searchName: this.searchName,
-			})
-			this.$emit('title', 'Pantry')
-		}
+                offset: 0,
+			});
+		},
+		mounted() {
+			// Listener for reaching end of page
+			this.loadMore();
+		},
 	}
 </script>
 
