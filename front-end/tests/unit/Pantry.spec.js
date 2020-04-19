@@ -54,7 +54,6 @@ describe('Component', () => {
 	test('renders pantry card for removing an ingredient from shopping list', async () => {
 		await wrapper.vm.$nextTick();
 		wrapper.vm.removeIngredientFromShopping('Butter');
-		console.log(wrapper.emitted());
 		expect(wrapper.emitted('title')[0]).toEqual(['Pantry']);
 	});
 });
@@ -63,7 +62,6 @@ describe('Component', () => {
 	test('renders pantry card for adding an ingredient to the pantry', async () => {
 		await wrapper.vm.$nextTick();
 		wrapper.vm.addIngredientToPantry('Butter');
-		console.log(wrapper.emitted());
 		expect(wrapper.emitted('title')[0]).toEqual(['Pantry']);
 	});
 });
@@ -72,7 +70,20 @@ describe('Component', () => {
 	test('renders pantry card for removing an ingredient from the pantry', async () => {
 		await wrapper.vm.$nextTick();
 		wrapper.vm.handleIngredientRemove('Butter');
-		console.log(wrapper.emitted());
 		expect(wrapper.emitted('title')[0]).toEqual(['Pantry']);
+	});
+});
+
+describe('Component', () => {
+	test('renders pantry card for removing an ingredient from the pantry', async () => {
+		await wrapper.vm.$nextTick();
+		wrapper.vm.viewRecipe(40020);
+	});
+});
+
+describe('Component', () => {
+	test('renders pantry card for removing an ingredient from the pantry', async () => {
+		await wrapper.vm.$nextTick();
+		wrapper.vm.goToRecipes();
 	});
 });
