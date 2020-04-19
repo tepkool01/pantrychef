@@ -132,6 +132,7 @@
 						includeShoppingList: this.includeShoppingList,
 						includePantryList: this.includePantryList,
 						searchName: this.searchName,
+						offset: 0,
 					})
 				}, 400);
 			},
