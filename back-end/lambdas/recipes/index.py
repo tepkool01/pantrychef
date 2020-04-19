@@ -13,12 +13,12 @@ headers = {
 }
 
 
-def find_ww_sum(arr, sum):
+def find_ww_sum(arr, ww_sum):
     """
     This is our algorithmic component that determines the closest matching weight watcher meal prep based on
     WW points, percent match (ingredients in pantry) for a 3-course meal; we first provide it a sorted WW list
     :param arr: Array - possible matches, sorted
-    :param sum: Integer - requested weight watcher total daily points
+    :param ww_sum: Integer - requested weight watcher total daily points
     :return: Array
     """
     best_difference = float('inf')
@@ -32,15 +32,15 @@ def find_ww_sum(arr, sum):
             triplet_sum = arr[i]['weight_watcher_points'] + arr[j]['weight_watcher_points'] + arr[k]['weight_watcher_points']
 
             # Exact match!
-            if triplet_sum == sum:
+            if triplet_sum == ww_sum:
                 return [arr[i], arr[j], arr[k]]
 
-            if triplet_sum > sum:
+            if triplet_sum > ww_sum:
                 k -= 1
             else:
                 # Hold onto the best guess
-                if best_difference > (sum - triplet_sum):
-                    best_difference = sum - triplet_sum
+                if best_difference > (ww_sum - triplet_sum):
+                    best_difference = ww_sum - triplet_sum
                     best_triplet = [arr[i], arr[j], arr[k]]
 
                 j += 1
@@ -144,7 +144,7 @@ def lambda_handler(event, context):
                             'healthy': record[15]['booleanValue'],
                             'sustainable': record[16]['booleanValue'],
                         })
-                    result = find_ww_sum(parsed_query_result)
+                    result = find_ww_sum(parsed_query_result, int(event['queryStringParameters']['ww']))
 
                 # Search by ingredients AND search name
                 elif len(ingredient_ids) > 0 and len(event['queryStringParameters']['search']) > 0:
