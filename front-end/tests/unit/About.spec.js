@@ -14,8 +14,8 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('Error', () => {
-	test('renders component with expected test message', async () => {
+describe('About', () => {
+	test('Renders Page', async () => {
 		wrapper = shallowMount(About, {
 			localVue
 		});
