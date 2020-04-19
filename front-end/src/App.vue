@@ -16,8 +16,7 @@
 			<!-- Sidebar -->
 			<div class="border-right" id="sidebar-wrapper">
 				<div class="sidebar-heading">Welcome back, {{ userId }}</div>
-				<div class="sidebar--diet-type mb-5">Vegetarian</div>
-				<!--TODO: Bind dietType data here-->
+				<div class="sidebar--diet-type mb-5">{{ userMealPreference.name }}</div>
 
 				<select @change="switchProfile">
 					<option></option>
@@ -107,7 +106,8 @@ export default {
 	computed: {
 		...mapGetters('users', {
 			isAuthenticated: 'isAuthenticated',
-			userId: 'userId'
+			userId: 'userId',
+			userMealPreference: 'userMealPreference',
 		}),
 		...mapGetters('profile', {
 			profiles: 'profiles',
