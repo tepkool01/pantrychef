@@ -13,3 +13,6 @@ omit =
 
 exclude_lines = 
     except Exception as e:
+        except Exception as e: 
+            except Exception as e: 
+
