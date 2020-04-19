@@ -19,6 +19,7 @@ axios.defaults.crossDomain = true;
 
 // Adding interceptors to show loading bar during HTTP requests
 axios.interceptors.request.use(async (config) => {
+	await store.dispatch('app/setLoading', true);
 	// Start the progress bar
 	NProgress.start();
 	return config;
@@ -26,6 +27,7 @@ axios.interceptors.request.use(async (config) => {
 
 // Stops the loading bar once the request is resolved, resets loading state
 axios.interceptors.response.use(async (response) => {
+	await store.dispatch('app/setLoading', false);
 	NProgress.done();
 	return response;
 });

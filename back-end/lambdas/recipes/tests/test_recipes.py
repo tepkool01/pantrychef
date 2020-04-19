@@ -21,7 +21,7 @@ class RecipeTest(unittest.TestCase):
         self.token = resp['AuthenticationResult']['AccessToken']
         return
 
-    def test_invalid_authorization(self):
+    def test_incorrect_recipe_resource(self):
         print("Test - test_empty_event")
         event = {
             "resource": "/pantry",
@@ -34,11 +34,11 @@ class RecipeTest(unittest.TestCase):
         response = index.lambda_handler(event, context)
         self.assertEqual(COGNITO_EXCEPTION_PAYLOAD, response)
 
-    def test_valid_authorization(self):
+    def test_incorrect_recipe_method(self):
         print("Test - test_valid_authorization")
         event = {
-            "resource": "/pantry",
-            "httpMethod": "GET",
+            "resource": "/recipes",
+            "httpMethod": "PUT",
             "headers": {
                 "Authorization": self.token
             }

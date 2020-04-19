@@ -15,16 +15,23 @@ localVue.use(Vuex);
 
 beforeEach(() => {
   state = {
-    recipes: ['recipe']
+    recipes: [{name:'recipe'}]
   };
 });
 
 
 describe("Module-Recipes", () => {
   it('Mutations-SET_RECIPES', () => {
-    recipes.mutations.SET_RECIPES(state, 'thisRecipe');
+    recipes.mutations.SET_RECIPES(state, {offset:null,data: {name:'testrecipe'}});
     expect(state).toEqual({
-      recipes: 'thisRecipe',
+      recipes: {name:'testrecipe'},
+    });
+  });
+
+  it('Mutations-SET_RECIPES (offset)', () => {
+    recipes.mutations.SET_RECIPES(state, {offset:1,data: {name:'testrecipe'}});
+    expect(state).toEqual({
+      recipes: [{name:'recipe'},{name:'testrecipe'}],
     });
   });
 
@@ -42,7 +49,7 @@ describe("Module-Recipes", () => {
     await recipes.actions.getRecipes({ commit }, {includeShoppingList:false,includePantrylist:true,searchName:''})
 
     expect(commit).toHaveBeenCalledWith(
-      "SET_RECIPES", "testpayload")
+      "SET_RECIPES",{"data": "testpayload", "offset": false})
   })
 
   it("Action-getRecipeIngredients", async () => {
@@ -58,7 +65,7 @@ describe("Module-Recipes", () => {
     var retVal = await recipes.actions.getRecipeIngredients({ commit }, 1)
 
     expect(retVal).toEqual({"data": "testpayload", "status": 200})
-
-
     })
+
+
 })

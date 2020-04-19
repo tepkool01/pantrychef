@@ -122,9 +122,9 @@ describe("Module-Profile", () => {
     });
   
     it('Mutations-SET_PROFILES', () => {
-      profile.mutations.SET_PROFILES(state, [{name:'this',id:1},{name:'that',id:2}]);
+      profile.mutations.SET_PROFILES(state, [{profile_name:'this',id:1},{profile_name:'that',id:2}]);
       expect(state).toEqual({
-        profiles: [{name:'this',id:1},{name:'that',id:2}],
+        profiles: [{text:'this',value:1},{text:'that',value:2}],
         active_profile: 'first'
       });
     });

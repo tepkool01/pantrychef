@@ -3,12 +3,13 @@ import Vuex from 'vuex'
 
 import profile from './modules/profile'
 import users from './modules/users'
-import ingredients from "./modules/ingredients"
-import pantry from "./modules/pantry"
-import shoppingList from "./modules/shoppingList"
+import ingredients from './modules/ingredients'
+import pantry from './modules/pantry'
+import shoppingList from './modules/shoppingList'
 import recipes from './modules/recipes'
+import app from './modules/app'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
 	modules: {
@@ -53,6 +54,13 @@ export default new Vuex.Store({
 			actions: recipes.actions,
 			getters: recipes.getters,
 			mutations: recipes.mutations
+		},
+		app: {
+			namespaced: true,
+			state: app.state,
+			actions: app.actions,
+			getters: app.getters,
+			mutations: app.mutations
 		}
 	}
 })

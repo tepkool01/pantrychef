@@ -4,12 +4,6 @@
 			<div class="col-lg-12">
 				<h1 class="mt-4">Recipes</h1>
 			</div>
-			<!--<label>Search By Name</label>-->
-			<!--<input type="text" v-model="searchName" @keyup="searchByName" />-->
-			<!--<label>Include Shopping List Ingredients?</label>-->
-			<!--<input type="checkbox" v-model="includeShoppingList" @click="includeShoppingList = !includeShoppingList" />-->
-			<!--<label>Include Pantry List Ingredients?</label>-->
-			<!--<input type="checkbox" v-model="includePantryList" @click="includePantryList = !includePantryList" />-->
 		</div>
 		<div class="row">
 			<div class="col-lg-12 text-left">
@@ -71,9 +65,13 @@
 				includePantryList: true,
 				searchName: '',
 				timer: null,
+                offset: 0,
 			}
 		},
 		computed: {
+			...mapGetters('app', {
+				currentLoadingStatus: 'currentLoadingStatus'
+			}),
 			...mapGetters('recipes', {
 				recipes: 'recipes'
 			}),
@@ -93,6 +91,8 @@
 					includeShoppingList: this.includeShoppingList,
 					includePantryList: this.includePantryList,
 					searchName: this.searchName,
+                    offset: 0,
+                    limit: 25,
 				})
 			},
 			includeShoppingList(val) {
@@ -100,6 +100,8 @@
 					includeShoppingList: val,
 					includePantryList: this.includePantryList,
 					searchName: this.searchName,
+					offset: 0,
+					limit: 25,
 				})
 			},
 			includePantryList(val) {
@@ -107,6 +109,8 @@
 					includeShoppingList: this.includeShoppingList,
 					includePantryList: val,
 					searchName: this.searchName,
+					offset: 0,
+					limit: 25,
 				})
 			},
 		},
@@ -125,21 +129,40 @@
 						includeShoppingList: this.includeShoppingList,
 						includePantryList: this.includePantryList,
 						searchName: this.searchName,
+						offset: 0,
+						limit: 25,
 					})
 				}, 400);
+			},
+			loadMore() {
+				window.onscroll = () => {
+					const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight;
+					const closeToBottom = document.documentElement.offsetHeight * 0.95;
+					// First check if it is currently loading new DOM elements so multiple calls aren't
+					// Issued, then see if we are at the end of the screen (95%)
+					if (this.currentLoadingStatus === false && bottomOfWindow >= closeToBottom) {
+						this.offset += 25;
+						this.getRecipes({
+							includeShoppingList: this.includeShoppingList,
+							includePantryList: this.includePantryList,
+							searchName: this.searchName,
+							offset: this.offset,
+							limit: 25,
+						});
+					}
+				};
 			},
 			close() {
 				this.$router.push({name: 'recipes'})
 			}
 		},
 		created() {
-			this.getRecipes({
-				includeShoppingList: this.includeShoppingList,
-				includePantryList: this.includePantryList,
-				searchName: this.searchName,
-			})
-			this.$emit('title', 'Pantry')
-		}
+			this.$emit('title', 'Pantry');
+		},
+		mounted() {
+			// Listener for reaching end of page
+			this.loadMore();
+		},
 	}
 </script>
 
