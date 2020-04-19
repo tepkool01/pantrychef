@@ -1,3 +1,6 @@
+/* Jest tag to ignore file for coverage */
+/* istanbul ignore file */
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ViewRecipe from "../components/modals/ViewRecipe";
