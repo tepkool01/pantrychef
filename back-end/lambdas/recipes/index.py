@@ -12,6 +12,42 @@ headers = {
     "Access-Control-Allow-Origin": "*"
 }
 
+
+def find_ww_sum(arr, sum):
+    """
+    This is our algorithmic component that determines the closest matching weight watcher meal prep based on
+    WW points, percent match (ingredients in pantry) for a 3-course meal; we first provide it a sorted WW list
+    :param arr: Array - possible matches, sorted
+    :param sum: Integer - requested weight watcher total daily points
+    :return: Array
+    """
+    best_difference = float('inf')
+    best_triplet = []
+
+    for i in range(len(arr) - 2):
+        j = i + 1
+        k = len(arr) - 1
+
+        while k >= j:
+            triplet_sum = arr[i]['weight_watcher_points'] + arr[j]['weight_watcher_points'] + arr[k]['weight_watcher_points']
+
+            # Exact match!
+            if triplet_sum == sum:
+                return [arr[i], arr[j], arr[k]]
+
+            if triplet_sum > sum:
+                k -= 1
+            else:
+                # Hold onto the best guess
+                if best_difference > (sum - triplet_sum):
+                    best_difference = sum - triplet_sum
+                    best_triplet = [arr[i], arr[j], arr[k]]
+
+                j += 1
+
+    return best_triplet
+
+
 def lambda_handler(event, context):
     print(event)
     result = {}
@@ -31,7 +67,7 @@ def lambda_handler(event, context):
             }
 
         if event['resource'] == '/recipes':
-            limit = 25
+            limit = int(event['queryStringParameters']['limit'])
             offset = int(event['queryStringParameters']['offset'])
             if event['httpMethod'] == 'GET':
                 # Grab active profile to retrieve shopping and pantry list
@@ -66,8 +102,52 @@ def lambda_handler(event, context):
                 # Slightly hacky conditional statements that could be refactored DRY
                 ##
 
+                # Weight Watcher search
+                if len(ingredient_ids) > 0 and int(event['queryStringParameters']['ww']) > 0:
+                    print("ww search")
+                    my_ingredient_ids = ','.join(map(str, ingredient_ids))
+                    print(my_ingredient_ids)
+
+                    recipes = db.execute(
+                        sql="SELECT RecipeID, RecipeName, CookTime, Servings, IngredientCount, count(*) as grp_count, round((count(*) / IngredientCount), 2) as pct_match, ImgURL, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable \
+                                FROM `RecipeListItem` ri \
+                                LEFT JOIN Recipe r \
+                                ON r.ID=ri.RecipeID \
+                                WHERE ri.IngredientID IN (" + my_ingredient_ids + ") \
+                                GROUP BY ri.RecipeID \
+                                ORDER BY WeightWatcherPoints ASC, pct_match DESC \
+                                LIMIT :offset, :limit",
+                        parameters=[
+                            {'name': 'limit', 'value': {'longValue': int(limit)}},
+                            {'name': 'offset', 'value': {'longValue': int(offset)}},
+                        ]
+                    )
+
+                    parsed_query_result = []
+                    for record in recipes['records']:
+                        parsed_query_result.append({
+                            'id': record[0]['longValue'],
+                            'recipe_name': record[1]['stringValue'],
+                            'cook_time': record[2]['longValue'],
+                            'servings': record[3]['longValue'],
+                            'ingredient_count': record[4]['longValue'],
+                            'ingredients_in_pantry': record[5]['longValue'],
+                            'match_percent': record[6]['stringValue'],
+                            'img_url': record[7]['stringValue'],
+                            'summary': record[8]['stringValue'],
+                            'health_score': record[9]['doubleValue'],
+                            'weight_watcher_points': record[10]['longValue'],
+                            'vegetarian': record[11]['booleanValue'],
+                            'vegan': record[12]['booleanValue'],
+                            'gluten_free': record[13]['booleanValue'],
+                            'dairy_free': record[14]['booleanValue'],
+                            'healthy': record[15]['booleanValue'],
+                            'sustainable': record[16]['booleanValue'],
+                        })
+                    result = find_ww_sum(parsed_query_result)
+
                 # Search by ingredients AND search name
-                if len(ingredient_ids) > 0 and len(event['queryStringParameters']['search']) > 0:
+                elif len(ingredient_ids) > 0 and len(event['queryStringParameters']['search']) > 0:
                     print("Ingredient and search name")
                     my_ingredient_ids = ','.join(map(str, ingredient_ids))
                     print(my_ingredient_ids)

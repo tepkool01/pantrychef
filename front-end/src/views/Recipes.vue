@@ -4,12 +4,6 @@
 			<div class="col-lg-12">
 				<h1 class="mt-4">Recipes</h1>
 			</div>
-			<!--<label>Search By Name</label>-->
-			<!--<input type="text" v-model="searchName" @keyup="searchByName" />-->
-			<!--<label>Include Shopping List Ingredients?</label>-->
-			<!--<input type="checkbox" v-model="includeShoppingList" @click="includeShoppingList = !includeShoppingList" />-->
-			<!--<label>Include Pantry List Ingredients?</label>-->
-			<!--<input type="checkbox" v-model="includePantryList" @click="includePantryList = !includePantryList" />-->
 		</div>
 		<div class="row">
 			<div class="col-lg-12 text-left">
@@ -72,6 +66,7 @@
 				searchName: '',
 				timer: null,
                 offset: 0,
+                ww: 0,
 			}
 		},
 		computed: {
@@ -98,6 +93,8 @@
 					includePantryList: this.includePantryList,
 					searchName: this.searchName,
                     offset: 0,
+                    limit: 25,
+                    ww: this.ww,
 				})
 			},
 			includeShoppingList(val) {
@@ -106,6 +103,8 @@
 					includePantryList: this.includePantryList,
 					searchName: this.searchName,
 					offset: 0,
+					limit: 25,
+					ww: this.ww,
 				})
 			},
 			includePantryList(val) {
@@ -114,6 +113,8 @@
 					includePantryList: val,
 					searchName: this.searchName,
 					offset: 0,
+					limit: 25,
+					ww: this.ww,
 				})
 			},
 		},
@@ -133,6 +134,8 @@
 						includePantryList: this.includePantryList,
 						searchName: this.searchName,
 						offset: 0,
+						limit: 25,
+						ww: this.ww,
 					})
 				}, 400);
 			},
@@ -149,6 +152,8 @@
 							includePantryList: this.includePantryList,
 							searchName: this.searchName,
 							offset: this.offset,
+							limit: 25,
+							ww: this.ww,
 						});
 					}
 				};
