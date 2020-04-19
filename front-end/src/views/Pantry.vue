@@ -235,6 +235,10 @@ export default {
 		sort (list, sortOrder) {
 			return this.orderedListOptions[sortOrder](list);
 		},
+        // 'Algorithmic' Component
+        findMealsByWWPoints(points) {
+
+        },
 	},
 	watch: {
 		activeProfile (profile_id) {
