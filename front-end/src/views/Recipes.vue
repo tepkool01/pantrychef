@@ -66,6 +66,7 @@
 				searchName: '',
 				timer: null,
                 offset: 0,
+                ww: 0,
 			}
 		},
 		computed: {
@@ -93,6 +94,7 @@
 					searchName: this.searchName,
                     offset: 0,
                     limit: 25,
+                    ww: this.ww,
 				})
 			},
 			includeShoppingList(val) {
@@ -102,6 +104,7 @@
 					searchName: this.searchName,
 					offset: 0,
 					limit: 25,
+					ww: this.ww,
 				})
 			},
 			includePantryList(val) {
@@ -111,6 +114,7 @@
 					searchName: this.searchName,
 					offset: 0,
 					limit: 25,
+					ww: this.ww,
 				})
 			},
 		},
@@ -131,6 +135,7 @@
 						searchName: this.searchName,
 						offset: 0,
 						limit: 25,
+						ww: this.ww,
 					})
 				}, 400);
 			},
@@ -148,6 +153,7 @@
 							searchName: this.searchName,
 							offset: this.offset,
 							limit: 25,
+							ww: this.ww,
 						});
 					}
 				};

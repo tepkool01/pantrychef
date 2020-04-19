@@ -58,6 +58,7 @@
 					<div class="card-body">
 						<h4 class="header-title mb-3 text-left">Top suggested WeightWatcher recipes</h4>
                         <label>Weight Watcher Points (Daily): </label><input type="text" v-model="ww_score">
+                        <label>Smallest Meal Size in Points: </label><input type="text" v-model="smallest_ww_meal">
 						<div class="card-deck">
 							<div class="card">
 								<img class="card-img-top"style="width: 100%; height: 200px; background-color: grey;">
@@ -149,6 +150,7 @@ import Ingredient from '../components/Ingredient.vue';
 import IngredientSubmissionPanel from '../components/IngredientSubmissionPanel.vue';
 import { mapGetters, mapActions } from 'vuex';
 import _ from 'lodash';
+import api from '../api';
 
 export default {
 	name: 'Pantry',
@@ -157,6 +159,9 @@ export default {
             sortOrder: 'default',
 			shoppingSortOrder: 'default',
             ww_score: 25,
+			smallest_ww_meal: 1,
+            ww_recommendations: [],
+            timer: null,
 		}
 	},
 	computed: {
@@ -235,6 +240,28 @@ export default {
 		sort (list, sortOrder) {
 			return this.orderedListOptions[sortOrder](list);
 		},
+        // 'Algorithmic' Component
+        async findMealsByWWPoints() {
+			// Invoking directly, because this doesn't need to be saved in the state for any particular reason
+            try {
+				const result = await api.recipe.getRecipes({
+					includeShoppingList: true,
+					includePantryList: true,
+					limit: 10000,
+					offset: 0,
+					searchName: '',
+					ww: this.ww_score,
+					smallest_ww: this.smallest_ww_meal,
+				});
+				this.ww_recommendations = result.data;
+            } catch (e) {
+            	console.log(e);
+				EventBus.setAlert('Warning', 2, 'Could not retrieve weight watcher ' +
+                    'recommendations. Perhaps try a different weight watcher count or adding ingredients to your' +
+                    ' pantry/shopping list?');
+            }
+
+        },
 	},
 	watch: {
 		activeProfile (profile_id) {
@@ -254,7 +281,16 @@ export default {
 			if (val.length === 0) {
 				EventBus.setAlert('Error', 1, 'Could not retrieve ingredient list');
 			}
-		}
+		},
+		ww_score(val) {
+			if (this.timer) {
+				clearTimeout(this.timer);
+				this.timer = null;
+			}
+			this.timer = setTimeout(() => {
+                this.findMealsByWWPoints();
+			}, 400);
+        },
 	},
 	created() {
 		this.$emit('title', 'Pantry');
@@ -268,6 +304,9 @@ export default {
 		if (!this.activeProfile) {
 			this.getProfiles();
         }
+
+		// Get WW Recommendations
+        this.findMealsByWWPoints();
 	},
 }
 </script>
