@@ -103,7 +103,7 @@ def lambda_handler(event, context):
                 ##
 
                 # Weight Watcher search
-                if len(ingredient_ids) > 0 and int(event['queryStringParameters']['ww']) > 0:
+                if len(ingredient_ids) > 0 and int(event['queryStringParameters']['ww']) > 0 and int(event['queryStringParameters']['smallest_ww']) > 0:
                     print("ww search")
                     my_ingredient_ids = ','.join(map(str, ingredient_ids))
                     print(my_ingredient_ids)
@@ -113,13 +113,14 @@ def lambda_handler(event, context):
                                 FROM `RecipeListItem` ri \
                                 LEFT JOIN Recipe r \
                                 ON r.ID=ri.RecipeID \
-                                WHERE ri.IngredientID IN (" + my_ingredient_ids + ") \
+                                WHERE ri.IngredientID IN (" + my_ingredient_ids + ") AND WeightWatcherPoints>=:smallest_ww \
                                 GROUP BY ri.RecipeID \
                                 ORDER BY WeightWatcherPoints ASC, pct_match DESC \
                                 LIMIT :offset, :limit",
                         parameters=[
                             {'name': 'limit', 'value': {'longValue': int(limit)}},
                             {'name': 'offset', 'value': {'longValue': int(offset)}},
+                            {'name': 'smallest_ww', 'value': {'longValue': int(event['queryStringParameters']['smallest_ww'])}},
                         ]
                     )
 
