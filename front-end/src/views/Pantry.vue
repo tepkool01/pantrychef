@@ -57,85 +57,39 @@
 				<div class="card my-2">
 					<div class="card-body">
 						<h4 class="header-title mb-3 text-left">Top suggested WeightWatcher recipes</h4>
-                        <label>Weight Watcher Points (Daily): </label><input type="text" v-model="ww_score">
-                        <label>Smallest Meal Size in Points: </label><input type="text" v-model="smallest_ww_meal">
+                        <div class="text-left">
+                            <label>Weight Watcher Points (Daily): </label><input type="text" v-model="ww_score">
+                            <label>Smallest Meal Size in Points: </label><input type="text" v-model="smallest_ww_meal">
+                        </div>
 						<div class="card-deck">
-							<div class="card">
-								<img class="card-img-top"style="width: 100%; height: 200px; background-color: grey;">
+							<div class="card" v-for="ww in ww_recommendations" @click="viewRecipe(ww.id)">
+								<img class="card-img-top" :src="'/img/recipes/' + ww.img_url" style="width: 60%; margin: auto auto">
 								<div class="card-body text-left">
-									<h5 class="card-title">Recipe</h5>
+									<h5 class="card-title">{{ ww.recipe_name }}</h5>
 									<p class="card-text text-muted small">
-										Some quick example text to build on the card title and make up the bulk of the card's content. <a href="#">View Recipe</a>
+                                        <span v-html="ww.summary"></span>
 									</p>
 									<div>
 										<p class="mb-2 text-muted small font-weight-bold">
 											Ingredients
-											<span class="float-right">100%</span>
+											<span class="float-right">{{ ww.match_percent * 100 }}%</span>
 										</p>
 										<div class="progress progress-sm">
-											<div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<img class="card-img-top"style="width: 100%; height: 200px; background-color: grey;">
-								<div class="card-body text-left">
-									<h5 class="card-title">Recipe</h5>
-									<p class="card-text text-muted small">
-										Some quick example text to build on the card title and make up the bulk of the card's content. <a href="#">View Recipe</a>
-									</p>
-									<div>
-											<p class="mb-2 text-muted small font-weight-bold">
-												Ingredients
-												<span class="float-right">100%</span>
-											</p>
-											<div class="progress progress-sm">
-												<div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-											</div>
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<img class="card-img-top"style="width: 100%; height: 200px; background-color: grey;">
-								<div class="card-body text-left">
-									<h5 class="card-title">Recipe</h5>
-									<p class="card-text text-muted small">
-										Some quick example text to build on the card title and make up the bulk of the card's content. <a href="#">View Recipe</a>
-									</p>
-									<div>
-										<p class="mb-2 text-muted small font-weight-bold">
-											Ingredients
-											<span class="float-right">100%</span>
-										</p>
-										<div class="progress progress-sm">
-											<div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card">
-								<img class="card-img-top"style="width: 100%; height: 200px; background-color: grey;">
-								<div class="card-body text-left">
-									<h5 class="card-title">Recipe</h5>
-									<p class="card-text text-muted small">
-										Some quick example text to build on the card title and make up the bulk of the card's content. <a href="#">View Recipe</a>
-									</p>
-									<div>
-										<p class="mb-2 text-muted small font-weight-bold">
-											Ingredients
-											<span class="float-right">100%</span>
-										</p>
-										<div class="progress progress-sm">
-											<div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+											<div class="progress-bar"
+                                                 role="progressbar"
+                                                 :aria-valuenow="ww.match_percent * 100"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100"
+                                                 :style="{ 'width': (ww.match_percent * 100) + '%'}"
+                                            ></div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="mt-4 mb-2 text-center">
-							<button class="btn btn-outline-primary">Find more recipes</button>
-						</div>
+                        <div class="mt-4 mb-2 text-center">
+                            <button class="btn btn-outline-primary" @click="goToRecipes">Find more recipes</button>
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -240,6 +194,17 @@ export default {
 		sort (list, sortOrder) {
 			return this.orderedListOptions[sortOrder](list);
 		},
+        viewRecipe(id) {
+			this.$router.push({
+				name: 'ViewRecipe',
+				params: {
+					id: id
+				}
+			})
+        },
+		goToRecipes() {
+			this.$router.push({name: 'recipes'});
+        },
         // 'Algorithmic' Component
         async findMealsByWWPoints() {
 			// Invoking directly, because this doesn't need to be saved in the state for any particular reason
@@ -260,7 +225,6 @@ export default {
                     'recommendations. Perhaps try a different weight watcher count or adding ingredients to your' +
                     ' pantry/shopping list?');
             }
-
         },
 	},
 	watch: {
@@ -291,6 +255,15 @@ export default {
                 this.findMealsByWWPoints();
 			}, 400);
         },
+		smallest_ww_meal(val) {
+			if (this.timer) {
+				clearTimeout(this.timer);
+				this.timer = null;
+			}
+			this.timer = setTimeout(() => {
+				this.findMealsByWWPoints();
+			}, 400);
+		},
 	},
 	created() {
 		this.$emit('title', 'Pantry');
