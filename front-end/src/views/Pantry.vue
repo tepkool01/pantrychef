@@ -62,14 +62,12 @@
                             <label>Smallest Meal Size in Points: </label><input type="text" v-model="smallest_ww_meal">
                         </div>
 						<div class="card-deck">
-							<div class="card" v-for="ww in ww_recommendations">
+							<div class="card" v-for="ww in ww_recommendations" @click="viewRecipe(ww.id)">
 								<img class="card-img-top" :src="'/img/recipes/' + ww.img_url" style="width: 60%; margin: auto auto">
 								<div class="card-body text-left">
 									<h5 class="card-title">{{ ww.recipe_name }}</h5>
 									<p class="card-text text-muted small">
                                         <span v-html="ww.summary"></span>
-                                        <br/>
-                                        <a href="#">View Recipe</a>
 									</p>
 									<div>
 										<p class="mb-2 text-muted small font-weight-bold">
@@ -89,6 +87,9 @@
 								</div>
 							</div>
 						</div>
+                        <div class="mt-4 mb-2 text-center">
+                            <button class="btn btn-outline-primary" @click="goToRecipes">Find more recipes</button>
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -193,6 +194,17 @@ export default {
 		sort (list, sortOrder) {
 			return this.orderedListOptions[sortOrder](list);
 		},
+        viewRecipe(id) {
+			this.$router.push({
+				name: 'ViewRecipe',
+				params: {
+					id: id
+				}
+			})
+        },
+		goToRecipes() {
+			this.$router.push({name: 'recipes'});
+        },
         // 'Algorithmic' Component
         async findMealsByWWPoints() {
 			// Invoking directly, because this doesn't need to be saved in the state for any particular reason
@@ -213,7 +225,6 @@ export default {
                     'recommendations. Perhaps try a different weight watcher count or adding ingredients to your' +
                     ' pantry/shopping list?');
             }
-
         },
 	},
 	watch: {

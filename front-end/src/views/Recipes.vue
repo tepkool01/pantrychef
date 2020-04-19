@@ -88,6 +88,7 @@
 		},
 		watch: {
 			activeProfile(val) {
+				// todo: loading twice with mounted
 				this.getRecipes({
 					includeShoppingList: this.includeShoppingList,
 					includePantryList: this.includePantryList,
@@ -159,15 +160,25 @@
 				};
 			},
 			close() {
-				this.$router.push({name: 'recipes'})
+				this.$router.replace({name: 'recipes'})
 			}
 		},
 		created() {
+			console.log("created");
 			this.$emit('title', 'Pantry');
 		},
 		mounted() {
+			console.log("Mounted");
 			// Listener for reaching end of page
 			this.loadMore();
+			this.getRecipes({
+				includeShoppingList: this.includeShoppingList,
+				includePantryList: this.includePantryList,
+				searchName: this.searchName,
+				offset: 0,
+				limit: 25,
+				ww: this.ww,
+			})
 		},
 	}
 </script>
