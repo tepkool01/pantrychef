@@ -35,7 +35,7 @@ describe('IngredientSubmissionPanel', () => {
 	test('IngredientSubmissionPanel component load default', () => {
         const wrapper = shallowMount(IngredientSubmissionPanel, {
             propsData: {
-                suggestionsMstr: 
+                suggestionsMstr:
                     [
                         {"ingredient_name": "test_ingredient", "ingreident_id": 1},
                         {"ingredient_name": "test_ingredient2", "ingreident_id": 2},
@@ -45,40 +45,57 @@ describe('IngredientSubmissionPanel', () => {
 
 		wrapper.destroy();
     });
-    
+
 	test('IngredientSubmissionPanel selection event', () => {
         const wrapper = shallowMount(IngredientSubmissionPanel, {
             propsData: {
-                suggestionsMstr: 
+                suggestionsMstr:
                     [
                         {"ingredient_name": "test_ingredient", "ingreident_id": 1},
                         {"ingredient_name": "test_ingredient2", "ingreident_id": 2},
                     ],
             }
         });
-     
+
         wrapper.vm.selectionEvent('testentry');
         expect(wrapper.vm.selected_ingredient).toMatch("testentry");
-        
+
         wrapper.destroy();
 	});
 
     test('IngredientSubmissionPanel child event', () => {
         const wrapper = shallowMount(IngredientSubmissionPanel, {
             propsData: {
-                suggestionsMstr: 
+                suggestionsMstr:
                     [
                         {"ingredient_name": "test_ingredient", "ingreident_id": 1},
                         {"ingredient_name": "test_ingredient2", "ingreident_id": 2},
                     ],
             }
         });
-     
+
         wrapper.vm.selected_ingredient={"ingredient_name": "test_ingredient2", "ingreident_id": 2};
         wrapper.vm.childEvent();
 
         expect(wrapper.emitted().clickedItem.length).toBe(1);
-        
+
         wrapper.destroy();
+	});
+
+	test('IngredientSubmissionPanel add to shopping', () => {
+		const wrapper = shallowMount(IngredientSubmissionPanel, {
+			propsData: {
+				suggestionsMstr:
+					[
+						{"ingredient_name": "test_ingredient", "ingreident_id": 1},
+						{"ingredient_name": "test_ingredient2", "ingreident_id": 2},
+					],
+			}
+		});
+
+		wrapper.vm.addToShopping();
+		expect(wrapper.emitted('addToShopping')[0]).toEqual([{}]);
+
+		wrapper.destroy();
 	});
 });

@@ -309,72 +309,78 @@ def lambda_handler(event, context):
                 return NOT_IMPLEMENTED_PAYLOAD
 
         elif event['resource'] == '/recipes/{recipeId}':
-            result = {
-                'directions': [],
-                'ingredients': []
-            }
-
-            # First grab high-level recipe information
-            recipe_query = db.execute(
-                sql="SELECT ID, RecipeName, CookTime, ImgURL, Servings, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable FROM Recipe WHERE ID=:id",
-                parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
-            )
-            # Set recipe
-            for recipe in recipe_query['records']:
+            if event['httpMethod'] == 'GET':
                 result = {
-                    'id': recipe[0]['longValue'],
-                    'name': recipe[1]['stringValue'],
-                    'cook_time': recipe[2]['longValue'],
-                    'img_url': recipe[3]['stringValue'],
-                    'servings': recipe[4]['longValue'],
-                    'summary': recipe[5]['stringValue'],
-                    'health_score': recipe[6]['doubleValue'],
-                    'weight_watcher_points': recipe[7]['longValue'],
-                    'vegetarian': recipe[8]['booleanValue'],
-                    'vegan': recipe[9]['booleanValue'],
-                    'gluten_free': recipe[10]['booleanValue'],
-                    'dairy_free': recipe[11]['booleanValue'],
-                    'healthy': recipe[12]['booleanValue'],
-                    'sustainable': recipe[13]['booleanValue'],
                     'directions': [],
-                    'ingredients': []
+                   'ingredients': []
                 }
 
-            # Grab directions
-            directions_query = db.execute(
-                sql="SELECT SortOrder, Direction FROM Directions WHERE RecipeID=:id ORDER BY SortOrder ASC",
-                parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
-            )
+                # First grab high-level recipe information
+                recipe_query = db.execute(
+                    sql="SELECT ID, RecipeName, CookTime, ImgURL, Servings, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable FROM Recipe WHERE ID=:id",
+                    parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
+                )
+                # Set recipe
+                for recipe in recipe_query['records']:
+                    result = {
+                        'id': recipe[0]['longValue'],
+                        'name': recipe[1]['stringValue'],
+                        'cook_time': recipe[2]['longValue'],
+                        'img_url': recipe[3]['stringValue'],
+                        'servings': recipe[4]['longValue'],
+                        'summary': recipe[5]['stringValue'],
+                        'health_score': recipe[6]['doubleValue'],
+                        'weight_watcher_points': recipe[7]['longValue'],
+                        'vegetarian': recipe[8]['booleanValue'],
+                        'vegan': recipe[9]['booleanValue'],
+                        'gluten_free': recipe[10]['booleanValue'],
+                        'dairy_free': recipe[11]['booleanValue'],
+                        'healthy': recipe[12]['booleanValue'],
+                        'sustainable': recipe[13]['booleanValue'],
+                        'directions': [],
+                        'ingredients': []
+                    }
 
-            for direction in directions_query['records']:
-                result['directions'].append({
-                    'order': direction[0]['longValue'],
-                    'direction': direction[1]['stringValue']
-                })
+                # Grab directions
+                directions_query = db.execute(
+                    sql="SELECT SortOrder, Direction FROM Directions WHERE RecipeID=:id ORDER BY SortOrder ASC",
+                    parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
+                )
 
-            # Grab ingredients
-            ingredients_query = db.execute(
-                sql="SELECT i.ID, r.Amount, r.AmountUnitID, i.IngredientName, i.IngredientImgURL FROM RecipeListItem r LEFT JOIN Ingredient i ON r.IngredientID=i.ID WHERE RecipeID=:id",
-                parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
-            )
+                for direction in directions_query['records']:
+                    result['directions'].append({
+                        'order': direction[0]['longValue'],
+                        'direction': direction[1]['stringValue']
+                    })
 
-            for ingredient in ingredients_query['records']:
-                result['ingredients'].append({
-                    'id': ingredient[0]['longValue'],
-                    'amount': ingredient[1]['doubleValue'],
-                    'amount_unit': ingredient[2]['stringValue'],
-                    'name': ingredient[3]['stringValue'],
-                    'img_url': ingredient[4]['stringValue'],
-                })
+                # Grab ingredients
+                ingredients_query = db.execute(
+                    sql="SELECT i.ID, r.Amount, r.AmountUnitID, i.IngredientName, i.IngredientImgURL FROM RecipeListItem r LEFT JOIN Ingredient i ON r.IngredientID=i.ID WHERE RecipeID=:id",
+                    parameters=[{'name': 'id', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
+                )
+
+                for ingredient in ingredients_query['records']:
+                    result['ingredients'].append({
+                        'id': ingredient[0]['longValue'],
+                        'amount': ingredient[1]['doubleValue'],
+                        'amount_unit': ingredient[2]['stringValue'],
+                        'name': ingredient[3]['stringValue'],
+                        'img_url': ingredient[4]['stringValue'],
+                    })
+            else:
+                return NOT_IMPLEMENTED_PAYLOAD
         elif event['resource'] == '/recipes/{recipeId}/ingredients':
-            # Placeholder for all the information needed for a recipe page
-            result = []
-            ingredients = db.execute(
-                sql="SELECT IngredientName FROM Recipe r LEFT JOIN RecipeListItem ri ON ri.RecipeID=r.ID JOIN Ingredient i ON i.ID=ri.IngredientID WHERE r.ID=:recipeId",
-                parameters=[{'name': 'recipeId', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
-            )
-            for ingredient in ingredients['records']:
-                result.append(ingredient[0]['stringValue'])
+            if event['httpMethod'] == 'GET':
+                # Placeholder for all the information needed for a recipe page
+                result = []
+                ingredients = db.execute(
+                   sql="SELECT IngredientName FROM Recipe r LEFT JOIN RecipeListItem ri ON ri.RecipeID=r.ID JOIN Ingredient i ON i.ID=ri.IngredientID WHERE r.ID=:recipeId",
+                   parameters=[{'name': 'recipeId', 'value': {'longValue': int(event['pathParameters']['recipeId'])}}]
+                )
+                for ingredient in ingredients['records']:
+                    result.append(ingredient[0]['stringValue'])
+            else:
+                return NOT_IMPLEMENTED_PAYLOAD
         else:
             return NOT_IMPLEMENTED_PAYLOAD
     except Exception as e:
