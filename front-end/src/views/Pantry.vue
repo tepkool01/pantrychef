@@ -233,12 +233,16 @@ export default {
 		},
         // 'Algorithmic' Component
         async findMealsByWWPoints() {
+			if (this.isInvalidWWCombination()) {
+				EventBus.setAlert('Warning', 2, 'Values need to be above 0 and WW points must be divisible by minimum WW points by at least 3');
+				return
+            }
 			// Invoking directly, because this doesn't need to be saved in the state for any particular reason
             try {
 				const result = await api.recipe.getRecipes({
 					includeShoppingList: true,
 					includePantryList: true,
-					limit: 10000,
+					limit: 100000,
 					offset: 0,
 					searchName: '',
 					ww: this.ww_score,
@@ -246,11 +250,19 @@ export default {
 				});
 				this.ww_recommendations = result.data;
             } catch (e) {
-            	console.log(e);
 				EventBus.setAlert('Warning', 2, 'Could not retrieve weight watcher ' +
                     'recommendations. Perhaps try a different weight watcher count or adding ingredients to your' +
                     ' pantry/shopping list?');
             }
+        },
+        isInvalidWWCombination() {
+            return (
+            	isNaN(this.ww_score) ||
+				isNaN(this.smallest_ww_meal) ||
+            	this.ww_score < 1 ||
+                this.smallest_ww_meal < 1 ||
+                this.ww_score / this.smallest_ww_meal < 3
+            )
         },
 	},
 	watch: {
