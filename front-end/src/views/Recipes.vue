@@ -6,7 +6,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-12 text-left">
+			<div class="col-lg-12 text-left p-0 p-md-3">
 				<div class="recipes--search">
 					<div class="input-group">
 					<span class="prepend-icon">

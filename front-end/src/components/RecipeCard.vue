@@ -1,5 +1,5 @@
 <template>
-	<div class="card recipe-card m-3">
+	<div class="card recipe-card m-0 m-md-3">
 		<div class="card-header recipe-card--header d-flex justify-content-between">
 			<h4 class="recipe-card--title">{{recipe.recipe_name}}</h4>
 			<button class="btn btn-sm btn-light active">
