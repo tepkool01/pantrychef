@@ -352,6 +352,7 @@ export default {
 	border: none;
 	box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
 	transition: 0.3s;
+	display: block;
 }
 
 .card:hover {
