@@ -30,13 +30,6 @@
 					<div class="recipe-card--description" v-html="recipe.summary">
 
 					</div>
-					<!--<div class="recipe-card--review mt-auto">
-						<b-icon-star-fill></b-icon-star-fill>
-						<b-icon-star-fill></b-icon-star-fill>
-						<b-icon-star-fill></b-icon-star-fill>
-						<b-icon-star-half></b-icon-star-half>
-						<b-icon-star></b-icon-star>
-					</div>-->
 				</div>
 			</div>
 		</div>

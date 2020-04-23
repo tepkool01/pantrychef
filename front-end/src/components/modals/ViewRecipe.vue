@@ -7,7 +7,7 @@
 						<img class="mr-3 recipe--image" :src="'/img/recipes/' + recipe.img_url">
 					</div>
 					<div class="col-md-8">
-						<h5 class="mt-0 header-title">{{recipe.name}}</h5>
+						<h5 class="mt-0 header-title">{{recipe.recipe_name}}</h5>
 						<p class="card-text" v-html="recipe.summary"></p>
 					</div>
 				</div>
@@ -96,47 +96,47 @@ export default {
 </script>
 
 <style scoped>
-	.star-icon {
-		float: left;
-	}
+.star-icon {
+    float: left;
+}
 
-	.inner-modal {
-		background-color: #2c3e50;
-		width: 75%;
-		margin: auto auto;
-	}
+.inner-modal {
+    background-color: #2c3e50;
+    width: 75%;
+    margin: auto auto;
+}
 
-	.recipe--name {
-		color: #161e2e;
-		font-weight: 500;
-	}
+.recipe--name {
+    color: #161e2e;
+    font-weight: 500;
+}
 
-	.recipe--metadata > span {
-		background: #fff;
-		border-radius: 8px;
-		border: 1px solid #dadce0;
-		box-sizing: border-box;
-		color: #5f6368;
-		display: inline-block;
-		font-size: 14px;
-		line-height: 16px;
-		margin: 0 4px 10px 4px;
-		overflow: hidden;
-		padding: 7px 19px;
-		position: relative;
-	}
+.recipe--metadata > span {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    box-sizing: border-box;
+    color: #5f6368;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0 4px 10px 4px;
+    overflow: hidden;
+    padding: 7px 19px;
+    position: relative;
+}
 
-	.recipe--image {
-		width: 100%;
-		max-width: 556px;
-		max-height: 370px;
-	}
+.recipe--image {
+    width: 100%;
+    max-width: 556px;
+    max-height: 370px;
+}
 
-	.card h4 {
-		margin-bottom: .5rem;
-		text-transform: uppercase;
-		letter-spacing: .02em;
-		font-size: .9rem;
-		margin-top: 0;
-	}
+.card h4 {
+    margin-bottom: .5rem;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    font-size: .9rem;
+    margin-top: 0;
+}
 </style>

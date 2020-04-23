@@ -15,23 +15,17 @@
 				<b-list-group-item
 					class="d-flex justify-content-between align-items-center"
 					v-for="p in profiles"
-					v-bind:key="p.id"
-					:id="'profile_item_' + p.profile_name"
+					v-bind:key="p.value"
+					:id="'profile_item_' + p.value"
 				>
-					{{ p.profile_name }}
+					{{ p.text }}
 					<b-button-group>
 						<b-button
-							:id="'profile_edit_' + p.profile_name"
-							variant="outline-secondary"
-						>
-							<b-icon-pencil></b-icon-pencil>
-						</b-button>
-						<b-button
-							:id="'profile_delete_' + p.profile_name"
+							:id="'profile_delete_' + p.value"
 							variant="outline-secondary"
 						>
 							<b-icon-trash
-								@click="onDelete(p.id)"
+								@click="onDelete(p.value)"
 							></b-icon-trash>
 						</b-button>
 					</b-button-group>

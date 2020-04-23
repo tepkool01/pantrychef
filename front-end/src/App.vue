@@ -276,4 +276,7 @@ export default {
 #nprogress .bar {
     height: 8px !important;
 }
+.card-body {
+    z-index: 0;
+}
 </style>

@@ -58,11 +58,20 @@
 					<div class="card-body">
 						<h4 class="header-title mb-3 text-left">Top suggested WeightWatcher recipes</h4>
                         <div class="text-left">
-                            <label>Weight Watcher Points (Daily): </label><input type="text" v-model="ww_score">
-                            <label>Smallest Meal Size in Points: </label><input type="text" v-model="smallest_ww_meal">
+                            <b-col sm="2">
+                                <b-form-group label="Weight Watcher Points (Daily)" v-model="ww_score" placeholder="WW Points">
+                                    <b-form-input v-model="ww_score"></b-form-input>
+                                </b-form-group>
+                            </b-col>
+                            <b-col sm="2">
+                                <b-form-group label="Smallest Meal Size in Points" v-model="smallest_ww_meal"
+                                              placeholder="WW Points">
+                                    <b-form-input v-model="smallest_ww_meal"></b-form-input>
+                                </b-form-group>
+                            </b-col>
                         </div>
 						<div class="card-deck">
-							<div class="card" v-for="ww in ww_recommendations" @click="viewRecipe(ww.id)">
+							<div class="card pb-3" v-for="ww in ww_recommendations" @click="viewRecipe(ww.id)">
 								<img class="card-img-top" :src="'/img/recipes/' + ww.img_url" style="width: 60%; margin: auto auto">
 								<div class="card-body text-left">
 									<h5 class="card-title">{{ ww.recipe_name }}</h5>
@@ -72,7 +81,7 @@
 									<div>
 										<p class="mb-2 text-muted small font-weight-bold">
 											Ingredients
-											<span class="float-right">{{ ww.match_percent * 100 }}%</span>
+											<span class="float-right">{{(ww.match_percent * 100).toFixed(0) }}%</span>
 										</p>
 										<div class="progress progress-sm">
 											<div class="progress-bar"
@@ -85,6 +94,9 @@
 										</div>
 									</div>
 								</div>
+                                <div class="mt-4 mb-2 text-center">
+                                    <button class="btn btn-primary" @click="viewRecipe(ww.id)">View Recipe</button>
+                                </div>
 							</div>
 						</div>
                         <div class="mt-4 mb-2 text-center">
@@ -95,6 +107,11 @@
 			</div>
 			<!-- END: Suggested Recipes -->
 		</div>
+        <div v-if="isRecipeOpen"
+             @click.self="close"
+             class="recipe-modal">
+            <router-view @closeWindow="close"/>
+        </div>
 	</div>
 </template>
 
@@ -132,6 +149,9 @@ export default {
 			profiles: 'profiles',
 			activeProfile: 'activeProfile'
 		}),
+		isRecipeOpen() {
+			return this.$route.name === 'ViewRecipePantry'
+		},
 		orderedListOptions () {
 			return {
 				"default": (list) => {
@@ -195,16 +215,22 @@ export default {
 			return this.orderedListOptions[sortOrder](list);
 		},
         viewRecipe(id) {
-			this.$router.push({
-				name: 'ViewRecipe',
-				params: {
-					id: id
-				}
-			})
+			// Known issue with VueJS
+			try {
+				this.$router.push({
+					name: 'ViewRecipePantry',
+					params: {
+						id: id
+					}
+				})
+            } catch (e) {}
         },
 		goToRecipes() {
 			this.$router.push({name: 'recipes'});
         },
+		close() {
+			this.$router.replace({name: 'pantry'})
+		},
         // 'Algorithmic' Component
         async findMealsByWWPoints() {
 			// Invoking directly, because this doesn't need to be saved in the state for any particular reason
@@ -285,6 +311,16 @@ export default {
 </script>
 
 <style scoped>
+.recipe-modal {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 .page-title {
 	font-size: 18px;
 	margin: 0;

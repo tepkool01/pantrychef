@@ -35,7 +35,7 @@ export default {
 				createProfile: 'createProfile',
 			}),
 			onSubmit() {
-				this.createProfile(this.profile)
+				this.createProfile(this.profile);
 				this.profile = {
 					name: '',
 					ingredients: [],

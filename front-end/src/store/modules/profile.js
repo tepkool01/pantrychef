@@ -3,7 +3,7 @@ import api from '../../api'
 const state = {
 	profiles: [],
 	active_profile: null
-}
+};
 
 const getters = {
 	profiles(state) {
@@ -12,7 +12,7 @@ const getters = {
 	activeProfile(state) {
 		return state.active_profile
 	}
-}
+};
 
 const actions = {
 	createProfile({ commit }, payload) {
@@ -54,7 +54,10 @@ const mutations = {
 		state.active_profile = profile
 	},
 	ADD_PROFILE(state, profile) {
-		state.profiles.push(profile)
+		state.profiles.push({
+			value: profile.id,
+			text: profile.profile_name,
+		});
 	},
 	SET_PROFILES(state, profiles) {
 		let parsedArray = [];
@@ -62,14 +65,14 @@ const mutations = {
 			parsedArray.push({
 				value: profile.id,
 				text: profile.profile_name,
-			})
+			});
 		});
 		state.profiles = parsedArray
 	},
 	DELETE_PROFILE(state, id) {
 		let profiles = state.profiles;
 		for (let i = 0, len = profiles.length; i < len; i++) {
-			if (profiles[i].id === id) {
+			if (profiles[i].value === id) {
 				profiles.splice(i, 1);
 				break
 			}

@@ -34,6 +34,13 @@ const routes = [
 		path: '/pantry',
 		name: 'pantry',
 		component: () => import('../views/Pantry.vue'),
+		children: [
+			{
+				path: ':id',
+				name: "ViewRecipePantry",
+				component: ViewRecipe
+			},
+		],
 		beforeEnter(to, from, next) {
 			if (from.name !== 'home') {
 				// Performed a login, don't do a getSession
@@ -104,7 +111,7 @@ const routes = [
 				})
 		}
 	}
-]
+];
 
 const router = new VueRouter({
 	mode: 'history',

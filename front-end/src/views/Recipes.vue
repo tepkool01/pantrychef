@@ -37,8 +37,8 @@
 		</div>
 		<div class="row">
 			<!-- All the recipe cards are here-->
-			<div v-for="i in recipes" v-bind:key="i.name">
-				<recipe-card :recipe="i" v-if="i.id"></recipe-card>
+			<div v-for="i in recipes" v-bind:key="i.id">
+				<recipe-card :recipe="i"></recipe-card>
 			</div>
 		</div>
 		<!-- This is the modal for view recipe -->
@@ -164,11 +164,9 @@
 			}
 		},
 		created() {
-			console.log("created");
 			this.$emit('title', 'Pantry');
 		},
 		mounted() {
-			console.log("Mounted");
 			// Listener for reaching end of page
 			this.loadMore();
 			this.getRecipes({
