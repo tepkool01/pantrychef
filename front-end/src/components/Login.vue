@@ -7,13 +7,6 @@
 			<router-link to="/register">Sign up</router-link>
 		</p>
 
-		<button class="btn btn-block btn-primary button--facebook-login">
-			Login with Facebook
-		</button>
-		<button class="btn btn-block btn-danger button--google-login">
-			Login with Google
-		</button>
-
 		<div class="login--separator my-4"><span>or</span></div>
 
 		<form id="login" @submit="loginUser" method="post" :novalidate="true">
