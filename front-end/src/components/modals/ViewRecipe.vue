@@ -1,6 +1,6 @@
 <template>
 	<div class="inner-modal">
-		<div class="card mb-3 mt-2 text-left">
+		<div class="card mb-3 mt-2 text-left" style="z-index: 9999">
 			<div class="card-body">
 				<div class="row pb-3">
 					<div class="col-md-4">
