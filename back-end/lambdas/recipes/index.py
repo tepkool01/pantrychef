@@ -289,7 +289,7 @@ def lambda_handler(event, context):
                     for record in recipe['records']:
                         result.append({
                             'id': record[0]['longValue'],
-                            'name': record[1]['stringValue'],
+                            'recipe_name': record[1]['stringValue'],
                             'cook_time': record[2]['longValue'],
                             'img_url': record[3]['stringValue'],
                             'servings': record[4]['longValue'],
@@ -324,7 +324,7 @@ def lambda_handler(event, context):
                 for recipe in recipe_query['records']:
                     result = {
                         'id': recipe[0]['longValue'],
-                        'name': recipe[1]['stringValue'],
+                        'recipe_name': recipe[1]['stringValue'],
                         'cook_time': recipe[2]['longValue'],
                         'img_url': recipe[3]['stringValue'],
                         'servings': recipe[4]['longValue'],
