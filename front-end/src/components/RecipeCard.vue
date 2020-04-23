@@ -117,12 +117,6 @@ export default {
 	max-width: 100%;
 	min-height: 200px;
 	max-height: 100%;
-
-	-moz-box-shadow: 0px 6px 5px #ccc;
-	-webkit-box-shadow: 0px 6px 5px #ccc;
-	box-shadow: 0px 6px 5px #ccc;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
 	border-radius:3px;
 }
 </style>
