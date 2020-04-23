@@ -14,9 +14,9 @@
                 </template>
 			</button>
 		</div>
-		<div class="card-body p-0 p-md-3">
+		<div class="card-body">
 			<div class="row no-gutters">
-				<div class="col-md-12 col-xl-3 align-content-center p-0 pr-xl-3">
+				<div class="col-md-12 col-xl-3 align-content-center pr-xl-3">
 					<div v-if="recipe.img_url"
 						 class="recipe-img"
                          :style="'background-image: url(img/recipes/' + recipe.img_url + ');'"
@@ -26,7 +26,7 @@
                         Noneya
                     </div>
 				</div>
-				<div class="col-md-12 col-xl-9 recipe-card--body d-flex align-items-start flex-column p-3">
+				<div class="col-md-12 col-xl-9 recipe-card--body d-flex align-items-start flex-column">
 					<div class="recipe-card--description" v-html="recipe.summary">
 
 					</div>

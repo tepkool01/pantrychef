@@ -72,7 +72,9 @@
                         </div>
 						<div class="card-deck">
 							<div class="card pb-3" v-for="ww in ww_recommendations" @click="viewRecipe(ww.id)">
-								<img class="card-img-top" :src="'/img/recipes/' + ww.img_url" style="width: 60%; margin: auto auto">
+								<div class="card-img-top recipe-img"
+									 :style="'background-image: url(/img/recipes/' + ww.img_url + ');'">
+								</div>
 								<div class="card-body text-left">
 									<h5 class="card-title">{{ ww.recipe_name }}</h5>
 									<p class="card-text text-muted small">
@@ -370,5 +372,22 @@ export default {
 }
 .progress-sm {
 	height: 4px;
+}
+.recipe-img {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	min-width: 250px;
+	max-width: 100%;
+	min-height: 200px;
+	max-height: 100%;
+
+	-moz-box-shadow: 0px 6px 5px #ccc;
+	-webkit-box-shadow: 0px 6px 5px #ccc;
+	box-shadow: 0px 6px 5px #ccc;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:3px;
 }
 </style>
