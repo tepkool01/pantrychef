@@ -48,6 +48,9 @@ export default {
 			availableMealPreferences: 'availableMealPreferences',
 			userMealPreference: 'userMealPreference',
 		}),
+		...mapGetters('users', {
+			isAuthenticated: 'isAuthenticated'
+		}),
 	},
 	methods: {
 		...mapActions('users', {
@@ -63,7 +66,9 @@ export default {
 		},
 	},
 	created() {
-		this.getUserInfo();
+		if (this.isAuthenticated) {
+			this.getUserInfo();
+        }
 	},
 };
 </script>

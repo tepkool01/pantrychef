@@ -149,6 +149,9 @@ export default {
 			profiles: 'profiles',
 			activeProfile: 'activeProfile'
 		}),
+		...mapGetters('users', {
+			isAuthenticated: 'isAuthenticated'
+		}),
 		isRecipeOpen() {
 			return this.$route.name === 'ViewRecipePantry'
 		},
@@ -304,20 +307,22 @@ export default {
 		},
 	},
 	created() {
-		this.$emit('title', 'Pantry');
+		if (this.isAuthenticated) {
+			this.$emit('title', 'Pantry');
 
-		// Retrieve ingredients
-        if (this.ingredients.length === 0) {
-        	this.getIngredients();
+			// Retrieve ingredients
+			if (this.ingredients.length === 0) {
+				this.getIngredients();
+			}
+
+			// No active profile, retrieve it
+			if (!this.activeProfile) {
+				this.getProfiles();
+			}
+
+			// Get WW Recommendations
+			this.findMealsByWWPoints();
         }
-
-		// No active profile, retrieve it
-		if (!this.activeProfile) {
-			this.getProfiles();
-        }
-
-		// Get WW Recommendations
-        this.findMealsByWWPoints();
 	},
 }
 </script>

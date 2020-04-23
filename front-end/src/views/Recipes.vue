@@ -79,6 +79,9 @@
 			...mapGetters('profile', {
 				activeProfile: 'activeProfile'
 			}),
+			...mapGetters('users', {
+				isAuthenticated: 'isAuthenticated'
+			}),
 			isRecipeOpen() {
 				return this.$route.name === 'ViewRecipe'
 			}
@@ -168,15 +171,17 @@
 		},
 		mounted() {
 			// Listener for reaching end of page
-			this.loadMore();
-			this.getRecipes({
-				includeShoppingList: this.includeShoppingList,
-				includePantryList: this.includePantryList,
-				searchName: this.searchName,
-				offset: 0,
-				limit: 25,
-				ww: this.ww,
-			})
+            if (this.isAuthenticated) {
+				this.loadMore();
+				this.getRecipes({
+					includeShoppingList: this.includeShoppingList,
+					includePantryList: this.includePantryList,
+					searchName: this.searchName,
+					offset: 0,
+					limit: 25,
+					ww: this.ww,
+				})
+            }
 		},
 	}
 </script>

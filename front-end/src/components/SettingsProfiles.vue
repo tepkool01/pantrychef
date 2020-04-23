@@ -55,6 +55,9 @@ export default {
 		...mapGetters('profile', {
 			profiles: 'profiles',
 		}),
+		...mapGetters('users', {
+			isAuthenticated: 'isAuthenticated'
+		}),
 	},
 	components: {
 		ProfileCreate,
@@ -68,7 +71,9 @@ export default {
 		}),
 	},
 	created() {
-		this.getProfiles();
+		if (this.isAuthenticated) {
+			this.getProfiles();
+		}
 	},
 };
 </script>

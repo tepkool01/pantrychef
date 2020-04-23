@@ -25,24 +25,29 @@ export default {
 	},
 	getUserSession() {
 		return new Promise((resolve, reject) => {
-			this.getUser().getSession((err, session) => {
-				if (err) {
-					// do something
-					reject(err)
-				} else if (session.isValid()) {
-					// Valid session
-					resolve({
-						idToken: session.getIdToken().getJwtToken(),
-						refreshToken: session.getRefreshToken().getToken(),
-						accessToken: session.getAccessToken().getJwtToken(),
-						userId: this.getUser().getUsername(),
-						cognitoUser: this.getUser()
-					})
-				} else {
-					// do something
-					reject('Could not locate user.')
-				}
-			})
+			const user = this.getUser();
+			if (user == null) {
+				reject('No active session');
+			} else {
+				this.getUser().getSession((err, session) => {
+					if (err) {
+						// do something
+						reject(err)
+					} else if (session.isValid()) {
+						// Valid session
+						resolve({
+							idToken: session.getIdToken().getJwtToken(),
+							refreshToken: session.getRefreshToken().getToken(),
+							accessToken: session.getAccessToken().getJwtToken(),
+							userId: this.getUser().getUsername(),
+							cognitoUser: this.getUser()
+						})
+					} else {
+						// do something
+						reject('Could not locate user.')
+					}
+				})
+			}
 		})
 	},
 

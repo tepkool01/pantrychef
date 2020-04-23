@@ -7,28 +7,84 @@ import ViewRecipe from "../components/modals/ViewRecipe";
 
 import store from '../store/index'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
 	{
 		path: '/',
 		name: 'home',
-		component: () => import('../views/Home.vue')
+		component: () => import('../views/Home.vue'),
+		beforeEnter(to, from, next) {
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					if (store.state.users.user.idToken != null) {
+						next('/pantry')
+					} else {
+						next()
+					}
+				})
+				.catch(() => {
+					next()
+				});
+		}
 	},
 	{
 		path: '/about',
 		name: 'about',
-		component: () => import('../views/About.vue')
+		component: () => import('../views/About.vue'),
+		beforeEnter(to, from, next) {
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					if (store.state.users.user.idToken != null) {
+						next('/pantry')
+					} else {
+						next()
+					}
+				})
+				.catch(() => {
+					next()
+				});
+		}
 	},
 	{
 		path: '/register',
 		name: 'register',
-		component: () => import('../views/Register.vue')
+		component: () => import('../views/Register.vue'),
+		beforeEnter(to, from, next) {
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					if (store.state.users.user.idToken != null) {
+						next('/pantry')
+					} else {
+						next()
+					}
+				})
+				.catch(() => {
+					next()
+				});
+		}
 	},
 	{
 		path: '/forgotPassword',
 		name: 'forgotPassword',
-		component: () => import('../views/ForgotPassword.vue')
+		component: () => import('../views/ForgotPassword.vue'),
+		beforeEnter(to, from, next) {
+			store
+				.dispatch('users/getSession')
+				.then(() => {
+					if (store.state.users.user.idToken != null) {
+						next('/pantry')
+					} else {
+						next()
+					}
+				})
+				.catch(() => {
+					next()
+				});
+		}
 	},
 	{
 		path: '/pantry',
@@ -48,8 +104,6 @@ const routes = [
 				store
 					.dispatch('users/getSession')
 					.then(() => {
-						// todo: dry
-						// If we can get a token, then they can proceed, otherwise redirect them to the sign-in page
 						if (store.state.users.user.idToken != null) {
 							next()
 						} else {
@@ -117,6 +171,6 @@ const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes
-})
+});
 
 export default router
