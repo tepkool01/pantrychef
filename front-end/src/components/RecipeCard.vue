@@ -14,19 +14,19 @@
                 </template>
 			</button>
 		</div>
-		<div class="card-body">
+		<div class="card-body p-0 p-md-3">
 			<div class="row no-gutters">
-				<div class="col-lg-3">
-					<img v-if="recipe.img_url"
-                         :src="'img/recipes/' + recipe.img_url"
-                         style="width: 100px; height: 100px"
-                    />
+				<div class="col-md-12 col-xl-3 align-content-center p-0 pr-xl-3">
+					<div v-if="recipe.img_url"
+						 class="recipe-img"
+                         :style="'background-image: url(img/recipes/' + recipe.img_url + ');'"
+					></div>
 					<div v-else
                          style="width: 100px; height: 100px; background-color: #5b6976;">
                         Noneya
                     </div>
 				</div>
-				<div class="col-lg-9 recipe-card--body d-flex align-items-start flex-column">
+				<div class="col-md-12 col-xl-9 recipe-card--body d-flex align-items-start flex-column p-3">
 					<div class="recipe-card--description" v-html="recipe.summary">
 
 					</div>
@@ -107,5 +107,22 @@ export default {
 <style scoped>
 .recipe-card {
 	text-align: left;
+}
+.recipe-img {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	min-width: 250px;
+	max-width: 100%;
+	min-height: 200px;
+	max-height: 100%;
+
+	-moz-box-shadow: 0px 6px 5px #ccc;
+	-webkit-box-shadow: 0px 6px 5px #ccc;
+	box-shadow: 0px 6px 5px #ccc;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:3px;
 }
 </style>
