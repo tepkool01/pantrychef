@@ -1,4 +1,11 @@
-def find_best_triplet(arr, sum):
+def find_best_triplet(arr, ww_sum):
+    """
+    This is our algorithmic component that determines the closest matching weight watcher meal prep based on
+    WW points, percent match (ingredients in pantry) for a 3-course meal; we first provide it a sorted WW list
+    :param arr: Array - possible matches, sorted
+    :param ww_sum: Integer - requested weight watcher total daily points
+    :return: Array
+    """
     # Start out with the best difference being an arbitrarily high number (infinity), so it is easy to beat!
     best_difference = float('inf')
 
@@ -18,23 +25,19 @@ def find_best_triplet(arr, sum):
             triplet_sum = arr[i] + arr[j] + arr[k]
 
             # Exact match! Exit and tell the user of the triplet
-            if triplet_sum == sum:
+            if triplet_sum == ww_sum:
                 return [arr[i], arr[j], arr[k]]
 
-            if triplet_sum > sum:
+            if triplet_sum > ww_sum:
                 # Move pointer to the 'left' to close in on a lower WW score
                 k -= 1
             else:
                 # Hold onto the best guess
-                if best_difference > (sum - triplet_sum):
-                    best_difference = sum - triplet_sum
+                if best_difference > (ww_sum - triplet_sum):
+                    best_difference = ww_sum - triplet_sum
                     best_triplet = [arr[i], arr[j], arr[k]]
 
                 # Move pointer to the 'right' to close in on a higher WW score
                 j += 1
 
     return best_triplet
-
-
-arr = [1, 2, 5, 10, 20, 50, 100]
-print(find_ww_sum(arr, 109))
