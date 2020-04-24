@@ -93,6 +93,29 @@ def lambda_handler(event, context):
             if event['httpMethod'] == 'DELETE':
                 status_code = 204
                 print("Deleting", event['pathParameters']['profileId'])
+
+                # TODO: the group created a free-form relationship (UserProfile needs relationships for cascade delete)
+                # this is not good
+                # TODO: in its current state this should be a transaction
+                # IngredientListItem is actually the pantry, thanks Nathan
+
+                # Delete Pantry list associated with profile
+                db.execute(
+                    sql="DELETE FROM IngredientListItem WHERE UserProfile=:uID",
+                    parameters=[
+                        {'name': 'uID', 'value': {'longValue': int(event['pathParameters']['profileId'])}},
+                    ]
+                )
+
+                # Delete Shopping list associated with profile
+                db.execute(
+                    sql="DELETE FROM ShoppingListItem WHERE UserProfile=:uID",
+                    parameters=[
+                        {'name': 'uID', 'value': {'longValue': int(event['pathParameters']['profileId'])}},
+                    ]
+                )
+
+                # Delete Actual profile
                 db.execute(
                     sql="DELETE FROM UserProfile WHERE UserId=:userId AND ID=:id",
                     parameters=[

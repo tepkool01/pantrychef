@@ -60,18 +60,18 @@
                     id="repassword"
 				/>
 			</div>
-			<div class="form-group mb-3">
-				<label>Diet Type</label>
-				<select class="form-control" aria-label="Diet Type" id="diet-type">
-					<option value="1">No Preference</option>
-					<option value="2">Vegetarian</option>
-					<option value="3">Vegan</option>
-					<option value="4">Gluten Free</option>
-					<option value="5">Dairy Free</option>
-                    <option value="6">Healthy</option>
-                    <option value="7">Sustainable</option>
-				</select>
-			</div>
+<!--			<div class="form-group mb-3">-->
+<!--				<label>Diet Type</label>-->
+<!--				<select class="form-control" aria-label="Diet Type" id="diet-type">-->
+<!--					<option value="1">No Preference</option>-->
+<!--					<option value="2">Vegetarian</option>-->
+<!--					<option value="3">Vegan</option>-->
+<!--					<option value="4">Gluten Free</option>-->
+<!--					<option value="5">Dairy Free</option>-->
+<!--                    <option value="6">Healthy</option>-->
+<!--                    <option value="7">Sustainable</option>-->
+<!--				</select>-->
+<!--			</div>-->
 		</div>
 		<button class="btn btn-primary btn-block button--register mt-2 mb-5">
 			Sign up
