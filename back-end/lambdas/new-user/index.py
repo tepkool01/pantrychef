@@ -18,24 +18,9 @@ def lambda_handler(event, context):
             response = db.execute(
                 sql="UPDATE `User` Set IsValidated=:validated WHERE  Username=:username AND CognitoID=:sub",
                 parameters=[
-                    {
-                        'name': 'username',
-                        'value': {
-                            'stringValue': event['userName']
-                        }
-                    },
-                    {
-                        'name': 'sub',
-                        'value': {
-                            'stringValue': event['request']['userAttributes']['sub']
-                        }
-                    },
-                    {
-                        'name': 'validated',
-                        'value': {
-                            'booleanValue': True
-                        }
-                    }
+                    {'name': 'username', 'value': {'stringValue': event['userName']}},
+                    {'name': 'sub', 'value': {'stringValue': event['request']['userAttributes']['sub']}},
+                    {'name': 'validated', 'value': {'booleanValue': True}}
                 ]
             )
             result = SUCCESS_PAYLOAD
@@ -48,6 +33,10 @@ def lambda_handler(event, context):
             result = EXCEPTION_PAYLOAD
             result['body'] = json.dumps(e)
             return result
+    elif event['triggerSource'] == 'PostConfirmation_ConfirmForgotPassword':
+        result = SUCCESS_PAYLOAD
+        result['body'] = json.dumps({})
+        return result
     else:
         return NOT_IMPLEMENTED_PAYLOAD
 
