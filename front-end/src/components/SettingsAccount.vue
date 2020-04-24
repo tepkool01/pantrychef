@@ -31,7 +31,7 @@
 				<div>
 					<div class="settings--content-label">Update password</div>
 					<div class="settings--content-sublabel">
-						Password must be at least 6 characters long
+						Password must be at least 8 characters long, with a mix of Upper/Lower cases and numbers
 					</div>
 				</div>
 				<div>
