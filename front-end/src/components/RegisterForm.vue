@@ -63,12 +63,13 @@
 			<div class="form-group mb-3">
 				<label>Diet Type</label>
 				<select class="form-control" aria-label="Diet Type" id="diet-type">
-					<option hidden>-----</option>
-					<option value="0">No Preference</option>
-					<option value="1">Vegetarian</option>
-					<option value="2">Vegan</option>
-					<option value="3">Gluten Free</option>
-					<option value="4">Paleo</option>
+					<option value="1">No Preference</option>
+					<option value="2">Vegetarian</option>
+					<option value="3">Vegan</option>
+					<option value="4">Gluten Free</option>
+					<option value="5">Dairy Free</option>
+                    <option value="6">Healthy</option>
+                    <option value="7">Sustainable</option>
 				</select>
 			</div>
 		</div>
