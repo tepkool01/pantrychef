@@ -67,18 +67,14 @@ export default {
 			})
 		})
 	},
-	forgotPasswordVerification(username, code, newPassword) {
-		let cognitoUser = this.setupCognitoUser(username)
-		return new Promise((resolve, reject) => {
-			cognitoUser.confirmPassword(code, newPassword, {
-				onSuccess: function (data) {
-					resolve(data)
-				},
-				onFailure: function (err) {
-					reject(err)
-				}
-			})
-		})
+	async forgotPasswordVerification(username, code, newPassword) {
+		try {
+			const cognitoUser = this.setupCognitoUser(username);
+			await cognitoUser.confirmPassword(code, newPassword);
+			return Promise.resolve(true);
+		} catch (e) {
+			return Promise.reject(e);
+		}
 	},
 
 	updatePassword(cognitoUserState, newPassword, oldPassword) {
