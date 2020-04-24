@@ -41,3 +41,6 @@ def find_best_triplet(arr, ww_sum):
                 j += 1
 
     return best_triplet
+
+st = [1, 2, 3, 4, 5, 6]
+print(find_best_triplet(st, 5))
