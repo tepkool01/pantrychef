@@ -43,7 +43,7 @@ def lambda_handler(event, context):
             print("Entering try")
             # Doing a replace for testing, but could be an INSERT
             response = db.execute(
-                sql="REPLACE INTO `User` Set IsValidated=:validated WHERE  Username=:username AND CognitoID=:sub",
+                sql="INSERT INTO `User` (IsValidated, Username, CognitoID) VALUES(:validated, :username, :sub)",
                 parameters=[
                     {'name': 'username', 'value': {'stringValue': event['userName']}},
                     {'name': 'sub', 'value': {'stringValue': event['request']['userAttributes']['sub']}},
