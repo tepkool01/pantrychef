@@ -40,9 +40,10 @@ def lambda_handler(event, context):
     # This is the event that happens/triggers after they confirm their email address
     if event['triggerSource'] == 'PostConfirmation_ConfirmSignUp':
         try:
+            print("Entering try")
             # Doing a replace for testing, but could be an INSERT
             response = db.execute(
-                sql="UPDATE `User` Set IsValidated=:validated WHERE  Username=:username AND CognitoID=:sub",
+                sql="REPLACE INTO `User` Set IsValidated=:validated WHERE  Username=:username AND CognitoID=:sub",
                 parameters=[
                     {'name': 'username', 'value': {'stringValue': event['userName']}},
                     {'name': 'sub', 'value': {'stringValue': event['request']['userAttributes']['sub']}},
@@ -54,16 +55,19 @@ def lambda_handler(event, context):
             return result
 
         except Exception as e:
+            print("Failed confirmation")
             # Todo: maybe retry?
             print("ERROR!!! Could not add user!", str(e))
             result = EXCEPTION_PAYLOAD
             result['body'] = json.dumps(e)
             return result
     elif event['triggerSource'] == 'PostConfirmation_ConfirmForgotPassword':
+        print("Forgot password")
         result = SUCCESS_PAYLOAD
         result['body'] = json.dumps({})
         return result
     else:
+        print("No bueno")
         return NOT_IMPLEMENTED_PAYLOAD
 
 
