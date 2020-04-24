@@ -7,34 +7,34 @@ from database import DB
 
 db = DB(database_name=os.environ['DB_Name'], cluster_arn=os.environ['RDS_ARN'], secret_arn=os.environ['Secrets_ARN'])
 
-NOT_IMPLEMENTED_PAYLOAD = {
-    'statusCode': 501,
-    'headers': {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-    },
-    'body': 'Not Implemented Exception: Please specify a resource and HTTP Method'
-}
-
-EXCEPTION_PAYLOAD = {
-    'statusCode': 500,
-    'headers': {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-    },
-    'body': ''
-}
-
-SUCCESS_PAYLOAD = {
-    'statusCode': 200,
-    'headers': {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-    },
-    'body': ''
-}
 
 def lambda_handler(event, context):
+    NOT_IMPLEMENTED_PAYLOAD = {
+        'statusCode': 501,
+        'headers': {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        },
+        'body': 'Not Implemented Exception: Please specify a resource and HTTP Method'
+    }
+
+    EXCEPTION_PAYLOAD = {
+        'statusCode': 500,
+        'headers': {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        },
+        'body': ''
+    }
+
+    SUCCESS_PAYLOAD = {
+        'statusCode': 200,
+        'headers': {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        },
+        'body': ''
+    }
     print(event)
 
     # This is the event that happens/triggers after they confirm their email address
