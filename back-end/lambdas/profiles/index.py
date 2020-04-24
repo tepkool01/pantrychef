@@ -40,89 +40,101 @@ def lambda_handler(event, context):
     ###
     # Actual Routing
     ###
-    if event['resource'] == '/profiles':
-        if event['httpMethod'] == 'GET':
-            # Retrieve all profiles
-            raw_result = db.execute(
-                sql="SELECT ID, ProfileName, IsActive FROM `UserProfile` WHERE UserID=:userId",
-                parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
-            )
-
-            # Parsing info, because this database outputs crazy ass shit
-            result = []
-            for record in raw_result['records']:
-                result.append({
-                    'id': record[0]['longValue'],
-                    'profile_name': record[1]['stringValue'],
-                    'isActive': record[2]['booleanValue']
-                })
-
-        elif event['httpMethod'] == 'POST':
-            # Create a profile
-            print("Create a profile")
-
-            # First, grab the payload the user sent, and parse it
-            payload = json.loads(event['body'])
-
-            try:
-
-                profile = db.execute(
-                    sql="INSERT INTO `UserProfile` (ProfileName, UserID, DietType) VALUES(:profileName, :userId, :dietType)",
-                    parameters=[
-                        {'name': 'profileName', 'value': {'stringValue': str(payload['name'])}},
-                        {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
-                        {'name': 'dietType', 'value': {'longValue': int(1)}},  # Random number for now
-                    ]
-                )
-                print(profile)
-
-                # Parse results for VueJS
-                result = {
-                    'id': profile['generatedFields'][0]['longValue'],
-                    'profile_name': str(payload['name'])
-                }
-            except Exception as e:
-                status_code = 500
-                result = {'errorMessage': 'Could not save the profile.'}
-                print(str(e))
-        else:
-            return NOT_IMPLEMENTED_PAYLOAD
-
-    elif event['resource'] == '/profiles/{profileId}':
-        if event['httpMethod'] == 'DELETE':
-            # todo: status code 204
-            print("Deleting", event['pathParameters']['profileId'])
-            db.execute(
-                sql="DELETE FROM UserProfile WHERE UserId=:userId AND ID=:id",
-                parameters=[
-                    {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
-                    {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
-                ]
-            )
-        else:
-            return NOT_IMPLEMENTED_PAYLOAD
-
-    elif event['resource'] == '/profiles/{profileId}/activate':
-        if event['httpMethod'] == 'PUT':
-            # Reset all to 0
-            try:
-                db.execute(
-                    sql="UPDATE UserProfile SET IsActive=0 WHERE UserId=:userId",
+    try:
+        if event['resource'] == '/profiles':
+            if event['httpMethod'] == 'GET':
+                # Retrieve all profiles
+                raw_result = db.execute(
+                    sql="SELECT ID, ProfileName, IsActive FROM `UserProfile` WHERE UserID=:userId",
                     parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
                 )
+
+                # Parsing info, because this database outputs crazy ass shit
+                result = []
+                for record in raw_result['records']:
+                    result.append({
+                        'id': record[0]['longValue'],
+                        'profile_name': record[1]['stringValue'],
+                        'isActive': record[2]['booleanValue']
+                    })
+
+            elif event['httpMethod'] == 'POST':
+                # Create a profile
+                print("Create a profile")
+
+                # First, grab the payload the user sent, and parse it
+                payload = json.loads(event['body'])
+
+                try:
+
+                    profile = db.execute(
+                        sql="INSERT INTO `UserProfile` (ProfileName, UserID, DietType) VALUES(:profileName, :userId, :dietType)",
+                        parameters=[
+                            {'name': 'profileName', 'value': {'stringValue': str(payload['name'])}},
+                            {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
+                            {'name': 'dietType', 'value': {'longValue': int(1)}},  # Random number for now
+                        ]
+                    )
+                    print(profile)
+
+                    # Parse results for VueJS
+                    result = {
+                        'id': profile['generatedFields'][0]['longValue'],
+                        'profile_name': str(payload['name'])
+                    }
+                except Exception as e:
+                    status_code = 500
+                    result = {'errorMessage': 'Could not save the profile.'}
+                    print(str(e))
+            else:
+                return NOT_IMPLEMENTED_PAYLOAD
+
+        elif event['resource'] == '/profiles/{profileId}':
+            if event['httpMethod'] == 'DELETE':
+                status_code = 204
+                print("Deleting", event['pathParameters']['profileId'])
                 db.execute(
-                    sql="UPDATE UserProfile SET IsActive=1 WHERE UserId=:userId and ID=:id",
+                    sql="DELETE FROM UserProfile WHERE UserId=:userId AND ID=:id",
                     parameters=[
                         {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
                         {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
                     ]
                 )
-            except Exception as e:
-                print(str(e))
+                result = {}
+            else:
+                return NOT_IMPLEMENTED_PAYLOAD
+
+        elif event['resource'] == '/profiles/{profileId}/activate':
+            if event['httpMethod'] == 'PUT':
+                # Reset all to 0
+                try:
+                    db.execute(
+                        sql="UPDATE UserProfile SET IsActive=0 WHERE UserId=:userId",
+                        parameters=[{'name': 'userId', 'value': {'longValue': int(u.get_id())}}]
+                    )
+                    db.execute(
+                        sql="UPDATE UserProfile SET IsActive=1 WHERE UserId=:userId and ID=:id",
+                        parameters=[
+                            {'name': 'userId', 'value': {'longValue': int(u.get_id())}},
+                            {'name': 'id', 'value': {'longValue': int(event['pathParameters']['profileId'])}}
+                        ]
+                    )
+                except Exception as e:
+                    print(str(e))
+            else:
+                return NOT_IMPLEMENTED_PAYLOAD
         else:
             return NOT_IMPLEMENTED_PAYLOAD
-    else:
-        return NOT_IMPLEMENTED_PAYLOAD
+    except Exception as e:
+        print(str(e))
+        return {
+            'statusCode': 500,
+            'headers': {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            },
+            'body': json.dumps({'errorMessage': 'Something is wrong'})
+        }
 
     return {
         'statusCode': status_code,
