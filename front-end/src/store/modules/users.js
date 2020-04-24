@@ -36,22 +36,27 @@ const getters = {
 	},
 	idToken(state) {
 		if (state.user.hasOwnProperty('idToken')) {
-			return state.user.idToken
+			return state.user.idToken;
 		} else {
-			return ''
+			return '';
 		}
-	}
-}
+	},
+};
 
 const actions = {
 	getUserInfo({commit}) {
 		api.users.getUserInfo().then(result => {
-			commit("SET_MEAL_PREFERENCE", result['data']['meal_preference'])
-			commit('SET_AVAILABLE_MEAL_PREFERENCES', result['data']['available_meal_preferences'])
-		})
+			commit("SET_MEAL_PREFERENCE", result['data']['meal_preference']);
+			commit('SET_AVAILABLE_MEAL_PREFERENCES', result['data']['available_meal_preferences']);
+		});
 	},
-	updateUserInfo({commit}, payload) {
-		api.users.updateUser(payload)
+	async updateUserInfo({ commit }, payload) {
+		try {
+			await api.users.updateUser(payload);
+			commit("SET_MEAL_PREFERENCE", payload.meal_preference);
+		} catch (e) {
+			console.error(e);
+		}
 	},
 	login({ commit }, payload) {
 		return new Promise((resolve, reject) => {

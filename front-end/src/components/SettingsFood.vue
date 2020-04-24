@@ -21,14 +21,14 @@
 					</div>
 				</div>
 				<div>
+
 					<select id="change_diet_dropdown"
                             class="form-control"
                             aria-label="Diet Type"
-                            @change="switchMealPreference">
+							v-model="selectedMealPreference">
 						<option v-for="p in availableMealPreferences"
-                                :value="p.id"
-                                :key="p.id"
-                                :selected="userMealPreference.id === p.id">
+                                :value="p"
+                                :key="p.id">
                             {{p.name}}
                         </option>
 					</select>
@@ -51,19 +51,25 @@ export default {
 		...mapGetters('users', {
 			isAuthenticated: 'isAuthenticated'
 		}),
+		selectedMealPreference: {
+			get() {
+				return this.userMealPreference;
+			},
+			set(val) {
+				this.updateUserInfo({
+					meal_preference: {
+						id: val.id,
+						name: val.name,
+					},
+				});
+			},
+		},
 	},
 	methods: {
 		...mapActions('users', {
 			getUserInfo: 'getUserInfo',
 			updateUserInfo: 'updateUserInfo',
 		}),
-		switchMealPreference(preference) {
-			this.updateUserInfo({
-				meal_preference: {
-					id: preference.target.value,
-				},
-			});
-		},
 	},
 	created() {
 		if (this.isAuthenticated) {

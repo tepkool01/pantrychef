@@ -13,9 +13,14 @@ export default {
 		const config = { headers: { "Authorization": store.state.users.user.idToken }};
 		return axios.get('/user', config)
 	},
-	updateUser(payload) {
+	async updateUser(payload) {
 		const config = { headers: { "Authorization": store.state.users.user.idToken }};
-		return axios.patch('/user', payload, config)
+		try {
+			const result = await axios.patch('/user', payload, config);
+			return Promise.resolve(result);
+		} catch (e) {
+			return Promise.reject(e);
+		}
 	},
 	logout() {
 		this.getUser().signOut()
