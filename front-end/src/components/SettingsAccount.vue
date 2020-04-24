@@ -45,19 +45,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="row mt-4">
-			<div class="col-lg-8 settings--section-label">
-				Deactivate account
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-6"></div>
-			<div class="col-lg-6">
-				<button class="btn btn-outline-danger">
-					<b-icon-trash></b-icon-trash> Deactivate account
-				</button>
-			</div>
-		</div>
 		<update-password></update-password>
 		<update-username></update-username>
 	</div>
