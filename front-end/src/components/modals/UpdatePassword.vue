@@ -51,7 +51,7 @@
 
 <script>
 import { EventBus } from '../../eventBus'; // used for Errors
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
 	name: 'UpdatePassword',
@@ -83,23 +83,26 @@ export default {
 		}
 	},
 	methods: {
+        ...mapActions('users', {
+			setPassword: 'UpdatePassword',
+        }),
 		// Validates the username, password, password confirmation, etc, and provides error messaging if needed
 		validateForm(e) {
 			// Return the status of the form to the submission handler
-			let isValid = true
+			let isValid = true;
 
 			// Prevents the form from doing its normal action of submitting it via HTML, we will handle submission
-			e.preventDefault()
+			e.preventDefault();
 
 			// Reset the form and do a check, in case they fixed anything in a previous submission
-			this.resetForm()
+			this.resetForm();
 
 			if (this.user.oldpassword.length < 8) {
 				this.validation.oldpassword = true
 				this.validation.errors.push({
 					id: 2,
 					msg: 'Please input your current valid password'
-				})
+				});
 				isValid = false
 			}
 
@@ -108,7 +111,7 @@ export default {
 				this.validation.errors.push({
 					id: 2,
 					msg: 'Your new password needs to be greater than 8 characters'
-				})
+				});
 				isValid = false
 			}
 
@@ -119,7 +122,7 @@ export default {
 				this.validation.errors.push({
 					id: 5,
 					msg: 'Passwords do not match'
-				})
+				});
 				isValid = false
 			}
 
@@ -128,35 +131,39 @@ export default {
 				!this.regex.passwordUppercase.test(this.user.password) ||
 				!this.regex.passwordNumbers.test(this.user.password)
 			) {
-				this.validation.password = true
+				this.validation.password = true;
 				this.validation.errors.push({
 					id: 6,
 					msg:
 						'Password must have at least 1 upper case character, lower case character, and number'
-				})
+				});
 				isValid = false
 			}
 
 			return isValid
 		},
 		resetForm() {
-			this.validation.errors = []
-			this.validation.oldpassword = false
-			this.validation.password = false
+			this.validation.errors = [];
+			this.validation.oldpassword = false;
+			this.validation.password = false;
 			this.validation.repassword = false
 		},
 		UpdatePassword(e) {
+			console.log(1);
 			if (this.validateForm(e)) {
-				this.$store
-					.dispatch('users/UpdatePassword', {
+				console.log(2);
+				this.setPassword({
 						newPassword: this.user.password,
                         oldPassword: this.user.oldpassword
 					})
 					.then(() => {
+						console.log(3);
 						this.$bvModal.hide('update-password');
 						EventBus.setAlert('Info', 1, 'Password changed successfully. Please use the updated password upon next login.');
 					})
 					.catch(err => {
+						console.log(4);
+						console.log(err);
 						this.validation.errors.push({
 							id: 0,
 							msg: err

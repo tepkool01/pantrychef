@@ -129,19 +129,15 @@ const actions = {
 			commit('LOGOUT');
 		}
 	},
-	UpdatePassword({ commit, state }, payload) {
-		return new Promise((resolve, reject) => {
-			api.users
-				.updatePassword(state.user.cognitoUser, payload.newPassword, payload.oldPassword)
-				.then(() => {
-					resolve(true)
-				})
-				.catch(err => {
-					reject(err)
-				})
-		})
+	async UpdatePassword({ commit, state }, payload) {
+		try {
+			await api.users.updatePassword(state.user.cognitoUser, payload.newPassword, payload.oldPassword);
+			return Promise.resolve(true);
+		} catch (e) {
+			return Promise.reject('Incorrect Password');
+		}
 	}
-}
+};
 
 const mutations = {
 	SET_AVAILABLE_MEAL_PREFERENCES(state, availableMealPreferences) {

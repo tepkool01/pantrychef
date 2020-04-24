@@ -82,20 +82,17 @@ export default {
 		}
 	},
 
-	updatePassword(cognitoUserState, newPassword, oldPassword) {
-		return new Promise((resolve, reject) => {
-			this.authenticate(cognitoUserState.username, oldPassword).then(result => {
-				result.cognitoUser.changePassword(oldPassword, newPassword, function(
-					err,
-					result
-				) {
-					if (err) {
-						reject(err.message)
-					}
-					resolve(result)
+	async updatePassword(cognitoUserState, newPassword, oldPassword) {
+		try {
+			const result = await this.authenticate(cognitoUserState.username, oldPassword).then(result => {
+				result.cognitoUser.changePassword(oldPassword, newPassword, function(err) {
+					if (err) throw err;
 				})
-			})
-		})
+			});
+			return Promise.resolve(result);
+		} catch (e) {
+			return Promise.reject(e);
+		}
 	},
 
 	register(username, password, email) {
@@ -104,11 +101,11 @@ export default {
 		let dataEmail = {
 			Name: 'email',
 			Value: email
-		}
+		};
 
 		let attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(
 			dataEmail
-		)
+		);
 
 		attributeList.push(attributeEmail)
 
