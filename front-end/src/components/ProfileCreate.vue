@@ -19,6 +19,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { EventBus } from '../eventBus';
 
 export default {
 	name: 'ChefProfile',
@@ -35,11 +36,16 @@ export default {
 				createProfile: 'createProfile',
 			}),
 			onSubmit() {
-				this.createProfile(this.profile);
-				this.profile = {
-					name: '',
-					ingredients: [],
-				};
+				if (this.profile.name.length > 0) {
+					this.createProfile(this.profile);
+					this.profile = {
+						name: '',
+						ingredients: [],
+					};
+				} else {
+					EventBus.setAlert('Error', 1, 'Profile name must have text.');
+				}
+
 			},
 		},
 	};

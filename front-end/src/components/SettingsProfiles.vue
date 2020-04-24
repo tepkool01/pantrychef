@@ -56,7 +56,7 @@ export default {
 			profiles: 'profiles',
 		}),
 		...mapGetters('users', {
-			isAuthenticated: 'isAuthenticated'
+			isAuthenticated: 'isAuthenticated',
 		}),
 	},
 	components: {
