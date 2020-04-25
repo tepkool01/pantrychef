@@ -98,7 +98,7 @@ describe('[SF] Settings Food Component', () => {
 		expect(wrapper.find('select').exists()).toBe(true);
 	});
 
-	test('[SF-7] renders component with preference changed to healthy', async () => {
+	test('[SF-6] renders component with preference changed to healthy', async () => {
 		await wrapper.vm.$nextTick();
 		expect(wrapper.findAll('option').at(5).element.text).toBe('Healthy');
 		wrapper.findAll('option').at(5).element.selected = true;
