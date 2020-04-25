@@ -131,8 +131,8 @@ export default {
 		return {
             sortOrder: 'default',
 			shoppingSortOrder: 'default',
-            ww_score: 25,
-			smallest_ww_meal: 1,
+            ww_score: 30,
+			smallest_ww_meal: 5,
             ww_recommendations: [],
             timer: null,
 		}
@@ -247,7 +247,7 @@ export default {
 				const result = await api.recipe.getRecipes({
 					includeShoppingList: true,
 					includePantryList: true,
-					limit: 1000,
+					limit: 20000,
 					offset: 0,
 					searchName: '',
 					ww: this.ww_score,
@@ -277,17 +277,22 @@ export default {
 			} else {
 				this.getPantry(profile_id);
 				this.getShoppingList(profile_id);
+				this.findMealsByWWPoints();
             }
 		},
 		pantryList (val) {
 			if (val.length === 0) {
 				EventBus.setAlert('Warning', 2, 'Pantry List did not load or is empty.');
-			}
+			} else {
+				this.findMealsByWWPoints();
+            }
 		},
 		ingredients(val) {
 			if (val.length === 0) {
 				EventBus.setAlert('Error', 1, 'Could not retrieve ingredient list');
-			}
+			} else {
+				this.findMealsByWWPoints();
+            }
 		},
 		ww_score(val) {
 			if (this.timer) {
