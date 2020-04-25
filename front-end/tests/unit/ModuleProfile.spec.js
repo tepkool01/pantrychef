@@ -17,14 +17,14 @@ localVue.use(Vuex);
 
 beforeEach(() => {
   state = {
-    profiles: [{name:'first',id:1},{name:'second',id:2}],
+    profiles: [{text:'first',value:1},{text:'second',value:2}],
     active_profile: 'first'
   };
 });
 
-describe("Module-Profile", () => {
+describe("[MP] Module-Profile", () => {
 
-  it("Action-createProfile", async () => {
+  it("[MP-1] Action-createProfile", async () => {
     axios.post.mockImplementation(() =>
       Promise.resolve({
         "data": 'testpayload',
@@ -34,13 +34,13 @@ describe("Module-Profile", () => {
 
     const commit = jest.fn()
 
-    await profile.actions.createProfile({ commit },{name:'this',id:1})
+    await profile.actions.createProfile({ commit },{text:'this',value:1})
 
     expect(commit).toHaveBeenCalledWith(
       "ADD_PROFILE", "testpayload")
   })
 
-  it("Action-activateProfile", async () => {
+  it("[MP-2] Action-activateProfile", async () => {
     axios.put.mockImplementation(() =>
       Promise.resolve({
         "data": 1,
@@ -56,7 +56,7 @@ describe("Module-Profile", () => {
       "SET_ACTIVE", 1)
   })
 
-  it("Action-getProfiles", async () => {
+  it("[MP-3] Action-getProfiles", async () => {
     axios.get.mockImplementation(() =>
       Promise.resolve({
         "data": [{"id": 1, "name": "first","isActive":"false"}, {"id": 2, "name": "second","isActive":"true"}],
@@ -75,7 +75,7 @@ describe("Module-Profile", () => {
       "SET_ACTIVE", 2)
   })
 
-  it("Action-getProfilesFail", async () => {
+  it("[MP-4] Action-getProfilesFail", async () => {
     axios.get.mockImplementation(() =>
       Promise.reject({
       })
@@ -91,7 +91,7 @@ describe("Module-Profile", () => {
     }
   })
 
-  it("Action-deleteProfile", async () => {
+  it("[MP-5] Action-deleteProfile", async () => {
     axios.delete.mockImplementation(() =>
       Promise.resolve({
       })
@@ -105,23 +105,23 @@ describe("Module-Profile", () => {
       "DELETE_PROFILE", 1)
   })
 
-  it('Mutations-SET_ACTIVE', () => {
+  it('[MP-6] Mutations-SET_ACTIVE', () => {
     profile.mutations.SET_ACTIVE(state, 'second');
     expect(state).toEqual({
-      profiles: [{name:'first',id:1},{name:'second',id:2}],
+      profiles: [{text:'first',value:1},{text:'second',value:2}],
       active_profile: 'second'
     });
   });
   
-  it('Mutations-ADD_PROFILE', () => {
-      profile.mutations.ADD_PROFILE(state, {name:'newprofile',id:3});
+  it('[MP-7] Mutations-ADD_PROFILE', () => {
+      profile.mutations.ADD_PROFILE(state, {profile_name:'newprofile',id:3});
       expect(state).toEqual({
-        profiles: [{name:'first',id:1},{name:'second',id:2},{name:'newprofile',id:3}],
+        profiles: [{text:'first',value:1},{text:'second',value:2},{text:'newprofile',value:3}],
         active_profile: 'first'
       });
     });
   
-    it('Mutations-SET_PROFILES', () => {
+    it('[MP-8] Mutations-SET_PROFILES', () => {
       profile.mutations.SET_PROFILES(state, [{profile_name:'this',id:1},{profile_name:'that',id:2}]);
       expect(state).toEqual({
         profiles: [{text:'this',value:1},{text:'that',value:2}],
@@ -129,10 +129,10 @@ describe("Module-Profile", () => {
       });
     });
   
-    it('Mutations-DELETE_PROFILE', () => {
+    it('[MP-9] Mutations-DELETE_PROFILE', () => {
       profile.mutations.DELETE_PROFILE(state, 2);
       expect(state).toEqual({
-        profiles: [{name:'first',id:1}],
+        profiles: [{text:'first',value:1}],
         active_profile: 'first'
       });
     });

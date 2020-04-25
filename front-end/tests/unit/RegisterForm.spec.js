@@ -21,7 +21,6 @@ describe('[RF] Component - Register Form', () => {
 		wrapper.find('#username').setValue('bob101');
 		wrapper.find('#password').setValue('Password123!');
 		wrapper.find('#repassword').setValue('Password123!');
-		wrapper.find('#diet-type').setValue(1);
 
 		wrapper.find('form').trigger('submit.prevent');
 
@@ -52,7 +51,6 @@ describe('[RF] Component - Register Form', () => {
 		wrapper.find('#username').setValue('bob101');
 		wrapper.find('#password').setValue('Password123!');
 		wrapper.find('#repassword').setValue('SomethingElse');
-		wrapper.find('#diet-type').setValue(1);
 
 		wrapper.find('form').trigger('submit.prevent');
 
@@ -69,7 +67,6 @@ describe('[RF] Component - Register Form', () => {
 		wrapper.find('#username').setValue('');
 		wrapper.find('#password').setValue('Password123!');
 		wrapper.find('#repassword').setValue('SomethingElse');
-		wrapper.find('#diet-type').setValue(1);
 
 		wrapper.find('form').trigger('submit.prevent');
 
@@ -86,7 +83,6 @@ describe('[RF] Component - Register Form', () => {
 		wrapper.find('#username').setValue('');
 		wrapper.find('#password').setValue('');
 		wrapper.find('#repassword').setValue('SomethingElse');
-		wrapper.find('#diet-type').setValue(1);
 
 		wrapper.find('form').trigger('submit.prevent');
 
@@ -103,7 +99,6 @@ describe('[RF] Component - Register Form', () => {
 		wrapper.find('#username').setValue('bob123');
 		wrapper.find('#password').setValue('Password123!');
 		wrapper.find('#repassword').setValue('SomethingElse');
-		wrapper.find('#diet-type').setValue(1);
 
 		wrapper.find('form').trigger('submit.prevent');
 
@@ -118,7 +113,7 @@ describe('[RF] Component - Register Form', () => {
 				modules: {
 					users: {
 						namespaced: true,
-						state: users.state,
+						state: users.state,	
 						actions: {
 							createAccount: jest.fn(() => {
 								return new Promise((resolve) => {
