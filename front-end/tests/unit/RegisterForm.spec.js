@@ -12,8 +12,8 @@ localVue.use(Vuex);
 
 let wrapper;
 
-describe('Component', () => {
-	test('produces error state with email', async () => {
+describe('[RF] Component - Register Form', () => {
+	test('[RF-1] Produces error state with email', async () => {
 		wrapper = shallowMount(Component);
 
 		wrapper.find('#email').setValue('asdf');
@@ -21,7 +21,6 @@ describe('Component', () => {
 		wrapper.find('#username').setValue('bob101');
 		wrapper.find('#password').setValue('Password123!');
 		wrapper.find('#repassword').setValue('Password123!');
-		wrapper.find('#diet-type').setValue(1);
 
 		wrapper.find('form').trigger('submit.prevent');
 
@@ -29,7 +28,7 @@ describe('Component', () => {
 
 		expect(wrapper.find(".error-box").exists()).toBe(true);
 	});
-	test('produces error state with no email', async () => {
+	test('[RF-2] produces error state with no email', async () => {
 		wrapper = shallowMount(Component);
 
 		wrapper.find('#email').setValue('');
@@ -44,7 +43,7 @@ describe('Component', () => {
 
 		expect(wrapper.find(".error-box").exists()).toBe(true);
 	});
-	test('produces error state with unmatching passwords', async () => {
+	test('[RF-3] produces error state with non-matching passwords', async () => {
 		wrapper = shallowMount(Component);
 
 		wrapper.find('#email').setValue('asdf@asdf.com');
@@ -52,7 +51,6 @@ describe('Component', () => {
 		wrapper.find('#username').setValue('bob101');
 		wrapper.find('#password').setValue('Password123!');
 		wrapper.find('#repassword').setValue('SomethingElse');
-		wrapper.find('#diet-type').setValue(1);
 
 		wrapper.find('form').trigger('submit.prevent');
 
@@ -61,7 +59,7 @@ describe('Component', () => {
 		expect(wrapper.find(".error-box").exists()).toBe(true);
 	});
 
-	test('produces error state with no username', async () => {
+	test('[RF-4] produces error state with no username', async () => {
 		wrapper = shallowMount(Component);
 
 		wrapper.find('#email').setValue('asdf@asdf.com');
@@ -69,7 +67,6 @@ describe('Component', () => {
 		wrapper.find('#username').setValue('');
 		wrapper.find('#password').setValue('Password123!');
 		wrapper.find('#repassword').setValue('SomethingElse');
-		wrapper.find('#diet-type').setValue(1);
 
 		wrapper.find('form').trigger('submit.prevent');
 
@@ -78,7 +75,7 @@ describe('Component', () => {
 		expect(wrapper.find(".error-box").exists()).toBe(true);
 	});
 
-	test('produces error state with no password', async () => {
+	test('[RF-5] produces error state with no password', async () => {
 		wrapper = shallowMount(Component);
 
 		wrapper.find('#email').setValue('asdf@asdf.com');
@@ -86,7 +83,6 @@ describe('Component', () => {
 		wrapper.find('#username').setValue('');
 		wrapper.find('#password').setValue('');
 		wrapper.find('#repassword').setValue('SomethingElse');
-		wrapper.find('#diet-type').setValue(1);
 
 		wrapper.find('form').trigger('submit.prevent');
 
@@ -95,7 +91,7 @@ describe('Component', () => {
 		expect(wrapper.find(".error-box").exists()).toBe(true);
 	});
 
-	test('produces error state with no full name', async () => {
+	test('[RF-6] produces error state with no full name', async () => {
 		wrapper = shallowMount(Component);
 
 		wrapper.find('#email').setValue('asdf@asdf.com');
@@ -103,7 +99,6 @@ describe('Component', () => {
 		wrapper.find('#username').setValue('bob123');
 		wrapper.find('#password').setValue('Password123!');
 		wrapper.find('#repassword').setValue('SomethingElse');
-		wrapper.find('#diet-type').setValue(1);
 
 		wrapper.find('form').trigger('submit.prevent');
 
@@ -112,13 +107,13 @@ describe('Component', () => {
 		expect(wrapper.find(".error-box").exists()).toBe(true);
 	});
 
-	test('successful register', async () => {
+	test('[RF-7] successful register', async () => {
 		wrapper = shallowMount(Component, {
 			store: new Vuex.Store({
 				modules: {
 					users: {
 						namespaced: true,
-						state: users.state,
+						state: users.state,	
 						actions: {
 							createAccount: jest.fn(() => {
 								return new Promise((resolve) => {
@@ -152,7 +147,7 @@ describe('Component', () => {
 		});
 	});
 
-	test('failed register', async () => {
+	test('[RF-8]: failed register', async () => {
 		wrapper = shallowMount(Component, {
 			store: new Vuex.Store({
 				modules: {
