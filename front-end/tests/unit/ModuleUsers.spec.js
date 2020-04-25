@@ -252,4 +252,81 @@ describe("[MI] Module-Users", () => {
 
       await users.actions.updateUserInfo({ commit },'testpayload')
     })
+
+    it("[MI-12] Getters-User", async () => {
+      const commit = jest.fn()
+
+      var data = users.getters.user(state);
+      expect( data ).toEqual({"accessToken": "", "cognitoUser": null, "idToken": "", "refreshToken": "", "userId": ""});
+   })
+
+   it("[MI-13] Getters-UserID_Missing", async () => {
+    const commit = jest.fn()
+
+    let teststate = {
+      isAuthenticated: false,
+    username: '',
+    user: {
+      accessToken: '',
+      idToken: '',
+      refreshToken: '',
+      cognitoUser: null,
+    },
+    mealPreference: {},
+    availableMealPreferences: []
+    };
+
+    var data = users.getters.userId(teststate);
+    expect( data ).toEqual("");
+ })
+
+ it("[MI-14] Getters-UserID", async () => {
+  const commit = jest.fn()
+
+  state.user.userId=100
+
+  var data = users.getters.userId(state);
+  expect( data ).toEqual(100);
+})
+
+it("[MI-15] Getters-IDToken_Missing", async () => {
+  const commit = jest.fn()
+
+  let teststate = {
+    isAuthenticated: false,
+  username: '',
+  user: {
+    accessToken: '',
+    refreshToken: '',
+    cognitoUser: null,
+  },
+  mealPreference: {},
+  availableMealPreferences: []
+  };
+
+
+  var data = users.getters.idToken(teststate);
+  expect( data ).toEqual("");
+})
+
+it("[MI-16] Getters-IDToken_Missing", async () => {
+  const commit = jest.fn()
+
+  state.user.idToken='testtoken'
+
+
+  var data = users.getters.idToken(state);
+  expect( data ).toEqual("testtoken");
+})
+
+it("[MI-17] Action-UpdateUserProfile_Reject", async () => {
+  const commit = jest.fn()
+
+  axios.patch.mockImplementation(() =>
+  Promise.reject()
+);
+
+  await users.actions.updateUserInfo({ commit },'testpayload')
+})
+
 })
