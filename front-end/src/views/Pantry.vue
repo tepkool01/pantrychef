@@ -247,7 +247,7 @@ export default {
 				const result = await api.recipe.getRecipes({
 					includeShoppingList: true,
 					includePantryList: true,
-					limit: 5000,
+					limit: 1000,
 					offset: 0,
 					searchName: '',
 					ww: this.ww_score,
