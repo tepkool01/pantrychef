@@ -17,6 +17,8 @@ beforeEach(() => {
   state = {
     recipes: [{name:'recipe'}]
   };
+
+  jest.spyOn(console, 'warn').mockImplementation(() => {});
 });
 
 

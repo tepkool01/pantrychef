@@ -1,7 +1,7 @@
 import {shallowMount, createLocalVue} from '@vue/test-utils';
 import Vuex from 'vuex';
 import IngredientSubmissionPanel from '../../src/components/IngredientSubmissionPanel.vue';
-import {BootstrapVue} from "bootstrap-vue";
+import BootstrapVue from "bootstrap-vue";
 import {CognitoUserPool} from 'amazon-cognito-identity-js';
 import store from '../../src/store';
 import users from "../../src/store/modules/users";
@@ -16,6 +16,8 @@ localVue.use(BootstrapVue);
 
 
 beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+	jest.spyOn(console, 'error').mockImplementation(() => {});
 	actions = {
 		someAction: jest.fn(),
 	};

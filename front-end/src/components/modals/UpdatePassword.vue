@@ -149,20 +149,16 @@ export default {
 			this.validation.repassword = false
 		},
 		UpdatePassword(e) {
-			console.log(1);
 			if (this.validateForm(e)) {
-				console.log(2);
 				this.setPassword({
 						newPassword: this.user.password,
                         oldPassword: this.user.oldpassword
 					})
 					.then(() => {
-						console.log(3);
 						this.$bvModal.hide('update-password');
 						EventBus.setAlert('Info', 1, 'Password changed successfully. Please use the updated password upon next login.');
 					})
 					.catch(err => {
-						console.log(4);
 						console.log(err);
 						this.validation.errors.push({
 							id: 0,

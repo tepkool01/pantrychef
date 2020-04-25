@@ -12,6 +12,9 @@ localVue.use(Vuex);
 localVue.use(BootstrapVue);
 
 beforeEach(() => {
+	jest.spyOn(console, 'warn').mockImplementation(() => {});
+	jest.spyOn(console, 'error').mockImplementation(() => {});
+	
 	wrapper = shallowMount(Component, {
 		name: 'SettingsFood',
 		computed: {

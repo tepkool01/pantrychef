@@ -13,6 +13,9 @@ localVue.use(Vuex);
 localVue.use(BootstrapVue);
 
 beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+    
     actions = {
         someAction: jest.fn()
     };

@@ -18,6 +18,9 @@ localVue.use(VueRouter);
 
 
 beforeEach(() => {
+	jest.spyOn(console, 'warn').mockImplementation(() => {});
+	jest.spyOn(console, 'error').mockImplementation(() => {});
+	
 	actions = {
 		someAction: jest.fn(),
 	};

@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import { BootstrapVue } from 'bootstrap-vue';
+import BootstrapVue from 'bootstrap-vue';
 import Component from '../../src/components/SettingsAccount.vue';
 import store from '../../src/store';
 import UpdateUsername from '../../src/components/modals/UpdateUsername.vue';

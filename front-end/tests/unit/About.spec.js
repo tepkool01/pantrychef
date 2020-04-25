@@ -16,6 +16,8 @@ afterEach(() => {
 
 describe('About', () => {
 	test('Renders Page', async () => {
+		jest.spyOn(console, 'warn').mockImplementation(() => {});
+		
 		wrapper = shallowMount(About, {
 			localVue
 		});

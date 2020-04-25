@@ -29,7 +29,6 @@ export default {
 			this.handleSubmit()
 		},
 		handleSubmit() {
-			console.log('Do some validation, post/patch new username, etc...')
 			// Manually hide modal
 			this.$nextTick(() => {
 				this.$bvModal.hide('update-username')

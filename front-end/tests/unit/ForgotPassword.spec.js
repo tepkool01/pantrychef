@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import { BootstrapVue } from 'bootstrap-vue';
+import BootstrapVue from 'bootstrap-vue';
 import Component from '../../src/views/ForgotPassword.vue';
 import ForgotPasswordForm from '../../src/components/ForgotPasswordForm.vue';
 import ForgotPasswordVerificationForm from '../../src/components/ForgotPasswordVerificationForm.vue';

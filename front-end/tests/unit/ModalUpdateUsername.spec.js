@@ -4,7 +4,7 @@ import UpdateUsername from '../../src/components/modals/UpdateUsername.vue';
 import {CognitoUserPool} from 'amazon-cognito-identity-js';
 import store from '../../src/store';
 import users from "../../src/store/modules/users";
-import { BootstrapVue } from "bootstrap-vue";
+import {BootstrapVue} from "bootstrap-vue";
 
 let wrapper;
 let actions;
@@ -16,6 +16,9 @@ localVue.use(BootstrapVue);
 
 
 beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+
     actions = {
         someAction: jest.fn()
     };

@@ -5,10 +5,12 @@ import store from '../../src/store';
 import Vuex from 'vuex';
 import profile from "../../src/store/modules/profile";
 import users from "../../src/store/modules/users";
+import {BootstrapVue} from "bootstrap-vue";
 
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
+localVue.use(BootstrapVue);
 
 let wrapper;
 

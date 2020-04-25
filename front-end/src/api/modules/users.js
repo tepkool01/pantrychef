@@ -61,9 +61,6 @@ export default {
 		return new Promise((resolve, reject) => {
 			cognitoUser.forgotPassword( {
 				onSuccess: function (data) {
-					// successfully initiated reset password request
-					// eslint-disable-next-line no-console
-					console.log('CodeDeliveryData from forgotPassword: ' + data)
 					resolve(data)
 				},
 				onFailure: function (err) {

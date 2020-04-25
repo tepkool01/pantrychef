@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import { BootstrapVue } from 'bootstrap-vue';
+import BootstrapVue from 'bootstrap-vue';
 import Component from '../../src/views/Settings.vue';
 import SettingsAccount from '../../src/components/SettingsAccount';
 import SettingsProfiles from '../../src/components/SettingsProfiles';

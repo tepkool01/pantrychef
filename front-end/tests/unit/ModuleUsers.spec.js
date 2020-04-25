@@ -17,6 +17,9 @@ localVue.use(Vuex);
 jest.mock('axios');
 
 beforeEach(() => {
+  jest.spyOn(console, 'warn').mockImplementation(() => {});
+  jest.spyOn(console, 'error').mockImplementation(() => {});
+  
   state = {
     isAuthenticated: false,
 	username: '',

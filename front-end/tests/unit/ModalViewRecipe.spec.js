@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import { BootstrapVue } from 'bootstrap-vue';
+import BootstrapVue from 'bootstrap-vue';
 import Component from '../../src/components/modals/ViewRecipe.vue';
 import store from '../../src/store';
 import router from '../../src/router';
