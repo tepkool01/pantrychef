@@ -45,7 +45,7 @@ class PantryTest(unittest.TestCase):
         response = index.lambda_handler(event, context)
         self.assertEqual(NOT_IMPLEMENTED_PAYLOAD, response)
 
-    #This test could start failing if the test user deletes their profile
+    # This test could start failing if the test user deletes their profile
     def test_incorrect_pantry_profile_method(self):
         print("Test - test_incorrect_pantry_profile_method")
         event = {
@@ -92,7 +92,11 @@ class PantryTest(unittest.TestCase):
             }
         }
         context = {}
-        body = '[{"id": 105, "ingredient_name": "pancake syrup"}, {"id": 129, "ingredient_name": "flour"}, {"id": 107, "ingredient_name": "water"}]'
+        body = '[' \
+               '{"id": 105, "ingredient_name": "pancake syrup"}, ' \
+               '{"id": 129, "ingredient_name": "flour"}, ' \
+               '{"id": 107, "ingredient_name": "water"}' \
+               ']'
         response = index.lambda_handler(event, context)
         SUCCESS_PAYLOAD["body"] = body
         self.assertEqual(SUCCESS_PAYLOAD, response)
@@ -119,6 +123,7 @@ class PantryTest(unittest.TestCase):
         event["httpMethod"] = "DELETE"
         response = index.lambda_handler(event, context)
         self.assertEqual(SUCCESS_PAYLOAD, response)
+
 
 SUCCESS_PAYLOAD = {
     'statusCode': 200,

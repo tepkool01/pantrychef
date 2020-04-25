@@ -20,7 +20,6 @@ CREATE TABLE UserProfile (
     ID INT NOT NULL AUTO_INCREMENT,
     ProfileName VARCHAR(50),
     UserID INT,
-    DietType INT,
     IsActive TINYINT(1) DEFAULT 0
     PRIMARY KEY (ID),
     FOREIGN KEY (UserID) REFERENCES User(ID)
@@ -104,15 +103,6 @@ CREATE TABLE Directions (
     FOREIGN KEY (RecipeID) REFERENCES Recipe(ID)
 );
 
-CREATE TABLE FavoriteRecipes (
-    ID INT NOT NULL AUTO_INCREMENT,
-    UserProfileID INT,
-    RecipeID INT,
-    PRIMARY KEY (ID),
-    FOREIGN KEY (RecipeID) REFERENCES Recipe(ID),
-    FOREIGN KEY (UserProfileID) REFERENCES UserProfile(ID)
-);
-
 --Changes:
 --Added DataTypes to all values.
 --Added User ID and IsValidated.
@@ -129,3 +119,5 @@ CREATE TABLE FavoriteRecipes (
 --Corrected AmountUnit to AmountUnits in the RecipeListItem Table
 --Removed Ingredients List
 --Added RecipeListItem
+--Removed FavoriteRecipes
+--Removed DietType From User Profile
