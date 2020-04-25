@@ -132,7 +132,7 @@ export default {
             sortOrder: 'default',
 			shoppingSortOrder: 'default',
             ww_score: 30,
-			smallest_ww_meal: 10,
+			smallest_ww_meal: 5,
             ww_recommendations: [],
             timer: null,
 		}
