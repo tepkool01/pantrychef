@@ -109,7 +109,7 @@ def lambda_handler(event, context):
                     print(my_ingredient_ids)
 
                     recipes = db.execute(
-                        sql="SELECT RecipeID, RecipeName, CookTime, Servings, IngredientCount, count(*) as grp_count, round((count(*) / IngredientCount), 2) as pct_match, ImgURL, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable \
+                        sql="SELECT RecipeID, WeightWatcherPoints, IngredientCount, round((count(*) / IngredientCount), 2) as pct_match \
                                 FROM `RecipeListItem` ri \
                                 LEFT JOIN Recipe r \
                                 ON r.ID=ri.RecipeID \
@@ -128,24 +128,40 @@ def lambda_handler(event, context):
                     for record in recipes['records']:
                         parsed_query_result.append({
                             'id': record[0]['longValue'],
-                            'recipe_name': record[1]['stringValue'],
-                            'cook_time': record[2]['longValue'],
-                            'servings': record[3]['longValue'],
-                            'ingredient_count': record[4]['longValue'],
-                            'ingredients_in_pantry': record[5]['longValue'],
-                            'match_percent': record[6]['stringValue'],
-                            'img_url': record[7]['stringValue'],
-                            'summary': record[8]['stringValue'],
-                            'health_score': record[9]['doubleValue'],
-                            'weight_watcher_points': record[10]['longValue'],
-                            'vegetarian': record[11]['booleanValue'],
-                            'vegan': record[12]['booleanValue'],
-                            'gluten_free': record[13]['booleanValue'],
-                            'dairy_free': record[14]['booleanValue'],
-                            'healthy': record[15]['booleanValue'],
-                            'sustainable': record[16]['booleanValue'],
+                            'weight_watcher_points': record[1]['longValue']
                         })
-                    result = find_ww_sum(parsed_query_result, int(event['queryStringParameters']['ww']))
+                    ww_recipes = find_ww_sum(parsed_query_result, int(event['queryStringParameters']['ww']))
+
+                    result = []
+                    for ww_recipe in ww_recipes:
+                        recipe = db.execute(
+                            sql="SELECT RecipeID, RecipeName, CookTime, Servings, IngredientCount, count(*) as grp_count, round((count(*) / IngredientCount), 2) as pct_match, ImgURL, Summary, HealthScore, WeightWatcherPoints, Vegetarian, Vegan, GlutenFree, DairyFree, Healthy, Sustainable \
+                                    FROM `RecipeListItem` ri \
+                                    LEFT JOIN Recipe r \
+                                    ON r.ID=ri.RecipeID \
+                                    WHERE r.ID=:recipe_id",
+                            parameters=[{'name': 'recipe_id', 'value': {'longValue': int(ww_recipe['id'])}}]
+                        )
+                        for record in recipe['records']:
+                            result.append({
+                                'id': record[0]['longValue'],
+                                'recipe_name': record[1]['stringValue'],
+                                'cook_time': record[2]['longValue'],
+                                'servings': record[3]['longValue'],
+                                'ingredient_count': record[4]['longValue'],
+                                'ingredients_in_pantry': record[5]['longValue'],
+                                'match_percent': record[6]['stringValue'],
+                                'img_url': record[7]['stringValue'],
+                                'summary': record[8]['stringValue'],
+                                'health_score': record[9]['doubleValue'],
+                                'weight_watcher_points': record[10]['longValue'],
+                                'vegetarian': record[11]['booleanValue'],
+                                'vegan': record[12]['booleanValue'],
+                                'gluten_free': record[13]['booleanValue'],
+                                'dairy_free': record[14]['booleanValue'],
+                                'healthy': record[15]['booleanValue'],
+                                'sustainable': record[16]['booleanValue'],
+                            })
 
                 # Search by ingredients AND search name
                 elif len(ingredient_ids) > 0 and len(event['queryStringParameters']['search']) > 0:
