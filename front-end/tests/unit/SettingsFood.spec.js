@@ -40,7 +40,7 @@ beforeEach(() => {
 						},
 						{
 							id: 6,
-							name: 'Healty',
+							name: 'Healthy',
 						},
 					]
 				},
@@ -57,83 +57,52 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('Component', () => {
-	test('renders component with preference changed to vegetarian', async () => {
-		// ID = 1 (No Preference)
-		// ID = 2 (Vegetarian)
-		// ID = 3 (Vegan)
-		// ID = 4 (Gluten Free)
-		// ID = 5 (Dairy Free)
-		// ID = 6 (Healty)
+describe('[SF] Settings Food Component', () => {
+	test('[SF-1] renders component with preference changed to no preference', async () => {
 		await wrapper.vm.$nextTick();
-		wrapper.findAll('option').at(1).trigger('change');
-		expect(wrapper.find('select').exists()).toBe(true);
-		//expect(wrapper.vm.meal_preference.id().toEqual(1))
-		//expect(wrapper.vm.valueOf('data-v-37eeca36')).toEqual(1);
-	});
-});
-describe('Component', () => {
-	test('renders component with preference changed to vegan', async () => {
-		// ID = 1 (No Preference)
-		// ID = 2 (Vegetarian)
-		// ID = 3 (Vegan)
-		// ID = 4 (Gluten Free)
-		// ID = 5 (Dairy Free)
-		// ID = 6 (Healty)
-		await wrapper.vm.$nextTick();
-		wrapper.findAll('option').at(2).trigger('change');
+		expect(wrapper.findAll('option').at(0).element.text).toBe('No Preference');
+		wrapper.findAll('option').at(0).element.selected = true;
+		wrapper.findAll('select').at(0).trigger('change');
 		expect(wrapper.find('select').exists()).toBe(true);
 	});
-});
-describe('Component', () => {
-	test('renders component with preference changed to gluten free', async () => {
-		// ID = 1 (No Preference)
-		// ID = 2 (Vegetarian)
-		// ID = 3 (Vegan)
-		// ID = 4 (Gluten Free)
-		// ID = 5 (Dairy Free)
-		// ID = 6 (Healty)
+
+	test('[SF-2] renders component with preference changed to vegetarian', async () => {
 		await wrapper.vm.$nextTick();
-		wrapper.findAll('option').at(3).trigger('change');
+		expect(wrapper.findAll('option').at(1).element.text).toBe('Vegetarian');
+		wrapper.findAll('option').at(1).element.selected = true;
+		wrapper.findAll('select').at(0).trigger('change');
 		expect(wrapper.find('select').exists()).toBe(true);
 	});
-});
-describe('Component', () => {
-	test('renders component with preference changed to dairy free', async () => {
-		// ID = 1 (No Preference)
-		// ID = 2 (Vegetarian)
-		// ID = 3 (Vegan)
-		// ID = 4 (Gluten Free)
-		// ID = 5 (Dairy Free)
-		// ID = 6 (Healty)
+
+	test('[SF-3] renders component with preference changed to vegan', async () => {
 		await wrapper.vm.$nextTick();
-		wrapper.findAll('option').at(4).trigger('change');
+		expect(wrapper.findAll('option').at(2).element.text).toBe('Vegan');
+		wrapper.findAll('option').at(2).element.selected = true;
+		wrapper.findAll('select').at(0).trigger('change');
 		expect(wrapper.find('select').exists()).toBe(true);
 	});
-});
-describe('Component', () => {
-	test('renders component with preference changed to healthy', async () => {
-		// ID = 1 (No Preference)
-		// ID = 2 (Vegetarian)
-		// ID = 3 (Vegan)
-		// ID = 4 (Gluten Free)
-		// ID = 5 (Dairy Free)
-		// ID = 6 (Healty)
+
+	test('[SF-4] renders component with preference changed to gluten free', async () => {
 		await wrapper.vm.$nextTick();
-		wrapper.findAll('option').at(5).trigger('change');
+		expect(wrapper.findAll('option').at(3).element.text).toBe('Gluten Free');
+		wrapper.findAll('option').at(3).element.selected = true;
+		wrapper.findAll('select').at(0).trigger('change');
 		expect(wrapper.find('select').exists()).toBe(true);
 	});
-});
-describe('Component', () => {
-	test('renders component with preference changed to no preference', async () => {
-		// ID = 1 (No Preference)
-		// ID = 2 (Vegetarian)
-		// ID = 3 (Vegan)
-		// ID = 4 (Gluten Free)
-		// ID = 5 (Dairy Free)
-		// ID = 6 (Healty)
+
+	test('[SF-5] renders component with preference changed to dairy free', async () => {
 		await wrapper.vm.$nextTick();
-		wrapper.findAll('option').at(0).trigger('change');
+		expect(wrapper.findAll('option').at(4).element.text).toBe('Dairy Free');
+		wrapper.findAll('option').at(4).element.selected = true;
+		wrapper.findAll('select').at(0).trigger('change');
+		expect(wrapper.find('select').exists()).toBe(true);
+	});
+
+	test('[SF-7] renders component with preference changed to healthy', async () => {
+		await wrapper.vm.$nextTick();
+		expect(wrapper.findAll('option').at(5).element.text).toBe('Healthy');
+		wrapper.findAll('option').at(5).element.selected = true;
+		wrapper.findAll('select').at(0).trigger('change');
 		expect(wrapper.find('select').exists()).toBe(true);
 	});
 });
