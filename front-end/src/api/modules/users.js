@@ -22,12 +22,14 @@ export default {
 			return Promise.reject(e);
 		}
 	},
+	/* istanbul ignore next */
 	logout() {
 		this.getUser().signOut()
 	},
 	getUser() {
 		return userPool.getCurrentUser()
 	},
+	/* istanbul ignore next */
 	getUserSession() {
 		return new Promise((resolve, reject) => {
 			const user = this.getUser();
@@ -56,6 +58,7 @@ export default {
 		})
 	},
 
+	/* istanbul ignore next */
 	forgotPassword(username) {
 		let cognitoUser = this.setupCognitoUser(username)
 		return new Promise((resolve, reject) => {
@@ -69,6 +72,7 @@ export default {
 			})
 		})
 	},
+	/* istanbul ignore next */
 	async forgotPasswordVerification(username, code, newPassword) {
 		try {
 			const cognitoUser = this.setupCognitoUser(username);
@@ -79,6 +83,7 @@ export default {
 		}
 	},
 
+	/* istanbul ignore next */
 	async updatePassword(cognitoUserState, newPassword, oldPassword) {
 		try {
 			const result = await this.authenticate(cognitoUserState.username, oldPassword).then(result => {
@@ -92,6 +97,7 @@ export default {
 		}
 	},
 
+	/* istanbul ignore next */
 	register(username, password, email) {
 		let attributeList = []
 
@@ -119,6 +125,7 @@ export default {
 		})
 	},
 
+	/* istanbul ignore next */
 	authenticate(username, password) {
 		let authenticationData = {
 			Username: username,
@@ -161,6 +168,7 @@ export default {
 			})
 		})
 	},
+	/* istanbul ignore next */
 	setupCognitoUser(username) {
 		return new AmazonCognitoIdentity.CognitoUser({
 			Username: username,
