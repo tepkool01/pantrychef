@@ -7,12 +7,9 @@ Uncover recipes from ingredients in your cabinet
 3. Installed NodeJS version 12.14.1
 4. Install vue-cli-service type "npm i -g @vue/cli"
 5. Install vue add unit-mocha 
-6. Install chai; type npm install chai
-7. Install mocha dev; npm install mocha chai --save-dev
-8. Install init,click enter on everything; npm init
-9. From tests/mochaTests Run test; npm run test
-9. Mocha & Chai Unit Testing Frameworks ; Cypress for E2E testing
-10. ESLinter = Prettier
+6. Install init,click enter on everything; npm init
+7. From front-end/ Run test; npm run test:unit
+8. ESLinter = Prettier
 
 ## Linting
 1. Prettier rules are located in .prettierrc.js
@@ -38,17 +35,8 @@ or autofix using
 3. Note: if an error occurs then run, `npm install`
 
 ## Testing
-- Highly recommend install the chai, mocha, sinon, and etc libraries for easier autocompletion (jetbrains settings)
+- Highly recommend install the sinon and etc libraries for easier autocompletion (jetbrains settings)
 - do `npm run tester` to get code coverage reports
-##GUI Testing
-- TestCafe, is being used. This application utilizes google chrome and tests the GUI End2End (E2E) Functionality.
-1. To install Testcafe type in the terminal "npm install -g testcafe"
-2. Then open another terminal in webstorm, press the "+" and make sure you are in the .../pantryChef/front-end directory.
-3. Type "npm run serve", inorder to make sure a local instance of the application is running.
-4. Then in another terminal cd into the .../pantryChef/front-end/tests/e2e/specs directory.
-5. Then to run the testcafe GUI test type in the terminal "testcafe chrome test1.js"
-6. This will launch the testcafe script for the *.js test.
-7. Credentials for the testing account are Username:'TestUsername' Password:'TestPassword'
 
 
 ### Python (backend) Unit Testing
@@ -65,14 +53,10 @@ or autofix using
 
 ## Fun Tips
 1. Using `vue ui` you can get to the UI manager for this application. You'll need to import the `pantry-chef` folder as a project first.
-2. Use terminal window in webstorm to install mocha and chai.
-3. https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en - the VueJS chrome plugin is invaluable-- I use it to check the 'state' (store) of the application.
+2. https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=en - the VueJS chrome plugin is invaluable-- I use it to check the 'state' (store) of the application.
 ## References / Resources
 https://www.vuemastery.com/courses/real-world-vue-js/vue-cli/ (followed this to create the project)
 https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html -- for creating triggers on Cognito events
-
-##Notes
-Chai is the testing environment and chai is the assertion library.
 
 
 ## Resources created, but not contained within infrastructure yaml
