@@ -4,7 +4,7 @@ import UpdatePassword from '../../src/components/modals/UpdatePassword.vue';
 import {CognitoUserPool} from 'amazon-cognito-identity-js';
 import store from '../../src/store';
 import users from "../../src/store/modules/users";
-import { BootstrapVue } from "bootstrap-vue";
+import BootstrapVue from "bootstrap-vue";
 
 let wrapper;
 let actions;

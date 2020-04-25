@@ -2,13 +2,15 @@ import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import Error from '../../src/components/Error.vue';
 import store from '../../src/store';
-import { BootstrapVue } from "bootstrap-vue";
+import BootstrapVue from "bootstrap-vue";
+import VueRouter from 'vue-router';
 
 let wrapper;
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
 localVue.use(BootstrapVue);
+localVue.use(VueRouter);
 
 afterEach(() => {
 	wrapper.destroy();

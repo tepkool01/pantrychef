@@ -5,12 +5,14 @@ import Component from '../../src/views/Register.vue';
 import RegisterForm from '../../src/components/RegisterForm.vue';
 import RegisterSuccess from '../../src/components/RegisterSuccess.vue';
 import store from '../../src/store';
+import VueRouter from 'vue-router';
 
 let wrapper;
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
 localVue.use(BootstrapVue);
+localVue.use(VueRouter);
 
 beforeEach(() => {
 	wrapper = shallowMount(Component, {
