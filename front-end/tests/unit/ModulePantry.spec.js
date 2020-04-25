@@ -3,6 +3,7 @@ import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import store from "../../src/store";
 import pantry from './../../src/store/modules/pantry'
+import BootstrapVue from "bootstrap-vue";
 
 jest.mock('axios');
 
@@ -12,6 +13,7 @@ let mutations;
 let state;
 const localVue = createLocalVue();
 localVue.use(Vuex);
+localVue.use(BootstrapVue);
 
 beforeEach(() => {
   state = {

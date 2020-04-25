@@ -1,10 +1,11 @@
 import {shallowMount, createLocalVue} from '@vue/test-utils';
 import Vuex from 'vuex';
 import ForgotPasswordForm from '../../src/components/ForgotPasswordForm.vue';
-import {BootstrapVue} from "bootstrap-vue";
+import BootstrapVue from "bootstrap-vue";
 import {CognitoUserPool} from 'amazon-cognito-identity-js';
 import store from '../../src/store';
 import users from "../../src/store/modules/users";
+import VueRouter from 'vue-router';
 
 let wrapper;
 let actions;
@@ -13,6 +14,7 @@ let state;
 const localVue = createLocalVue();
 localVue.use(Vuex);
 localVue.use(BootstrapVue);
+localVue.use(VueRouter);
 
 
 beforeEach(() => {

@@ -6,12 +6,14 @@ import ForgotPasswordForm from '../../src/components/ForgotPasswordForm.vue';
 import ForgotPasswordVerificationForm from '../../src/components/ForgotPasswordVerificationForm.vue';
 import ForgotPasswordSuccess from '../../src/components/ForgotPasswordSuccess.vue';
 import store from '../../src/store';
+import VueRouter from 'vue-router';
 
 let wrapper;
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
 localVue.use(BootstrapVue);
+localVue.use(VueRouter);
 
 beforeEach(() => {
 	wrapper = shallowMount(Component, {

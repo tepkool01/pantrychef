@@ -3,6 +3,8 @@ import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import store from "../../src/store";
 import shoppingList from './../../src/store/modules/shoppingList';
+import BootstrapVue from "bootstrap-vue";
+import VueRouter from 'vue-router';
 
 jest.mock('axios');
 
@@ -12,6 +14,8 @@ let mutations;
 let state;
 const localVue = createLocalVue();
 localVue.use(Vuex);
+localVue.use(VueRouter);
+localVue.use(BootstrapVue);
 
 beforeEach(() => {
   state = {
