@@ -52,8 +52,8 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('Component', () => {
-	test('renders recipe cards by searching the names', async () => {
+describe('[RV] Recipes View', () => {
+	test('[RV-1] renders recipe cards by searching the names', async () => {
 		await wrapper.vm.$nextTick();
 		wrapper.vm.searchByName('Butter');
 		//console.log(wrapper.vm.includeShoppingList);
@@ -64,25 +64,19 @@ describe('Component', () => {
 		//console.log(wrapper.vm.ww);
 		expect(wrapper.emitted('title')[0]).toEqual(['Pantry']);
 	});
-});
 
-describe('Component', () => {
-	test('renders the recipes for an active profile', async () => {
+	test('[RV-2] renders the recipes for an active profile', async () => {
 		await wrapper.vm.$nextTick();
 		//wrapper.vm.$options.watch.activeProfile(13);
 	});
-});
 
-describe('Component', () => {
-	test('renders the recipes including the shopping list', async () => {
+	test('[RV-3] renders the recipes including the shopping list', async () => {
 		await wrapper.vm.$nextTick();
 		//wrapper.vm.$options.watch.includeShoppingList(13);
 		//expect(wrapper.emitted('title')[0]).toEqual(['Pantry']);
 	});
-});
 
-describe('Component', () => {
-	test('renders the recipes including the pantry list', async () => {
+	test('[RV-4] renders the recipes including the pantry list', async () => {
 		await wrapper.vm.$nextTick();
 		//wrapper.vm.$options.watch.includePantryList(13);
 	});

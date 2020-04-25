@@ -15,7 +15,7 @@ localVue.use(BootstrapVue);
 beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation(() => {});
     jest.spyOn(console, 'error').mockImplementation(() => {});
-    
+
     actions = {
         someAction: jest.fn()
     };
@@ -36,10 +36,10 @@ afterEach(() => {
 
 });
 
-describe('Ingredient', () => {
+describe('[IC] Ingredient', () => {
 
 
-    test('(Shopping Type) renders Ingredient component with expected props data', () => {
+    test('[IC-1] (Shopping Type) renders Ingredient component with expected props data', () => {
         const wrapper = shallowMount(Ingredient, {
             propsData: {
                 listType: 'shopping',
@@ -56,7 +56,7 @@ describe('Ingredient', () => {
     });
 
 
-    test('(Search Type) renders Ingredient component with expected props data', () => {
+    test('[IC-2] (Search Type) renders Ingredient component with expected props data', () => {
         const wrapper = shallowMount(Ingredient, {
             propsData: {
                 listType: 'search',
@@ -72,7 +72,7 @@ describe('Ingredient', () => {
         wrapper.destroy();
     });
 
-    test('(Pantry Type) renders Ingredient component with expected props data', () => {
+    test('[IC-3] (Pantry Type) renders Ingredient component with expected props data', () => {
         const wrapper = shallowMount(Ingredient, {
             propsData: {
                 listType: 'pantry',
@@ -88,7 +88,7 @@ describe('Ingredient', () => {
         wrapper.destroy();
     });
 
-    test('(Search Type) Remove Button Action', () => {
+    test('[IC-4] (Search Type) Remove Button Action', () => {
         const wrapper = shallowMount(Ingredient, {
             propsData: {
                 listType: 'search',
@@ -112,6 +112,4 @@ describe('Ingredient', () => {
         )
         wrapper.destroy();
     });
-
-
 });

@@ -14,10 +14,10 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('About', () => {
-	test('Renders Page', async () => {
+describe('[AV] About', () => {
+	test('[AV-1] Renders Page', async () => {
 		jest.spyOn(console, 'warn').mockImplementation(() => {});
-		
+
 		wrapper = shallowMount(About, {
 			localVue
 		});

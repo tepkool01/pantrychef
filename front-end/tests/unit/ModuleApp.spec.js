@@ -20,15 +20,15 @@ beforeEach(() => {
 });
 
 
-describe("Module-App", () => {
-  it('Mutations-SET_LOADING_STATUS', () => {
+describe("[MA] Module-App", () => {
+  it('[MA-1] Mutations-SET_LOADING_STATUS', () => {
     app.mutations.SET_LOADING_STATUS(state, true);
     expect(state).toEqual({
       loading: true,
     });
   });
 
-  it("Action-setLoading", async () => {
+  it("[MA-2] Action-setLoading", async () => {
     const commit = jest.fn()
 
     await app.actions.setLoading({ commit },true)
@@ -37,7 +37,7 @@ describe("Module-App", () => {
       "SET_LOADING_STATUS", true)
   })
 
-  it("Action-setLoading", async () => {
+  it("[MA-3] Action-setLoading", async () => {
     var retVal = await app.getters.currentLoadingStatus(state)
 
     expect(retVal).toEqual(false)

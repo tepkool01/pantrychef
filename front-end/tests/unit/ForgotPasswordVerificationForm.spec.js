@@ -31,8 +31,8 @@ afterEach(() => {
 
 });
 
-describe('ForgotPasswordVerificationForm', () => {
-    test('ForgotPasswordVerificationForm component load default', () => {
+describe('[FPV] ForgotPasswordVerificationForm', () => {
+    test('[FPV-1] ForgotPasswordVerificationForm component load default', () => {
         const wrapper = shallowMount(ForgotPasswordVerificationForm, {
         });
 
@@ -46,7 +46,7 @@ describe('ForgotPasswordVerificationForm', () => {
         wrapper.destroy();
     });
 
-    test('ForgotPasswordVerificationForm validation, empty code entry', () => {
+    test('[FPV-2] ForgotPasswordVerificationForm validation, empty code entry', () => {
         const wrapper = shallowMount(ForgotPasswordVerificationForm, {
         });
 
@@ -64,7 +64,7 @@ describe('ForgotPasswordVerificationForm', () => {
         wrapper.destroy();
     });
 
-    test('ForgotPasswordVerificationForm validation, password less than 8 chars entry', () => {
+    test('[FPV-3] ForgotPasswordVerificationForm validation, password less than 8 chars entry', () => {
         const wrapper = shallowMount(ForgotPasswordVerificationForm, {
         });
 
@@ -82,7 +82,7 @@ describe('ForgotPasswordVerificationForm', () => {
         wrapper.destroy();
     });
 
-    test('ForgotPasswordVerificationForm validation, password proper format successful submit', () => {
+    test('[FPV-4] ForgotPasswordVerificationForm validation, password proper format successful submit', () => {
 		wrapper = shallowMount(ForgotPasswordVerificationForm, {
 			store: new Vuex.Store({
 				modules: {
@@ -123,7 +123,7 @@ describe('ForgotPasswordVerificationForm', () => {
         wrapper.destroy();
     });
 
-    test('ForgotPasswordVerificationForm validation, password proper format rejected', () => {
+    test('[FPV-5] ForgotPasswordVerificationForm validation, password proper format rejected', () => {
 		wrapper = shallowMount(ForgotPasswordVerificationForm, {
 			store: new Vuex.Store({
 				modules: {

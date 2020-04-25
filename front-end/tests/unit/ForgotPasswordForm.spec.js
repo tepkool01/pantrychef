@@ -36,8 +36,8 @@ afterEach(() => {
 
 });
 
-describe('ForgotPasswordForm', () => {
-	test('ForgotPasswordForm component load default', () => {
+describe('[FPF] ForgotPasswordForm', () => {
+	test('[FPF-1] ForgotPasswordForm component load default', () => {
 		const wrapper = shallowMount(ForgotPasswordForm, {});
 
 
@@ -48,7 +48,7 @@ describe('ForgotPasswordForm', () => {
 		wrapper.destroy();
 	});
 
-	test('ForgotPasswordForm validation', () => {
+	test('[FPF-2] ForgotPasswordForm validation', () => {
 		const wrapper = shallowMount(ForgotPasswordForm, {});
 
 		const preventDefault = jest.fn();
@@ -59,7 +59,7 @@ describe('ForgotPasswordForm', () => {
 		wrapper.destroy();
 	});
 
-	test('ForgotPasswordForm rejected submission', async () => {
+	test('[FPF-3] ForgotPasswordForm rejected submission', async () => {
 		wrapper = shallowMount(ForgotPasswordForm, {
 			store: new Vuex.Store({
 				modules: {
@@ -94,7 +94,7 @@ describe('ForgotPasswordForm', () => {
 		wrapper.destroy();
 	});
 
-	test('ForgotPasswordForm approved submission', async () => {
+	test('[FPF-4] ForgotPasswordForm approved submission', async () => {
 		wrapper = shallowMount(ForgotPasswordForm, {
 			store: new Vuex.Store({
 				modules: {

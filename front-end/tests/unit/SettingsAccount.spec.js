@@ -39,8 +39,8 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('Component', () => {
-	test('renders component with settings account to update password', async () => {
+describe('[SA] Settings Account', () => {
+	test('[SA-1] renders component with settings account to update password', async () => {
 		await wrapper.vm.$nextTick();
 		wrapper.find('#update_password_button').trigger('submit.prevent');
 	});

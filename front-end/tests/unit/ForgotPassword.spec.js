@@ -41,29 +41,23 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('Component', () => {
-	test('renders forgot password with failed verification', () => {
+describe('[FP] Forgot Password]', () => {
+	test('[FP-1] renders forgot password with failed verification', () => {
 		wrapper.vm.showVerificationComponent(false);
 		expect(wrapper.vm.showVerificationPage).toEqual(false);
 	});
-});
 
-describe('Component', () => {
-	test('renders forgot password with success verification', () => {
+	test('[FP-2] renders forgot password with success verification', () => {
 		wrapper.vm.showVerificationComponent(true);
 		expect(wrapper.vm.showVerificationPage).toEqual(true);
 	});
-});
 
-describe('Component', () => {
-	test('renders forgot password with failed success component', () => {
+	test('[FP-3] renders forgot password with failed success component', () => {
 		wrapper.vm.showSuccessComponent(false);
 		expect(wrapper.vm.showSuccessPage).toEqual(false);
 	});
-});
 
-describe('Component', () => {
-	test('renders forgot password with success component', () => {
+	test('[FP-4] renders forgot password with success component', () => {
 		wrapper.vm.showSuccessComponent(true);
 		expect(wrapper.vm.showSuccessPage).toEqual(true);
 	});

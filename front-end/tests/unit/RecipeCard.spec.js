@@ -52,8 +52,8 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('Component', () => {
-	test('renders recipe card for a specific recipe', async () => {
+describe('[RC] Recipe Card', () => {
+	test('[RC-1] renders recipe card for a specific recipe', async () => {
 		await wrapper.vm.$nextTick();
 		wrapper.vm.getRecipeCard(40020);
 		expect(['Butter', 'Potatoes', 'Pepper', 'Red Onion', 'Salt']).toEqual(expect.arrayContaining(wrapper.vm.ingredients));

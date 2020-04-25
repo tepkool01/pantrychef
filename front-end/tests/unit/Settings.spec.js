@@ -36,8 +36,8 @@ afterEach(() => {
 
 });
 
-describe('Settings', () => {
-	test('renders Settings with the default data', async () => {
+describe('[SC} Settings', () => {
+	test('[SC-1] renders Settings with the default data', async () => {
 		await wrapper.vm.$nextTick();
 		wrapper.vm.$emit('title', 'Settings');
 		expect(wrapper.emitted().title[0]).toEqual(['Settings']);

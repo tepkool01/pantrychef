@@ -34,8 +34,8 @@ afterEach(() => {
 
 });
 
-describe('Login', () => {
-	test('Login component load default', () => {
+describe('[LC] Login Component', () => {
+	test('[LC-1] Login component load default', () => {
         const wrapper = shallowMount(Login, {
         });
 
@@ -48,7 +48,7 @@ describe('Login', () => {
 		wrapper.destroy();
     });
     
-    test('Login validation, empty user entry', () => {
+    test('[LC-2] Login validation, empty user entry', () => {
         const wrapper = shallowMount(Login, {
         });
 
@@ -66,7 +66,7 @@ describe('Login', () => {
         wrapper.destroy();
     });
 
-    test('Login validation, empty password entry', () => {
+    test('[LC-3] Login validation, empty password entry', () => {
         const wrapper = shallowMount(Login, {
         });
 
@@ -84,7 +84,7 @@ describe('Login', () => {
         wrapper.destroy();
     });
 
-    test('Login validation, password proper format successful submit', () => {
+    test('[LC-4] Login validation, password proper format successful submit', () => {
 		wrapper = shallowMount(Login, {
 			store: new Vuex.Store({
 				modules: {
@@ -127,7 +127,7 @@ describe('Login', () => {
         wrapper.destroy();
     });
     
-	test('Login component passwordusercombosubmission',async  () => {
+	test('[LC-5] Login component passwordusercombosubmission',async  () => {
         const wrapper = shallowMount(Login, {
         });
 

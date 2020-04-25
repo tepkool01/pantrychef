@@ -19,7 +19,7 @@ jest.mock('axios');
 beforeEach(() => {
   jest.spyOn(console, 'warn').mockImplementation(() => {});
   jest.spyOn(console, 'error').mockImplementation(() => {});
-  
+
   state = {
     isAuthenticated: false,
 	username: '',
@@ -36,8 +36,8 @@ beforeEach(() => {
 });
 
 
-describe("Module-Users", () => {
-  it('Mutations-SET_MEAL_PREFERENCES', () => {
+describe("[MI] Module-Users", () => {
+  it('[MI-1] Mutations-SET_MEAL_PREFERENCES', () => {
     users.mutations.SET_MEAL_PREFERENCE(state, {name: 'vegan'});
 
     expect(state).toEqual({
@@ -55,7 +55,7 @@ describe("Module-Users", () => {
     });
   });
 
-  it('Mutations-SET_AVAILABLE_MEAL_PREFERENCES', () => {
+  it('[MI-2] Mutations-SET_AVAILABLE_MEAL_PREFERENCES', () => {
     users.mutations.SET_AVAILABLE_MEAL_PREFERENCES(state, ['testmealprep','thesecondone']);
     
     expect(state).toEqual({
@@ -81,7 +81,7 @@ describe("Module-Users", () => {
     expect(retVal).toEqual(["testmealprep", "thesecondone"])
   });
 
-  it('Mutations-Authenticate', () => {
+  it('[MI-3] Mutations-Authenticate', () => {
     users.mutations.AUTHENTICATE(state, 
     {       accessToken: '1',
             idToken: '2',
@@ -104,7 +104,7 @@ describe("Module-Users", () => {
     });
   });
 
-  it('Mutations-Register', () => {
+  it('[MI-4] Mutations-Register', () => {
     users.mutations.REGISTER(state, 
     {   accessToken: '1',
         idToken: '2',
@@ -128,7 +128,7 @@ describe("Module-Users", () => {
     });
   });
 
-  it('Mutations-Logout', () => {
+  it('[MI-5] Mutations-Logout', () => {
     users.mutations.LOGOUT(state);
 
     expect(state).toEqual({
@@ -146,7 +146,7 @@ describe("Module-Users", () => {
     });
   });
 
-  it('Mutations-ChangePassword', () => {
+  it('[MI-6] Mutations-ChangePassword', () => {
     users.mutations.CHANGEPASSWORD(state);
 
     expect(state).toEqual({
@@ -164,7 +164,7 @@ describe("Module-Users", () => {
     });
   });
 
-  it('Mutations-ForgotPassword', () => {
+  it('[MI-7] Mutations-ForgotPassword', () => {
     users.mutations.FORGOTPASSWORD(state,'thisusername');
 
     expect(state).toEqual({
@@ -182,7 +182,7 @@ describe("Module-Users", () => {
     });
   });
 
-  it('Mutations-UpdatePassword', () => {
+  it('[MI-8] Mutations-UpdatePassword', () => {
     users.mutations.UPDATEPASSWORD(state,'thisusername');
 
     expect(state).toEqual({
@@ -201,7 +201,7 @@ describe("Module-Users", () => {
   });
 
 
-  it('Mutations-ForgotPasswordVerification', () => {
+  it('[MI-9] Mutations-ForgotPasswordVerification', () => {
     users.mutations.FORGOTPASSWORDVERIFICATION(state,'thisusername');
 
     expect(state).toEqual({
@@ -220,7 +220,7 @@ describe("Module-Users", () => {
   });
 
 
-    it("Action-GetUser", async () => {
+    it("[MI-10] Action-GetUser", async () => {
       const commit = jest.fn()
 
       axios.get.mockImplementation(() =>
@@ -243,7 +243,7 @@ describe("Module-Users", () => {
 
     })
 
-    it("Action-UpdateUserProfile", async () => {
+    it("[MI-11] Action-UpdateUserProfile", async () => {
       const commit = jest.fn()
 
       axios.patch.mockImplementation(() =>
@@ -252,25 +252,4 @@ describe("Module-Users", () => {
 
       await users.actions.updateUserInfo({ commit },'testpayload')
     })
-
-//    it("Action-Login", async () => {
-//      const commit = jest.fn()
-
- //     axios.patch.mockImplementation(() =>
- //     Promise.resolve()
- //   );
-
- //   await users.actions.login({ commit }, {username: "MrBob1234", password: "testinganything123"})
- //   })
-
-//  it("Action-getSession", async () => {
-//    const commit = jest.fn()
-
-//    axios.patch.mockImplementation(() =>
-//    Promise.resolve()
-//    );
-
-//    await users.actions.getSession({ commit })
-//  })
-
 })

@@ -28,8 +28,8 @@ afterEach(() => {
 
 });
 
-describe('Home View', () => {
-	test('Home view component load default', () => {
+describe('[HV] Home View', () => {
+	test('[HV-1] Home view component load default', () => {
 		const wrapper = shallowMount(HomeView, {
 			name: 'home',
 			components: {

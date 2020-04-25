@@ -34,10 +34,8 @@ afterEach(() => {
 
 });
 
-describe('Modal-UpdatePassword', () => {
-
-
-    test('Method-ResetForm', () => {
+describe('[MUP] Modal-UpdatePassword', () => {
+    test('[MUP-1] Method-ResetForm', () => {
         const wrapper = shallowMount(UpdatePassword, {
 
         });
@@ -65,7 +63,7 @@ describe('Modal-UpdatePassword', () => {
     });
 
 
-    test('Method-ResetForm-Empty', () => {
+    test('[MUP-2] Method-ResetForm-Empty', () => {
         const wrapper = shallowMount(UpdatePassword, {
 
         });
@@ -78,7 +76,7 @@ describe('Modal-UpdatePassword', () => {
         wrapper.destroy();
     });
 
-    test('Method-ResetForm-Passwords do not match', () => {
+    test('[MUP-3] Method-ResetForm-Passwords do not match', () => {
         const wrapper = shallowMount(UpdatePassword, {
 
         });
@@ -106,7 +104,7 @@ describe('Modal-UpdatePassword', () => {
         wrapper.destroy();
     });
 
-    test('Method-ResetForm-ValidSubmission', () => {
+    test('[MUP-4] Method-ResetForm-ValidSubmission', () => {
 		wrapper = shallowMount(UpdatePassword, {
 			store: new Vuex.Store({
 				modules: {
@@ -155,7 +153,7 @@ describe('Modal-UpdatePassword', () => {
     });
 
 
-    test('Method-ResetForm-ErrorOnSubmission', () => {
+    test('[MUP-5] Method-ResetForm-ErrorOnSubmission', () => {
 		wrapper = shallowMount(UpdatePassword, {
 			store: new Vuex.Store({
 				modules: {

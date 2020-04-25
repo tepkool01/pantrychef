@@ -75,8 +75,8 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('Close View Recipe', () => {
-	test('renders Settings with the default data', async () => {
+describe('[MVR] Modal View Recipe', () => {
+	test('[MVR-1] renders Settings with the default data', async () => {
 
 		await wrapper.vm.$nextTick();
 		wrapper.vm.close();

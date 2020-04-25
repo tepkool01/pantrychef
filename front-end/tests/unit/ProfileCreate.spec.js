@@ -33,14 +33,13 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('Component', () => {
-	test('renders component with expected default data', () => {
+describe('[PC] Profile Create]', () => {
+	test('[PC-1] renders component with expected default data', () => {
 		expect(wrapper.vm.profile.name).toMatch('');
 		expect([]).toEqual(expect.arrayContaining(wrapper.vm.profile.ingredients));
 	});
-});
-describe('Component', () => {
-	test('renders component with expected profile name and ingredient data', () => {
+
+	test('[PC-2] renders component with expected profile name and ingredient data', () => {
 		wrapper.vm.profile = {
 			name: 'NewProfile',
 			ingredients: ['Butter'],

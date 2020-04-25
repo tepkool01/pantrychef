@@ -20,15 +20,15 @@ beforeEach(() => {
 });
 
 
-describe("Module-Ingredients", () => {
-  it('Mutations-SET_INGREDIENTS', () => {
+describe("[MI] Module-Ingredients", () => {
+  it('[MI-1] Mutations-SET_INGREDIENTS', () => {
     ingredients.mutations.SET_INGREDIENTS(state, ['thisingredient']);
     expect(state).toEqual({
       ingredients: ['thisingredient'],
     });
   });
 
-  it("Action-getIngredients", async () => {
+  it("[MI-2] Action-getIngredients", async () => {
     axios.get.mockImplementation(() =>
       Promise.resolve({
         "data": 'testpayload',

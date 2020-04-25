@@ -22,15 +22,15 @@ beforeEach(() => {
 });
 
 
-describe("Module-Recipes", () => {
-  it('Mutations-SET_RECIPES', () => {
+describe("[MR] Module-Recipes", () => {
+  it('[MR-1] Mutations-SET_RECIPES', () => {
     recipes.mutations.SET_RECIPES(state, {offset:null,data: {name:'testrecipe'}});
     expect(state).toEqual({
       recipes: {name:'testrecipe'},
     });
   });
 
-  it('Mutations-SET_RECIPES (offset)', () => {
+  it('[MR-2] Mutations-SET_RECIPES (offset)', () => {
     recipes.mutations.SET_RECIPES(state, {offset:1,data: {name:'testrecipe'}});
     expect(state).toEqual({
       recipes: [{name:'recipe'},{name:'testrecipe'}],
@@ -38,7 +38,7 @@ describe("Module-Recipes", () => {
   });
 
 
-  it("Action-getRecipes", async () => {
+  it("[MR-3] Action-getRecipes", async () => {
     axios.get.mockImplementation(() =>
       Promise.resolve({
         "data": 'testpayload',
@@ -54,7 +54,7 @@ describe("Module-Recipes", () => {
       "SET_RECIPES",{"data": "testpayload", "offset": false})
   })
 
-  it("Action-getRecipeIngredients", async () => {
+  it("[MR-4] Action-getRecipeIngredients", async () => {
     axios.get.mockImplementation(() =>
       Promise.resolve({
         "data": 'testpayload',

@@ -16,8 +16,8 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('Error', () => {
-	test('renders component with expected test message', async () => {
+describe('[ER] Error', () => {
+	test('[ER-1] renders component with expected test message', async () => {
 		wrapper = shallowMount(Error, {
 			propsData: {
 				msg: 'Test Message',
@@ -36,7 +36,7 @@ describe('Error', () => {
 			.toBe('Info');
 	});
 
-	test('renders component with error label', async () => {
+	test('[ER-2] renders component with error label', async () => {
 		wrapper = shallowMount(Error, {
 			propsData: {
 				msg: 'Test Message',
@@ -53,7 +53,7 @@ describe('Error', () => {
 			.toBe('Error');
 	});
 
-	test('renders component with warning label', async () => {
+	test('[ER-3] renders component with warning label', async () => {
 		wrapper = shallowMount(Error, {
 			propsData: {
 				msg: 'Test Message',

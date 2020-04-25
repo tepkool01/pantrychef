@@ -24,22 +24,22 @@ beforeEach(() => {
 });
 
 
-describe("Module-Shopping", () => {
-  it('Mutations-SET_SHOPPING', () => {
+describe("[MSL] Module-Shopping", () => {
+  it('[MSL-1] Mutations-SET_SHOPPING', () => {
     shoppingList.mutations.SET_SHOPPING(state, 'thisingredient');
     expect(state).toEqual({
       shopping: 'thisingredient',
     });
   });
 
-  it('Mutations-ADD_INGREDIENT', () => {
+  it('[MSL-2] Mutations-ADD_INGREDIENT', () => {
     shoppingList.mutations.ADD_INGREDIENT(state, 'thisingredient');
     expect(state).toEqual({
       shopping: ['ingredient','thisingredient'],
     });
   });
 
-  it('Mutations-REMOVE_INGREDIENT', () => {
+  it('[MSL-3] Mutations-REMOVE_INGREDIENT', () => {
     shoppingList.mutations.REMOVE_INGREDIENT(state, 'ingredient');
     expect(state).toEqual({
       shopping: [],
@@ -47,7 +47,7 @@ describe("Module-Shopping", () => {
   });
 
 
-  it("Action-getShoppingList", async () => {
+  it("[MSL-4] Action-getShoppingList", async () => {
     axios.get.mockImplementation(() =>
       Promise.resolve({
         "data": 'testpayload',
@@ -63,7 +63,7 @@ describe("Module-Shopping", () => {
       "SET_SHOPPING", "testpayload")
   })
 
-  it("Action-addIngredient", async () => {
+  it("[MSL-5] Action-addIngredient", async () => {
     axios.put.mockImplementation(() =>
       Promise.resolve({})
     );
@@ -76,7 +76,7 @@ describe("Module-Shopping", () => {
       "ADD_INGREDIENT", "test")
   })
 
-  it("Action-removeIngredient", async () => {
+  it("[MSL-6] Action-removeIngredient", async () => {
     axios.delete.mockImplementation(() =>
       Promise.resolve({})
     );

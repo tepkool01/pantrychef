@@ -18,7 +18,7 @@ localVue.use(BootstrapVue);
 beforeEach(() => {
     jest.spyOn(console, 'warn').mockImplementation(() => {});
     jest.spyOn(console, 'error').mockImplementation(() => {});
-    
+
 	actions = {
 		someAction: jest.fn(),
 	};
@@ -34,8 +34,8 @@ afterEach(() => {
 
 });
 
-describe('SettingsProfiles', () => {
-	test('SettingsProfiles component load default', () => {
+describe('[SP] SettingsProfiles', () => {
+	test('[SP-1] SettingsProfiles component load default', () => {
 		wrapper = shallowMount(SettingsProfiles, {
 			store: new Vuex.Store({
 				modules: {
@@ -63,7 +63,7 @@ describe('SettingsProfiles', () => {
         });
     });
         
-        test('SettingsProfiles component on delete profile call', () => {
+        test('[SP-2] SettingsProfiles component on delete profile call', () => {
             wrapper = shallowMount(SettingsProfiles, {
                 store: new Vuex.Store({
                     modules: {
@@ -94,6 +94,4 @@ describe('SettingsProfiles', () => {
 
 		    wrapper.destroy();
         });
-
-
 });

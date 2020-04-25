@@ -33,8 +33,8 @@ afterEach(() => {
 
 });
 
-describe('IngredientSubmissionPanel', () => {
-	test('IngredientSubmissionPanel component load default', () => {
+describe('[ISP] IngredientSubmissionPanel', () => {
+	test('[ISP-1] IngredientSubmissionPanel component load default', () => {
         const wrapper = shallowMount(IngredientSubmissionPanel, {
             propsData: {
                 suggestionsMstr:
@@ -48,7 +48,7 @@ describe('IngredientSubmissionPanel', () => {
 		wrapper.destroy();
     });
 
-	test('IngredientSubmissionPanel selection event', () => {
+	test('[ISP-2] IngredientSubmissionPanel selection event', () => {
         const wrapper = shallowMount(IngredientSubmissionPanel, {
             propsData: {
                 suggestionsMstr:
@@ -65,7 +65,7 @@ describe('IngredientSubmissionPanel', () => {
         wrapper.destroy();
 	});
 
-    test('IngredientSubmissionPanel child event', () => {
+    test('[ISP-3] IngredientSubmissionPanel child event', () => {
         const wrapper = shallowMount(IngredientSubmissionPanel, {
             propsData: {
                 suggestionsMstr:
@@ -84,7 +84,7 @@ describe('IngredientSubmissionPanel', () => {
         wrapper.destroy();
 	});
 
-	test('IngredientSubmissionPanel add to shopping', () => {
+	test('[ISP-4] IngredientSubmissionPanel add to shopping', () => {
 		const wrapper = shallowMount(IngredientSubmissionPanel, {
 			propsData: {
 				suggestionsMstr:

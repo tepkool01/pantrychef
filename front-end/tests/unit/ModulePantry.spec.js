@@ -21,8 +21,8 @@ beforeEach(() => {
   };
 });
 
-describe("Module-Pantry", () => {
-  it("Action-getPantry", async () => {
+describe("[MP] Module-Pantry", () => {
+  it("[MP-1] Action-getPantry", async () => {
     axios.get.mockImplementation(() =>
       Promise.resolve({
         "data": 'testpayload',
@@ -38,7 +38,7 @@ describe("Module-Pantry", () => {
       "SET_PANTRY", "testpayload")
   })
 
-  it("Action-addIngredient", async () => {
+  it("[MP-2] Action-addIngredient", async () => {
     axios.put.mockImplementation(() =>
       Promise.resolve({
         "status": 200
@@ -53,7 +53,7 @@ describe("Module-Pantry", () => {
       "ADD_INGREDIENT", "testpayload")
   })
 
-  it("Action-removeIngredient", async () => {
+  it("[MP-3] Action-removeIngredient", async () => {
     axios.delete.mockImplementation(() =>
       Promise.resolve(1)
     );
@@ -66,21 +66,21 @@ describe("Module-Pantry", () => {
       "REMOVE_INGREDIENT", "testpayload")
   })
 
-  it('Mutations-SET_PANTRY', () => {
+  it('[MP-4] Mutations-SET_PANTRY', () => {
     pantry.mutations.SET_PANTRY(state, ['thispantry']);
     expect(state).toEqual({
       pantry: ['thispantry'],
     });
   });
 
-  it('Mutations-ADD_INGREDIENT', () => {
+  it('[MP-5] Mutations-ADD_INGREDIENT', () => {
     pantry.mutations.ADD_INGREDIENT(state, 'thispantry1');
     expect(state).toEqual({
       pantry: ['ingredient','thispantry1'],
     });
   });
 
-  it('Mutations-REMOVE_INGREDIENT', () => {
+  it('[MP-6] Mutations-REMOVE_INGREDIENT', () => {
     pantry.mutations.REMOVE_INGREDIENT(state, 'ingredient');
     expect(state).toEqual({
       pantry: [],

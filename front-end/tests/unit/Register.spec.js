@@ -38,15 +38,13 @@ afterEach(() => {
 	wrapper.destroy();
 });
 
-describe('Register', () => {
-	test('renders register component as a failed component', () => {
+describe('[RC] Register', () => {
+	test('[RC-1] renders register component as a failed component', () => {
 		wrapper.vm.showSuccessComponent(false);
 		expect(wrapper.vm.showSuccessPage).toEqual(false);
 	});
-});
 
-describe('Register', () => {
-	test('renders register component as a successful component', () => {
+	test('[RC-2] renders register component as a successful component', () => {
 		wrapper.vm.showSuccessComponent(true);
 		expect(wrapper.vm.showSuccessPage).toEqual(true);
 	});

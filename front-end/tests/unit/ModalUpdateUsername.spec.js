@@ -34,10 +34,8 @@ afterEach(() => {
 
 });
 
-describe('Modal-UpdateUsername', () => {
-
-
-    test('handleOKEvent', () => {
+describe('[MUR] Modal-UpdateUsername', () => {
+    test('[MUR-1] handleOKEvent', () => {
         const preventDefault = jest.fn();
         const wrapper = shallowMount(UpdateUsername, {
 
@@ -45,12 +43,6 @@ describe('Modal-UpdateUsername', () => {
         
         wrapper.vm.handleOk({preventDefault})
 
-
-
-
         wrapper.destroy();
     });
-
-
-
 });

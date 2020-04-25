@@ -38,10 +38,10 @@ afterEach(() => {
 
 });
 
-describe('AutoComplete', () => {
+describe('[AC] AutoComplete', () => {
 
 
-    test('AutoComplete component with expected props data', () => {
+    test('[AC-1] AutoComplete component with expected props data', () => {
         const wrapper = shallowMount(AutoComplete, {
             propsData: {
                 suggestionsMstr: 
@@ -69,7 +69,7 @@ describe('AutoComplete', () => {
         wrapper.destroy();
     });
 
-    test('AutoComplete search on item', () => {
+    test('[AC-2] AutoComplete search on item', () => {
         const wrapper = shallowMount(AutoComplete, {
             propsData: {
                 suggestionsMstr: 
@@ -97,7 +97,7 @@ describe('AutoComplete', () => {
     });
 
 
-    test('AutoComplete: setState', () => {
+    test('[AC-3] AutoComplete: setState', () => {
         const wrapper = shallowMount(AutoComplete, {
             propsData: {
                 suggestionsMstr: 
@@ -132,6 +132,4 @@ describe('AutoComplete', () => {
 
         wrapper.destroy();
     });
-
-
 });
